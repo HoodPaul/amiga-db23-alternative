@@ -1,27 +1,31 @@
 {
-  "revision": "0.4",
-  "design_checks": 610,
+  "revision": "0.5",
+  "design_checks": 648,
   "projects": {
     "DB23M_RGB": {
       "status": "PASS",
-      "design_checks": 305,
+      "design_checks": 324,
       "signal_nets": 23,
       "shield_nets": 1,
-      "pads": 48,
+      "pads": 50,
       "tracks": 26,
       "vias": 0,
+      "mounting_holes_at_original_shell_anchors": true,
+      "shield_crossbar_minimum_row_clearance_mm": 0.27,
       "native_drc_violations": 0,
       "native_unconnected_pads": 0,
       "native_footprint_errors": 0
     },
     "DB23F_Floppy": {
       "status": "PASS",
-      "design_checks": 305,
+      "design_checks": 324,
       "signal_nets": 23,
       "shield_nets": 1,
-      "pads": 48,
+      "pads": 50,
       "tracks": 26,
       "vias": 0,
+      "mounting_holes_at_original_shell_anchors": true,
+      "shield_crossbar_minimum_row_clearance_mm": 0.27,
       "native_drc_violations": 0,
       "native_unconnected_pads": 0,
       "native_footprint_errors": 0

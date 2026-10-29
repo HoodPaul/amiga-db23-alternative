@@ -1,9 +1,0 @@
-{
-  "assembly_revision": "0.4",
-  "pcb_revision": "0.3",
-  "comparison_baseline_commit": "2971a053cbf7b8f3f9358c929cd31d5ab9df449d",
-  "retained_pcb_and_manufacturing_files_compared": 42,
-  "changed_files": [],
-  "portable_checks": 610,
-  "physical_testing_performed": false
-}

@@ -1,0 +1,341 @@
+{
+  "source_url": "https://github.com/Acill/A4000RevB/blob/master/Kicad/A4k-Replica-Acill.kicad_pcb",
+  "source_sha256": "4155ef7a00132b9eea8feed87b3504cc958765ecd263edc102177ac43f24300b",
+  "source_bytes": 9924004,
+  "source_native_version": "20260206",
+  "source_declared_board_thickness_mm": 1.52876,
+  "scope": "Reference-board 2D copper/pad projections and nominal hole positions only; no physical fit or exposed-metal/contact verification. Reference import artefacts and revision differences remain possible. This does not replace the iComp dimensional contract.",
+  "ports": {
+    "CN450": {
+      "native_footprint_origin_xy_mm": [
+        -48.768,
+        -170.18
+      ],
+      "flange_global_y_inferred_from_signal_rows_mm": -173.2792,
+      "flange_inference_note": "Least-squares mean Y offset to iComp nominal rows; 0.0048 mm row-spacing difference remains.",
+      "reference_signal_rows_local_y_mm": [
+        4.9784,
+        7.8232
+      ],
+      "reference_anchor_local_y_mm": 6.5532,
+      "anchor_y_offset_from_signal_midpoint_mm": 0.1524,
+      "reference_anchor_spacing_mm": 44.2976,
+      "reference_anchor_drill_mm": 3.175,
+      "reference_anchor_copper_pad_diameter_mm": 5.08,
+      "adapter_mount_drill_mm": 3.3,
+      "anchor_eccentricity_after_signal_registration_mm": 0.153024,
+      "combined_radial_clearance_for_nominal_3mm_screw_mm": 0.2375,
+      "heads": [
+        {
+          "anchor_pad": "24",
+          "anchor_global_xy_mm": [
+            -70.9168,
+            -163.6268
+          ],
+          "foreign_bottom_pad_track_via_candidates_within_1mm": [
+            {
+              "type": "track",
+              "net": "-M450",
+              "width_mm": 0.635,
+              "start_global_xy_mm": [
+                -67.31,
+                -159.512
+              ],
+              "end_global_xy_mm": [
+                -67.31,
+                -166.116
+              ],
+              "gap_for_7mm_head_mm": -0.2107,
+              "gap_for_6mm_head_mm": 0.2893
+            },
+            {
+              "type": "track",
+              "net": "-M450",
+              "width_mm": 0.635,
+              "start_global_xy_mm": [
+                -67.31,
+                -166.116
+              ],
+              "end_global_xy_mm": [
+                -65.278,
+                -168.148
+              ],
+              "gap_for_7mm_head_mm": 0.564865,
+              "gap_for_6mm_head_mm": 1.064865
+            },
+            {
+              "type": "pad",
+              "reference": "CN403",
+              "pad": "2",
+              "net": "N$54461",
+              "gap_for_7mm_head_mm": 0.968451,
+              "gap_for_6mm_head_mm": 1.468451
+            }
+          ]
+        },
+        {
+          "anchor_pad": "25",
+          "anchor_global_xy_mm": [
+            -26.6192,
+            -163.6268
+          ],
+          "foreign_bottom_pad_track_via_candidates_within_1mm": []
+        }
+      ]
+    },
+    "CN352": {
+      "native_footprint_origin_xy_mm": [
+        29.718,
+        -170.18
+      ],
+      "flange_global_y_inferred_from_signal_rows_mm": -173.2792,
+      "flange_inference_note": "Least-squares mean Y offset to iComp nominal rows; 0.0048 mm row-spacing difference remains.",
+      "reference_signal_rows_local_y_mm": [
+        4.9784,
+        7.8232
+      ],
+      "reference_anchor_local_y_mm": 6.5532,
+      "anchor_y_offset_from_signal_midpoint_mm": 0.1524,
+      "reference_anchor_spacing_mm": 44.2976,
+      "reference_anchor_drill_mm": 3.175,
+      "reference_anchor_copper_pad_diameter_mm": 5.08,
+      "adapter_mount_drill_mm": 3.3,
+      "anchor_eccentricity_after_signal_registration_mm": 0.153024,
+      "combined_radial_clearance_for_nominal_3mm_screw_mm": 0.2375,
+      "heads": [
+        {
+          "anchor_pad": "24",
+          "anchor_global_xy_mm": [
+            51.8668,
+            -163.6268
+          ],
+          "foreign_bottom_pad_track_via_candidates_within_1mm": []
+        },
+        {
+          "anchor_pad": "25",
+          "anchor_global_xy_mm": [
+            7.569199999999999,
+            -163.6268
+          ],
+          "foreign_bottom_pad_track_via_candidates_within_1mm": [
+            {
+              "type": "track",
+              "net": "N$23846",
+              "width_mm": 0.254,
+              "start_global_xy_mm": [
+                14.21765,
+                -165.09365
+              ],
+              "end_global_xy_mm": [
+                8.89,
+                -159.766
+              ],
+              "gap_for_7mm_head_mm": 0.036944,
+              "gap_for_6mm_head_mm": 0.536944
+            },
+            {
+              "type": "track",
+              "net": "N$23846",
+              "width_mm": 0.254,
+              "start_global_xy_mm": [
+                8.057343,
+                -159.766
+              ],
+              "end_global_xy_mm": [
+                5.6642,
+                -157.372857
+              ],
+              "gap_for_7mm_head_mm": 0.264537,
+              "gap_for_6mm_head_mm": 0.764537
+            },
+            {
+              "type": "track",
+              "net": "N$23846",
+              "width_mm": 0.254,
+              "start_global_xy_mm": [
+                8.89,
+                -159.766
+              ],
+              "end_global_xy_mm": [
+                8.057343,
+                -159.766
+              ],
+              "gap_for_7mm_head_mm": 0.264537,
+              "gap_for_6mm_head_mm": 0.764537
+            },
+            {
+              "type": "track",
+              "net": "N$44341",
+              "width_mm": 0.254,
+              "start_global_xy_mm": [
+                13.208001,
+                -159.258
+              ],
+              "end_global_xy_mm": [
+                8.267764,
+                -159.258
+              ],
+              "gap_for_7mm_head_mm": 0.797297,
+              "gap_for_6mm_head_mm": 1.297297
+            },
+            {
+              "type": "track",
+              "net": "N$44341",
+              "width_mm": 0.254,
+              "start_global_xy_mm": [
+                8.267764,
+                -159.258
+              ],
+              "end_global_xy_mm": [
+                7.493,
+                -158.483236
+              ],
+              "gap_for_7mm_head_mm": 0.797297,
+              "gap_for_6mm_head_mm": 1.297297
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "neighbour_projection": {
+    "port": "CN450",
+    "reference": "CN175",
+    "pad": "7",
+    "net": "GND",
+    "centre_assembly_xy_mm": [
+      26.797,
+      5.7916
+    ],
+    "copper_pad_diameter_mm": 3.175,
+    "drill_diameter_mm": 2.3622,
+    "note": "Updated local outline/polyline projection, not the old unrelieved rectangle: the closest base/cap boundary is its front relief corner, not the X25 straight segment. Copper-pad projection has very little gap there. No lug, solder-fillet or connector-housing height is modelled; physical clearance remains unverified.",
+    "adapter_outline_vertices": 16,
+    "adapter_nearest_outline_point_mm": [
+      25.0,
+      6.0
+    ],
+    "adapter_gap_to_reference_drill_circle_mm": 0.627944,
+    "adapter_gap_to_reference_copper_pad_circle_mm": 0.221544,
+    "base_cap_local_outer_relief_x_mm": 25.0,
+    "base_cap_local_outer_relief_y_interval_mm": [
+      4.4,
+      7.5
+    ],
+    "base_cap_closest_outer_polyline_point_mm": [
+      26,
+      4.4
+    ],
+    "base_cap_gap_to_reference_drill_circle_mm": 0.422571,
+    "base_cap_gap_to_reference_copper_pad_circle_mm": 0.016171,
+    "actual_delivered_STEP_and_adapter_outline_checks": {
+      "base": {
+        "intersection_with_reference_drill_cylinder_mm3": 0.0,
+        "minimum_distance_to_reference_drill_cylinder_mm": 0.422571
+      },
+      "cap": {
+        "intersection_with_reference_drill_cylinder_mm3": 0.0,
+        "minimum_distance_to_reference_drill_cylinder_mm": 0.422571
+      },
+      "adapter_outline_solid": {
+        "intersection_with_reference_drill_cylinder_mm3": 0.0,
+        "minimum_distance_to_reference_drill_cylinder_mm": 0.627944
+      }
+    }
+  },
+  "underside_hardware_decision": {
+    "head_diameter_assumed_mm": 7.0,
+    "head_height_assumed_mm": 1.0,
+    "mandatory_insulating_washer_OD_mm": 8.0,
+    "mandatory_insulating_washer_ID_mm": 3.2,
+    "mandatory_insulating_washer_thickness_mm": 0.5,
+    "top_washer_default": false,
+    "note": "Do not rely on the insulated screw-head bearing face for shell ground; provide a deliberate wire bond. Actual washer coverage, PCB condition and chassis clearance require physical checks."
+  },
+  "native_adapter_to_print_alignment": {
+    "status": "PASS",
+    "checks_passed": 68,
+    "both_variants_same_geometric_tail_set": true,
+    "scope": "Independent direct parsing of final saved KiCad native files and final delivered STEP. Probes are clearance envelopes, not actual solder fillet or physical print measurements.",
+    "projects": {
+      "DB23M_RGB": {
+        "signal_guides_checked_from_saved_native_centres": 23,
+        "max_signal_position_change_from_revision_0_4_mm": 0.0,
+        "max_bore_probe_intersection_mm3": 0.0,
+        "signal_drill_mm": 1.04,
+        "mount_bores_checked_from_saved_native_centres": 2,
+        "mounting_xy_mm": [
+          [
+            -22.135,
+            9.5
+          ],
+          [
+            22.135,
+            9.5
+          ]
+        ],
+        "adapter_mount_drill_mm": 3.3,
+        "max_mount_probe_intersection_mm3": 0.0,
+        "J4_fillets_checked_from_saved_native_centres": 2,
+        "J4_xy_mm": [
+          [
+            -18.0,
+            7.0
+          ],
+          [
+            18.0,
+            7.0
+          ]
+        ],
+        "J4_drill_mm": 1.2,
+        "J4_fillet_probe_envelope": "Diameter2.4mm,0.75mm belowPCBunderside",
+        "max_J4_probe_intersection_mm3": 0.0,
+        "outline_vertices": 16,
+        "outline_matches_shared_parameters": true,
+        "footprint_to_assembly_origin_verified_mm": [
+          150.0,
+          80.0
+        ]
+      },
+      "DB23F_Floppy": {
+        "signal_guides_checked_from_saved_native_centres": 23,
+        "max_signal_position_change_from_revision_0_4_mm": 0.0,
+        "max_bore_probe_intersection_mm3": 0.0,
+        "signal_drill_mm": 1.04,
+        "mount_bores_checked_from_saved_native_centres": 2,
+        "mounting_xy_mm": [
+          [
+            -22.135,
+            9.5
+          ],
+          [
+            22.135,
+            9.5
+          ]
+        ],
+        "adapter_mount_drill_mm": 3.3,
+        "max_mount_probe_intersection_mm3": 0.0,
+        "J4_fillets_checked_from_saved_native_centres": 2,
+        "J4_xy_mm": [
+          [
+            -18.0,
+            7.0
+          ],
+          [
+            18.0,
+            7.0
+          ]
+        ],
+        "J4_drill_mm": 1.2,
+        "J4_fillet_probe_envelope": "Diameter2.4mm,0.75mm belowPCBunderside",
+        "max_J4_probe_intersection_mm3": 0.0,
+        "outline_vertices": 16,
+        "outline_matches_shared_parameters": true,
+        "footprint_to_assembly_origin_verified_mm": [
+          150.0,
+          80.0
+        ]
+      }
+    }
+  }
+}

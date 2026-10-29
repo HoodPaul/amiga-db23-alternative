@@ -1,12 +1,20 @@
 {
-  "revision": "0.4",
-  "scope": "Saved-file CAD only; connector/hardware envelopes are unmeasured assumptions",
+  "revision": "0.5",
+  "scope": "Saved-file CAD only; connector, hardware and print fits remain unmeasured assumptions",
   "checks": {
     "holder_STEP_valid_one_solid": {
       "passed": true,
       "details": true
     },
-    "holder_notched_PCB": {
+    "cap_STEP_valid_one_solid": {
+      "passed": true,
+      "details": true
+    },
+    "holder_PCB": {
+      "passed": true,
+      "details": 0.0
+    },
+    "cap_PCB": {
       "passed": true,
       "details": 0.0
     },
@@ -14,149 +22,57 @@
       "passed": true,
       "details": 0.0
     },
+    "cap_assumed_flange": {
+      "passed": true,
+      "details": 0.0
+    },
     "holder_assumed_rear_body": {
       "passed": true,
       "details": 0.0
     },
-    "holder_all_assumed_full_cup_envelopes": {
+    "cap_assumed_rear_body": {
       "passed": true,
       "details": 0.0
     },
-    "holder_PCB_vertical_lowering_sweep_20mm": {
+    "holder_assumed_full_cup_envelopes": {
       "passed": true,
       "details": 0.0
     },
-    "holder_flange_vertical_lowering_sweep_20mm": {
+    "cap_assumed_full_cup_envelopes": {
       "passed": true,
       "details": 0.0
     },
-    "holder_body_vertical_lowering_sweep_20mm": {
+    "holder_all_square_pins": {
       "passed": true,
       "details": 0.0
     },
-    "holder_conservative_cup_vertical_lowering_sweep_20mm": {
+    "cap_all_square_pins": {
       "passed": true,
       "details": 0.0
     },
-    "holder_nut_-1": {
+    "holder_cap_seated": {
       "passed": true,
       "details": 0.0
     },
-    "holder_nut_top_loading_sweep_-1": {
+    "holder_PCB_exact_vertical_sweep_20mm": {
       "passed": true,
       "details": 0.0
     },
-    "PCB_nut_top_loading_sweep_-1": {
+    "holder_flange_exact_vertical_sweep_20mm": {
       "passed": true,
       "details": 0.0
     },
-    "holder_max_anchor_head_-1": {
+    "holder_body_exact_vertical_sweep_20mm": {
       "passed": true,
       "details": 0.0
     },
-    "PCB_max_anchor_head_-1": {
+    "holder_cup_conservative_vertical_sweep_20mm": {
       "passed": true,
       "details": 0.0
     },
-    "PCB_4mm_anchor_driver_-1": {
+    "holder_nominal_motherboard_plane": {
       "passed": true,
       "details": 0.0
-    },
-    "anchor_pocket_open_outboard_-1": {
-      "passed": true,
-      "details": true
-    },
-    "anchor_material_-1_inner_web": {
-      "passed": true,
-      "details": [
-        -18.0,
-        9.5,
-        5.0
-      ]
-    },
-    "anchor_material_-1_front_cheek": {
-      "passed": true,
-      "details": [
-        -22.135,
-        5.7,
-        4.0
-      ]
-    },
-    "anchor_material_-1_rear_cheek": {
-      "passed": true,
-      "details": [
-        -22.135,
-        13.3,
-        4.0
-      ]
-    },
-    "anchor_material_-1_bearing_floor": {
-      "passed": true,
-      "details": [
-        -24.535,
-        9.5,
-        1.5
-      ]
-    },
-    "holder_nut_1": {
-      "passed": true,
-      "details": 0.0
-    },
-    "holder_nut_top_loading_sweep_1": {
-      "passed": true,
-      "details": 0.0
-    },
-    "PCB_nut_top_loading_sweep_1": {
-      "passed": true,
-      "details": 0.0
-    },
-    "holder_max_anchor_head_1": {
-      "passed": true,
-      "details": 0.0
-    },
-    "PCB_max_anchor_head_1": {
-      "passed": true,
-      "details": 0.0
-    },
-    "PCB_4mm_anchor_driver_1": {
-      "passed": true,
-      "details": 0.0
-    },
-    "anchor_pocket_open_outboard_1": {
-      "passed": true,
-      "details": true
-    },
-    "anchor_material_1_inner_web": {
-      "passed": true,
-      "details": [
-        18.0,
-        9.5,
-        5.0
-      ]
-    },
-    "anchor_material_1_front_cheek": {
-      "passed": true,
-      "details": [
-        22.135,
-        5.7,
-        4.0
-      ]
-    },
-    "anchor_material_1_rear_cheek": {
-      "passed": true,
-      "details": [
-        22.135,
-        13.3,
-        4.0
-      ]
-    },
-    "anchor_material_1_bearing_floor": {
-      "passed": true,
-      "details": [
-        24.535,
-        9.5,
-        1.5
-      ]
     },
     "guide_bore_01": {
       "passed": true,
@@ -250,163 +166,646 @@
       "passed": true,
       "details": 0.0
     },
-    "rear_infill_material_X0": {
+    "holder_J4_underfillet_1": {
       "passed": true,
-      "details": true
+      "details": 0.0
     },
-    "rear_infill_material_X-10": {
+    "holder_J4_underfillet_exact_vertical_sweep_1": {
       "passed": true,
-      "details": true
+      "details": 0.0
     },
-    "rear_infill_material_X10": {
+    "cap_J4_top_lead_clearance_1": {
       "passed": true,
-      "details": true
+      "details": 0.0
     },
-    "mesh_DB23_Anchor_Shim_Single_v0.4": {
+    "holder_J4_underfillet_2": {
+      "passed": true,
+      "details": 0.0
+    },
+    "holder_J4_underfillet_exact_vertical_sweep_2": {
+      "passed": true,
+      "details": 0.0
+    },
+    "cap_J4_top_lead_clearance_2": {
+      "passed": true,
+      "details": 0.0
+    },
+    "holder_M3_shank_-1": {
+      "passed": true,
+      "details": 0.0
+    },
+    "cap_M3_shank_-1": {
+      "passed": true,
+      "details": 0.0
+    },
+    "PCB_M3_shank_-1": {
+      "passed": true,
+      "details": 0.0
+    },
+    "holder_M3_head_-1": {
+      "passed": true,
+      "details": 0.0
+    },
+    "cap_M3_head_-1": {
+      "passed": true,
+      "details": 0.0
+    },
+    "PCB_M3_head_-1": {
+      "passed": true,
+      "details": 0.0
+    },
+    "holder_underside_insulator_-1": {
+      "passed": true,
+      "details": 0.0
+    },
+    "cap_underside_insulator_-1": {
+      "passed": true,
+      "details": 0.0
+    },
+    "PCB_underside_insulator_-1": {
+      "passed": true,
+      "details": 0.0
+    },
+    "holder_top_nut_-1": {
+      "passed": true,
+      "details": 0.0
+    },
+    "cap_top_nut_-1": {
+      "passed": true,
+      "details": 0.0
+    },
+    "PCB_top_nut_-1": {
+      "passed": true,
+      "details": 0.0
+    },
+    "holder_jackpost_nut_-1": {
+      "passed": true,
+      "details": 0.0
+    },
+    "cap_jackpost_nut_-1": {
+      "passed": true,
+      "details": 0.0
+    },
+    "PCB_jackpost_nut_-1": {
+      "passed": true,
+      "details": 0.0
+    },
+    "motherboard_M3_shank_-1": {
+      "passed": true,
+      "details": 0.0
+    },
+    "motherboard_M3_head_-1": {
+      "passed": true,
+      "details": 0.0
+    },
+    "motherboard_underside_insulator_-1": {
+      "passed": true,
+      "details": 0.0
+    },
+    "head_supported_by_insulator_OD_-1": {
       "passed": true,
       "details": {
-        "triangles": 512,
-        "boundary_or_nonmanifold_edges": 0,
-        "regions": 1
+        "head_OD": 7.0,
+        "insulator_OD": 8.0
       }
     },
-    "mesh_DB23_Anchor_Shims_v0.4": {
+    "jackpost_nut_top_loading_holder_-1": {
+      "passed": true,
+      "details": 0.0
+    },
+    "jackpost_nut_top_loading_PCB_-1": {
+      "passed": true,
+      "details": 0.0
+    },
+    "integral_foot_-1_0": {
+      "passed": true,
+      "details": [
+        -19.735000000000003,
+        9.5,
+        0.1
+      ]
+    },
+    "PCB_support_-1_0": {
+      "passed": true,
+      "details": [
+        -19.735000000000003,
+        9.5,
+        5.65
+      ]
+    },
+    "integral_foot_-1_90": {
+      "passed": true,
+      "details": [
+        -22.135,
+        11.9,
+        0.1
+      ]
+    },
+    "PCB_support_-1_90": {
+      "passed": true,
+      "details": [
+        -22.135,
+        11.9,
+        5.65
+      ]
+    },
+    "integral_foot_-1_180": {
+      "passed": true,
+      "details": [
+        -24.535,
+        9.5,
+        0.1
+      ]
+    },
+    "PCB_support_-1_180": {
+      "passed": true,
+      "details": [
+        -24.535,
+        9.5,
+        5.65
+      ]
+    },
+    "integral_foot_-1_270": {
+      "passed": true,
+      "details": [
+        -22.135,
+        7.1,
+        0.1
+      ]
+    },
+    "PCB_support_-1_270": {
+      "passed": true,
+      "details": [
+        -22.135,
+        7.1,
+        5.65
+      ]
+    },
+    "holder_mounting_bore_-1": {
+      "passed": true,
+      "details": 0.0
+    },
+    "holder_jackpost_stem_to_max_end_-1": {
+      "passed": true,
+      "details": 0.0
+    },
+    "cap_jackpost_stem_to_max_end_-1": {
+      "passed": true,
+      "details": 0.0
+    },
+    "PCB_jackpost_stem_to_max_end_-1": {
+      "passed": true,
+      "details": 0.0
+    },
+    "top_nut_jackpost_stem_-1": {
+      "passed": true,
+      "details": 0.0
+    },
+    "cap_top_nut_all_rotations_envelope_-1": {
+      "passed": true,
+      "details": 0.0
+    },
+    "top_nut_all_rotations_jackpost_stem_-1": {
+      "passed": true,
+      "details": 0.0
+    },
+    "vertical_shank_jackpost_stem_-1": {
+      "passed": true,
+      "details": 0.0
+    },
+    "jackpost_passage_extends_beyond_stem_-1": {
       "passed": true,
       "details": {
-        "triangles": 1024,
-        "boundary_or_nonmanifold_edges": 0,
-        "regions": 2
+        "passage_end_Y": 6.2,
+        "maximum_stem_end_Y": 6.0
       }
     },
-    "mesh_DB23_Holder_v0.4": {
+    "holder_M3_shank_1": {
+      "passed": true,
+      "details": 0.0
+    },
+    "cap_M3_shank_1": {
+      "passed": true,
+      "details": 0.0
+    },
+    "PCB_M3_shank_1": {
+      "passed": true,
+      "details": 0.0
+    },
+    "holder_M3_head_1": {
+      "passed": true,
+      "details": 0.0
+    },
+    "cap_M3_head_1": {
+      "passed": true,
+      "details": 0.0
+    },
+    "PCB_M3_head_1": {
+      "passed": true,
+      "details": 0.0
+    },
+    "holder_underside_insulator_1": {
+      "passed": true,
+      "details": 0.0
+    },
+    "cap_underside_insulator_1": {
+      "passed": true,
+      "details": 0.0
+    },
+    "PCB_underside_insulator_1": {
+      "passed": true,
+      "details": 0.0
+    },
+    "holder_top_nut_1": {
+      "passed": true,
+      "details": 0.0
+    },
+    "cap_top_nut_1": {
+      "passed": true,
+      "details": 0.0
+    },
+    "PCB_top_nut_1": {
+      "passed": true,
+      "details": 0.0
+    },
+    "holder_jackpost_nut_1": {
+      "passed": true,
+      "details": 0.0
+    },
+    "cap_jackpost_nut_1": {
+      "passed": true,
+      "details": 0.0
+    },
+    "PCB_jackpost_nut_1": {
+      "passed": true,
+      "details": 0.0
+    },
+    "motherboard_M3_shank_1": {
+      "passed": true,
+      "details": 0.0
+    },
+    "motherboard_M3_head_1": {
+      "passed": true,
+      "details": 0.0
+    },
+    "motherboard_underside_insulator_1": {
+      "passed": true,
+      "details": 0.0
+    },
+    "head_supported_by_insulator_OD_1": {
       "passed": true,
       "details": {
-        "triangles": 8052,
-        "boundary_or_nonmanifold_edges": 0,
-        "regions": 1
+        "head_OD": 7.0,
+        "insulator_OD": 8.0
       }
     },
-    "mesh_DB23_Hole_Fit_Coupon_v0.4": {
+    "jackpost_nut_top_loading_holder_1": {
+      "passed": true,
+      "details": 0.0
+    },
+    "jackpost_nut_top_loading_PCB_1": {
+      "passed": true,
+      "details": 0.0
+    },
+    "PCB_support_1_0": {
+      "passed": true,
+      "details": [
+        24.535,
+        9.5,
+        5.65
+      ]
+    },
+    "integral_foot_1_90": {
+      "passed": true,
+      "details": [
+        22.135,
+        11.9,
+        0.1
+      ]
+    },
+    "PCB_support_1_90": {
+      "passed": true,
+      "details": [
+        22.135,
+        11.9,
+        5.65
+      ]
+    },
+    "integral_foot_1_180": {
+      "passed": true,
+      "details": [
+        19.735000000000003,
+        9.5,
+        0.1
+      ]
+    },
+    "PCB_support_1_180": {
+      "passed": true,
+      "details": [
+        19.735000000000003,
+        9.5,
+        5.65
+      ]
+    },
+    "integral_foot_1_270": {
+      "passed": true,
+      "details": [
+        22.135,
+        7.1,
+        0.1
+      ]
+    },
+    "PCB_support_1_270": {
+      "passed": true,
+      "details": [
+        22.135,
+        7.1,
+        5.65
+      ]
+    },
+    "holder_mounting_bore_1": {
+      "passed": true,
+      "details": 0.0
+    },
+    "holder_jackpost_stem_to_max_end_1": {
+      "passed": true,
+      "details": 0.0
+    },
+    "cap_jackpost_stem_to_max_end_1": {
+      "passed": true,
+      "details": 0.0
+    },
+    "PCB_jackpost_stem_to_max_end_1": {
+      "passed": true,
+      "details": 0.0
+    },
+    "top_nut_jackpost_stem_1": {
+      "passed": true,
+      "details": 0.0
+    },
+    "cap_top_nut_all_rotations_envelope_1": {
+      "passed": true,
+      "details": 0.0
+    },
+    "top_nut_all_rotations_jackpost_stem_1": {
+      "passed": true,
+      "details": 0.0
+    },
+    "vertical_shank_jackpost_stem_1": {
+      "passed": true,
+      "details": 0.0
+    },
+    "jackpost_passage_extends_beyond_stem_1": {
       "passed": true,
       "details": {
-        "triangles": 23488,
-        "boundary_or_nonmanifold_edges": 0,
-        "regions": 1
+        "passage_end_Y": 6.2,
+        "maximum_stem_end_Y": 6.0
       }
     },
-    "mesh_DB23_Nut_Keeper_v0.4": {
+    "right_foot_ground_wire_exit_core": {
+      "passed": true,
+      "details": 0.0
+    },
+    "PCB_conservative_clip_flex_envelope_-1": {
+      "passed": true,
+      "details": 0.0
+    },
+    "actual_cap_retaining_hook_material_-1": {
+      "passed": true,
+      "details": [
+        -19.3,
+        5.0,
+        7.675
+      ]
+    },
+    "actual_base_relief_at_seated_hook_-1": {
+      "passed": true,
+      "details": [
+        -19.3,
+        5.0,
+        7.675
+      ]
+    },
+    "actual_base_retaining_ceiling_-1": {
+      "passed": true,
+      "details": [
+        -19.3,
+        5.0,
+        8.200000000000001
+      ]
+    },
+    "actual_cap_flex_beam_material_-1": {
+      "passed": true,
+      "details": [
+        -19.3,
+        5.5,
+        9.0
+      ]
+    },
+    "actual_cap_nut_retaining_key_-1": {
+      "passed": true,
+      "details": [
+        -22.135,
+        3.0,
+        10.45
+      ]
+    },
+    "PCB_conservative_clip_flex_envelope_1": {
+      "passed": true,
+      "details": 0.0
+    },
+    "actual_cap_retaining_hook_material_1": {
+      "passed": true,
+      "details": [
+        19.3,
+        5.0,
+        7.675
+      ]
+    },
+    "actual_base_relief_at_seated_hook_1": {
+      "passed": true,
+      "details": [
+        19.3,
+        5.0,
+        7.675
+      ]
+    },
+    "actual_base_retaining_ceiling_1": {
+      "passed": true,
+      "details": [
+        19.3,
+        5.0,
+        8.200000000000001
+      ]
+    },
+    "actual_cap_flex_beam_material_1": {
+      "passed": true,
+      "details": [
+        19.3,
+        5.5,
+        9.0
+      ]
+    },
+    "actual_cap_nut_retaining_key_1": {
+      "passed": true,
+      "details": [
+        22.135,
+        3.0,
+        10.45
+      ]
+    },
+    "clip_hook_has_positive_retention_bite": {
+      "passed": true,
+      "details": {
+        "rearward_tip_motion_for_0_05mm_clearance": 0.24999999999999928,
+        "hook_bite_nominal": 0.1999999999999993,
+        "XY_gap_to_PCB_ear_front_at_max_flex": -0.0499999999999991,
+        "vertical_gap_latch_bottom_above_PCB": 0.4500000000000002,
+        "note": "A negative XY gap is permitted only where the raised latch has vertical clearance; the solid-envelope check below is authoritative."
+      }
+    },
+    "M3_default_length_full_nut_engagement": {
+      "passed": true,
+      "details": {
+        "motherboard": 1.6,
+        "base_foot_to_PCB_underside": 5.75,
+        "PCB": 1.0,
+        "underside_insulating_washer": 0.5,
+        "top_washer": 0.0,
+        "nut": 2.4,
+        "under_head_to_nut_top": 11.25,
+        "default_screw_tip_Z": 9.9,
+        "default_protrusion_above_nut": 0.75,
+        "head_bottom_Z": -3.1,
+        "projection_below_motherboard_underside": 1.5
+      }
+    },
+    "mesh_DB23_Cap_v0.5": {
+      "passed": true,
+      "details": {
+        "triangles": 220,
+        "boundary_or_nonmanifold_edges": 0,
+        "regions": 1,
+        "bounds": [
+          -26.0,
+          26.0,
+          -13.199999809265137,
+          -0.6499996185302734,
+          1.9073486612342094e-07,
+          5.100000381469727
+        ]
+      }
+    },
+    "mesh_DB23_Clip_Fit_Base_v0.5": {
       "passed": true,
       "details": {
         "triangles": 28,
         "boundary_or_nonmanifold_edges": 0,
-        "regions": 1
+        "regions": 1,
+        "bounds": [
+          -5.722046125811175e-07,
+          2.1999993324279785,
+          -7.629394644936838e-07,
+          2.299999475479126,
+          -5.722046125811175e-07,
+          10.399999618530273
+        ]
       }
     },
-    "mesh_DB23_Pin_Height_Jig_v0.4": {
+    "mesh_DB23_Clip_Fit_Cap_v0.5": {
       "passed": true,
       "details": {
-        "triangles": 556,
+        "triangles": 40,
         "boundary_or_nonmanifold_edges": 0,
-        "regions": 1
+        "regions": 1,
+        "bounds": [
+          -5.722046125811175e-07,
+          2.1999993324279785,
+          1.9073486612342094e-07,
+          3.400000810623169,
+          1.9073486612342094e-07,
+          5.000002861022949
+        ]
+      }
+    },
+    "mesh_DB23_Holder_v0.5": {
+      "passed": true,
+      "details": {
+        "triangles": 8324,
+        "boundary_or_nonmanifold_edges": 0,
+        "regions": 1,
+        "bounds": [
+          -26.0,
+          26.0,
+          0.6499996185302734,
+          13.0,
+          0.0,
+          11.0
+        ]
+      }
+    },
+    "mesh_DB23_Hole_Fit_Coupon_v0.5": {
+      "passed": true,
+      "details": {
+        "triangles": 26384,
+        "boundary_or_nonmanifold_edges": 0,
+        "regions": 1,
+        "bounds": [
+          -21.0,
+          21.0,
+          0.0,
+          22.0,
+          0.0,
+          3.34999942779541
+        ]
+      }
+    },
+    "mesh_DB23_Pin_Height_Jig_v0.5": {
+      "passed": true,
+      "details": {
+        "triangles": 1036,
+        "boundary_or_nonmanifold_edges": 0,
+        "regions": 1,
+        "bounds": [
+          -28.0,
+          28.0,
+          -1.3499994277954102,
+          15.0,
+          1.9073486612342094e-07,
+          7.399999618530273
+        ]
+      }
+    },
+    "cap_print_STL_restores_STEP_assembly_bounds": {
+      "passed": true,
+      "details": {
+        "STL_restored": [
+          -26.0,
+          26.0,
+          0.6499996185302734,
+          13.199999809265137,
+          7.099999618530273,
+          12.199999809265133
+        ],
+        "STEP": [
+          -26.0,
+          26.0,
+          0.65,
+          13.2,
+          7.1,
+          12.2
+        ]
       }
     },
     "jig_STEP_valid_one_solid": {
       "passed": true,
       "details": true
     },
-    "jig_holder_at_loading_position": {
+    "jig_holder_loading_position": {
       "passed": true,
       "details": 0.0
     },
-    "jig_square_pin_01": {
-      "passed": true,
-      "details": 0.0
-    },
-    "jig_square_pin_02": {
-      "passed": true,
-      "details": 0.0
-    },
-    "jig_square_pin_03": {
-      "passed": true,
-      "details": 0.0
-    },
-    "jig_square_pin_04": {
-      "passed": true,
-      "details": 0.0
-    },
-    "jig_square_pin_05": {
-      "passed": true,
-      "details": 0.0
-    },
-    "jig_square_pin_06": {
-      "passed": true,
-      "details": 0.0
-    },
-    "jig_square_pin_07": {
-      "passed": true,
-      "details": 0.0
-    },
-    "jig_square_pin_08": {
-      "passed": true,
-      "details": 0.0
-    },
-    "jig_square_pin_09": {
-      "passed": true,
-      "details": 0.0
-    },
-    "jig_square_pin_10": {
-      "passed": true,
-      "details": 0.0
-    },
-    "jig_square_pin_11": {
-      "passed": true,
-      "details": 0.0
-    },
-    "jig_square_pin_12": {
-      "passed": true,
-      "details": 0.0
-    },
-    "jig_square_pin_13": {
-      "passed": true,
-      "details": 0.0
-    },
-    "jig_square_pin_14": {
-      "passed": true,
-      "details": 0.0
-    },
-    "jig_square_pin_15": {
-      "passed": true,
-      "details": 0.0
-    },
-    "jig_square_pin_16": {
-      "passed": true,
-      "details": 0.0
-    },
-    "jig_square_pin_17": {
-      "passed": true,
-      "details": 0.0
-    },
-    "jig_square_pin_18": {
-      "passed": true,
-      "details": 0.0
-    },
-    "jig_square_pin_19": {
-      "passed": true,
-      "details": 0.0
-    },
-    "jig_square_pin_20": {
-      "passed": true,
-      "details": 0.0
-    },
-    "jig_square_pin_21": {
-      "passed": true,
-      "details": 0.0
-    },
-    "jig_square_pin_22": {
-      "passed": true,
-      "details": 0.0
-    },
-    "jig_square_pin_23": {
+    "jig_all_square_pins": {
       "passed": true,
       "details": 0.0
     },
@@ -571,64 +970,60 @@
         -3.2
       ]
     },
-    "jig_holder_support_-1": {
+    "jig_integral_foot_support_-1": {
       "passed": true,
       "details": [
         -6.2,
-        0.6
+        -0.0
       ]
     },
-    "jig_peg_top_-1": {
+    "jig_locator_top_-1": {
       "passed": true,
       "details": [
         -6.2,
-        1.8
+        1.2
       ]
     },
-    "jig_holder_support_1": {
+    "jig_integral_foot_support_1": {
       "passed": true,
       "details": [
         -6.2,
-        0.6
+        -0.0
       ]
     },
-    "jig_peg_top_1": {
+    "jig_locator_top_1": {
       "passed": true,
       "details": [
         -6.2,
-        1.8
+        1.2
       ]
     },
-    "pin_length_matches_top_and_bottom_datums": {
+    "pin_length_matches_datums": {
       "passed": true,
       "details": true
     },
-    "fillet_heat_gap_nominal": {
+    "guide_to_PCB_fillet_heat_gap": {
       "passed": true,
       "details": 1.25
     }
   },
   "intersections_mm3": {
-    "holder_notched_PCB": 0.0,
+    "holder_PCB": 0.0,
+    "cap_PCB": 0.0,
     "holder_assumed_flange": 0.0,
+    "cap_assumed_flange": 0.0,
     "holder_assumed_rear_body": 0.0,
-    "holder_all_assumed_full_cup_envelopes": 0.0,
-    "holder_PCB_vertical_lowering_sweep_20mm": 0.0,
-    "holder_flange_vertical_lowering_sweep_20mm": 0.0,
-    "holder_body_vertical_lowering_sweep_20mm": 0.0,
-    "holder_conservative_cup_vertical_lowering_sweep_20mm": 0.0,
-    "holder_nut_-1": 0.0,
-    "holder_nut_top_loading_sweep_-1": 0.0,
-    "PCB_nut_top_loading_sweep_-1": 0.0,
-    "holder_max_anchor_head_-1": 0.0,
-    "PCB_max_anchor_head_-1": 0.0,
-    "PCB_4mm_anchor_driver_-1": 0.0,
-    "holder_nut_1": 0.0,
-    "holder_nut_top_loading_sweep_1": 0.0,
-    "PCB_nut_top_loading_sweep_1": 0.0,
-    "holder_max_anchor_head_1": 0.0,
-    "PCB_max_anchor_head_1": 0.0,
-    "PCB_4mm_anchor_driver_1": 0.0,
+    "cap_assumed_rear_body": 0.0,
+    "holder_assumed_full_cup_envelopes": 0.0,
+    "cap_assumed_full_cup_envelopes": 0.0,
+    "holder_all_square_pins": 0.0,
+    "cap_all_square_pins": 0.0,
+    "holder_cap_seated": 0.0,
+    "holder_PCB_exact_vertical_sweep_20mm": 0.0,
+    "holder_flange_exact_vertical_sweep_20mm": 0.0,
+    "holder_body_exact_vertical_sweep_20mm": 0.0,
+    "holder_cup_conservative_vertical_sweep_20mm": 0.0,
+    "holder_nominal_motherboard_plane": 0.0,
     "guide_bore_01": 0.0,
     "guide_bore_02": 0.0,
     "guide_bore_03": 0.0,
@@ -652,63 +1047,207 @@
     "guide_bore_21": 0.0,
     "guide_bore_22": 0.0,
     "guide_bore_23": 0.0,
-    "jig_holder_at_loading_position": 0.0,
-    "jig_square_pin_01": 0.0,
-    "jig_square_pin_02": 0.0,
-    "jig_square_pin_03": 0.0,
-    "jig_square_pin_04": 0.0,
-    "jig_square_pin_05": 0.0,
-    "jig_square_pin_06": 0.0,
-    "jig_square_pin_07": 0.0,
-    "jig_square_pin_08": 0.0,
-    "jig_square_pin_09": 0.0,
-    "jig_square_pin_10": 0.0,
-    "jig_square_pin_11": 0.0,
-    "jig_square_pin_12": 0.0,
-    "jig_square_pin_13": 0.0,
-    "jig_square_pin_14": 0.0,
-    "jig_square_pin_15": 0.0,
-    "jig_square_pin_16": 0.0,
-    "jig_square_pin_17": 0.0,
-    "jig_square_pin_18": 0.0,
-    "jig_square_pin_19": 0.0,
-    "jig_square_pin_20": 0.0,
-    "jig_square_pin_21": 0.0,
-    "jig_square_pin_22": 0.0,
-    "jig_square_pin_23": 0.0
+    "holder_J4_underfillet_1": 0.0,
+    "holder_J4_underfillet_exact_vertical_sweep_1": 0.0,
+    "cap_J4_top_lead_clearance_1": 0.0,
+    "holder_J4_underfillet_2": 0.0,
+    "holder_J4_underfillet_exact_vertical_sweep_2": 0.0,
+    "cap_J4_top_lead_clearance_2": 0.0,
+    "holder_M3_shank_-1": 0.0,
+    "cap_M3_shank_-1": 0.0,
+    "PCB_M3_shank_-1": 0.0,
+    "holder_M3_head_-1": 0.0,
+    "cap_M3_head_-1": 0.0,
+    "PCB_M3_head_-1": 0.0,
+    "holder_underside_insulator_-1": 0.0,
+    "cap_underside_insulator_-1": 0.0,
+    "PCB_underside_insulator_-1": 0.0,
+    "holder_top_nut_-1": 0.0,
+    "cap_top_nut_-1": 0.0,
+    "PCB_top_nut_-1": 0.0,
+    "holder_jackpost_nut_-1": 0.0,
+    "cap_jackpost_nut_-1": 0.0,
+    "PCB_jackpost_nut_-1": 0.0,
+    "motherboard_M3_shank_-1": 0.0,
+    "motherboard_M3_head_-1": 0.0,
+    "motherboard_underside_insulator_-1": 0.0,
+    "jackpost_nut_top_loading_holder_-1": 0.0,
+    "jackpost_nut_top_loading_PCB_-1": 0.0,
+    "holder_mounting_bore_-1": 0.0,
+    "holder_jackpost_stem_to_max_end_-1": 0.0,
+    "cap_jackpost_stem_to_max_end_-1": 0.0,
+    "PCB_jackpost_stem_to_max_end_-1": 0.0,
+    "top_nut_jackpost_stem_-1": 0.0,
+    "cap_top_nut_all_rotations_envelope_-1": 0.0,
+    "top_nut_all_rotations_jackpost_stem_-1": 0.0,
+    "vertical_shank_jackpost_stem_-1": 0.0,
+    "holder_M3_shank_1": 0.0,
+    "cap_M3_shank_1": 0.0,
+    "PCB_M3_shank_1": 0.0,
+    "holder_M3_head_1": 0.0,
+    "cap_M3_head_1": 0.0,
+    "PCB_M3_head_1": 0.0,
+    "holder_underside_insulator_1": 0.0,
+    "cap_underside_insulator_1": 0.0,
+    "PCB_underside_insulator_1": 0.0,
+    "holder_top_nut_1": 0.0,
+    "cap_top_nut_1": 0.0,
+    "PCB_top_nut_1": 0.0,
+    "holder_jackpost_nut_1": 0.0,
+    "cap_jackpost_nut_1": 0.0,
+    "PCB_jackpost_nut_1": 0.0,
+    "motherboard_M3_shank_1": 0.0,
+    "motherboard_M3_head_1": 0.0,
+    "motherboard_underside_insulator_1": 0.0,
+    "jackpost_nut_top_loading_holder_1": 0.0,
+    "jackpost_nut_top_loading_PCB_1": 0.0,
+    "holder_mounting_bore_1": 0.0,
+    "holder_jackpost_stem_to_max_end_1": 0.0,
+    "cap_jackpost_stem_to_max_end_1": 0.0,
+    "PCB_jackpost_stem_to_max_end_1": 0.0,
+    "top_nut_jackpost_stem_1": 0.0,
+    "cap_top_nut_all_rotations_envelope_1": 0.0,
+    "top_nut_all_rotations_jackpost_stem_1": 0.0,
+    "vertical_shank_jackpost_stem_1": 0.0,
+    "right_foot_ground_wire_exit_core": 0.0,
+    "PCB_conservative_clip_flex_envelope_-1": 0.0,
+    "PCB_conservative_clip_flex_envelope_1": 0.0,
+    "jig_holder_loading_position": 0.0,
+    "jig_all_square_pins": 0.0
   },
   "meshes": {
-    "DB23_Anchor_Shim_Single_v0.4.stl": {
-      "triangles": 512,
+    "DB23_Cap_v0.5.stl": {
+      "triangles": 220,
       "boundary_or_nonmanifold_edges": 0,
-      "regions": 1
+      "regions": 1,
+      "bounds": [
+        -26.0,
+        26.0,
+        -13.199999809265137,
+        -0.6499996185302734,
+        1.9073486612342094e-07,
+        5.100000381469727
+      ]
     },
-    "DB23_Anchor_Shims_v0.4.stl": {
-      "triangles": 1024,
-      "boundary_or_nonmanifold_edges": 0,
-      "regions": 2
-    },
-    "DB23_Holder_v0.4.stl": {
-      "triangles": 8052,
-      "boundary_or_nonmanifold_edges": 0,
-      "regions": 1
-    },
-    "DB23_Hole_Fit_Coupon_v0.4.stl": {
-      "triangles": 23488,
-      "boundary_or_nonmanifold_edges": 0,
-      "regions": 1
-    },
-    "DB23_Nut_Keeper_v0.4.stl": {
+    "DB23_Clip_Fit_Base_v0.5.stl": {
       "triangles": 28,
       "boundary_or_nonmanifold_edges": 0,
-      "regions": 1
+      "regions": 1,
+      "bounds": [
+        -5.722046125811175e-07,
+        2.1999993324279785,
+        -7.629394644936838e-07,
+        2.299999475479126,
+        -5.722046125811175e-07,
+        10.399999618530273
+      ]
     },
-    "DB23_Pin_Height_Jig_v0.4.stl": {
-      "triangles": 556,
+    "DB23_Clip_Fit_Cap_v0.5.stl": {
+      "triangles": 40,
       "boundary_or_nonmanifold_edges": 0,
-      "regions": 1
+      "regions": 1,
+      "bounds": [
+        -5.722046125811175e-07,
+        2.1999993324279785,
+        1.9073486612342094e-07,
+        3.400000810623169,
+        1.9073486612342094e-07,
+        5.000002861022949
+      ]
+    },
+    "DB23_Holder_v0.5.stl": {
+      "triangles": 8324,
+      "boundary_or_nonmanifold_edges": 0,
+      "regions": 1,
+      "bounds": [
+        -26.0,
+        26.0,
+        0.6499996185302734,
+        13.0,
+        0.0,
+        11.0
+      ]
+    },
+    "DB23_Hole_Fit_Coupon_v0.5.stl": {
+      "triangles": 26384,
+      "boundary_or_nonmanifold_edges": 0,
+      "regions": 1,
+      "bounds": [
+        -21.0,
+        21.0,
+        0.0,
+        22.0,
+        0.0,
+        3.34999942779541
+      ]
+    },
+    "DB23_Pin_Height_Jig_v0.5.stl": {
+      "triangles": 1036,
+      "boundary_or_nonmanifold_edges": 0,
+      "regions": 1,
+      "bounds": [
+        -28.0,
+        28.0,
+        -1.3499994277954102,
+        15.0,
+        1.9073486612342094e-07,
+        7.399999618530273
+      ]
     }
   },
-  "holder_volume_mm3": 2227.065988,
-  "checks_passed": 117
+  "unsupported_screw_lengths": {
+    "14.0": {
+      "tip_Z": 11.9,
+      "cap_overlap_mm3": [
+        6.361725,
+        6.361725
+      ]
+    },
+    "16.0": {
+      "tip_Z": 13.9,
+      "cap_overlap_mm3": [
+        8.4823,
+        8.4823
+      ]
+    }
+  },
+  "holder_volume_mm3": 1787.389466,
+  "holder_assembly_bounds": [
+    -26.0,
+    26.0,
+    0.65,
+    13.0,
+    0.0,
+    11.0
+  ],
+  "cap_volume_mm3": 981.284,
+  "cap_assembly_bounds": [
+    -26.0,
+    26.0,
+    0.65,
+    13.2,
+    7.1,
+    12.2
+  ],
+  "mounting_stack_mm": {
+    "motherboard": 1.6,
+    "base_foot_to_PCB_underside": 5.75,
+    "PCB": 1.0,
+    "underside_insulating_washer": 0.5,
+    "top_washer": 0.0,
+    "nut": 2.4,
+    "under_head_to_nut_top": 11.25,
+    "default_screw_tip_Z": 9.9,
+    "default_protrusion_above_nut": 0.75,
+    "head_bottom_Z": -3.1,
+    "projection_below_motherboard_underside": 1.5
+  },
+  "clip_geometry": {
+    "rearward_tip_motion_for_0_05mm_clearance": 0.24999999999999928,
+    "hook_bite_nominal": 0.1999999999999993,
+    "XY_gap_to_PCB_ear_front_at_max_flex": -0.0499999999999991,
+    "vertical_gap_latch_bottom_above_PCB": 0.4500000000000002,
+    "note": "A negative XY gap is permitted only where the raised latch has vertical clearance; the solid-envelope check below is authoritative."
+  },
+  "checks_passed": 176
 }

@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <export version="E">
   <design>
-    <source>/workspace/scratch/a29874c2019a/DB23_Replacement_v0.3/pcb/DB23M_RGB/DB23M_RGB.kicad_sch</source>
-    <date>Thu Oct 29 11:58:45 2026</date>
+    <source>/workspace/scratch/a29874c2019a/DB23_Replacement_v0.5/pcb/DB23M_RGB/DB23M_RGB.kicad_sch</source>
+    <date>Thu Oct 29 16:00:14 2026</date>
     <tool>Eeschema 7.0.11+dfsg-1build4</tool>
     <sheet number="1" name="/" tstamps="/">
       <title_block>
         <title>DB23M_RGB DB23 replacement</title>
         <company>UK Computing Limited</company>
-        <rev>0.3</rev>
+        <rev>0.5</rev>
         <date>2026-10-29</date>
         <source>DB23M_RGB.kicad_sch</source>
         <comment number="1" value="FIT PROTOTYPE - measure selected solder-cup DB23 before manufacture"/>
@@ -43,13 +43,22 @@
       <tstamps>b5e6f3db-c31e-59e1-98d8-574fe87d1cf3</tstamps>
     </comp>
     <comp ref="J3">
-      <value>MANUAL SHIELD STRAPS</value>
-      <footprint>DB23_Local:ShieldStraps_M</footprint>
-      <libsource lib="DB23_Local" part="ShieldStraps" description=""/>
+      <value>M3 MOUNTING / SHIELD</value>
+      <footprint>DB23_Local:MountingShield_M</footprint>
+      <libsource lib="DB23_Local" part="MountingShield" description=""/>
       <property name="Sheetname" value=""/>
       <property name="Sheetfile" value="DB23M_RGB.kicad_sch"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>15c05d52-cb8e-52a6-8c84-6b082572d3a0</tstamps>
+    </comp>
+    <comp ref="J4">
+      <value>DB23 SHELL WIRE BOND</value>
+      <footprint>DB23_Local:ShellBond_M</footprint>
+      <libsource lib="DB23_Local" part="ShellBond" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="DB23M_RGB.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>47835e27-8bc6-595a-b832-557c7d04f00b</tstamps>
     </comp>
   </components>
   <libparts>
@@ -115,10 +124,20 @@
         <pin num="23" name="23" type="passive"/>
       </pins>
     </libpart>
-    <libpart lib="DB23_Local" part="ShieldStraps">
+    <libpart lib="DB23_Local" part="MountingShield">
       <fields>
         <field name="Reference">J</field>
-        <field name="Value">ShieldStraps</field>
+        <field name="Value">MountingShield</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="DB23_Local" part="ShellBond">
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">ShellBond</field>
       </fields>
       <pins>
         <pin num="1" name="1" type="passive"/>
@@ -128,7 +147,7 @@
   </libparts>
   <libraries>
     <library logical="DB23_Local">
-      <uri>/workspace/scratch/a29874c2019a/DB23_Replacement_v0.3/pcb/DB23M_RGB/DB23_Local.kicad_sym</uri>
+      <uri>/workspace/scratch/a29874c2019a/DB23_Replacement_v0.5/pcb/DB23M_RGB/DB23_Local.kicad_sym</uri>
     </library>
   </libraries>
   <nets>
@@ -227,6 +246,8 @@
     <net code="24" name="/SHIELD">
       <node ref="J3" pin="1" pinfunction="1" pintype="passive"/>
       <node ref="J3" pin="2" pinfunction="2" pintype="passive"/>
+      <node ref="J4" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="J4" pin="2" pinfunction="2" pintype="passive"/>
     </net>
   </nets>
 </export>

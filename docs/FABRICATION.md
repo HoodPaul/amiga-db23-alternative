@@ -2,7 +2,7 @@
 
 ## Release state
 
-Assembly and mechanical revision 0.4 is a fit prototype. Both unchanged PCB variants remain at revision 0.3. It is intended for measurement, trial printing and unpowered assembly review before a PCB order. The selected solder-cup connector and fastening hardware have not been measured, so native CAD or clean DRC alone does not make this a production release.
+PCB, assembly and mechanical revision 0.5 is a fit prototype for measurement, trial printing and unpowered assembly review. The selected solder-cup connector and fasteners have not been measured. Native CAD and clean DRC do not establish production readiness.
 
 ## Proposed PCB settings
 
@@ -10,28 +10,30 @@ Assembly and mechanical revision 0.4 is a fit prototype. Both unchanged PCB vari
 |---|---|
 | Variant | Male RGB or female floppy, as required |
 | Layers | Two |
-| Outline | 40.00 × 12.00 mm overall, with two 2.00 × 1.50 mm front-corner notches |
-| Finished thickness | 1.00 mm assumed; confirm from cup gap |
+| Overall board envelope | 51.20 × 9.00 mm, Y4.00–13.00, with stepped front and mounting ears |
+| Finished thickness | 1.00 mm assumed; confirm from the measured cup gap |
 | Copper | 1 oz proposed |
 | Mask / silkscreen | Black / white proposed |
-| Surface finish | ENIG preferred; manufacturer order choice |
-| Minimum signal track / clearance | 0.50 / 0.20 mm nominal |
+| Surface finish | ENIG preferred; order choice |
+| Signal track / clearance | 0.50 / 0.20 mm nominal |
 | Tail finished drill / pad | 1.04 / 1.70 mm |
-| Shell strap finished drill / pad | 1.20 / 2.40 mm |
+| J3 mounting finished drill / pad | 3.30 / 6.50 mm |
+| J4 shell-wire finished drill / pad | 1.20 / 2.40 mm |
 
-The solder-cup pads are hand-soldered to both sides of the board. Confirm the actual overlap, cup spacing and PCB edge position. Do not order an assembly stencil or claim an SMT assembly process without reviewing the intended population method.
+The J3 lands need exposed, flat bearing surfaces for the top nuts. Keep shell-wire solder on J4 and clear of those bearing surfaces. Cup pads are hand-soldered on both PCB faces; confirm overlap, gap and edge position. No assembly stencil or reflow process is specified.
 
-If manufacturing exports are generated, keep them in a folder clearly labelled `FIT-PROTOTYPE`, with matching checks and revision information. Regenerate and recheck them after any coordinate, thickness, footprint or routing change.
+Keep manufacturing exports under `fabrication/FIT-PROTOTYPE/`, with matching reports and revision information. Regenerate and recheck after any outline, coordinate, thickness, footprint or routing change.
 
 ## Printed-part preparation
 
-Start with the hole-fit coupon and the actual pins. Confirm usable bore size and the drilling or reaming process. Then check nut pockets with the purchased hardware before committing to the full holder. Print the pin-height loading jig and establish that the holder locates on it without binding. The jig sets pin projection during loading and is removed before soldering.
+Start with the hole-fit coupon and actual pins. Establish the nominal bore and any drilling or reaming allowance. Print the matched clip-fit base/cap coupons and trial nut pockets, cap engagement/release and jig fit using the actual printer and hardware before assembling the full unit.
 
-The holder model's nominal 52 mm width must clear adjacent ports, motherboard components and casework. Its 0.60 mm bottom clearance requires two matching anchor shims or washers beneath the mounting feet before tightening. Check its underside and the retention fasteners against the motherboard and chassis. No new motherboard drilling is specified.
+The solid base uses integral mounting feet at Z0. **Do not add the old separate 0.60 mm mounting shims.** Check the feet against actual shell-ground pads and neighbouring components. Verify space for the base, cap, rear wire route and underside fastener heads. No new motherboard drilling or countersinking is part of the design. Reference A4000 layout checks identified nearby underside copper; the insulating washers and local front-corner reliefs do not establish clearance on every board revision.
 
-The raised end supports and closed rear web add structural material, but no printer, material, process or strength has been qualified. Check the insertion and extraction load path through the flange, printed body and original motherboard anchors, including layer orientation and fastener clamping. Retain the editable source and measured fit settings with the printed parts so future builders can reproduce the result.
+The default mounting hardware is M3 × 12 mm under-head length, with user-listed Ø7 mm, approximately 1 mm thick heads. The default under-head insulating washers are assumed Ø8 × 0.50 mm and the top nuts bear directly on supported J3 lands. Washer, nut and board thicknesses are assumed; measure the real stack before accepting thread engagement and cap clearance. The resulting nominal head bottom is Z−3.10. A top washer is not included and requires a separate stack check. Fourteen or sixteen millimetre screws require trimming or a separately checked cover.
 
-## Before a release or order
+The cap STL is roof-down for printing; the base has feet at Z0 and a main underside at Z0.60, requiring local support or a proven bridge process. Read the mechanical notes for transforms and small-hook support trials. No material, printer process, strength or thermal performance has been qualified. The keyed cap retains port nuts and conceals hardware; the base and through-bolts provide the intended cable-force path. Verify that path with the actual flange, hardware, print orientation and motherboard before relying on it.
 
-Complete the connector and hardware measurements, dry fit the holder and PCB, run the current native and independent checks, and record results. Keep the generated design, printed files, previews and reports from the same parameter revision together.
+## Before an order or release
 
+Measure the connector and hardware, dry-fit the coordinated parts, run native and independent checks, and record outcomes. Keep the actual print settings and measured dimensions with the source so the result can be reproduced.

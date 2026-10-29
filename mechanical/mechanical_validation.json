@@ -1,9 +1,11 @@
 {
-  "DB23_Holder_v0.4.stl": {
-    "triangles": 8052,
+  "revision": "0.5",
+  "status": "FIT PROTOTYPE; all physical fits and strengths untested",
+  "DB23_Holder_v0.5.stl": {
+    "triangles": 8324,
     "nonmanifold_edges": 0,
     "components": 1,
-    "volume_mm3": 2227.765,
+    "volume_mm3": 1787.638,
     "bounds": [
       [
         -26.0,
@@ -11,19 +13,59 @@
       ],
       [
         0.65,
-        15.6
+        13.0
       ],
       [
-        0.6,
+        0.0,
         11.0
       ]
     ]
   },
-  "DB23_Hole_Fit_Coupon_v0.4.stl": {
-    "triangles": 23488,
+  "DB23_Cap_v0.5.stl": {
+    "triangles": 220,
     "nonmanifold_edges": 0,
     "components": 1,
-    "volume_mm3": 2721.31,
+    "volume_mm3": 981.284,
+    "bounds": [
+      [
+        -26.0,
+        26.0
+      ],
+      [
+        -13.2,
+        -0.65
+      ],
+      [
+        0.0,
+        5.1
+      ]
+    ]
+  },
+  "DB23_Pin_Height_Jig_v0.5.stl": {
+    "triangles": 1036,
+    "nonmanifold_edges": 0,
+    "components": 1,
+    "volume_mm3": 3008.533,
+    "bounds": [
+      [
+        -28.0,
+        28.0
+      ],
+      [
+        -1.35,
+        15.0
+      ],
+      [
+        0.0,
+        7.4
+      ]
+    ]
+  },
+  "DB23_Hole_Fit_Coupon_v0.5.stl": {
+    "triangles": 26384,
+    "nonmanifold_edges": 0,
+    "components": 1,
+    "volume_mm3": 2722.931,
     "bounds": [
       [
         -21.0,
@@ -39,126 +81,95 @@
       ]
     ]
   },
-  "DB23_Nut_Keeper_v0.4.stl": {
+  "DB23_Clip_Fit_Base_v0.5.stl": {
     "triangles": 28,
     "nonmanifold_edges": 0,
     "components": 1,
-    "volume_mm3": 53.169,
+    "volume_mm3": 52.159,
     "bounds": [
       [
-        -3.7,
-        3.7
+        -0.0,
+        2.2
       ],
       [
-        0.65,
-        4.8
+        -0.0,
+        2.3
       ],
       [
-        0.0,
-        2.4
+        -0.0,
+        10.4
       ]
     ]
   },
-  "DB23_Anchor_Shims_v0.4.stl": {
-    "triangles": 1024,
-    "nonmanifold_edges": 0,
-    "components": 2,
-    "volume_mm3": 35.86,
-    "bounds": [
-      [
-        -8.5,
-        8.5
-      ],
-      [
-        -3.5,
-        3.5
-      ],
-      [
-        0.0,
-        0.6
-      ]
-    ]
-  },
-  "DB23_Anchor_Shim_Single_v0.4.stl": {
-    "triangles": 512,
+  "DB23_Clip_Fit_Cap_v0.5.stl": {
+    "triangles": 40,
     "nonmanifold_edges": 0,
     "components": 1,
-    "volume_mm3": 17.93,
+    "volume_mm3": 12.378,
     "bounds": [
       [
-        -3.5,
-        3.5
-      ],
-      [
-        -3.5,
-        3.5
+        -0.0,
+        2.2
       ],
       [
         0.0,
-        0.6
-      ]
-    ]
-  },
-  "DB23_Pin_Height_Jig_v0.4.stl": {
-    "triangles": 556,
-    "nonmanifold_edges": 0,
-    "components": 1,
-    "volume_mm3": 4222.007,
-    "bounds": [
-      [
-        -28.0,
-        28.0
-      ],
-      [
-        -1.35,
-        17.6
+        3.4
       ],
       [
         0.0,
-        8.0
+        5.0
       ]
     ]
   },
-  "DB23_Holder_v0.4.step": {
+  "DB23_Holder_v0.5.step": {
     "valid": true,
     "solids": 1,
-    "volume_mm3": 2227.066,
-    "pin_bores_checked": 23,
-    "blocked_pin_bores": []
+    "volume_mm3": 1787.389,
+    "coordinates": "assembly"
   },
-  "DB23_Pin_Height_Jig_v0.4.step": {
+  "DB23_Cap_v0.5.step": {
     "valid": true,
     "solids": 1,
-    "volume_mm3": 4222.032,
-    "holder_overlap_mm3": 0.0,
-    "pins_checked": 23,
-    "blocked_pins": [],
-    "tip_stop_z": -3.2,
-    "support_top_z": 0.6,
-    "print_z_offset": 6.2
+    "volume_mm3": 981.284,
+    "coordinates": "assembly"
+  },
+  "DB23_Pin_Height_Jig_v0.5.step": {
+    "valid": true,
+    "solids": 1,
+    "volume_mm3": 3008.953,
+    "coordinates": "print bed"
   },
   "structural_checks": {
-    "revision": "0.4",
-    "pcb_revision": "0.3",
-    "rail_top_z": 5.75,
-    "rear_infill_front_y": 12.5,
-    "rear_infill_top_z": 5.75,
-    "anchor_head_seat_z": 2.4,
-    "anchor_head_max_top_z": 5.4,
-    "anchor_head_holder_overlap_mm3": [
-      0.0,
-      0.0
-    ],
-    "anchor_head_pcb_overlap_mm3": [
-      0.0,
-      0.0
-    ],
-    "outboard_pocket_obstruction_mm3": [
-      0.0,
-      0.0
-    ],
-    "shield_relief_floor_thickness": 3.9,
-    "underside_pin_solder_clearance": 1.25,
-    "nominal_pin_length": 10.7
+    "base_PCB_overlap_mm3": 0.0,
+    "cap_base_overlap_mm3": 0.0,
+    "cap_PCB_overlap_mm3": 0.0,
+    "jig_base_overlap_mm3": 0.0,
+    "guide_bores_open": 23,
+    "pins_clear_jig_and_cap": 23,
+    "cap_screw_-1_overlap_mm3": 0.0,
+    "cap_nut_envelope_-1_overlap_mm3": 0.0,
+    "stem_mounting_nut_-1_overlap_mm3": 0.0,
+    "stem_base_-1_overlap_mm3": 0.0,
+    "cap_screw_1_overlap_mm3": 0.0,
+    "cap_nut_envelope_1_overlap_mm3": 0.0,
+    "stem_mounting_nut_1_overlap_mm3": 0.0,
+    "stem_base_1_overlap_mm3": 0.0,
+    "screw_tip_z": 9.9,
+    "nut_top_z": 9.15,
+    "default_screw_protrusion_above_nut": 0.75,
+    "cap_roof_clearance_above_tip": 1.0999999999999996,
+    "guide_fillet_gap": 1.25,
+    "integrated_foot_bottom_z": 0.0,
+    "main_body_bottom_z": 0.6,
+    "jackpost_stem_max_end_y": 6.0,
+    "jackpost_relief_end_y": 6.2,
+    "cap_latch_engagement_y": 0.1999999999999993,
+    "latch_minimum_assembly_deflection_estimate": 0.29999999999999927,
+    "latch_elastic_strength_tested": false,
+    "cap_print_transform": {
+      "rotate_x_degrees": 180,
+      "translate_z": 12.2
+    },
+    "jig_print_offset_z": 6.2
   }
 }

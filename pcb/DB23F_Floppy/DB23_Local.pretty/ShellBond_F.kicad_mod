@@ -1,0 +1,18 @@
+(footprint "ShellBond_F" (version 20221018) (generator pcbnew)
+  (layer "F.Cu")
+  (attr through_hole)
+  (fp_text reference "REF**" (at 0 0) (layer "F.Fab") hide
+      (effects (font (size 1.27 1.27) (thickness 0.15)))
+    (tstamp 7d265e81-9198-4fac-bdb3-49406995d53c)
+  )
+  (fp_text value "DB23 shell wire bond" (at 0 0) (layer "F.Fab") hide
+      (effects (font (size 1.27 1.27) (thickness 0.15)))
+    (tstamp e144d56a-a54e-4d69-90fe-3bcee248afbd)
+  )
+  (fp_circle (center -18 7) (end -16.75 7)
+    (stroke (width 0.05) (type default)) (fill none) (layer "F.CrtYd") (tstamp a067b2f8-7c02-423b-9704-b0ceecb03f83))
+  (fp_circle (center 18 7) (end 19.25 7)
+    (stroke (width 0.05) (type default)) (fill none) (layer "F.CrtYd") (tstamp b6dbf22f-3650-4093-b91e-2fb0d2e3ae04))
+  (pad "1" thru_hole circle (at -18 7) (size 2.4 2.4) (drill 1.2) (layers "*.Cu" "*.Mask") (tstamp ce667dde-e2f9-4852-955d-2126930df8e0))
+  (pad "2" thru_hole circle (at 18 7) (size 2.4 2.4) (drill 1.2) (layers "*.Cu" "*.Mask") (tstamp 804e301c-447c-46b1-a22e-426a124898b3))
+)

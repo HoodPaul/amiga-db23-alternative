@@ -1,4 +1,6 @@
-# Optional Python dependencies for CAD reference previews and the drawing PDF.
+# Python dependencies for the mechanical build/audit and CAD previews/PDF.
+# CadQuery is required by build_mechanical.py; the independent audit also needs VTK.
+# Pillow and ReportLab support previews and drawings. OpenSCAD is installed separately.
 # The portable PCB audit uses only Python's standard library.
 cadquery>=2.4
 vtk>=9.2

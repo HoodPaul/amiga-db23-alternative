@@ -1,74 +1,110 @@
 # Mechanical design and print notes
 
-## Arrangement
+## Solid base and keyed cap
 
-The PCB sits horizontally between the solder-cup rows. Its signal tails pass down through a printed guide block to the original motherboard holes. Revision 0.4 replaces the low side rails and rear opening with raised end supports and a continuous rear infill, joined to the pin guide as one substantial printed cradle. The end supports and rear infill reach the PCB seating plane at z = 5.75 mm. The pin guide itself stops at z = 4.50 mm, leaving a 1.25 mm gap beneath the PCB for fillets and heat separation. Front side clearances preserve the assumed connector-body and solder-cup envelope.
+Revision 0.5 uses a solid printed base, a short PCB with mounting ears and two upward metal mounting screws. The separate keyed cap retains the port-jackpost nuts and covers the upper fasteners. Broad supported parts and positive bolts provide the intended load path; no physical strength or print lifetime is established.
 
-The holder must be positively attached at the original shell retention positions. A close fit or locating peg alone is not the intended means of resisting cable insertion, extraction or overturning force.
+The base supports the DB23 flange, the 23-pin guide and the PCB mounting ears. Its integral feet contact the motherboard at the original shell-anchor positions. **The old separate 0.60 mm anchor shims are not used:** that height is incorporated in the feet while preserving the PCB underside at Z5.75.
 
-Check that the actual connector flange bears firmly against the cradle when the jackposts are secured. The illustrative flange back is at y = 0.50 mm and the cradle front at y = 0.65 mm, leaving a nominal 0.15 mm gap. This is an unmeasured clearance, not an established bearing fit. Measure the real gap and, if needed, fit firm bearing shims or spacers of the measured thickness, or revise the cradle contact face. Do not specify 0.15 mm as a fixed shim thickness. The fitted arrangement must transfer monitor-plug insertion force from the flange into the cradle and its motherboard anchors without bending the solder cups, PCB joints or signal tails. Check that clamping does not shift the mating face or obstruct the contacts, and record the fit before load testing.
+The PCB and connector are soldered together first, then lowered onto the loaded base from above. The cap is fitted after mounting, soldering and inspection. It does not obstruct the top mounting nuts during installation.
 
-## Shared reference frame
+## Coordinates and envelope
 
-All dimensions are millimetres. The flange front reference plane is y = 0; positive y points into the machine. The illustrative metal flange occupies y = 0–0.50 mm, and the holder starts behind it at y = 0.65 mm. The motherboard top is z = 0. The PCB occupies x = ±20 mm, y = 4–16 mm and z = 5.75–6.75 mm. The mating centreline is nominally z = 6.25 mm.
+All dimensions are millimetres. X runs across the port; positive Y runs inward from flange front Y0; positive Z rises from motherboard top Z0. The connector faces negative Y. Male and female share the same geometric pin set with mirrored numbering.
 
-The PCB has two 2.00 × 1.50 mm front-corner notches to clear the nut towers. A plain rectangular 40 × 12 mm board would interfere with the holder. Preserve these clearances when editing the outline.
+| Reference | Nominal value |
+|---|---|
+| PCB overall width / front / rear | 51.20 mm / Y4.00 / Y13.00 |
+| Base width / rear | 52.00 mm / Y13.00 |
+| Cap width / rear / roof | 52.00 mm / Y13.20 / Z11.00–12.20 |
+| Maximum nominal underside washer span | 52.27 mm across both Ø8 washers |
+| Head and washer projection beneath motherboard underside | 1.50 mm, assuming 1.00 + 0.50 mm |
+| PCB thickness / underside | 1.00 mm / Z5.75 |
+| PCB mounting-ear sides | X±25.00 at Y6.00–7.50; X±25.60 behind Y7.50 |
+| Original anchor axes | X±22.135, Y9.50 |
+| Front / rear signal rows | Y8.08 / Y10.92 |
+| Signal pitch / row spacing / stagger | 2.77 / 2.84 / 1.385 |
+| Nominal mating centreline | Z6.25 |
+| Pin guide top | Z4.50 |
+| Guide-to-PCB underside gap | 1.25 mm |
 
-Pins 13–23 form the front row at y = 8.08 mm. Pins 1–12 form the rear row at y = 10.92 mm. Both variants use the same geometric hole set, with mirrored numbering. Original shell anchors are x = ±22.135 mm, y = 9.50 mm.
+The PCB rear has moved from Y16.00 to Y13.00, 0.50 mm behind the OEM reference rear at Y12.50. The cap reaches Y13.20, 0.70 mm behind that OEM reference. The two Ø8 underside washers span 52.27 mm, slightly wider than the 52.00 mm prints; do not treat the whole assembly as a 52 mm rectangular envelope. Actual wire emerging from the foot and side window also needs clearance. The outer assembly still needs checking with the target motherboard and case: matching the original holes does not establish the same external envelope. Photos around CN450 identify a useful region to inspect, but are not dimensional fit evidence. Use the shared parameters for current base/cap extents and the drawing PDF for views.
 
-## Pins and hole fit
+The front PCB steps clear the nut towers and assumed connector envelope. Local outer-corner reliefs near X±25, Y4.40–7.50 accommodate a neighbouring lug in the reference layout; verify the actual target board. Preserve the actual stepped outline when changing the ears or shortening the board.
 
-The holder uses 0.92 mm nominal guide bores as a trial value for assumed 0.64 mm square pins. The square diagonal is `0.64 × sqrt(2) = 0.9051 mm`. Printed hole size, corner contact and interference are process-dependent; the nominal CAD bore is not a guaranteed press fit.
+## Mounting stack
 
-Print the hole coupon first. Record the pin section, as-printed bore, drilled or reamed diameter and resulting fit. A 0.80 mm drill can serve for a pilot or smaller round pins, but cannot produce clearance for the assumed square pin. Do not force pins through an undersized holder or motherboard hole.
+Screws pass upward from under the motherboard, through the solid base and J3 holes, with insulating washers under the heads and nuts above the PCB. Each mounting ear must sit flat on its boss before tightening. Do not use nut force to pull a tilted PCB down or close a gap. No motherboard drilling or countersinking is specified.
 
-The nominal pin extends from z = -3.20 mm to +7.50 mm, a 10.70 mm length. This assumes a 1.60 mm motherboard and leaves about 1.60 mm below its underside. Actual motherboard thickness, pin length, case clearance and required soldering protrusion determine the final cut length.
+The default stack is:
 
-The pin block ends below the adapter PCB to leave fillet and heat clearance. The rear is filled from y = 12.50 mm to 15.60 mm up to the PCB seating plane. Two local J3 underside-filleting pockets remain: x = ±18.00 mm with 4.40 mm width, y = 11.80–14.80 mm, and floor z = 4.50 mm. These are shallow top recesses, not the former through openings. Pre-solder covered underside joints before lowering the PCB and route shell leads from its top. Check actual fillets and insulation against the recesses. Do not fill the guide gap with adhesive or extend the block against solder fillets without checking access and temperature behaviour.
+| Part | Assumed height |
+|---|---:|
+| Underside insulating washer | 0.50 mm |
+| Motherboard | 1.60 mm |
+| Motherboard top to PCB underside | 5.75 mm |
+| Adapter PCB | 1.00 mm |
+| Top nut | 2.40 mm |
+| Total beneath screw head to nut top | 11.25 mm |
 
-### Pin-height loading jig
+The default M3 × 12 mm under-head screw ends at Z9.90 and projects about 0.75 mm beyond the assumed nut. Washer and nut dimensions are not measured. Fourteen and sixteen millimetre screws end at Z11.90 and Z13.90 respectively, and are not automatically compatible with the default cap. Trim only after determining the actual stack or use an independently checked cover.
 
-The separate [pin-height jig](../mechanical/DB23_Pin_Height_Jig_v0.4.stl) supports the holder at z = 0.60 mm and provides a common lower-tip stop at z = -3.20 mm. Short nominal 2.90 mm loose locating pegs use the holder's anchor holes during loading. Equal 10.70 mm pins then reach z = +7.50 mm; the jig does not correct unequal pin lengths or pin-tip geometry. Its open common well accommodates the pin grid without requiring another set of tight guide holes.
+User-listed screw heads are Ø7 mm and approximately 1 mm thick. Fit default Ø8 × 0.50 mm insulating washers beneath them. The heads then extend to nominal Z−3.10, which is 1.50 mm below the underside of the assumed 1.60 mm motherboard. Check both motherboard faces, nearby tracks/components and chassis space; the reference A4000 layout is not a physical fit result for the user's board. Top nuts seat directly on supported J3 lands. Solder wires to J4, clear of the nut seats. An optional top washer consumes the 0.75 mm spare thread and requires a separate stack review.
 
-The jig is exported on the print bed at z = 0; its assembly placement is a -6.20 mm z translation. Remove it after loading, before preloading anchor bolts, lowering the PCB or applying soldering heat. Recheck that the guide fit retains the pins and their heights after transfer to a heat-safe support. The jig is not installed on the motherboard.
+Tightening behaviour, plastic compression, creep and long-term preload have not been tested. Optional rigid compression stops can be developed if needed, but must match the measured support height and selected base bore; they are not an unspecified drop-in part. Do not bow the 1.00 mm PCB or crush the print.
 
-## Nuts and jackposts
+## Pins and loading jig
 
-The DB23 screw-lock interface needs the correct cable-facing thread. Original-style hardware uses 4-40 UNC there. The purchased jackpost's rear mounting stem may use a different thread. Choose the hardware before selecting the captive nut and pocket size.
+The default guide bore is nominally Ø0.92 mm for assumed 0.64 mm square pins. The pin diagonal is `0.64 × sqrt(2) = 0.9051 mm`. Nominal CAD clearance is not a guaranteed printed press fit. A finished Ø0.80 mm hole is too small for those pins.
 
-Current pocket assumptions are for M3 nuts: 5.50 mm across flats and 2.40 mm nut thickness, with clearance. HARTING 09670009924, with an M3 male rear stem and 4-40 UNC cable-facing female thread, is a candidate jackpost. These are not frozen purchase specifications. Check that the keeper, nut and jackpost do not contact the PCB, cups, neighbouring connectors or chassis.
+Print the hole-fit coupon first. Record pin shape, actual bore, any drill/reamer diameter and retention after soldering trials. The base must hold the pins at their set height when the jig is removed and while the PCB is lowered.
 
-For the default frame, the nut pocket occupies y = 1.70–4.30 mm, centred at y = 3.00 mm, and the jackpost rear stem must end at y ≤ 5.50 mm from the flange front reference, preferably around 4.80 mm. A long stem can collide with the motherboard anchor bolt. Select or trim the stem only after measuring the actual flange and hardware; an 8 mm jackpost is not a specified drop-in part.
+Nominal equal pin length is 10.70 mm, from Z−3.20 to Z7.50. With an assumed 1.60 mm motherboard this leaves about 1.60 mm below its underside. Confirm actual board thickness, solder protrusion and chassis clearance.
 
-The original mounting-hole positions are retained in the holder. Its nominal 3.30 mm clearance bore is larger than the referenced 3.20 mm motherboard hole; this is an allowance in the printed part only, not an instruction to drill the motherboard.
+The separate jig supports the new integral feet and provides a common lower-tip stop. Equal lower projection requires a seated base and clean flat stop; equal upper heights additionally require equal pin lengths. Remove the jig vertically before soldering, then recheck the guide grip and all heights. Do not use the motherboard as the fixture.
 
-The holder bottom is z = 0.60 mm above the motherboard top. Place one **0.60 mm shim or washer under each anchor foot** before tightening. These supports are part of the height stack; tightening without them would pull the feet down across a gap and change alignment or strain the assembly.
+The guide top remains 1.25 mm below the PCB for fillets and heat separation. Local J4 reliefs clear pre-soldered wire joints. Keep the actual fillet and insulation envelope within those recesses and away from signal pins; this is not underside soldering access after seating.
 
-The end lugs now reach z = 5.75 mm, but the anchor-head seats remain recessed at z = 2.40 mm. Nominal 6.40 mm counterbores open towards the outer ends, avoiding a thin unsupported outer lip. The default head plus any upper washer stack must be no taller than 3.00 mm and no wider than 6.00 mm, keeping its top at or below z = 5.40 mm beneath the assumed PCB lower face. A raised head on the lug top would collide with the PCB edge.
+## Jackposts, nuts and flange bearing
 
-Preload the two anchor bolts after removing the pin-height jig and **before lowering the joined PCB/DB23**, because the PCB partly covers their heads. Fit their motherboard-side nuts during final installation. Confirm underside nut and tool access, bolt retention during assembly, and the complete stack against the actual motherboard and chassis. The recessed heads are distinct from the cable jackposts and their captive nuts.
+Cable-facing jackpost sockets require 4-40 UNC. Their rear mounting stems can use a different thread. The prototype assumes M3 rear stems and nuts, 5.50 mm across flats and 2.40 mm thick, plus fit allowance. Match the actual parts. HARTING 09670009924 is a candidate thread arrangement, not a frozen drop-in part; M3.5 has not been specified.
 
-## Printing and assembly temperature
+The cap's retaining tongues close the top-loading jackpost nut pockets. The solid base locates those nuts; do not rely on a decorative latch as the main cable-load attachment.
 
-Print only the coupon and trial parts until geometry is confirmed. Select material and print orientation from actual mechanical and soldering trials. No material, layer height, thermal rating or retention force has been validated by this project.
+The rear-stem passage ends at **Y6.20**, with a conservative permitted stem end **Y≤6.00 from the flange datum**. This limit clears the top motherboard mounting nut, not just the vertical bolt shank. Check actual projection, not only the advertised jackpost length; an 8 mm stem is not an assumed drop-in part.
 
-Place the holder's broad planar bottom on the print bed. Its STL retains the assembly-coordinate bottom at z = 0.60 mm, so use the slicer's drop-to-bed function. The coupon and shims already sit at z = 0. The keeper STL is exported cap-face down for printing; its print orientation differs from its assembly orientation. The [mechanical notes](../mechanical/MECHANICAL_NOTES.txt) give the assembly transforms and support guidance.
+The illustrative connector flange occupies Y0–0.50 and the base starts Y0.65, leaving an unmeasured 0.15 mm reference gap. Check real flange bearing when tightening the jackposts. If needed, use firm spacers selected from the measured gap or revise the bearing face. Do not bend solder cups, PCB joints or tails to pull a gap closed. The flange must transfer cable forces into the base and its mounting attachment.
 
-The [shim-pair STL](../mechanical/DB23_Anchor_Shims_v0.4.stl) deliberately contains two separate printable shims. Alternatively, print the [single-shim STL](../mechanical/DB23_Anchor_Shim_Single_v0.4.stl) twice. The holder, coupon and individual keeper are each intended to be one connected part.
+## Printing, cap fit and temperature
 
-Keep support removal and drilling debris out of the electrical assembly. The holder is not specified as reflow-rated. Soldering heat can travel along the pins and soften a printed guide even when the iron does not touch it. Assemble or solder away from the holder where practical, test the actual process on the coupon, and avoid unnecessary heat dwell.
+Read `mechanical/MECHANICAL_NOTES.txt` for the complete generated notes. Delivered print trials are:
 
-## Shell grounding
+| File | Use and orientation |
+|---|---|
+| `DB23_Holder_v0.5.stl` / `.step` | Solid base in assembly coordinates; integral feet at Z0, main underside at Z0.60 |
+| `DB23_Cap_v0.5.stl` | Cap already roof-down for printing |
+| `DB23_Cap_v0.5.step` | Cap in assembly coordinates |
+| `DB23_Pin_Height_Jig_v0.5.stl` / `.step` | Jig on the print bed; translate Z−6.20 for assembly placement |
+| `DB23_Hole_Fit_Coupon_v0.5.stl` | Guide-hole trials before the base |
+| `DB23_Clip_Fit_Base_v0.5.stl` and `DB23_Clip_Fit_Cap_v0.5.stl` | Matched latch-fit trial before full-size cap |
 
-Printed material is insulating. Capturing a nut does not by itself connect the connector shell to motherboard shield ground. Provide deliberate wire or metal bonds and inspect their continuity after mechanical assembly. Keep this circuit distinct from assumptions about the 23 signal contacts.
+To restore the cap STL to assembly coordinates, rotate 180° about X, then translate Z+12.20. The base has a stepped underside: printing it on its Z0 feet leaves the main body 0.60 mm above the bed. Use local underside support or a bridging process proven on a trial; do not assume that broad region prints unsupported. The roof-down cap avoids a broad ceiling bridge, but small latch-hook overhangs still need a print trial.
 
-## Regeneration
+The base, cap and individual jig are intended as connected parts. Reference meshes under `previews/reference-meshes/` illustrate bought components and are not functional print files.
 
-Run from the project root:
+Black print colour is proposed for a discreet appearance. No material, nozzle, process, layer direction or thermal capability has been qualified. The clip coupon has nominal 0.60 mm thick, 1.40 mm wide latch features. Trial the nut pockets, keys, latch travel and release with the actual printer before using the cap; material, fatigue life and latch strength are unvalidated. Do not force a cap that interferes with fasteners or pulls the PCB out of its seats.
+
+Remove support and drilling debris before electrical assembly. The print is not specified as reflow-rated. Soldering heat can soften a guide through the pins even without direct iron contact. Complete cup joints away from the print, keep heat dwell controlled and test the real process on trial parts.
+
+## Shell grounding and regeneration
+
+J3 mounting lands and J4 wire pads share the isolated `SHIELD` circuit. Bond the DB23 metal shell deliberately to J4. A separate wire from J4 to the motherboard's original shell-ground pad is required. The right mounting foot has an outward groove beginning at X24.00, centred on Y9.50, nominally 1.20 mm wide and 1.00 mm high. Pre-tack the motherboard pad wire with the base removed, route it outward through this groove and up to J4, and verify the actual wire/fillet envelope does not lift the foot or become pinched. Do not rely on mounting-bolt contact: the default under-head washers are insulating. Plastic does not provide grounding. Check both deliberate bonds after final mechanical assembly.
+
+From the project root:
 
 ```sh
 python3 source/build_mechanical.py
+python3 source/verify_mechanical.py
 ```
 
-The builder reads `source/design_parameters.json` and produces the OpenSCAD source and printable parts. OpenSCAD is required for STL export; any optional STEP export requires the additional CAD dependencies identified by the builder. Keep the source and all generated outputs together after parameter changes.
-
+Keep the shared JSON, editable source, generated STL/STEP, PCB and reports coordinated. Refer to [VALIDATION.md](VALIDATION.md) for actual command results and limits.

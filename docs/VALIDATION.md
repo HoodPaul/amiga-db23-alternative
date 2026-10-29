@@ -1,57 +1,86 @@
 # Validation record
 
-**Assembly and mechanical revision:** 0.4  
-**Retained PCB revision:** 0.3  
+**PCB, assembly and mechanical revision:** 0.5  
 **Date:** 29 October 2026  
-**State:** Fit prototype; no physical assembly, cable-load trial or Amiga operation verified.
+**State:** Fit prototype. No physical print, cable-load trial, assembled continuity test or Amiga operation has been verified.
 
-## Saved-file and CAD checks
+## Electrical CAD
 
-Revision 0.4 raises the side rails and surrounding mounting lugs, fills the rear opening and adds a separate pin-height loading jig. The pin guide remains below the PCB for solder-fillet and heat clearance. Local anchor-head pockets retain recessed bearing seats and open outwards to avoid thin outer lips.
+Both revised PCB projects were generated, saved, reloaded and checked using KiCad 7.0.11. Their exported schematic netlists agree exactly with the saved boards. Each board contains 50 pads, 24 nets, 26 track segments and no vias: 23 independent signal circuits and a separate four-pad SHIELD circuit.
 
-| Check | Recorded result |
+| Check | Result |
 |---|---|
-| Retained native PCB, fabrication and native plot files | 42 files compared byte for byte with the revision 0.3 baseline; no changes |
-| Portable saved-board and schematic-netlist audit | Re-run for this assembly revision: 610 checks passed across both variants |
-| Native KiCad 7.0.11 PCB DRC | Retained revision 0.3 reports: each board has zero violations, zero unconnected pads and zero footprint errors; DRC was not repeated for unchanged boards |
-| Native schematic ERC | Not run; KiCad 7 CLI does not expose ERC. Parser and exported-netlist checks are separate |
-| OpenSCAD STL export | Passed for holder, coupon, nut keeper, shim pair, single shim and loading jig |
-| Holder mesh | 8,052 triangles; one connected region; zero boundary or non-manifold edges |
-| Loading jig mesh | 556 triangles; one connected region; zero boundary or non-manifold edges |
-| Other printable meshes | Coupon, keeper and single shim each closed and one region; shim pair has two intended regions |
-| Holder STEP | Valid, one solid, 2,227.066 mm³; all 23 guide bores open |
-| Loading jig STEP | Valid, one solid, 4,222.032 mm³; no overlap with the holder or any of the 23 assumed square pins |
-| Independent saved-file mechanical audit | 117 checks passed, reading delivered STEP/STL without importing the builder |
-| Joined PCB/DB23 lowering path | No holder intersection throughout a 20 mm vertical sweep of the PCB, assumed flange/body and conservative cup envelopes |
-| Nut fitting after PCB seating | Both 15 mm top-loading nut sweeps clear the holder and already-seated PCB |
-| Recessed anchor hardware | Maximum Ø6.00 × 3.00 mm head/washer envelopes clear holder and PCB; centred Ø4.00 mm driver clears PCB; outboard pockets are open |
-| Jig height datums | Independent mesh ray checks confirm all 23 lower-tip stops at Z−3.20, holder support at Z0.60 and locating-peg tops at Z1.80 |
-| Coordinated visual review | Five CAD preview images and all four pages of the revised A4 drawing PDF inspected |
+| Native PCB DRC, male RGB | Zero violations, zero unconnected pads, zero footprint errors |
+| Native PCB DRC, female floppy | Zero violations, zero unconnected pads, zero footprint errors |
+| Portable saved-file audit | 648 checks passed, 324 per variant |
+| Mounting holes | J3 at nominal original anchors, Ø3.30 mm adapter drill / Ø6.50 mm land |
+| Dedicated shell-wire pads | J4, separate from nut-bearing mounting lands |
+| Between-row SHIELD crossbar | Nominal minimum clearance to row pads: 0.27 mm |
+| Actual silkscreen stroke containment | 27 items per board contained within outline; conservative minimum edge clearance 0.176145 mm |
+| Native schematic ERC | Not run: KiCad 7 CLI does not expose ERC; parser/netlist checks are separate |
 
-The mechanical builder was run as `python3 source/build_mechanical.py`. The independent audit was run as `python3 source/verify_mechanical.py`; it needs CadQuery and VTK. The portable electrical audit was run as `python3 source/verify_pcb.py`; it needs only Python's standard library. Tool versions remain recorded in `verification/tool-versions.json`.
+Reports are in `verification/*-drc.rpt`, `*-netlist.xml`, `pcb-build-summary.json`, `pcb-geometry-review.json`, `pin-map.csv` and `portable-audit.json`. Gerber and Excellon exports were regenerated from these saved revision 0.5 boards and remain under `fabrication/FIT-PROTOTYPE/`.
 
-The reports are `mechanical/mechanical_validation.json`, `verification/mechanical-audit.json`, `verification/independent-review.md`, `verification/portable-audit.json` and `verification/revision-0.4-audit.json`. Native revision 0.3 reports and exports remain under `verification/` and `fabrication/FIT-PROTOTYPE/`.
+## Mechanical CAD
 
-Each PCB retains 48 pads, 24 nets, 26 track segments and no vias. All 23 signal positions remain separate, with a distinct shell circuit. No PCB order or physical print has been placed.
+OpenSCAD generated the six printable STL files. CadQuery generated analytic base, cap and jig STEP files. The independent saved-file verifier reads the delivered STEP/STL without importing the mechanical builder and passes **176 checks**.
 
-## Scope of the geometry checks
+| Delivered part | STL triangles | Closed regions | STEP |
+|---|---:|---:|---|
+| Solid base | 8,324 | 1 | Valid, one solid, 1,787.389 mm³ |
+| Keyed cap | 220 | 1 | Valid, one solid, 981.284 mm³ |
+| Pin-height jig | 1,036 | 1 | Valid, one solid, 3,008.953 mm³ |
+| Hole-fit coupon | 26,384 | 1 | STL trial part |
+| Clip-fit base coupon | 28 | 1 | STL trial part |
+| Clip-fit cap coupon | 40 | 1 | STL trial part |
 
-All connector body, cup and bought-hardware envelopes remain explicitly assumed. The lowering-path checks use exact sweeps for prismatic parts and conservative bounding sweeps for the cups. They establish clearance only against those assumed shapes. The rear infill has shallow top reliefs for pre-soldered J3 fillets; it does not provide underside soldering access after the PCB is seated.
+All six STL meshes have zero boundary or non-manifold edges in the recorded checks. The cap STL is exported roof-down for printing; its STEP retains assembly coordinates. The jig STEP/STL use print-bed coordinates. Apply the transforms documented in `mechanical/MECHANICAL_NOTES.txt` when assembling these shapes in CAD.
 
-The raised lug surfaces are at Z5.75, but anchor-head seats remain at Z2.40, keeping the permitted head top at or below Z5.40. Preload these bolts before lowering the joined PCB/DB23. The separate height jig must be removed first. The two 0.60 mm mounting shims remain required.
+The following saved-file checks pass:
 
-The jig sets equal lower-tip projection only when the holder seats correctly. Equal top heights additionally depend on equal pin lengths, and the tested guide fit must retain the pins when the jig is removed. These are physical assembly checks.
+- Base, cap and seated PCB have no unintended intersection. Assumed connector flange, body, cups, mounting hardware and jackpost nuts clear the relevant printed parts.
+- The joined PCB/DB23 clears the base throughout a 20 mm vertical lowering sweep, using exact prismatic sweeps and conservative cup envelopes.
+- All 23 guide bores are open. The assumed square pins clear the jig and cap, and independent mesh rays verify their common Z−3.20 tip stop and the Z0 foot-support datum.
+- The default M3 × 12 mm screw, Ø8 × 0.50 mm underside insulating washer and direct top nut clear the cap. The tip is Z9.90, nut top Z9.15, nominal protrusion 0.75 mm and roof clearance above the tip 1.10 mm.
+- Untrimmed 14 and 16 mm screws intersect the default cap. They are explicitly unsupported alternatives without trimming or a separately checked cover.
+- The supported horizontal jackpost stem endpoint Y6.00 clears the printed passage and top mounting nuts. The printed clearance passage ends at Y6.20; this is not an unlimited stem-length allowance.
+- The raised latch's conservative rearward-flex envelope clears the PCB. This checks space for assembly, not elastic strain, insertion force, retention force or fatigue.
+- The foot grounding-wire exit and dedicated J4 underside relief are present. Actual wire insulation, solder fillets and routing are not modelled as validated harnesses.
 
-Reference meshes under `previews/reference-meshes/` are for illustration, not functional printed replacements. Printable trial parts are under `mechanical/`.
+See `mechanical/mechanical_validation.json`, `verification/mechanical-audit.json` and `verification/independent-review.md` for detailed results.
 
-## Physical checks not performed
+## Reference motherboard layout
 
-- Measurement of purchased solder-cup connectors, pins, nuts and jackposts.
-- Printer bore, nut pocket, keeper and jig fit, including retention of loaded pins after transfer.
-- Flange bearing against the cradle after clamping, and any measured spacer needed to carry cable loads without bending solder cups or signal tails.
-- Soldering heat effects, printed material strength, layer adhesion, creep and cable insertion/extraction loads.
-- Motherboard, neighbouring component and case fit, including underside anchor nuts and tool access.
-- Assembled continuity, contact resistance and shell bonding.
-- Functional video or external floppy testing on an Amiga.
+A limited two-dimensional cross-check and independent board-to-mechanical alignment audit pass 68 checks. They used the local A4000 replica layout identified by source URL and SHA-256 in `verification/motherboard-reference-fit.json`. It is a reference CAD layout, not a measurement of the user's motherboard or chassis.
 
-More material and closed CAD geometry are not a measured strength rating. The saved-file checks do not establish physical fit, print accuracy, thermal performance or universal compatibility across Amiga models.
+Its legacy mounting axes differ slightly from the iComp nominal grid. The adapter retains the iComp coordinate contract and uses Ø3.30 mm clearance holes; no enlargement of the motherboard holes is specified. The reference check also found that a bare Ø7 mm underside screw head overlaps a foreign copper track in plan. The default therefore requires an underside insulating washer and a deliberate J4-to-motherboard shell-ground wire, independently of screw contact.
+
+A nearby connector lug motivated the local front-corner reliefs in the PCB, base and cap. The final nominal clearance to that reference drill envelope is about 0.423 mm for the base/cap and 0.628 mm for the adapter outline. The projected copper-pad gap at the closest printed corner is only about 0.016 mm, so actual metal, solder fillet and housing clearance still needs checking. The comparison and its limitations are recorded in `verification/motherboard-reference-fit.md`. Component heights, metal lug shape, exposed copper, washer compression, actual board thickness and chassis clearance remain unverified. The Ø8 washers span 52.27 mm overall; the printed parts are 52.00 mm wide. Side-exiting wires can extend beyond these bounds.
+
+## Visual and reproducibility checks
+
+The six coordinated renders show the black cap fitted, cap removed, joined PCB/DB23 exploded, the actual base, base/cap and loading jig. All six previews and all five A4 drawing pages were visually inspected. The printable clip-fit coupons are provided separately. Reference meshes under `previews/reference-meshes/` represent unmeasured bought parts and are not functional print files.
+
+Commands used from the project root include:
+
+```sh
+python3 source/build_mechanical.py
+python3 source/verify_mechanical.py
+python3 source/verify_pcb.py
+python3 source/render_previews.py
+python3 source/make_drawings.py
+```
+
+The PCB builder was run with KiCad's Python interpreter and its CLI path. VTK rendering used an Xvfb display. Tool versions are recorded in `verification/tool-versions.json`; the source and dependency notes are in `docs/DEVELOPMENT.md`.
+
+## Physical checks still required
+
+- Purchased male/female solder-cup connector dimensions, cup gap and flange bearing.
+- Actual mounting holes, motherboard thickness, pad condition, neighbouring components and underside chassis clearance.
+- Printed guide, jig, nut pocket and clip fit, including pin retention after jig removal.
+- Soldering heat effects, support removal, material strength, creep, cable insertion/extraction loads and latch fatigue.
+- Insulating washer coverage and the complete fastener stack with the chosen hardware.
+- Ground-wire fillets, routing and independent shell continuity; all 23 circuit continuity and isolation checks before installation.
+- Controlled video and external-floppy trials on identified Amiga hardware.
+
+The recorded results establish consistency and clearance within their stated CAD assumptions. They do not establish physical fit, long-term strength, electrical operation or production readiness.

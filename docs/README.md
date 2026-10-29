@@ -2,15 +2,14 @@
 
 | Document | Purpose |
 |---|---|
-| [AI-HANDOVER.md](AI-HANDOVER.md) | Current state, decisions and next work |
-| [MEASUREMENTS.md](MEASUREMENTS.md) | Worksheet for the purchased connector, pins, hardware and target Amiga |
-| [MECHANICAL.md](MECHANICAL.md) | Holder, nut pockets, pin fit and printed-part notes |
-| [ASSEMBLY.md](ASSEMBLY.md) | Trial assembly and electrical checks |
-| [ELECTRICAL.md](ELECTRICAL.md) | Separate pin-to-pin circuits and shell bonding |
-| [FABRICATION.md](FABRICATION.md) | PCB and print preparation, fit-prototype status |
-| [DEVELOPMENT.md](DEVELOPMENT.md) | Coordinated regeneration and release workflow |
-| [VALIDATION.md](VALIDATION.md) | Actual validation scope and remaining checks |
-| [SOURCES.md](SOURCES.md) | Primary references and their limits |
+| [AI-HANDOVER.md](AI-HANDOVER.md) | Current decisions, geometry and remaining work |
+| [MEASUREMENTS.md](MEASUREMENTS.md) | Worksheet for actual parts, stack and target Amiga |
+| [MECHANICAL.md](MECHANICAL.md) | Solid base, upward mounting, cap, jig and pin fit |
+| [ASSEMBLY.md](ASSEMBLY.md) | Four-part assembly and electrical inspection |
+| [ELECTRICAL.md](ELECTRICAL.md) | Independent signal circuits and shell grounding |
+| [FABRICATION.md](FABRICATION.md) | PCB/print preparation and prototype status |
+| [DEVELOPMENT.md](DEVELOPMENT.md) | Coordinated regeneration and checks |
+| [VALIDATION.md](VALIDATION.md) | Actual results and outstanding physical checks |
+| [SOURCES.md](SOURCES.md) | Primary references and assumption boundaries |
 
-The current assembly and mechanical revision is **0.4**; both unchanged PCB variants remain at **0.3**. The project [README](../README.md) gives the overview. The shared [design parameters](../source/design_parameters.json) are the coordinate contract for the PCB and holder.
-
+Current PCB, assembly and mechanical revision: **0.5**. Start with the [project README](../README.md). The shared [parameters](../source/design_parameters.json) are the coordinate contract for native CAD, printed parts, hardware and previews.

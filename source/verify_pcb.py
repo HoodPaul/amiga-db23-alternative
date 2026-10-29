@@ -59,9 +59,9 @@ def audit(project,gender):
     netnames={n[1]:n[2] for n in children(board,'net')}
     check(set(netnames.values())=={''}|{f'/P{n:02d}' for n in range(1,24)}|{'/SHIELD'},f'{project}: net set')
     fps={child(fp,'fp_text')[2]:fp for fp in children(board,'footprint')}
-    check(set(fps)=={'J1','J2','J3'},f'{project}: footprint references')
+    check(set(fps)=={'J1','J2','J3','J4'},f'{project}: footprint references')
     pads={ref:{n[1]:n for n in children(fp,'pad')} for ref,fp in fps.items()}
-    check([len(pads[r]) for r in ('J1','J2','J3')]==[23,23,2],f'{project}: pad counts')
+    check([len(pads[r]) for r in ('J1','J2','J3','J4')]==[23,23,2,2],f'{project}: pad counts')
     for ref,fp in fps.items():
         check(pair(fp,'at')==ORIGIN,f'{project}: unexpected footprint translation')
     tracks=children(board,'segment')
@@ -97,7 +97,26 @@ def audit(project,gender):
         pad=pads['J3'][n]
         check(pair(pad,'at')==(x,P['shield_pad_y']),f'{project}: shield {n} position')
         check(child(pad,'net')[2]=='/SHIELD',f'{project}: shield {n} net')
-    check(len([t for t in tracks if netnames[child(t,'net')[1]]=='/SHIELD'])==3,f'{project}: shield route count')
+        check(almost(abs(x),M['anchor_spacing']/2) and almost(P['shield_pad_y'],M['anchor_y']),f'{project}: mounting hole {n} original motherboard alignment')
+        check(pad[2]=='thru_hole' and almost(child(pad,'drill')[1],P['shield_pad_drill']),f'{project}: mounting hole {n} type and drill')
+        check(pair(pad,'size')==(P['shield_pad_diameter'],P['shield_pad_diameter']),f'{project}: mounting land {n} size')
+    for n,x in [('1',-P['shell_bond_pad_x']),('2',P['shell_bond_pad_x'])]:
+        pad=pads['J4'][n]
+        check(pair(pad,'at')==(x,P['shell_bond_pad_y']),f'{project}: shell bond {n} position')
+        check(child(pad,'net')[2]=='/SHIELD',f'{project}: shell bond {n} net')
+        check(pad[2]=='thru_hole' and almost(child(pad,'drill')[1],P['shell_bond_pad_drill']),f'{project}: shell bond {n} type and drill')
+        check(pair(pad,'size')==(P['shell_bond_pad_diameter'],P['shell_bond_pad_diameter']),f'{project}: shell bond land {n} size')
+    shield_tracks=[t for t in tracks if netnames[child(t,'net')[1]]=='/SHIELD']
+    check(len(shield_tracks)==3,f'{project}: shield route count')
+    actual_shield={(child(t,'layer')[1],pair(t,'start'),pair(t,'end'),float(child(t,'width')[1])) for t in shield_tracks}
+    expected_shield={('B.Cu',(ORIGIN[0]-P['shield_pad_x'],ORIGIN[1]+P['shield_track_y']),
+                     (ORIGIN[0]+P['shield_pad_x'],ORIGIN[1]+P['shield_track_y']),P['shield_track_width'])}
+    for side in(-1,1):
+        expected_shield.add(('F.Cu',(ORIGIN[0]+side*P['shell_bond_pad_x'],ORIGIN[1]+P['shell_bond_pad_y']),
+                            (ORIGIN[0]+side*P['shield_pad_x'],ORIGIN[1]+P['shield_pad_y']),P['shield_track_width']))
+    check(actual_shield==expected_shield,f'{project}: SHIELD route geometry/layers/width')
+    row_gap=min(P['shield_track_y']-M['front_row_y'],M['rear_row_y']-P['shield_track_y'])-P['tail_pad_diameter']/2-P['shield_track_width']/2
+    check(row_gap>=P['clearance'],f'{project}: SHIELD crossbar clears both signal-pad rows')
     outline=P['outline_xy']
     edges=[s for s in children(board,'gr_line') if child(s,'layer')[1]=='Edge.Cuts']
     check(len(edges)==len(outline),f'{project}: outline segment count')
@@ -107,7 +126,7 @@ def audit(project,gender):
     xml=ET.parse(ROOT/'verification'/f'{project}-netlist.xml')
     exported={n.attrib['name']:{(v.attrib['ref'],v.attrib['pin']) for v in n.findall('node')} for n in xml.findall('./nets/net')}
     expected={f'/P{n:02d}':{('J1',str(n)),('J2',str(n))} for n in range(1,24)}
-    expected['/SHIELD']={('J3','1'),('J3','2')}
+    expected['/SHIELD']={('J3','1'),('J3','2'),('J4','1'),('J4','2')}
     check(exported==expected,f'{project}: schematic exported topology')
     for comp in xml.findall('./components/comp'):
         ref=comp.attrib['ref']
@@ -116,7 +135,7 @@ def audit(project,gender):
     drc=(ROOT/'verification'/f'{project}-drc.rpt').read_text()
     for s in ('Found 0 DRC violations','Found 0 unconnected pads','Found 0 Footprint errors'):
         check(s in drc,f'{project}: native DRC not clean: {s}')
-    return {'status':'PASS','design_checks':CHECKS-start,'signal_nets':23,'shield_nets':1,'pads':48,'tracks':26,'vias':0,'native_drc_violations':0,'native_unconnected_pads':0,'native_footprint_errors':0}
+    return {'status':'PASS','design_checks':CHECKS-start,'signal_nets':23,'shield_nets':1,'pads':50,'tracks':26,'vias':0,'mounting_holes_at_original_shell_anchors':True,'shield_crossbar_minimum_row_clearance_mm':round(row_gap,3),'native_drc_violations':0,'native_unconnected_pads':0,'native_footprint_errors':0}
 
 
 def main():

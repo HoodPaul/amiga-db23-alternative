@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate the v0.3 DB23 fit-prototype KiCad projects with KiCad 7 pcbnew.
+"""Generate the DB23 fit-prototype KiCad projects with KiCad 7 pcbnew.
 
 Run with a Python interpreter containing pcbnew (normally system KiCad Python).
 The shared design_parameters.json is authoritative for dimensions. Rebuilding
@@ -25,6 +25,7 @@ ROOT = Path(__file__).resolve().parents[1]
 PARAMS = json.loads((ROOT / 'source/design_parameters.json').read_text())
 P = PARAMS['pcb']
 M = PARAMS['motherboard']
+REV = PARAMS['pcb_revision']
 ORIGIN = (150.0, 80.0)
 NAMESPACE = uuid.UUID('4c21c548-6442-4900-9bec-1ad39af09c24')
 PROJECTS = [('DB23M_RGB', 'M', 'MALE RGB'), ('DB23F_Floppy', 'F', 'FEMALE FLOPPY')]
@@ -103,6 +104,15 @@ def courtyard(fp,x0,y0,x1,y1):
         item.SetStart(pos(*a));item.SetEnd(pos(*b));fp.Add(item)
 
 
+def round_courtyard(fp,x,y,radius):
+    """Circular keep-out envelope avoids a square corner overstating round hardware."""
+    item=k.FP_SHAPE(fp);item.SetShape(k.SHAPE_T_CIRCLE)
+    item.SetLayer(k.F_CrtYd);item.SetWidth(mm(0.05))
+    item.SetStart0(k.VECTOR2I(mm(x),mm(y)))
+    item.SetEnd0(k.VECTOR2I(mm(x+radius),mm(y)))
+    item.SetStart(pos(x,y));item.SetEnd(pos(x+radius,y));fp.Add(item)
+
+
 def add_pad(fp, n, x, y, net, side=None, drill=None, size=None):
     pad = k.PAD(fp)
     pad.SetNumber(str(n)); pad.SetPos0(k.VECTOR2I(mm(x),mm(y))); pad.SetPosition(pos(x, y))
@@ -153,17 +163,17 @@ def symbol_definition(name, side, count):
 
 def schematic(project, gender):
     root = uid(f'{project}/root')
-    defs = [('Cups23', 'R', 23), ('Motherboard23', 'L', 23), ('ShieldStraps', 'R', 2)]
+    defs = [('Cups23', 'R', 23), ('Motherboard23', 'L', 23), ('MountingShield', 'R', 2), ('ShellBond', 'R', 2)]
     o = [f'(kicad_sch (version 20230121) (generator eeschema)',
          f' (uuid {root}) (paper "A4")',
-         f' (title_block (title "{project} DB23 replacement") (date "2026-10-29") (rev "0.3") (company "UK Computing Limited") (comment 1 "FIT PROTOTYPE - measure selected solder-cup DB23 before manufacture"))',
+         f' (title_block (title "{project} DB23 replacement") (date "{PARAMS["date"]}") (rev "{REV}") (company "UK Computing Limited") (comment 1 "FIT PROTOTYPE - measure selected solder-cup DB23 before manufacture"))',
          ' (lib_symbols']
     o.extend(symbol_definition(*d) for d in defs)
     o.append(' )')
 
     def add_symbol(name, ref, x, y, count):
         inst = uid(f'{project}/{ref}')
-        value = {'J1': f'DB23{gender} SOLDER CUPS', 'J2': 'MOTHERBOARD PINS', 'J3': 'MANUAL SHIELD STRAPS'}[ref]
+        value = {'J1': f'DB23{gender} SOLDER CUPS', 'J2': 'MOTHERBOARD PINS', 'J3': 'M3 MOUNTING / SHIELD', 'J4': 'DB23 SHELL WIRE BOND'}[ref]
         o.extend([f' (symbol (lib_id "DB23_Local:{name}") (at {x} {y} 0) (unit 1) (in_bom yes) (on_board yes)',
                   f' (uuid {inst})',
                   f' (property "Reference" "{ref}" (at {x} {y-6.35} 0) (effects (font (size 1.27 1.27))))',
@@ -176,16 +186,18 @@ def schematic(project, gender):
 
     add_symbol('Cups23', 'J1', 60, 40, 23)
     add_symbol('Motherboard23', 'J2', 160, 40, 23)
-    add_symbol('ShieldStraps', 'J3', 60, 120, 2)
+    add_symbol('MountingShield', 'J3', 60, 120, 2)
+    add_symbol('ShellBond', 'J4', 60, 140, 2)
     for n in range(1, 24):
         yy = 40 + 2.54*(n-1)
         o.append(f' (wire (pts (xy 67.62 {yy:.3f}) (xy 152.38 {yy:.3f})) (stroke (width 0) (type default)) (uuid {uid(f"{project}/wire{n}")}))')
         o.append(f' (label "{nname(n)}" (at 105 {yy:.3f} 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid {uid(f"{project}/label{n}")}))')
-    for n in (1, 2):
-        yy = 120+2.54*(n-1)
-        o.append(f' (wire (pts (xy 67.62 {yy:.3f}) (xy 77.62 {yy:.3f})) (stroke (width 0) (type default)) (uuid {uid(f"{project}/shieldwire{n}")}))')
-        o.append(f' (label "SHIELD" (at 77.62 {yy} 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid {uid(f"{project}/shieldlabel{n}")}))')
-    note = 'Passive pin-for-pin replacement. J1 pin n connects only to J2 pin n.\\nJ3 pads 1 and 2 join SHIELD only: wire to connector shell and original motherboard shield point.\\nNo video ground pins, pin 13, or supply rails are joined by this board.\\nJ1 solder cups: 1-12 on F.Cu, 13-23 on B.Cu. Actual connector fit remains unverified.'
+    for ref,y0 in [('J3',120),('J4',140)]:
+        for n in (1, 2):
+            yy = y0+2.54*(n-1)
+            o.append(f' (wire (pts (xy 67.62 {yy:.3f}) (xy 77.62 {yy:.3f})) (stroke (width 0) (type default)) (uuid {uid(f"{project}/{ref}/shieldwire{n}")}))')
+            o.append(f' (label "SHIELD" (at 77.62 {yy} 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid {uid(f"{project}/{ref}/shieldlabel{n}")}))')
+    note = 'Passive pin-for-pin replacement. J1 pin n connects only to J2 pin n.\\nJ3 pads are M3 mounting lands on SHIELD, aligned to the original motherboard shell anchors.\\nJ4 is a dedicated shell-wire bond: solder away from the mounting nut and washer bearing faces.\\nProvide a deliberate connector-shell bond and verify hardware continuity to motherboard shell ground.\\nNo video ground pins, pin 13, or supply rails are joined by this board.\\nJ1 solder cups: 1-12 on F.Cu, 13-23 on B.Cu. Actual connector fit remains unverified.'
     o.append(f' (text "{note}" (at 85 122 0) (effects (font (size 1.27 1.27)) (justify left top)) (uuid {uid(f"{project}/notes")}))')
     o.append(' (sheet_instances (path "/" (page "1")))')
     o.append(')')
@@ -215,9 +227,11 @@ def build(project, gender, label):
     dest = ROOT / 'pcb' / project
     library = dest / 'DB23_Local.pretty'
     library.mkdir(parents=True, exist_ok=True)
+    for legacy in library.glob('ShieldStraps_*.kicad_mod'):
+        legacy.unlink()
     (dest/f'{project}.kicad_pro').write_text(json.dumps(project_config(project), indent=2)+'\n')
     (dest/f'{project}.kicad_sch').write_text(schematic(project, gender))
-    definitions = '\n'.join(symbol_definition(*d).replace('"DB23_Local:', '"') for d in [('Cups23','R',23),('Motherboard23','L',23),('ShieldStraps','R',2)])
+    definitions = '\n'.join(symbol_definition(*d).replace('"DB23_Local:', '"') for d in [('Cups23','R',23),('Motherboard23','L',23),('MountingShield','R',2),('ShellBond','R',2)])
     (dest/'DB23_Local.kicad_sym').write_text('(kicad_symbol_lib (version 20220914) (generator kicad_symbol_editor)\n'+definitions+'\n)\n')
     (dest/'fp-lib-table').write_text('(fp_lib_table\n  (lib (name "DB23_Local")(type "KiCad")(uri "${KIPRJMOD}/DB23_Local.pretty")(options "")(descr "Project-local DB23 fit prototype"))\n)\n')
     (dest/'sym-lib-table').write_text('(sym_lib_table\n  (lib (name "DB23_Local")(type "KiCad")(uri "${KIPRJMOD}/DB23_Local.kicad_sym")(options "")(descr "Project-local passive connectors"))\n)\n')
@@ -232,8 +246,10 @@ def build(project, gender, label):
     cups.SetAttributes(k.FP_SMD)
     tails = new_fp(board, f'Motherboard23_{gender}', 'J2', 'Pins to motherboard', project)
     tails.SetAttributes(k.FP_THROUGH_HOLE)
-    straps = new_fp(board, f'ShieldStraps_{gender}', 'J3', 'Manual shield straps', project)
+    straps = new_fp(board, f'MountingShield_{gender}', 'J3', 'M3 mounting / shield', project)
     straps.SetAttributes(k.FP_THROUGH_HOLE)
+    bonds = new_fp(board, f'ShellBond_{gender}', 'J4', 'DB23 shell wire bond', project)
+    bonds.SetAttributes(k.FP_THROUGH_HOLE)
     cup_y = P['cup_pad_front_y'] + P['cup_pad_length']/2
     for n in range(1, 24):
         x, y = xy(n, gender)
@@ -245,30 +261,34 @@ def build(project, gender, label):
         board_text(board, str(n), x, 9.50, k.F_SilkS if n<=12 else k.B_SilkS, 0.8, n>12)
     for n, x in [(1,-P['shield_pad_x']), (2,P['shield_pad_x'])]:
         add_pad(straps,n,x,P['shield_pad_y'],shield,drill=P['shield_pad_drill'],size=P['shield_pad_diameter'])
+    for n,x in [(1,-P['shell_bond_pad_x']),(2,P['shell_bond_pad_x'])]:
+        add_pad(bonds,n,x,P['shell_bond_pad_y'],shield,drill=P['shell_bond_pad_drill'],size=P['shell_bond_pad_diameter'])
+        round_courtyard(bonds,x,P['shell_bond_pad_y'],P['shell_bond_pad_diameter']/2+.05)
     courtyard(cups,-16.2,4.05,16.2,6.95)
     courtyard(tails,-16.2,7.10,16.2,11.90)
-    courtyard(straps,-19.4,11.6,-16.6,14.4)
-    courtyard(straps,16.6,11.6,19.4,14.4)
-    for fp in (cups,tails,straps):
+    mounting_radius = P['shield_pad_diameter']/2
+    for x in (-P['shield_pad_x'],P['shield_pad_x']):
+        round_courtyard(straps,x,P['shield_pad_y'],mounting_radius)
+    for fp in (cups,tails,straps,bonds):
         board.Add(fp)
         # Library copies are saved with their own relative contact coordinates.
         clone = fp.Duplicate()
         clone.SetPosition(k.VECTOR2I(0,0)); clone.SetReference('REF**')
         clone.ClearAllNets()
         k.FootprintSave(str(library), clone)
-    rear = 15.0
-    track(board,(-18,13),(-18,rear),k.B_Cu,shield,0.6)
-    track(board,(-18,rear),(18,rear),k.B_Cu,shield,0.6)
-    track(board,(18,rear),(18,13),k.B_Cu,shield,0.6)
-    half = P['width']/2
+    # Between the two PTH rows: 1.42 - 0.85 - 0.30 = 0.27 mm
+    # clearance to either row's copper, with the SHIELD route on B.Cu.
+    track(board,(-P['shield_pad_x'],P['shield_track_y']),
+          (P['shield_pad_x'],P['shield_track_y']),k.B_Cu,shield,P['shield_track_width'])
+    for side in (-1,1):
+        track(board,(side*P['shell_bond_pad_x'],P['shell_bond_pad_y']),
+              (side*P['shield_pad_x'],P['shield_pad_y']),k.F_Cu,shield,P['shield_track_width'])
     points=P['outline_xy']
     for a,b in zip(points,points[1:]+points[:1]):line(board,a,b,k.Edge_Cuts)
-    board_text(board,f'DB23{gender} {"RGB" if gender=="M" else "FLOPPY"}  REV 0.3',0,12.9,k.F_SilkS,0.9)
-    board_text(board,'UK COMPUTING',0,14.6,k.F_SilkS,0.9)
-    board_text(board,'FIT PROTOTYPE',0,12.9,k.B_SilkS,0.9,True)
-    board_text(board,'1:1  -  2.77 mm',0,14.6,k.B_SilkS,0.8,True)
-    board_text(board,'S',-18,11.0,k.F_SilkS,0.8)
-    board_text(board,'S',18,11.0,k.F_SilkS,0.8)
+    board_text(board,f'DB23{gender} {"RGB" if gender=="M" else "FLOPPY"}  REV {REV}',0,12.4,k.F_SilkS,0.8)
+    board_text(board,f'UK COMPUTING  {REV}',0,12.4,k.B_SilkS,0.8,True)
+    board_text(board,'S',-18.0,10.4,k.F_SilkS,0.8)
+    board_text(board,'S',18.0,10.4,k.F_SilkS,0.8)
     board_text(board,'FLANGE REFERENCE y=0; NOMINAL CONTACT C/L z=6.25; FIT PROTOTYPE',0,-2.0,k.Dwgs_User,1.0)
     line(board,(-M['anchor_spacing']/2,0),(M['anchor_spacing']/2,0),k.Dwgs_User,0.15)
     k.SaveBoard(str(dest/f'{project}.kicad_pcb'), board)
@@ -279,7 +299,7 @@ def audit_board(path, project, gender):
     b=k.LoadBoard(str(path))
     errors=[]; rows=[]
     fps={fp.GetReference():fp for fp in b.GetFootprints()}
-    assert set(fps)=={'J1','J2','J3'},set(fps)
+    assert set(fps)=={'J1','J2','J3','J4'},set(fps)
     for n in range(1,24):
         a=fps['J1'].FindPadByNumber(str(n)); z=fps['J2'].FindPadByNumber(str(n))
         x,y=xy(n,gender)
@@ -292,11 +312,46 @@ def audit_board(path, project, gender):
         assert sorted(nodes)==[('J1',str(n)),('J2',str(n))],(n,nodes)
         rows.append([project,n,'/'+nname(n),'J1',n,'J2',n,round(x,6),y,'F.Cu' if n<=12 else 'B.Cu'])
     assert len(list(b.GetTracks()))==26
-    assert sum(len(list(f.Pads())) for f in fps.values())==48
+    assert sum(len(list(f.Pads())) for f in fps.values())==50
     assert abs(k.ToMM(b.GetDesignSettings().GetBoardThickness())-P['thickness'])<0.000001
     assert {p.GetNetname() for p in fps['J3'].Pads()}=={'/SHIELD'}
+    assert {p.GetNetname() for p in fps['J4'].Pads()}=={'/SHIELD'}
     assert len({fps['J2'].FindPadByNumber(str(n)).GetNetCode() for n in range(1,24)})==23
     return rows
+
+
+def audit_silk(board):
+    """Use actual stroke geometry, not KiCad's padded generic text box.
+
+    The latter includes extra line-height space and can extend beyond the
+    board even when the physical strokes remain within it.
+    """
+    polygon=P['outline_xy']
+    def inside(point):
+        x,y=point; result=False
+        for a,b in zip(polygon,polygon[1:]+polygon[:1]):
+            if (a[1]>y)!=(b[1]>y) and x<(b[0]-a[0])*(y-a[1])/(b[1]-a[1])+a[0]:
+                result=not result
+        return result
+    def distance_to_edge(point,a,b):
+        dx,dy=b[0]-a[0],b[1]-a[1]
+        t=max(0,min(1,((point[0]-a[0])*dx+(point[1]-a[1])*dy)/(dx*dx+dy*dy)))
+        return math.dist(point,(a[0]+t*dx,a[1]+t*dy))
+    records=[]
+    for text in board.GetDrawings():
+        if not isinstance(text,k.PCB_TEXT) or text.GetLayer() not in(k.F_SilkS,k.B_SilkS):continue
+        shape=text.GetEffectiveTextShape();rect=shape.BBox()
+        x0,x1=k.ToMM(rect.GetLeft())-ORIGIN[0],k.ToMM(rect.GetRight())-ORIGIN[0]
+        y0,y1=k.ToMM(rect.GetTop())-ORIGIN[1],k.ToMM(rect.GetBottom())-ORIGIN[1]
+        corners=[(x0,y0),(x1,y0),(x1,y1),(x0,y1)]
+        assert all(inside(pt) for pt in corners),(text.GetText(),corners)
+        clearance=min(distance_to_edge(pt,a,b) for pt in corners for a,b in zip(polygon,polygon[1:]+polygon[:1]))
+        records.append({'text':text.GetText(),'layer':text.GetLayerName(),
+                        'actual_stroke_bounds_mm':[round(x0,6),round(y0,6),round(x1,6),round(y1,6)],
+                        'conservative_edge_clearance_mm':round(clearance,6)})
+    return {'text_items_checked':len(records),'all_actual_strokes_within_outline':True,
+            'minimum_conservative_edge_clearance_mm':min(x['conservative_edge_clearance_mm'] for x in records),
+            'items':records}
 
 
 def main():
@@ -306,11 +361,13 @@ def main():
     verification=ROOT/'verification';verification.mkdir(exist_ok=True)
     allrows=[]
     results={}
+    geometry={}
     for project,gender,label in PROJECTS:
         dest=build(project,gender,label)
         # Reload the saved files: checks concern what a recipient opens.
         allrows.extend(audit_board(dest/f'{project}.kicad_pcb',project,gender))
         b=k.LoadBoard(str(dest/f'{project}.kicad_pcb'))
+        geometry[project]=audit_silk(b)
         configure_rules(b)
         rpt=verification/f'{project}-drc.rpt'
         ok=k.WriteDRCReport(b,str(rpt),k.EDA_UNITS_MILLIMETRES,True)
@@ -327,7 +384,7 @@ def main():
             xml=ET.parse(netlist)
             exported={n.attrib['name']:{(v.attrib['ref'],v.attrib['pin']) for v in n.findall('node')} for n in xml.findall('./nets/net')}
             expected={'/'+nname(n):{('J1',str(n)),('J2',str(n))} for n in range(1,24)}
-            expected['/SHIELD']={('J3','1'),('J3','2')}
+            expected['/SHIELD']={('J3','1'),('J3','2'),('J4','1'),('J4','2')}
             assert exported==expected, (project,exported)
             results[project]['native_schematic_netlist_matches_board']=True
             results[project]['native_erc']='Not run: KiCad 7 CLI does not expose ERC; parser and exact exported netlist were checked instead.'
@@ -350,6 +407,7 @@ def main():
     with (verification/'pin-map.csv').open('w',newline='') as f:
         writer=csv.writer(f);writer.writerow(['project','amiga_pin','net','cup_reference','cup_pad','tail_reference','tail_pad','x_mm','y_mm','routed_layer']);writer.writerows(allrows)
     (verification/'pcb-build-summary.json').write_text(json.dumps({'tool_version':k.GetBuildVersion(),'revision':PARAMS['revision'],'results':results},indent=2)+'\n')
+    (verification/'pcb-geometry-review.json').write_text(json.dumps({'tool_version':k.GetBuildVersion(),'revision':REV,'projects':geometry},indent=2)+'\n')
 
 
 if __name__=='__main__':main()

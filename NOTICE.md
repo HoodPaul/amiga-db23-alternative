@@ -2,7 +2,7 @@
 
 ## Project development
 
-This project is developed for Paul of UK Computing Limited, with AI assistance through Codex. Revision 0.3 develops the horizontal straddle-PCB concept supplied by Paul and the proposal to support ordinary individual pins in a printed block.
+This project is developed for Paul of UK Computing Limited, with AI assistance through Codex. It develops Paul's horizontal straddle-PCB concept and supported individual-pin construction. Revision 0.5 adds the shorter mounting-ear PCB, solid base, upward metal fasteners and keyed clip-on cap.
 
 No authorship or participation is assigned to unnamed colleagues. No third-party logo has been recreated or added by assumption.
 
@@ -18,7 +18,7 @@ Third-party source documents are linked for reference rather than republished as
 
 ## Release and licensing status
 
-Revision 0.3 is supplied for fit evaluation and further development. It has not been physically verified or approved for production.
+Revision 0.5 is supplied for fit evaluation and further development. It has not been physically verified or approved for production.
 
 No open-hardware or software licence has been selected for the project. A future repository owner should choose and document the intended licence before publishing a licensed release. The absence of a licence is not a grant of rights to third-party material.
 

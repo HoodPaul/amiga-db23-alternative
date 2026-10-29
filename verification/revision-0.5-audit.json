@@ -1,0 +1,13 @@
+{
+  "revision": "0.5",
+  "pcb_revision": "0.5",
+  "baseline_commit": "67fb940cf0d34cfa668ec7b19c94e5b63bd92c0d",
+  "portable_electrical_checks": 648,
+  "independent_mechanical_checks": 176,
+  "independent_native_reference_checks": 68,
+  "broken_markdown_links": 0,
+  "bom_part_tool_rows": 16,
+  "physical_testing_performed": false,
+  "native_erc_performed": false,
+  "notes": "Native KiCad DRC is clean for both regenerated boards. Reference-board and mechanical checks have the scope stated in the validation documentation."
+}

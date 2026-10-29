@@ -1,68 +1,73 @@
 # AI and engineering handover
 
-**Assembly/mechanical revision:** 0.4  
-**PCB revision:** 0.3 (unchanged)  
+**PCB, assembly and mechanical revision:** 0.5  
 **Date:** 29 October 2026  
-**State:** Fit prototype. Connector sample and printed fit have not been measured. No assembled hardware or Amiga operation has been verified.
+**State:** Fit prototype. Connector sample, hardware, print fit and physical insertion strength are unmeasured. No assembled electrical operation on an Amiga has been verified.
 
-## Objective and agreed design
+## Objective and agreed direction
 
-Make an affordable replacement for the original motherboard-mounted DB23 using available solder-cup connectors. Retain the normal DB23 external interface.
+Make an affordable motherboard DB23 replacement using a genuine solder-cup DB23, horizontal PCB, straight pins recovered from ordinary header stock if suitable, and a substantial printed base. Retain existing Amiga cables.
 
-Paul's proposed assembly is a horizontal PCB similar to his supplied starting files, with shorter wings and a printed holder. The holder supports the connector, captures its port-jackpost nuts, sets the PCB height and guides all 23 straight motherboard pins in a substantial block. The pins can be recovered individually from ordinary 0.1-inch header stock, but must be positioned on the original 2.77 mm grid.
+Paul reviewed the earlier print for strength and assembly. Revision 0.4 filled the rear and raised its rails. He then proposed a stronger and simpler mounting stack: two metal screws **upwards from beneath the motherboard**, through a solid base and the adapter PCB, with nuts above and insulating washers beneath the heads. Revision 0.5 implements that direction with a shorter PCB, mounting ears and a keyed black clip-on cap. Do not restore the old top-access screw-head recesses, separate 0.60 mm shims or printed expanding motherboard pegs.
 
-Paul reviewed the initial holder as too fragile for a user pushing in a monitor plug. Revision 0.4 raises the ends to the PCB support plane and fills the rear opening, connecting them to the pin guide as one substantial cradle. Preserve that structural direction. More material is a design change, not a measured strength result.
+The cap retains jackpost nuts and conceals hardware. It is fitted last. Cable loads are intended to pass from the clamped DB23 flange into the solid base and positive through-bolt attachment, with broad support under PCB mounting ears. No load rating is established.
 
-The agreed order is: (1) solder DB23 to PCB, including covered underside preparation; (2) load pins into the holder using the separate height jig, remove the jig, preload the recessed motherboard anchor bolts, lower the joined DB23/PCB from above and solder the pin tops; (3) insert nuts, hex jackposts and optional caps; (4) positively retain at the original motherboard holes with the required shims, then solder the motherboard pins and shell bond. See `docs/ASSEMBLY.md`.
+Do not reopen the rejected HD26/custom-cable interface without a reason or request. Keep the genuine DB23 external interface.
 
-Do not reopen the HD26/custom-cable alternative without a reason or request. It added a new external interface while retaining the adapter construction work and was rejected as offering little improvement over the supplied draft.
+## Agreed assembly order
+
+1. Solder DB23 cups to the matching PCB on both faces, and prepare covered shell-wire joints.
+2. Load 23 equal-length pins into the base on the height jig; remove the jig, lower the joined PCB/DB23 from above and solder pin tops.
+3. Fit the selected jackpost nuts and hex posts, checking flange bearing and rear-stem clearance.
+4. Fit to the motherboard; insert screws upward, fit underside insulating washers and top nuts, solder tails and shell bonds, inspect, then fit the keyed cap.
+
+The motherboard is not a forming fixture. See [ASSEMBLY.md](ASSEMBLY.md) for checks and heat precautions.
 
 ## Current files
 
-- Shared geometry: `source/design_parameters.json`.
-- RGB PCB: `pcb/DB23M_RGB/DB23M_RGB.kicad_pro`.
-- Floppy PCB: `pcb/DB23F_Floppy/DB23F_Floppy.kicad_pro`.
-- Mechanical builder: `source/build_mechanical.py`.
-- Mechanical source: `mechanical/DB23_Holder_v0.4.scad`.
-- Printable holder, pin-height loading jig, hole coupon, shims and optional nut keeper: `mechanical/`.
-- Loading jig: `mechanical/DB23_Pin_Height_Jig_v0.4.stl`; remove before soldering.
-- Check reports: `verification/`; actual results are summarised in `docs/VALIDATION.md`.
+- Shared geometry and assumptions: `source/design_parameters.json`.
+- PCB projects: `pcb/DB23M_RGB/` and `pcb/DB23F_Floppy/`.
+- Mechanical builder: `source/build_mechanical.py`; editable source and print files under `mechanical/` include `DB23_Holder_v0.5`, `DB23_Cap_v0.5`, pin-height jig, hole coupon and two clip-fit coupons.
+- Native and independent checks: `verification/`, `mechanical/mechanical_validation.json` and [VALIDATION.md](VALIDATION.md).
+- Assembly renders and drawing PDF: `previews/`.
 
-## Recorded CAD validation
+Read the actual reports before quoting counts, passes or clearance claims. Native KiCad 7 ERC is not available through the installed CLI; exact netlist checks are separate. CAD geometry is not a physical fit test.
 
-The unchanged PCB revision 0.3 native DRC reports record zero violations, zero unconnected pads and zero footprint errors. The portable audit checks both variants and exact exported netlists; native ERC was not run. Current mechanical and jig results are recorded in `docs/VALIDATION.md` and `mechanical/mechanical_validation.json`. Check those records before describing any v0.4 result. No CAD-only result establishes physical fit, heat tolerance or insertion strength.
+## Geometry contract
 
-## Fixed nominal geometry
+Millimetres; X across the port, Y inward from flange front Y0, Z upward from motherboard top Z0. The connector faces negative Y. Male pin 1 is at positive X; female numbering is mirrored.
 
-The motherboard grid is from iComp's replacement drawings: 2.77 mm along-row pitch, 2.84 mm row spacing, 1.385 mm stagger; pins 13–23 at y = 8.08 mm and pins 1–12 at y = 10.92 mm. The shell-anchor centres are x = ±22.135 mm, y = 9.50 mm. The nominal mating centreline is z = 6.25 mm.
+Sourced nominal values: 2.77 mm row pitch, 2.84 mm row spacing and 1.385 mm stagger. Front pins 13–23 are at Y8.08; rear pins 1–12 at Y10.92. Original shell-anchor axes are X±22.135, Y9.50. Mating centreline Z6.25.
 
-The reference frame is millimetres, x across the port, y inward from the flange front reference plane and z above the motherboard top. Male pin 1 is at positive x in this top view; female numbering is mirrored.
+Revision 0.5 PCB: 51.20 mm overall width, Y4.00–13.00, 1.00 mm assumed thickness, underside Z5.75. Ears begin at Y6.00, reach X±25.00 until Y7.50 and then X±25.60; the local cutback clears a reference neighbouring lug. The stepped front clears the nut towers. Its new J3 mounting holes are Ø3.30 with Ø6.50 exposed lands at the original shell-anchor axes. J4 wire pads at X±18.00, Y7.00 are Ø1.20/2.40. Keep wire and solder away from the top nut-bearing lands.
 
-## Assumed geometry and hardware
+The 23-pin guide nominally uses Ø0.92 bores for assumed 0.64 mm square pins and stops at Z4.50, leaving 1.25 mm beneath the PCB. The 10.70 mm pins run from Z−3.20 to Z7.50. The base's integral mounting feet reach Z0, incorporating the former 0.60 mm shims without raising the PCB. The separate jig must accommodate these feet and be removed before heat. Printer, pin retention and bore fits require coupons.
 
-The PCB is 40 × 12 × 1.00 mm overall, spanning y = 4.00–16.00 mm with its lower face at z = 5.75 mm. Two 2.00 × 1.50 mm front-corner notches clear the nut towers; preserve them. The 1.00 mm thickness and front edge position depend on the actual solder-cup connector and are not frozen production dimensions.
+## Hardware assumptions
 
-The printed holder is nominally 52 mm wide. Pin guide bores are 0.92 mm for assumed 0.64 mm square pins. Their diagonal is approximately 0.905 mm, so Paul's proposed 0.8 mm drill is a possible pilot or trial size, not a finished clearance bore for those square pins. Printer and pin fit must be established with the coupon.
+The default motherboard mounting screw is M3 × 12 mm measured under the head, with a user-listed Ø7 mm, approximately 1 mm thick head. Underside insulating washers are assumed Ø8 × 0.50 mm; top nuts 5.50 mm AF × 2.40 mm high bear directly on the supported J3 lands. There is no default top washer. These are not measured purchase specifications.
 
-Jackposts need 4-40 UNC at the cable-facing thread. Prototype defaults use M3 rear stems and M3 captive nuts, with assumed 5.50 mm across flats and 2.40 mm nut thickness, plus clearance. HARTING 09670009924 is a candidate, not a frozen BOM part. Other rear stems exist; the actual purchased hardware must match the pockets. Do not specify M3.5 by assumption.
+With assumed motherboard thickness 1.60 mm, the under-head stack through the nut is `0.50 + 1.60 + 5.75 + 1.00 + 2.40 = 11.25 mm`; a 12 mm screw projects 0.75 mm past the nut and ends at Z9.90. The assumed head bottom is Z−3.10, 1.50 mm beneath the assumed motherboard underside. Ø8 underside washers span 52.27 mm across the pair, slightly wider than the 52.00 mm prints. Adding a top washer consumes the spare thread and requires a separate stack review. Fourteen and sixteen millimetre screws are alternatives only after trimming or checking a different cap. Verify full thread engagement, all bearing surfaces and underside pad/trace/chassis clearance. Do not drill or countersink the motherboard.
 
-Original-position motherboard retention is required. The holder's 3.30 mm fastener clearances do not authorise enlarging the original nominal 3.20 mm motherboard holes. The holder bottom is z = 0.60 mm, so two 0.60 mm anchor shims or washers are required under its mounting feet before tightening; do not pull an unsupported gap closed. The raised lugs retain recessed head seats at z = 2.40 mm: nominal 6.40 mm outboard-open counterbores accept a head/upper-washer envelope no larger than 6.00 mm diameter and 3.00 mm high (top z ≤ 5.40 mm). Preload these anchor bolts after removing the pin-height jig and before lowering the PCB; fit underside nuts in Part 4. Fastener length, underside nut/tool clearance and chassis contact require physical checks.
+Cable-facing jackposts require the original-compatible 4-40 UNC thread. Prototype rear stems/nuts are M3, AF5.50/thickness2.40 with fit allowances. HARTING 09670009924 is a candidate thread arrangement, not a drop-in or frozen part. The rear-stem passage ends at Y6.20; the conservative permitted stem end is Y≤6.00 from the flange datum. It clears the top mounting nut as well as the bolt. Do not describe clearance as unlimited.
+
+Keep the flange-to-cradle bearing check. The illustrative flange is unmeasured; any actual gap needs an appropriate firm spacer or revised bearing face, without bending cups or tails to close it. Optional compression stops must match the actual support height and chosen base variant.
 
 ## Electrical decisions
 
-Each of the 23 positions remains an independent pin-to-pin circuit. PCB nets are named `P01`–`P23` instead of model-dependent signal names. The separate `SHIELD` path needs real wire or metal bonding. The printed holder does not provide grounding. Video pin 13 must remain separate from video grounds 16–20 on the adapter.
+Every `P01`–`P23` circuit stays independent and pin-for-pin. The four J3/J4 pads share `SHIELD`, separate from every signal position. Never join video pin 13 to video grounds 16–20 by assumption.
 
-The board is passive. It does not alter video scan rates or floppy signalling and is not a video converter, drive adapter or protection circuit.
+A deliberate DB23 metal-shell bond is required. The default under-head washers are insulating. Require a deliberate J4-to-motherboard original shell-ground-pad wire as well as the connector-shell bond; do not rely on bolt or shank contact. Pre-tack that wire on the motherboard with the base removed, then route it out through the right foot groove (X24 outward, Y9.50 ±0.60, Z0–1.00) and up to J4. Plastic and solder mask are insulating. Verify both bonds.
 
-## Next engineering work
+The board remains passive. It is not a scan-rate converter, floppy converter or protection circuit.
 
-1. Select and obtain the male and female solder-cup DB23 parts, jackposts, nuts and pins.
-2. Complete `docs/MEASUREMENTS.md` separately for both connector genders and the intended motherboard.
-3. Print the hole coupon and test the pins, nut fit and soldering heat strategy.
-4. Update shared parameters, regenerate coordinated files and compare diffs.
-5. Trial-print the holder, dry-fit the assembly and verify mating face position, mounting, PCB/cup interference and case clearance.
-6. Re-run native and independent connection checks. Record exact reports and versions.
-7. Assemble and electrically inspect a prototype before a powered Amiga test.
+## Remaining engineering work
 
-The canonical repository is [HoodPaul/amiga-db23-alternative](https://github.com/HoodPaul/amiga-db23-alternative), with `main` as its default branch. The initial upload was revision 0.3; revision 0.4 changes the holder, loading aid and assembly documentation while retaining PCB revision 0.3. No project-wide licence or production release has been selected.
+1. Obtain and measure each male/female solder-cup part, pins, nuts, jackposts and mounting hardware.
+2. Complete [MEASUREMENTS.md](MEASUREMENTS.md) for the intended motherboard revision and case.
+3. Trial the hole/cap fits and soldering heat behaviour using actual print settings.
+4. Check base feet, PCB-ear support, local front-corner reliefs, cap removal, underside washers/heads, all screw lengths, both shell bonds and neighbouring components. Reference A4000 layout checks are not proof of fit on the user's actual board revision.
+5. Update shared parameters and regenerate coordinated CAD, previews and reports as needed.
+6. Assemble, inspect and record an unpowered prototype before controlled functional and insertion/extraction trials.
 
+Canonical repository: [HoodPaul/amiga-db23-alternative](https://github.com/HoodPaul/amiga-db23-alternative), default branch `main`. No project-wide licence or production release has been selected.

@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.5 - 29 October 2026
+
+- Replaced recessed top-loaded anchor bolts with M3 screws upward from beneath the motherboard, through the base and PCB ears, to top washers and nuts.
+- Moved and enlarged J3 into plated mounting lands at the original shell-anchor axes; added separate J4 shell-wire pads clear of washer seats.
+- Shortened both male and female PCBs from rear Y16.00 to Y13.00, with mounting ears and coordinated shell routing.
+- Replaced loose anchor shims with integral mounting feet and removed old screw-head recesses.
+- Added a keyed clip-on cap retaining the jackpost nuts and covering top hardware; default M3 × 12 mm mounting screws and cap fit remain unmeasured.
+- Extended rear jackpost-stem clearance with a finite hardware limit.
+- Updated assembly, measurements, BOM, source, native CAD, printable trials, previews and validation records.
+- Retained fit-prototype status; no physical strength, print heat or Amiga operation test is claimed.
+
 ## 0.4 - 29 October 2026
 
 - Raised the printed end supports and closed the rear opening to form a more substantial continuous cradle around the pin guide.

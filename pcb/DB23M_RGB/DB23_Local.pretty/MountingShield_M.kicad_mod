@@ -1,0 +1,18 @@
+(footprint "MountingShield_M" (version 20221018) (generator pcbnew)
+  (layer "F.Cu")
+  (attr through_hole)
+  (fp_text reference "REF**" (at 0 0) (layer "F.Fab") hide
+      (effects (font (size 1.27 1.27) (thickness 0.15)))
+    (tstamp f4aaf1bb-8cca-4218-8a1f-3a56e49b230a)
+  )
+  (fp_text value "M3 mounting / shield" (at 0 0) (layer "F.Fab") hide
+      (effects (font (size 1.27 1.27) (thickness 0.15)))
+    (tstamp 78de533c-8a13-4514-92b1-18432c995b38)
+  )
+  (fp_circle (center -22.135 9.5) (end -18.885 9.5)
+    (stroke (width 0.05) (type default)) (fill none) (layer "F.CrtYd") (tstamp a986fdee-a258-466d-9c83-9d833e5d7d39))
+  (fp_circle (center 22.135 9.5) (end 25.385 9.5)
+    (stroke (width 0.05) (type default)) (fill none) (layer "F.CrtYd") (tstamp 9347ecb6-504f-4abc-84b8-ed5a6e0cf60a))
+  (pad "1" thru_hole circle (at -22.135 9.5) (size 6.5 6.5) (drill 3.3) (layers "*.Cu" "*.Mask") (tstamp b2e9a52e-5f54-4f59-ad34-6c5be052d33f))
+  (pad "2" thru_hole circle (at 22.135 9.5) (size 6.5 6.5) (drill 3.3) (layers "*.Cu" "*.Mask") (tstamp 05acb054-a03d-4413-9bd8-af4a13066d14))
+)
