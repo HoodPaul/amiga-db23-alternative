@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+*.kicad_prl
+*.lck
+*.bak
+*-backups/
+.DS_Store
+Thumbs.db
+*.blend1
