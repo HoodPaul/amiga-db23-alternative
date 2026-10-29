@@ -12,5 +12,5 @@
 | [VALIDATION.md](VALIDATION.md) | Actual validation scope and remaining checks |
 | [SOURCES.md](SOURCES.md) | Primary references and their limits |
 
-The project [README](../README.md) gives the overview. The shared [design parameters](../source/design_parameters.json) are the coordinate contract for the PCB and holder.
+The current assembly and mechanical revision is **0.4**; both unchanged PCB variants remain at **0.3**. The project [README](../README.md) gives the overview. The shared [design parameters](../source/design_parameters.json) are the coordinate contract for the PCB and holder.
 

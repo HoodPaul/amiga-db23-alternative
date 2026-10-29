@@ -93,8 +93,9 @@ def build_meshes():
         posts.append(hex_y(xx,-4.8,zc,4.75,4.8,2.2))
         posts.append(cyl_y(xx,0,zc,1.48,4.8))
         # Low anchor head is separate from the horizontal cable jackpost.
-        anchors.append(cyl_z(xx,mb['anchor_y'],-3.0,1.48,5.4))
-        anchors.append(cyl_z(xx,mb['anchor_y'],2.4,2.8,2.1))
+        lug_z=holder.get('anchor_head_seat_z',2.4)
+        anchors.append(cyl_z(xx,mb['anchor_y'],-3.0,1.48,lug_z+3.0))
+        anchors.append(cyl_z(xx,mb['anchor_y'],lug_z,2.8,2.1))
     paths['nuts']=save('m3-nuts-reference',compound(nuts))
     paths['posts']=save('short-jackposts-reference',compound(posts))
     paths['anchors']=save('anchor-bolts-reference',compound(anchors))
@@ -102,7 +103,7 @@ def build_meshes():
 
 COLOURS={'holder':(.40,.49,.55),'pcb':(.055,.065,.075),'pads':(.83,.64,.20),'pins':(.85,.66,.24),
          'shell':(.76,.81,.85),'insulator':(.08,.09,.105),'contacts':(.86,.68,.27),
-         'nuts':(.66,.71,.75),'posts':(.74,.78,.82),'anchors':(.60,.66,.70),'keeper':(.38,.48,.54),'shim':(.43,.52,.57)}
+         'nuts':(.66,.71,.75),'posts':(.74,.78,.82),'anchors':(.60,.66,.70),'keeper':(.38,.48,.54),'shim':(.43,.52,.57),'jig':(.66,.38,.17)}
 def actor_for(path,key,offset=(0,0,0),rotate_y=0):
     reader=vtk.vtkSTLReader();reader.SetFileName(str(path));reader.Update()
     normals=vtk.vtkPolyDataNormals();normals.SetInputConnection(reader.GetOutputPort());normals.SetFeatureAngle(35)
@@ -128,40 +129,77 @@ def annotate(path,title,subtitle,notes):
 
 def render(paths,mode,name,camera=(64,72,50)):
     renderer=vtk.vtkRenderer();renderer.SetBackground(.99,.995,1);renderer.SetBackground2(.89,.93,.96);renderer.GradientBackgroundOn()
-    if mode=='holder':
-        renderer.AddActor(actor_for(ROOT/f'mechanical/DB23_Holder_v{REV}.stl','holder'))
-    else:
-        renderer.AddActor(actor_for(ROOT/f'mechanical/DB23_Holder_v{REV}.stl','holder'))
-        exploded=mode=='exploded';pz=15 if exploded else 0;cy=-12 if exploded else 0
-        for key in ('pcb','pads'):renderer.AddActor(actor_for(paths[key],key,(0,0,pz)))
+    exploded=mode=='exploded'
+    renderer.AddActor(actor_for(ROOT/f'mechanical/DB23_Holder_v{REV}.stl','holder'))
+    if mode=='jig':
+        jig_path=ROOT/f'mechanical/DB23_Pin_Height_Jig_v{REV}.stl'
+        jig=P.get('pin_height_jig',{})
+        # Jig STL is exported with the assembly-coordinate offset supplied by its builder.
+        offset=(0,0,-jig['print_z_offset'])
+        renderer.AddActor(actor_for(jig_path,'jig',offset))
         renderer.AddActor(actor_for(paths['pins'],'pins'))
-        for key in ('shell','insulator','contacts','posts'):renderer.AddActor(actor_for(paths[key],key,(0,cy,0)))
-        for key in ('nuts','anchors'):renderer.AddActor(actor_for(paths[key],key))
+    elif mode!='holder':
+        pz=18 if exploded else 0
+        # The DB23 and PCB have already been soldered together: lift as ONE subassembly.
+        for key in ('pcb','pads','shell','insulator','contacts'):
+            renderer.AddActor(actor_for(paths[key],key,(0,0,pz)))
+        renderer.AddActor(actor_for(paths['pins'],'pins'))
+        renderer.AddActor(actor_for(paths['posts'],'posts',(0,-10 if exploded else 0,0)))
+        renderer.AddActor(actor_for(paths['nuts'],'nuts',(0,0,17 if exploded else 0)))
+        renderer.AddActor(actor_for(paths['anchors'],'anchors',(0,0,10 if exploded else 0)))
         shim=ROOT/f'mechanical/DB23_Anchor_Shim_Single_v{REV}.stl'
         keeper=ROOT/f'mechanical/DB23_Nut_Keeper_v{REV}.stl'
-        for s in (-1,1):
-            if shim.exists():renderer.AddActor(actor_for(shim,'shim',(s*mb['anchor_spacing']/2,mb['anchor_y'],0)))
-            if keeper.exists():renderer.AddActor(actor_for(keeper,'keeper',(s*mb['anchor_spacing']/2,0,12.2+(18 if exploded else 0)),180))
+        for side in (-1,1):
+            if shim.exists():renderer.AddActor(actor_for(shim,'shim',(side*mb['anchor_spacing']/2,mb['anchor_y'],0)))
+            if keeper.exists():renderer.AddActor(actor_for(keeper,'keeper',(side*mb['anchor_spacing']/2,0,12.2+(28 if exploded else 0)),180))
     for position,intensity in [((35,-50,95),1.0),((-55,15,50),.7),((0,65,90),.8)]:
         light=vtk.vtkLight();light.SetPosition(*position);light.SetFocalPoint(0,5,4);light.SetIntensity(intensity);renderer.AddLight(light)
-    cam=renderer.GetActiveCamera();cam.SetPosition(*camera);cam.SetFocalPoint(0,3,9 if mode=='exploded' else 4)
-    cam.SetViewUp(0,0,1);cam.ParallelProjectionOn();cam.SetParallelScale(31 if mode=='exploded' else 24)
+    cam=renderer.GetActiveCamera();cam.SetPosition(*camera);cam.SetFocalPoint(0,3,16 if exploded else 3)
+    cam.SetViewUp(0,0,1);cam.ParallelProjectionOn();cam.SetParallelScale(35 if exploded else 24)
     window=vtk.vtkRenderWindow();window.SetOffScreenRendering(1);window.AddRenderer(renderer);window.SetSize(1600,1000);window.SetMultiSamples(8)
     window.Render()
     capture=vtk.vtkWindowToImageFilter();capture.SetInput(window);capture.SetInputBufferTypeToRGB();capture.ReadFrontBufferOff();capture.Update()
     writer=vtk.vtkPNGWriter();writer.SetFileName(str(OUT/name));writer.SetInputConnection(capture.GetOutputPort());writer.Write();window.Finalize()
-    titles={'assembly':'DB23 replacement - assembled CAD preview','exploded':'DB23 replacement - exploded CAD preview','holder':'Printed holder - actual printable CAD geometry'}
-    notes={'assembly':['Black: adapter PCB. Grey: printed holder. Gold: contacts and supported motherboard pins.',
-                       'FIT PROTOTYPE v0.3. Solder-cup connector and bought hardware are unmeasured references.'],
-           'exploded':['PCB and nut keepers lifted; connector moved forwards. Pins remain in the printed guide block.',
-                       'Exploded offsets are illustrative. Shell bonding wires are omitted; they remain required.'],
-           'holder':['23 guide bores, two captive nut pockets, original-position anchor holes and rear PCB support.',
-                     'Default guide bore 0.92 mm. Print and drill the fit coupon before the complete holder.']}
-    annotate(OUT/name,titles[mode],'UK Computing Limited | Revision 0.3 | Nominal dimensions in millimetres',notes[mode])
+    titles={'assembly':'DB23 replacement - assembled CAD preview','exploded':'Joined DB23 + PCB lowered into the cradle',
+            'holder':'Solid cradle - raised mounting lugs and filled rear','jig':'Pin loading - common height stop in the removable jig'}
+    notes={'assembly':['Black: adapter PCB. Grey: continuous printed cradle. Gold: contacts and supported pins.',
+                       f'FIT PROTOTYPE v{REV}. Solder-cup connector and bought hardware are unmeasured references.'],
+           'exploded':['The soldered DB23 + PCB move down together onto all 23 pins; nuts and jackposts follow.',
+                       'Offsets show assembly order. Shell bonding wires are omitted; they remain required.'],
+           'holder':['Raised mounting lugs join the front towers, pin guide and filled rear support as one solid.',
+                     'The guide remains below the PCB for solder clearance. Strength needs a physical trial.'],
+           'jig':['Load 23 equal-length pins until their lower tips touch the common stop plane.',
+                  'Remove the loading jig vertically before soldering. It is not part of the installed assembly.']}
+    annotate(OUT/name,titles[mode],f'UK Computing Limited | Holder revision {REV} | PCB revision {P.get("pcb_revision","0.3")}',notes[mode])
+
+def make_comparison(previous_path):
+    """Optional visual history, using a supplied previous-revision CAD render."""
+    current=Image.open(OUT/'holder-isometric.png').convert('RGB')
+    previous=Image.open(previous_path).convert('RGB')
+    canvas=Image.new('RGB',(1800,820),'white');d=ImageDraw.Draw(canvas)
+    d.rectangle((0,0,1800,10),fill='#17394e')
+    d.text((40,30),'Printed cradle: revision 0.3 to revision 0.4',font=ImageFont.truetype(FONTB,35),fill='#17394e')
+    for x,im,title in [(0,previous,'0.3  /  Low rails and rear opening'),(900,current,'0.4  /  Raised lugs and rear infill')]:
+        # Remove each render's annotation strips and retain the native CAD view.
+        area=im.crop((0,100,im.width,im.height-70)).resize((900,563),Image.Resampling.LANCZOS)
+        canvas.paste(area,(x,145))
+        d.text((x+35,109),title,font=ImageFont.truetype(FONTB,23),fill='#17394e')
+    d.line((900,105,900,725),fill='#c6d6de',width=2)
+    d.rectangle((0,750,1800,820),fill='#edf3f6')
+    d.text((40,769),'CAD geometry comparison. Both are fit prototypes; cable-load strength still needs a physical trial.',
+           font=ImageFont.truetype(FONT,23),fill='#354b59')
+    canvas.save(OUT/'holder-revision-comparison.png')
 
 if __name__=='__main__':
+    import argparse
+    parser=argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--previous-holder-preview',type=Path,help='Optional previous CAD PNG for a before/after comparison')
+    args=parser.parse_args()
     paths=build_meshes()
     render(paths,'assembly','assembly-isometric.png')
     render(paths,'exploded','assembly-exploded.png',camera=(65,78,60))
-    render(paths,'holder','holder-isometric.png')
-    print('Rendered assembly-isometric.png, assembly-exploded.png, holder-isometric.png')
+    render(paths,'holder','holder-isometric.png',camera=(64,72,65))
+    jig_path=ROOT/f'mechanical/DB23_Pin_Height_Jig_v{REV}.stl'
+    if jig_path.exists():render(paths,'jig','pin-height-jig.png',camera=(64,72,60))
+    if args.previous_holder_preview:make_comparison(args.previous_holder_preview)
+    print('Rendered coordinated assembly, exploded, holder and available jig previews')

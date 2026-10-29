@@ -1,6 +1,6 @@
 # Development and regeneration
 
-The PCB and printed holder share `source/design_parameters.json`. Keep this file, builders, native CAD, printable outputs, previews and validation reports from the same revision together.
+The PCB and printed holder share `source/design_parameters.json`. Assembly/mechanical revision 0.4 retains the native PCB files and fabrication outputs at electrical revision 0.3, because the connector mapping, routing and outline are unchanged. Preserve that explicit distinction when regenerating files. Keep this file, builders, native CAD, printable outputs, previews and validation reports from the same revision together.
 
 Before regeneration, review any manual native-CAD edits. Builders can overwrite generated files. Port deliberate edits into the source or retain a reviewed native baseline before proceeding.
 
@@ -30,7 +30,7 @@ It also checks that the saved native DRC reports are clean. It does not independ
 python3 source/build_mechanical.py
 ```
 
-OpenSCAD performs STL generation. The builder also uses CadQuery for the analytic holder STEP and its additional geometry checks when that dependency is available. The generated OpenSCAD source remains editable, but changes made directly to it must be ported before rerunning the builder.
+OpenSCAD performs STL generation for the holder, pin-height loading jig, coupon, keepers and shims. The builder also uses CadQuery for the analytic holder STEP and its additional geometry checks when that dependency is available. The generated OpenSCAD source remains editable, but changes made directly to it must be ported before rerunning the builder.
 
 Keep the slicer's print orientation separate from the assembly coordinate frame. The holder STL retains its z = 0.60 mm assembly offset and should be dropped to the print bed. Shims provide that 0.60 mm gap when the printed part is assembled on the motherboard.
 

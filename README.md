@@ -1,6 +1,6 @@
 # Amiga DB23 Video and Floppy Replacement
 
-A low-cost replacement assembly for the motherboard-mounted **DB23 RGB video and external floppy connectors** used on the Amiga. It combines a genuine solder-cup DB23, a small horizontal PCB and a printed holder with a supported 23-pin motherboard interface. Current revision: **0.3**.
+A low-cost replacement assembly for the motherboard-mounted **DB23 RGB video and external floppy connectors** used on the Amiga. It combines a genuine solder-cup DB23, a small horizontal PCB and a printed holder with a supported 23-pin motherboard interface. Current assembly and mechanical revision: **0.4**. The unchanged PCB variants remain at **0.3**.
 
 Project development: **Paul of UK Computing Limited**, with **AI assistance through Codex**. The design develops Paul's supplied straddle-PCB concept and the proposal to support ordinary loose header pins in a printed block.
 
@@ -12,14 +12,18 @@ For engineering or AI work, start with [AGENTS.md](AGENTS.md), the [current hand
 
 ![Assembly view](previews/assembly-isometric.png)
 ![Exploded assembly](previews/assembly-exploded.png)
+![Solid holder](previews/holder-isometric.png)
+![Pin-height loading jig](previews/pin-height-jig.png)
 
-These views are rendered from the coordinated prototype CAD. The DB23 reference body and solder cups are illustrative, unmeasured envelopes; their appearance is not evidence that a purchased connector fits. Further views and the [prototype drawing PDF](previews/DB23_Prototype_Drawings_v0.3.pdf) are in [previews/](previews/).
+These views are rendered from the coordinated prototype CAD. The DB23 reference body and solder cups are illustrative, unmeasured envelopes; their appearance is not evidence that a purchased connector fits. Further views and the [prototype drawing PDF](previews/DB23_Prototype_Drawings_v0.4.pdf) are in [previews/](previews/).
 
 ## How it works
 
 The DB23's solder cups straddle the front edge of the PCB. The upper contact row solders to the top copper; the lower row solders to the bottom copper. Separate straight pins connect the PCB to the original motherboard holes.
 
-The printed holder supports the connector flange, captures its jackpost nuts and guides the 23 straight pins. Its shoulders set the PCB height. Mounting fasteners through the original shell retention holes provide the mechanical attachment; the signal pins are not intended to support cable insertion loads.
+The printed holder supports the connector flange, captures its jackpost nuts and guides the 23 straight pins. Revision 0.4 raises the end supports to the PCB seating plane and fills the former rear opening, making a continuous solid cradle. The guide remains below the PCB for solder-fillet and heat clearance. Mounting fasteners through the original shell-retention holes carry the intended mechanical load path into the motherboard. Cable insertion and extraction strength still needs physical testing.
+
+The build order is now explicit: **solder DB23 to PCB; load the holder pins using the height jig and lower the joined DB23/PCB; solder the pin tops; fit nuts, jackposts and optional caps; then attach and solder the assembly to the motherboard.** Prepare covered underside wiring and preload the recessed motherboard anchor bolts before lowering the PCB. The anchor nuts are secured from below during installation. See the [assembly guide](docs/ASSEMBLY.md).
 
 The existing Amiga cable interface remains DB23. No replacement cable standard is introduced.
 
@@ -34,7 +38,7 @@ Open either project with **KiCad 7.0 or newer**:
 
 Project-local symbols and footprints are included. Male and female pin numbering is mirrored; use the matching PCB rather than turning one variant over.
 
-| Property | Revision 0.3 |
+| PCB property | Retained PCB revision 0.3 |
 |---|---|
 | PCB outline | **40.00 × 12.00 mm overall**, with front-corner clearance notches |
 | Copper layers | **Two** |
@@ -52,9 +56,9 @@ Motherboard values are nominal dimensions from the [iComp replacement drawings](
 
 ## Printed holder and pin fit
 
-Editable [OpenSCAD source](mechanical/DB23_Holder_v0.3.scad), a [holder STL](mechanical/DB23_Holder_v0.3.stl), an analytic [holder STEP](mechanical/DB23_Holder_v0.3.step), a [hole-fit coupon](mechanical/DB23_Hole_Fit_Coupon_v0.3.stl) and an optional [nut keeper STL](mechanical/DB23_Nut_Keeper_v0.3.stl) are provided. Print two keepers if that option is used. The holder sits 0.60 mm above the motherboard; **two matching 0.60 mm anchor shims or washers are required beneath its mounting feet before tightening**. The [shim-pair STL](mechanical/DB23_Anchor_Shims_v0.3.stl) contains both supports.
+Editable [OpenSCAD source](mechanical/DB23_Holder_v0.4.scad), a [holder STL](mechanical/DB23_Holder_v0.4.stl), an analytic [holder STEP](mechanical/DB23_Holder_v0.4.step), a [hole-fit coupon](mechanical/DB23_Hole_Fit_Coupon_v0.4.stl), an optional [nut keeper STL](mechanical/DB23_Nut_Keeper_v0.4.stl) and a separate [pin-height loading jig](mechanical/DB23_Pin_Height_Jig_v0.4.stl) are provided. Print two keepers if that option is used. The holder sits 0.60 mm above the motherboard; **two matching 0.60 mm anchor shims or washers are required beneath its mounting feet before tightening**. The [shim-pair STL](mechanical/DB23_Anchor_Shims_v0.4.stl) contains both supports.
 
-The nominal holder is **52 mm wide** and uses **0.92 mm guide bores** for the assumed 0.64 mm square pins. Print the coupon before the full holder. A 0.64 mm square pin measures approximately **0.905 mm across its corners**, so a finished 0.80 mm round bore is too small. The usable printed or drilled diameter must be established with the actual pins and printer.
+The nominal holder is **52 mm wide** and uses **0.92 mm guide bores** for the assumed 0.64 mm square pins. Its raised ends and rear infill are joined to the pin block as one printed part. Local relief preserves solder and shell-lead clearance. The separate jig sets equal lower pin projection while loading and is removed before soldering; it is not fitted to the motherboard. Print the coupon before the full holder. A 0.64 mm square pin measures approximately **0.905 mm across its corners**, so a finished 0.80 mm round bore is too small. The usable printed or drilled diameter must be established with the actual pins and printer.
 
 Choose jackposts with the required **4-40 UNC cable-facing thread**, then match the captive nuts to their actual rear mounting stems. Prototype defaults use **M3 rear stems and M3 nuts**, with assumed 5.50 mm across flats and 2.40 mm nut thickness. HARTING 09670009924 is a candidate thread arrangement, not a drop-in or frozen purchase item: stem length must clear the anchor bolts. M3.5 has not been specified. All pockets and fastener lengths need a fit test.
 
@@ -70,7 +74,7 @@ See [electrical notes](docs/ELECTRICAL.md) and the [BOM](BOM.csv).
 
 ## Validation and prototype manufacture
 
-Both saved boards pass native KiCad 7.0.11 DRC with **zero violations, zero unconnected pads and zero footprint errors**. The portable saved-file audit passes **610 checks** across the male and female projects. The holder STL is one closed component and the STEP is one valid solid, with all 23 guide bores open. An independent CAD review found no intersections with the explicitly assumed connector, nuts and notched PCB. Native schematic ERC was not run; parser and exact exported netlist checks are recorded separately.
+The retained PCB revision 0.3 boards have native KiCad 7.0.11 DRC reports with **zero violations, zero unconnected pads and zero footprint errors**, and an exact saved-file connection audit. Native schematic ERC was not run. The updated holder and loading jig have their own geometry records; use the [current validation record](docs/VALIDATION.md) for the actual checks and results.
 
 The scope and actual reports are recorded in [validation](docs/VALIDATION.md). These checks establish consistency of the saved files. They do not establish solder-cup compatibility, printer accuracy, physical fit, strength or reliable operation.
 

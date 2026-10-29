@@ -8,7 +8,7 @@ Develop an affordable motherboard DB23 replacement using a genuine solder-cup DB
 
 ## Current state
 
-Revision 0.3 is an unmeasured fit prototype. Nominal motherboard geometry is sourced; the selected solder-cup connector, nuts, jackposts, printed fit and surrounding clearances are not verified. Never promote assumed geometry or CAD-only checks to a claim of physical compatibility or successful operation.
+Assembly and mechanical revision 0.4 is an unmeasured fit prototype; both PCB variants remain at revision 0.3. Nominal motherboard geometry is sourced; the selected solder-cup connector, nuts, jackposts, printed fit and surrounding clearances are not verified. Never promote assumed geometry or CAD-only checks to a claim of physical compatibility or successful operation.
 
 ## Files and regeneration
 
@@ -37,6 +37,9 @@ The nominal signal grid is 2.77 mm along each row, 2.84 mm between rows and 1.38
 
 ## Mechanical requirements
 
+- Keep the solid end supports and continuous rear infill connected to the 23-pin guide. Preserve local solder relief and the guide-to-PCB heat gap.
+- Assemble the DB23 and PCB first; load pins using the separate height jig, then lower the complete DB23/PCB onto the holder. Fit nuts and jackposts after soldering the pin tops.
+- Remove the printed pin-height jig before soldering. Verify pin retention and height again after removal.
 - Keep the signal pins supported inside the holder, with soldering access and heat clearance.
 - A 0.64 mm square pin has a diagonal of approximately 0.905 mm. A 0.80 mm finished round bore does not clear it.
 - Fit bores, nut pockets and printer allowances using the provided coupon and actual parts.

@@ -1,41 +1,66 @@
-# Independent geometry review, v0.3
+# Independent geometry review, v0.4
 
-Reviewed 29 October 2026. Status: **fit prototype using an unmeasured solder-cup connector envelope**.
+Reviewed 29 October 2026. **Fit prototype using unmeasured solder-cup connector and hardware envelopes.** The electrical PCBs remain revision 0.3.
 
-## Footprint and electrical mapping
+The saved STEP and STL files were examined independently of the mechanical builder using `python3 source/verify_mechanical.py`. The saved-file audit passes **117 checks**; detailed outcomes are in [mechanical-audit.json](mechanical-audit.json). CadQuery/OpenCascade provides solid intersections and VTK provides independent STL topology and ray intersections. This review does not import the builder or treat its own success message as proof.
 
-The two saved PCB outlines match the shared notched outline. Both 23-pin tail footprint coordinate sets match the holder's 23 guide bores exactly. With the connector facing upwards in a top-of-motherboard view, male pin 1 is at the right of the rear row; female pin 1 is at the left. Pins 13–23 form the front row.
+## Raised supports and closed rear structure
 
-The nominal grid is 2.77 mm along each row, 2.84 mm between rows and 1.385 mm staggered. Anchor centres are X = ±22.135 mm, Y = 9.50 mm, with 3.30 mm holder clearance holes. These holder holes are distinct from the manufacturer's nominal 3.20 mm motherboard anchor holes.
+The holder STEP is valid and contains one solid, with volume **2,227.065988 mm³**. Its external width remains **52.00 mm**. The end rails now reach the PCB underside plane, **Z5.75**, while the 23-pin guide block remains at **Z4.50**. The former rear opening is filled from **Y12.50 to Y15.60**, up to Z5.75. Two local shield-pad reliefs retain a **3.90 mm** solid floor; they are shallow top recesses rather than access holes through the holder.
 
-Independent parsing of both exported schematic XML netlists confirms J1 pin *n* connects only to J2 pin *n* for all 23 pins. The two shield strap pads share their own separate net. The supplied native KiCad reports show zero DRC violations, unconnected pads and footprint errors for each board. ERC was not run.
+Raised rails are stepped outwards to X±18.60 ahead of Y7.10 so they clear the assumed connector rear body. Behind the solder cups, the inner rail edges return to X±17.25 and join the pin block and rear infill. Material probes confirm the inner web, front and rear cheeks, and bearing floor at both original anchor positions. These establish the presence of continuous material, not a load rating or a stress analysis.
 
-## Mechanical checks
+## Static fit and assembly paths
 
-CadQuery/OpenCascade reports a valid holder STEP with one solid. Solid intersections with the holder returned **0 mm³** for each of the following: the notched PCB, assumed rear connector body, assumed flange at Y = 0–0.50 mm, all 23 assumed solder cups and both nominal 5.50 mm AF × 2.40 mm nuts.
+Intersections between the actual holder STEP and each of the following return **0 mm³**:
 
-The rear PCB ledge supports the specified underside height Z = 5.75 mm. With the 1.00 mm PCB, its mid-plane is Z = 6.25 mm. Relevant nominal clearances are:
+- The shared notched PCB outline at its specified installed height.
+- The assumed flange and rear connector body.
+- All 23 assumed solder-cup outer envelopes, treated conservatively as full cylinders.
+- Both nominal captive nuts.
+- Both maximum permitted anchor head and upper washer envelopes, **Ø6.00 × 3.00 mm**, on their recessed seats.
 
-| Relationship | Clearance |
+The vertical lowering path of the already joined **PCB and DB23** was checked for every offset from its seated position to **20 mm above it**. The PCB, flange and rear-body sweeps are exact extruded prisms; cup sweeps use conservative solid bounding boxes. All four swept envelopes have **0 mm³** holder intersection. This supports the proposed top-loading sequence within the stated nominal envelopes. It does not check a purchased connector, solder fillet shape, flexible shield wiring, tool handling or pin retention during assembly.
+
+Each nut's **15 mm vertical top-loading sweep** also has 0 mm³ intersection with both the holder and the already seated PCB. Nuts can therefore be loaded after the PCB and DB23 are seated, before fitting jackposts and optional caps, for the assumed nut dimensions.
+
+## Anchor pockets and positive retention
+
+Simply placing anchor heads on the raised Z5.75 surface would collide with the PCB: a Ø6 mm head at X±22.135 reaches inboard to X±19.135, while the board extends to X±20. The revision retains **Z2.40 recessed bearing seats**, giving a maximum head top of **Z5.40** and **0.35 mm nominal clearance below the PCB**.
+
+Each head pocket is **Ø6.40 mm and open outboard**. This removes the thin outer lip that a closed circular counterbore would leave within the unchanged 52 mm width. Both pockets are unobstructed outboard; material remains at their inner webs, fore and aft cheeks, and floors. A straight **Ø4 mm** driver envelope centred on either anchor axis clears the PCB. Actual fastener, driver, washer and underside access require measurement.
+
+Preload the anchor bolts after withdrawing the pin-height jig and before lowering the PCB and DB23. Final motherboard attachment uses the verified underside retention arrangement. Place the required **0.60 mm shims or washers beneath both holder feet** before tightening. The raised outer surfaces do not remove this height-stack requirement. Cable load must pass through a properly clamped connector flange, holder and positive motherboard attachment. The assumed 0.15 mm flange-to-holder gap needs a real bearing and clamping check; solder joints and signal pins must not be forced to close an unverified gap.
+
+## Pin support and height jig
+
+All **23 guide bores** are open through the saved holder STEP. The nominal gap from the guide-block top to PCB underside is **1.25 mm**. This preserves space for underside solder fillets and thermal separation; neither actual fillet clearance nor soldering temperature has been tested.
+
+The loading-jig STEP is valid and contains one solid. Restoring its assembly offset of **−6.20 mm** gives 0 mm³ overlap with the holder and with all 23 assumed square pins. Independent VTK rays through the delivered jig STL confirm:
+
+| Datum | Actual saved geometry |
 |---|---:|
-| Assumed flange rear to holder front | 0.15 mm |
-| Assumed connector body to inner tower, each side | 0.20 mm |
-| Assumed cup ends to pin-guide block | 0.10 mm |
-| PCB side edge to lateral stop, each side | 0.25 mm |
-| Nut pocket, across flats and thickness | 0.20 mm total in each dimension |
+| All 23 lower pin-tip stops | Z−3.20 mm |
+| Holder support surfaces | Z+0.60 mm |
+| Both locating-peg tops | Z+1.80 mm |
+| Assumed equal pin length | 10.70 mm |
+| Corresponding upper pin tips | Z+7.50 mm |
 
-The holder bottom is Z = 0.60 mm. Both 0.60 mm anchor shims are required to support the mounting bosses at the intended height. Omitting them changes the installed geometry when the anchors are tightened.
+The jig sets the common lower-tip level when the holder is seated on its supports and the stop is clean and flat. Equal upper-tip heights additionally require measured equal-length pins. The jig is for loading and must be removed before soldering and before inserting the anchor bolts. The guide fit must hold the pins at their set height after jig removal, while loading the bolts and lowering the PCB. Nominal CAD clearance does not establish that retention.
+
+A 0.64 mm square pin has a 0.9051 mm diagonal. The nominal Ø0.92 mm guide is only 0.0149 mm larger across that diagonal; printer compensation and the supplied hole coupon must determine the actual fit. A finished Ø0.80 mm round hole does not clear the assumed square pin.
 
 ## Independent STL topology checks
 
-VTK feature-edge and connectivity checks were run on the actual exported STL files.
+VTK boundary-edge, non-manifold-edge and connected-region checks on the delivered files give:
 
 | Part | Triangles | Boundary/non-manifold edges | Connected regions |
 |---|---:|---:|---:|
-| Holder | 8,268 | 0 | 1 |
+| Holder | 8,052 | 0 | 1 |
 | Hole-fit coupon | 23,488 | 0 | 1 |
 | Nut keeper | 28 | 0 | 1 |
 | Anchor shim pair | 1,024 | 0 | 2, intentional |
 | Single anchor shim | 512 | 0 | 1 |
+| Pin-height loading jig | 556 | 0 | 1 |
 
-These checks support closed, connected printable geometry as tabulated. They do not establish physical fit, print accuracy, strength, thermal performance or compatibility with a purchased connector. The 0.92 mm nominal guide bore is only 0.0149 mm larger than the diagonal of a 0.64 mm square pin; the coupon and actual printed parts must determine the finished clearance. Connector, fastener and motherboard measurements remain required before production release.
+These checks establish closed printable geometry and the CAD clearances stated above. They do not establish physical fit, print accuracy, pin retention, strength under monitor insertion or extraction, heat tolerance, shell continuity, case fit or operation on an Amiga. The new material arrangement is a geometric strengthening proposal awaiting physical tests.

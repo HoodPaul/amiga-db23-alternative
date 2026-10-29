@@ -1,6 +1,7 @@
 # AI and engineering handover
 
-**Revision:** 0.3  
+**Assembly/mechanical revision:** 0.4  
+**PCB revision:** 0.3 (unchanged)  
 **Date:** 29 October 2026  
 **State:** Fit prototype. Connector sample and printed fit have not been measured. No assembled hardware or Amiga operation has been verified.
 
@@ -10,6 +11,10 @@ Make an affordable replacement for the original motherboard-mounted DB23 using a
 
 Paul's proposed assembly is a horizontal PCB similar to his supplied starting files, with shorter wings and a printed holder. The holder supports the connector, captures its port-jackpost nuts, sets the PCB height and guides all 23 straight motherboard pins in a substantial block. The pins can be recovered individually from ordinary 0.1-inch header stock, but must be positioned on the original 2.77 mm grid.
 
+Paul reviewed the initial holder as too fragile for a user pushing in a monitor plug. Revision 0.4 raises the ends to the PCB support plane and fills the rear opening, connecting them to the pin guide as one substantial cradle. Preserve that structural direction. More material is a design change, not a measured strength result.
+
+The agreed order is: (1) solder DB23 to PCB, including covered underside preparation; (2) load pins into the holder using the separate height jig, remove the jig, preload the recessed motherboard anchor bolts, lower the joined DB23/PCB from above and solder the pin tops; (3) insert nuts, hex jackposts and optional caps; (4) positively retain at the original motherboard holes with the required shims, then solder the motherboard pins and shell bond. See `docs/ASSEMBLY.md`.
+
 Do not reopen the HD26/custom-cable alternative without a reason or request. It added a new external interface while retaining the adapter construction work and was rejected as offering little improvement over the supplied draft.
 
 ## Current files
@@ -18,13 +23,14 @@ Do not reopen the HD26/custom-cable alternative without a reason or request. It 
 - RGB PCB: `pcb/DB23M_RGB/DB23M_RGB.kicad_pro`.
 - Floppy PCB: `pcb/DB23F_Floppy/DB23F_Floppy.kicad_pro`.
 - Mechanical builder: `source/build_mechanical.py`.
-- Mechanical source: `mechanical/DB23_Holder_v0.3.scad`.
-- Printable holder, hole coupon and optional nut keeper: `mechanical/`.
+- Mechanical source: `mechanical/DB23_Holder_v0.4.scad`.
+- Printable holder, pin-height loading jig, hole coupon, shims and optional nut keeper: `mechanical/`.
+- Loading jig: `mechanical/DB23_Pin_Height_Jig_v0.4.stl`; remove before soldering.
 - Check reports: `verification/`; actual results are summarised in `docs/VALIDATION.md`.
 
 ## Recorded CAD validation
 
-Both KiCad 7.0.11 native DRC reports contain zero violations, zero unconnected pads and zero footprint errors. The portable audit passes 610 checks across both variants, including the exact exported schematic netlist. Native ERC was not run. The holder STL is closed and one component; STEP is valid and one solid; all 23 bores are unobstructed. The independent collision review passes against the explicitly assumed connector envelope, nominal nuts and notched PCB. See `verification/independent-review.md`; none of these results establishes physical fit.
+The unchanged PCB revision 0.3 native DRC reports record zero violations, zero unconnected pads and zero footprint errors. The portable audit checks both variants and exact exported netlists; native ERC was not run. Current mechanical and jig results are recorded in `docs/VALIDATION.md` and `mechanical/mechanical_validation.json`. Check those records before describing any v0.4 result. No CAD-only result establishes physical fit, heat tolerance or insertion strength.
 
 ## Fixed nominal geometry
 
@@ -40,7 +46,7 @@ The printed holder is nominally 52 mm wide. Pin guide bores are 0.92 mm for assu
 
 Jackposts need 4-40 UNC at the cable-facing thread. Prototype defaults use M3 rear stems and M3 captive nuts, with assumed 5.50 mm across flats and 2.40 mm nut thickness, plus clearance. HARTING 09670009924 is a candidate, not a frozen BOM part. Other rear stems exist; the actual purchased hardware must match the pockets. Do not specify M3.5 by assumption.
 
-Original-position motherboard retention is required. The holder's 3.30 mm fastener clearances do not authorise enlarging the original nominal 3.20 mm motherboard holes. The holder bottom is z = 0.60 mm, so two 0.60 mm anchor shims or washers are required under its mounting feet before tightening; do not pull an unsupported gap closed. Fastener length, underside clearance and chassis contact require physical checks.
+Original-position motherboard retention is required. The holder's 3.30 mm fastener clearances do not authorise enlarging the original nominal 3.20 mm motherboard holes. The holder bottom is z = 0.60 mm, so two 0.60 mm anchor shims or washers are required under its mounting feet before tightening; do not pull an unsupported gap closed. The raised lugs retain recessed head seats at z = 2.40 mm: nominal 6.40 mm outboard-open counterbores accept a head/upper-washer envelope no larger than 6.00 mm diameter and 3.00 mm high (top z ≤ 5.40 mm). Preload these anchor bolts after removing the pin-height jig and before lowering the PCB; fit underside nuts in Part 4. Fastener length, underside nut/tool clearance and chassis contact require physical checks.
 
 ## Electrical decisions
 
@@ -58,5 +64,5 @@ The board is passive. It does not alter video scan rates or floppy signalling an
 6. Re-run native and independent connection checks. Record exact reports and versions.
 7. Assemble and electrically inspect a prototype before a powered Amiga test.
 
-The canonical repository is [HoodPaul/amiga-db23-alternative](https://github.com/HoodPaul/amiga-db23-alternative), with `main` as its default branch. This is the initial revision 0.3 prototype upload. No project-wide licence or production release has been selected.
+The canonical repository is [HoodPaul/amiga-db23-alternative](https://github.com/HoodPaul/amiga-db23-alternative), with `main` as its default branch. The initial upload was revision 0.3; revision 0.4 changes the holder, loading aid and assembly documentation while retaining PCB revision 0.3. No project-wide licence or production release has been selected.
 

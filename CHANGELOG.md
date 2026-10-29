@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.4 - 29 October 2026
+
+- Raised the printed end supports and closed the rear opening to form a more substantial continuous cradle around the pin guide.
+- Preserved the guide-to-PCB gap and local solder/wire relief rather than trapping underside joints in plastic.
+- Added a separate pin-height loading jig for equal pin projection before soldering.
+- Documented Paul's four-part assembly order: solder connector to PCB; load pins and lower the joined assembly; fit nuts, hex jackposts and optional caps; attach and solder to the motherboard.
+- Retained the unchanged male and female PCB designs, netlists and fabrication data at PCB revision 0.3.
+- Kept the design as an unmeasured fit prototype. Added material and CAD checks do not establish cable insertion strength or printed-part heat tolerance.
+
 ## 0.3 - 29 October 2026
 
 - Developed the supplied horizontal straddle-PCB concept into coordinated male RGB and female floppy variants.

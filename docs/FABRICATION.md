@@ -2,7 +2,7 @@
 
 ## Release state
 
-Revision 0.3 is a fit prototype. It is intended for measurement, trial printing and unpowered assembly review before a PCB order. The selected solder-cup connector and fastening hardware have not been measured, so native CAD or clean DRC alone does not make this a production release.
+Assembly and mechanical revision 0.4 is a fit prototype. Both unchanged PCB variants remain at revision 0.3. It is intended for measurement, trial printing and unpowered assembly review before a PCB order. The selected solder-cup connector and fastening hardware have not been measured, so native CAD or clean DRC alone does not make this a production release.
 
 ## Proposed PCB settings
 
@@ -25,11 +25,11 @@ If manufacturing exports are generated, keep them in a folder clearly labelled `
 
 ## Printed-part preparation
 
-Start with the hole-fit coupon and the actual pins. Confirm usable bore size and the drilling or reaming process. Then check nut pockets with the purchased hardware before committing to the full holder.
+Start with the hole-fit coupon and the actual pins. Confirm usable bore size and the drilling or reaming process. Then check nut pockets with the purchased hardware before committing to the full holder. Print the pin-height loading jig and establish that the holder locates on it without binding. The jig sets pin projection during loading and is removed before soldering.
 
 The holder model's nominal 52 mm width must clear adjacent ports, motherboard components and casework. Its 0.60 mm bottom clearance requires two matching anchor shims or washers beneath the mounting feet before tightening. Check its underside and the retention fasteners against the motherboard and chassis. No new motherboard drilling is specified.
 
-No printer, material, process or strength has been qualified. Retain the editable source and measured fit settings with the printed parts so future builders can reproduce the result.
+The raised end supports and closed rear web add structural material, but no printer, material, process or strength has been qualified. Check the insertion and extraction load path through the flange, printed body and original motherboard anchors, including layer orientation and fastener clamping. Retain the editable source and measured fit settings with the printed parts so future builders can reproduce the result.
 
 ## Before a release or order
 

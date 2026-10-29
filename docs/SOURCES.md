@@ -8,7 +8,7 @@
 
 iComp identifies these as replacements matching the original Commodore/Foxconn parts. The drawings support the nominal motherboard contact pitch, stagger, mounting-hole positions, flange references and centreline height used in this project.
 
-They describe **right-angle motherboard connectors**. They do not establish rear-insulator dimensions, cup gap or cup length for a different solder-cup connector. Those values in revision 0.3 are explicitly assumed until the selected parts are measured.
+They describe **right-angle motherboard connectors**. They do not establish rear-insulator dimensions, cup gap or cup length for a different solder-cup connector. Those values remain explicitly assumed in revision 0.4 until the selected parts are measured.
 
 ## Interface information
 
@@ -30,7 +30,7 @@ This is evidence that a solder-cup DB23 can accommodate a straddle PCB. It does 
 
 ## Project basis and assumptions
 
-The starting concept is Paul's supplied `DB23_Straddle_Adapter_v0.1.zip`. Revision 0.3 retains the genuine DB23 interface and horizontal straddle arrangement while developing a smaller PCB and a structural printed pin guide.
+The starting concept is Paul's supplied `DB23_Straddle_Adapter_v0.1.zip`. Revision 0.3 retains the genuine DB23 interface and horizontal straddle arrangement while developing a smaller PCB and a structural printed pin guide. Revision 0.4 develops the holder into a solid cradle and adds a pin-height loading jig, following Paul's assembly review.
 
 Current assumed values include the solder-cup connector rear envelope, 1.00 mm PCB thickness, nut dimensions, pin dimensions and length, printed-hole compensation, material and retention hardware. The authoritative list is `source/design_parameters.json`; measurements should replace assumptions in future revisions.
 

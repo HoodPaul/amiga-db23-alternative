@@ -28,6 +28,9 @@ Record the purchased part numbers and measurements before freezing the geometry.
 | Cup opening direction and contact surface | Straddle fit assumed | |
 | Flange width and height | 50.27 × 12.50 mm reference | |
 | Flange thickness | 0.50 mm | |
+| Flange back to cradle bearing face | Nominal model gap 0.15 mm (Y0.50 to Y0.65); measure actual gap | |
+| Bearing shim/spacer thickness, if required | Select from actual fit; no fixed thickness specified | |
+| Flange clamping and insertion-force path | Firm bearing into cradle/anchors without bending cups or tails; unverified | |
 | Flange hole centres | 44.27 mm reference | |
 | Jackpost mounting stem diameter / thread / length | M3 rear / 4-40 cable-facing candidate; length unverified | |
 | Nut across flats / thickness | M3 candidate, 5.50 / 2.40 mm | |
@@ -44,6 +47,9 @@ Record the purchased part numbers and measurements before freezing the geometry.
 | Best coupon bore before drilling | 0.92 mm guide default | |
 | Drill or reamer required | Establish by test | |
 | Pin fit after soldering trial | Unverified | |
+| Jig pin-tip stop height and pin projection | 3.20 mm below motherboard top; 10.70 mm total pins assumed | |
+| Jig location, removal and pin retention | Unverified | |
+| Pin height after jig removal / PCB lowering | Unverified | |
 | Captive nut insertion and retention | Unverified | |
 
 A 0.80 mm drill may open a printed pilot hole, but is smaller than the diagonal of an assumed 0.64 mm square pin. Do not force those pins into a drilled 0.80 mm round bore.
@@ -64,6 +70,9 @@ A 0.80 mm drill may open a printed pilot hole, but is smaller than the diagonal 
 | Space for connector body and PCB depth | Unverified | |
 | Clearance to neighbouring ports and components | Unverified | |
 | Retention bolt / washer / nut underside clearance | Unverified | |
+| Recessed fastener head and tool clearance | 6.40 mm open counterbore; head/washer <=6.00 mm diameter and <=3.00 mm height; seat z2.40 mm | |
+| Pre-soldered shell leads in local PCB relief | Unverified | |
+| Cable insertion / extraction and holder deflection | Unverified | |
 | Anchor shim or washer thickness beneath holder feet | 0.60 mm required by current height stack | |
 | Original shell-ground points and required bonds | Verify on target board | |
 | Rear-panel and cable plug mating clearance | Unverified | |
