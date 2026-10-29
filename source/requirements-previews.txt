@@ -1,0 +1,6 @@
+# Optional Python dependencies for CAD reference previews and the drawing PDF.
+# The portable PCB audit uses only Python's standard library.
+cadquery>=2.4
+vtk>=9.2
+Pillow>=10
+reportlab>=4

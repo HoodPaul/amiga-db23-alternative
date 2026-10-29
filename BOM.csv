@@ -1,0 +1,13 @@
+Reference,Quantity,Description,Specification,Selection status,Notes
+J1,1,DB23 solder-cup connector,Male for RGB or female for floppy,Part not selected,"Measure rear body; cup gap; cup length; flange and jackpost clearance before finalising CAD"
+PCB,1,DB23 adapter PCB,"Correct male or female variant; 40 x 12 mm; two layers; 1.00 mm thickness assumed",Fit prototype,"Thickness must match the selected solder-cup connector; proposed black mask and white silkscreen"
+P01-P23,23,Straight motherboard pins,"0.64 mm square assumed; nominal overall length 10.70 mm",Actual pins not measured,"Pins may be recovered from extended 0.1-inch header stock after removing its plastic carrier; check section and usable length"
+H1,1,Printed connector holder,DB23_Holder_v0.3.stl,Print fit trial first,"Material and printer compensation require testing; guide bores nominally 0.92 mm"
+H2-H3,2,Optional printed nut keepers,DB23_Nut_Keeper_v0.3.stl,Optional,"Confirm clearances with selected nuts and jackposts"
+N1-N2,2,Captive jackpost mounting nuts,"M3 prototype default; match actual jackpost rear stem",Part not frozen,"Pocket assumes 5.50 mm across flats and 2.40 mm thickness before clearance; do not assume M3.5"
+JS1-JS2,2,Hex port jackposts,"M3 male rear stem and 4-40 UNC cable-facing female thread",Candidate only,"HARTING 09670009924 is a thread-arrangement candidate only; default frame needs stem end at y <=5.50 mm from flange reference; check for anchor-bolt interference"
+MB1-MB2,2,Motherboard retention fasteners,Fit original 3.20 mm shell-anchor holes,Part and length not selected,"Holder clearance holes are 3.30 mm; verify underside and chassis clearance; no motherboard drilling"
+MB-N1-MB-N2,2,Retention nuts or selected threaded hardware,Match motherboard retention fasteners,Part not selected,"Use suitable washers as required by the actual mounting stack"
+SP1-SP2,2,Required anchor shims or washers,0.60 mm thickness beneath holder mounting feet,Required,"Print DB23_Anchor_Shims_v0.3.stl once or DB23_Anchor_Shim_Single_v0.3.stl twice; never tighten across an unsupported gap"
+SH1-SH2,As required,Shell-ground bonds,Short insulated wire or suitable metal strap,Assembly design to confirm,"Bond DB23 shell and original motherboard shell-ground points; do not rely on printed plastic"
+CP1,1,Hole-fit coupon,DB23_Hole_Fit_Coupon_v0.3.stl,Trial part only,"Print and test before holder; not fitted to final assembly"

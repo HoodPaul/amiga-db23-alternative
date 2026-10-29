@@ -1,0 +1,109 @@
+{
+  "DB23_Holder_v0.3.stl": {
+    "triangles": 8268,
+    "nonmanifold_edges": 0,
+    "components": 1,
+    "volume_mm3": 1642.796,
+    "bounds": [
+      [
+        -26.0,
+        26.0
+      ],
+      [
+        0.65,
+        15.6
+      ],
+      [
+        0.6,
+        11.0
+      ]
+    ]
+  },
+  "DB23_Hole_Fit_Coupon_v0.3.stl": {
+    "triangles": 23488,
+    "nonmanifold_edges": 0,
+    "components": 1,
+    "volume_mm3": 2721.31,
+    "bounds": [
+      [
+        -21.0,
+        21.0
+      ],
+      [
+        0.0,
+        22.0
+      ],
+      [
+        0.0,
+        3.35
+      ]
+    ]
+  },
+  "DB23_Nut_Keeper_v0.3.stl": {
+    "triangles": 28,
+    "nonmanifold_edges": 0,
+    "components": 1,
+    "volume_mm3": 53.169,
+    "bounds": [
+      [
+        -3.7,
+        3.7
+      ],
+      [
+        0.65,
+        4.8
+      ],
+      [
+        0.0,
+        2.4
+      ]
+    ]
+  },
+  "DB23_Anchor_Shims_v0.3.stl": {
+    "triangles": 1024,
+    "nonmanifold_edges": 0,
+    "components": 2,
+    "volume_mm3": 35.86,
+    "bounds": [
+      [
+        -8.5,
+        8.5
+      ],
+      [
+        -3.5,
+        3.5
+      ],
+      [
+        0.0,
+        0.6
+      ]
+    ]
+  },
+  "DB23_Anchor_Shim_Single_v0.3.stl": {
+    "triangles": 512,
+    "nonmanifold_edges": 0,
+    "components": 1,
+    "volume_mm3": 17.93,
+    "bounds": [
+      [
+        -3.5,
+        3.5
+      ],
+      [
+        -3.5,
+        3.5
+      ],
+      [
+        0.0,
+        0.6
+      ]
+    ]
+  },
+  "DB23_Holder_v0.3.step": {
+    "valid": true,
+    "solids": 1,
+    "volume_mm3": 1642.664,
+    "pin_bores_checked": 23,
+    "blocked_pin_bores": []
+  }
+}

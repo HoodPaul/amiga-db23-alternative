@@ -1,0 +1,100 @@
+DB23 HOLDER v0.3: MECHANICAL FIT PROTOTYPE
+
+The mating connector is a genuine DB23 solder-cup part. Its assumed rear body
+and solder-cup dimensions have NOT been measured. This part is an actual
+printable fit trial, not a guarantee of compatibility with a bought connector.
+
+REBUILD
+From the project root: python3 source/build_mechanical.py
+The builder reads source/design_parameters.json, emits the editable OpenSCAD
+file, compiles each STL using native OpenSCAD, checks manifold edges and mesh
+connectivity, and exports an analytic single-solid STEP holder with CadQuery.
+The 23 uninterrupted pin bores are also checked by intersecting the STEP solid
+with a test cylinder inside every bore. OpenSCAD is the canonical STL route.
+
+PRINTED PARTS
+1 x DB23_Holder_v0.3.stl
+1 x DB23_Hole_Fit_Coupon_v0.3.stl, before committing to a pin-guide diameter
+2 x DB23_Nut_Keeper_v0.3.stl, optional; screw stems retain nuts once installed
+1 x DB23_Anchor_Shims_v0.3.stl, containing TWO 0.60 mm shims
+Alternatively print DB23_Anchor_Shim_Single_v0.3.stl twice.
+
+The main holder has one connected structural mesh. The shim pair deliberately
+contains two separate printable components. The coupon contains the actual
+23-hole staggered grid at the selected nominal diameter and eight labelled
+holes from 0.75 to 1.10 mm at 0.05 mm increments.
+
+PRINT ORIENTATION
+Place the broad planar bottom of the holder on the bed. The exported holder
+retains assembly Z coordinates, with its bottom at Z=0.60, so use the slicer's
+drop-to-bed function. The nut keeper is already exported cap-face down, tongue
+up. Coupon and shims already sit at Z=0. Small jackpost horizontal bores and
+the ends of nut pockets may need local support or subsequent drilling,
+depending on printer, material and settings. Clear all support/debris.
+
+Do not assume that the nominal STL hole diameter equals a printed hole. Select
+the guide diameter after printing the coupon, or carefully finish the bores
+with an appropriate drill/reamer. A 0.64 mm square pin has a 0.9051 mm diagonal.
+A finished 0.80 mm round guide is therefore not a clearance fit for that pin.
+The selected nominal 0.92 mm geometry has very little theoretical clearance;
+printer compensation or a larger coupon-selected diameter may be required.
+
+Avoid installing a close-fitting printed pin guide while applying sustained
+soldering heat. Use a removable alignment jig where practical, and check that
+all pins remain straight and unstressed afterwards. Actual printed material,
+temperature capability and creep need assessment in the target machine.
+
+ASSEMBLY COORDINATES (mm)
+X is across the port, Y points into the machine, Z is above motherboard top.
+Main holder: leave STL at its exported coordinates.
+Anchor shim centres: X=+/-22.135, Y=9.50, bottom Z=0.00, top Z=0.60.
+The pair STL has centres X=+/-5.00 at Y=0; separate/position the two components.
+The single-shim STL is centred on X=0,Y=0 and needs only a translation.
+Keeper STL: rotate 180 degrees about Y, then translate X=+/-22.135,
+Y=0, Z=12.20. Its cap then lies from Z=11.00 to 12.20, with its tongue
+projecting down to Z=9.80. Do not apply the slicer's print orientation to the
+assembly render. All measurements here refer to the v0.3 defaults.
+
+FASTENERS AND CLEARANCES
+Cable-facing jackpost sockets must use the original-compatible 4-40 UNC thread.
+The rear stem and captive nut must match each other. Current prototype pockets
+assume an M3-sized nut, 5.50 mm across flats and 2.40 mm thick, plus 0.20 mm
+total pocket clearance. This does not mean any random D-sub jackpost is M3.
+
+The flange FRONT reference plane is Y=0; its assumed metal thickness occupies
+Y=0..0.50. The holder front face is Y=0.65. This preserves 0.15 mm assembly
+clearance behind the assumed flange; final clamping fit needs physical checks.
+The reference nut pocket occupies Y=1.70..4.30. Keep the jackpost rear stem end
+at Y<=5.50, preferably around Y=4.80, measured from the flange reference datum.
+Select or trim the stem only after measuring the actual flange and hardware.
+An 8 mm rear stem can collide with the motherboard anchor bolt head.
+
+Anchor bosses have their top at Z=2.40. Use anchor bolt heads AND any washers
+whose combined height is <=3.00 mm and outer diameter <=6.00 mm. This places
+the head top at Z<=5.40, below the assumed PCB underside at Z=5.75. A taller
+head/washer stack can strike the PCB. No 8 mm jackpost is specified as a
+drop-in part. Allow clearance under the motherboard for retention hardware.
+
+Fit the supplied 0.60 mm shims under the two mounting bosses before tightening.
+They span the intentional 0.60 mm frame-to-motherboard gap. Without the shims,
+tightening the anchors would pull the frame down and strain the signal pins.
+The frame clearance holes are 3.30 mm; do not enlarge the original motherboard
+holes to match them. Verify the original holes and select suitable hardware.
+The PCB front corners must have the matching 2.00 x 1.50 mm notches present in
+the shared PCB outline, to clear the two nut towers. A plain 40 x 12 mm
+rectangle collides with those towers. Lateral stops have 0.25 mm clearance
+outside each nominal PCB side edge; adjust for the actual printed fit.
+
+Captive nuts alone do not anchor the assembly to the motherboard. The two
+positive retention fasteners or a suitable chassis attachment must take cable
+mating loads. Plastic locating pegs are not a substitute for that retention.
+Provide a separate metal shell-ground bond to the original shield-ground
+points. Plastic holders and shims do not provide electrical grounding.
+
+LOCAL SHAPE PARAMETERS
+The generated SCAD exposes every shared and local parameter. Additional local
+shape choices in source/build_mechanical.py include rail width/height, nut
+tower width/depth/height, rear ledge depth, shield access slots, 2.40 mm anchor
+boss height and keeper fit clearance. These are design choices, not sourced
+Commodore or solder-cup connector dimensions. The shield pad positions and
+23-hole motherboard grid come from the shared parameter file.

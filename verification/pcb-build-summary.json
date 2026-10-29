@@ -1,0 +1,28 @@
+{
+  "tool_version": "7.0.11+dfsg-1build4",
+  "revision": "0.3",
+  "results": {
+    "DB23M_RGB": {
+      "saved_board_reloaded": true,
+      "mapping_assertions_passed": true,
+      "native_drc_report_written": true,
+      "drc_violations": 0,
+      "unconnected_pads": 0,
+      "footprint_errors": 0,
+      "report": "verification/DB23M_RGB-drc.rpt",
+      "native_schematic_netlist_matches_board": true,
+      "native_erc": "Not run: KiCad 7 CLI does not expose ERC; parser and exact exported netlist were checked instead."
+    },
+    "DB23F_Floppy": {
+      "saved_board_reloaded": true,
+      "mapping_assertions_passed": true,
+      "native_drc_report_written": true,
+      "drc_violations": 0,
+      "unconnected_pads": 0,
+      "footprint_errors": 0,
+      "report": "verification/DB23F_Floppy-drc.rpt",
+      "native_schematic_netlist_matches_board": true,
+      "native_erc": "Not run: KiCad 7 CLI does not expose ERC; parser and exact exported netlist were checked instead."
+    }
+  }
+}

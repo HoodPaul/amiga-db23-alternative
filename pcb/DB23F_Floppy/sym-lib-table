@@ -1,0 +1,3 @@
+(sym_lib_table
+  (lib (name "DB23_Local")(type "KiCad")(uri "${KIPRJMOD}/DB23_Local.kicad_sym")(options "")(descr "Project-local passive connectors"))
+)

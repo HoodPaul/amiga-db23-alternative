@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<export version="E">
+  <design>
+    <source>/workspace/scratch/a29874c2019a/DB23_Replacement_v0.3/pcb/DB23M_RGB/DB23M_RGB.kicad_sch</source>
+    <date>Thu Oct 29 11:58:45 2026</date>
+    <tool>Eeschema 7.0.11+dfsg-1build4</tool>
+    <sheet number="1" name="/" tstamps="/">
+      <title_block>
+        <title>DB23M_RGB DB23 replacement</title>
+        <company>UK Computing Limited</company>
+        <rev>0.3</rev>
+        <date>2026-10-29</date>
+        <source>DB23M_RGB.kicad_sch</source>
+        <comment number="1" value="FIT PROTOTYPE - measure selected solder-cup DB23 before manufacture"/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+        <comment number="5" value=""/>
+        <comment number="6" value=""/>
+        <comment number="7" value=""/>
+        <comment number="8" value=""/>
+        <comment number="9" value=""/>
+      </title_block>
+    </sheet>
+  </design>
+  <components>
+    <comp ref="J1">
+      <value>DB23M SOLDER CUPS</value>
+      <footprint>DB23_Local:Cups23_M</footprint>
+      <libsource lib="DB23_Local" part="Cups23" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="DB23M_RGB.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>8bc7b1ba-6d22-5df8-b210-7d6371c76a83</tstamps>
+    </comp>
+    <comp ref="J2">
+      <value>MOTHERBOARD PINS</value>
+      <footprint>DB23_Local:Motherboard23_M</footprint>
+      <libsource lib="DB23_Local" part="Motherboard23" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="DB23M_RGB.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>b5e6f3db-c31e-59e1-98d8-574fe87d1cf3</tstamps>
+    </comp>
+    <comp ref="J3">
+      <value>MANUAL SHIELD STRAPS</value>
+      <footprint>DB23_Local:ShieldStraps_M</footprint>
+      <libsource lib="DB23_Local" part="ShieldStraps" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="DB23M_RGB.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>15c05d52-cb8e-52a6-8c84-6b082572d3a0</tstamps>
+    </comp>
+  </components>
+  <libparts>
+    <libpart lib="DB23_Local" part="Cups23">
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">Cups23</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+        <pin num="3" name="3" type="passive"/>
+        <pin num="4" name="4" type="passive"/>
+        <pin num="5" name="5" type="passive"/>
+        <pin num="6" name="6" type="passive"/>
+        <pin num="7" name="7" type="passive"/>
+        <pin num="8" name="8" type="passive"/>
+        <pin num="9" name="9" type="passive"/>
+        <pin num="10" name="10" type="passive"/>
+        <pin num="11" name="11" type="passive"/>
+        <pin num="12" name="12" type="passive"/>
+        <pin num="13" name="13" type="passive"/>
+        <pin num="14" name="14" type="passive"/>
+        <pin num="15" name="15" type="passive"/>
+        <pin num="16" name="16" type="passive"/>
+        <pin num="17" name="17" type="passive"/>
+        <pin num="18" name="18" type="passive"/>
+        <pin num="19" name="19" type="passive"/>
+        <pin num="20" name="20" type="passive"/>
+        <pin num="21" name="21" type="passive"/>
+        <pin num="22" name="22" type="passive"/>
+        <pin num="23" name="23" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="DB23_Local" part="Motherboard23">
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">Motherboard23</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+        <pin num="3" name="3" type="passive"/>
+        <pin num="4" name="4" type="passive"/>
+        <pin num="5" name="5" type="passive"/>
+        <pin num="6" name="6" type="passive"/>
+        <pin num="7" name="7" type="passive"/>
+        <pin num="8" name="8" type="passive"/>
+        <pin num="9" name="9" type="passive"/>
+        <pin num="10" name="10" type="passive"/>
+        <pin num="11" name="11" type="passive"/>
+        <pin num="12" name="12" type="passive"/>
+        <pin num="13" name="13" type="passive"/>
+        <pin num="14" name="14" type="passive"/>
+        <pin num="15" name="15" type="passive"/>
+        <pin num="16" name="16" type="passive"/>
+        <pin num="17" name="17" type="passive"/>
+        <pin num="18" name="18" type="passive"/>
+        <pin num="19" name="19" type="passive"/>
+        <pin num="20" name="20" type="passive"/>
+        <pin num="21" name="21" type="passive"/>
+        <pin num="22" name="22" type="passive"/>
+        <pin num="23" name="23" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="DB23_Local" part="ShieldStraps">
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">ShieldStraps</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+  </libparts>
+  <libraries>
+    <library logical="DB23_Local">
+      <uri>/workspace/scratch/a29874c2019a/DB23_Replacement_v0.3/pcb/DB23M_RGB/DB23_Local.kicad_sym</uri>
+    </library>
+  </libraries>
+  <nets>
+    <net code="1" name="/P01">
+      <node ref="J1" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="J2" pin="1" pinfunction="1" pintype="passive"/>
+    </net>
+    <net code="2" name="/P02">
+      <node ref="J1" pin="2" pinfunction="2" pintype="passive"/>
+      <node ref="J2" pin="2" pinfunction="2" pintype="passive"/>
+    </net>
+    <net code="3" name="/P03">
+      <node ref="J1" pin="3" pinfunction="3" pintype="passive"/>
+      <node ref="J2" pin="3" pinfunction="3" pintype="passive"/>
+    </net>
+    <net code="4" name="/P04">
+      <node ref="J1" pin="4" pinfunction="4" pintype="passive"/>
+      <node ref="J2" pin="4" pinfunction="4" pintype="passive"/>
+    </net>
+    <net code="5" name="/P05">
+      <node ref="J1" pin="5" pinfunction="5" pintype="passive"/>
+      <node ref="J2" pin="5" pinfunction="5" pintype="passive"/>
+    </net>
+    <net code="6" name="/P06">
+      <node ref="J1" pin="6" pinfunction="6" pintype="passive"/>
+      <node ref="J2" pin="6" pinfunction="6" pintype="passive"/>
+    </net>
+    <net code="7" name="/P07">
+      <node ref="J1" pin="7" pinfunction="7" pintype="passive"/>
+      <node ref="J2" pin="7" pinfunction="7" pintype="passive"/>
+    </net>
+    <net code="8" name="/P08">
+      <node ref="J1" pin="8" pinfunction="8" pintype="passive"/>
+      <node ref="J2" pin="8" pinfunction="8" pintype="passive"/>
+    </net>
+    <net code="9" name="/P09">
+      <node ref="J1" pin="9" pinfunction="9" pintype="passive"/>
+      <node ref="J2" pin="9" pinfunction="9" pintype="passive"/>
+    </net>
+    <net code="10" name="/P10">
+      <node ref="J1" pin="10" pinfunction="10" pintype="passive"/>
+      <node ref="J2" pin="10" pinfunction="10" pintype="passive"/>
+    </net>
+    <net code="11" name="/P11">
+      <node ref="J1" pin="11" pinfunction="11" pintype="passive"/>
+      <node ref="J2" pin="11" pinfunction="11" pintype="passive"/>
+    </net>
+    <net code="12" name="/P12">
+      <node ref="J1" pin="12" pinfunction="12" pintype="passive"/>
+      <node ref="J2" pin="12" pinfunction="12" pintype="passive"/>
+    </net>
+    <net code="13" name="/P13">
+      <node ref="J1" pin="13" pinfunction="13" pintype="passive"/>
+      <node ref="J2" pin="13" pinfunction="13" pintype="passive"/>
+    </net>
+    <net code="14" name="/P14">
+      <node ref="J1" pin="14" pinfunction="14" pintype="passive"/>
+      <node ref="J2" pin="14" pinfunction="14" pintype="passive"/>
+    </net>
+    <net code="15" name="/P15">
+      <node ref="J1" pin="15" pinfunction="15" pintype="passive"/>
+      <node ref="J2" pin="15" pinfunction="15" pintype="passive"/>
+    </net>
+    <net code="16" name="/P16">
+      <node ref="J1" pin="16" pinfunction="16" pintype="passive"/>
+      <node ref="J2" pin="16" pinfunction="16" pintype="passive"/>
+    </net>
+    <net code="17" name="/P17">
+      <node ref="J1" pin="17" pinfunction="17" pintype="passive"/>
+      <node ref="J2" pin="17" pinfunction="17" pintype="passive"/>
+    </net>
+    <net code="18" name="/P18">
+      <node ref="J1" pin="18" pinfunction="18" pintype="passive"/>
+      <node ref="J2" pin="18" pinfunction="18" pintype="passive"/>
+    </net>
+    <net code="19" name="/P19">
+      <node ref="J1" pin="19" pinfunction="19" pintype="passive"/>
+      <node ref="J2" pin="19" pinfunction="19" pintype="passive"/>
+    </net>
+    <net code="20" name="/P20">
+      <node ref="J1" pin="20" pinfunction="20" pintype="passive"/>
+      <node ref="J2" pin="20" pinfunction="20" pintype="passive"/>
+    </net>
+    <net code="21" name="/P21">
+      <node ref="J1" pin="21" pinfunction="21" pintype="passive"/>
+      <node ref="J2" pin="21" pinfunction="21" pintype="passive"/>
+    </net>
+    <net code="22" name="/P22">
+      <node ref="J1" pin="22" pinfunction="22" pintype="passive"/>
+      <node ref="J2" pin="22" pinfunction="22" pintype="passive"/>
+    </net>
+    <net code="23" name="/P23">
+      <node ref="J1" pin="23" pinfunction="23" pintype="passive"/>
+      <node ref="J2" pin="23" pinfunction="23" pintype="passive"/>
+    </net>
+    <net code="24" name="/SHIELD">
+      <node ref="J3" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="J3" pin="2" pinfunction="2" pintype="passive"/>
+    </net>
+  </nets>
+</export>

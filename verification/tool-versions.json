@@ -1,0 +1,12 @@
+{
+  "python": "3.12.14",
+  "kicad": "7.0.11+dfsg-1build4",
+  "openscad": "2021.01",
+  "inkscape": "1.2.2",
+  "tested_python_packages": {
+    "cadquery": "2.7.0",
+    "vtk": "9.3.1",
+    "Pillow": "12.3.0",
+    "reportlab": "4.4.9"
+  }
+}
