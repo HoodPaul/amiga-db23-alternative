@@ -11,6 +11,10 @@ Orders reported by Paul; receipt and physical checks are pending.
 
 The PCB quantity corrects the earlier record of 20. Earlier quoted PCB and shipping prices relate to the 20-board screenshot and are not the final price for 30 boards. Order numbers, final charges and delivery dates were not supplied. Product options are recorded from Paul's supplied descriptions, not independently verified seller specifications.
 
+## DB23 connector order
+
+Paul also confirmed ordering **5 male and 5 female DB23 connectors** from [this AliExpress listing](https://www.aliexpress.com/item/1005012138133288.html). DB23 was explicitly confirmed after a DB21 typo. This initial quantity supports five video and five floppy prototypes, subject to actual connector fit. Receipt, dimensions and compatibility remain unverified.
+
 ## Selected 11.5 mm pins
 
 Use 23 equal-length pins per adapter, untrimmed after removing the plastic carrier. The nominal 0.64 mm square section remains a design assumption to confirm on arrival.

@@ -66,6 +66,15 @@
       "total_strips": 40,
       "pins_per_strip": 40,
       "total_nominal_pins": 1600
+    },
+    {
+      "item": "DB23 connectors",
+      "supplier": "AliExpress",
+      "url": "https://www.aliexpress.com/item/1005012138133288.html",
+      "male_quantity": 5,
+      "female_quantity": 5,
+      "total_units": 10,
+      "status": "Ordered, reported by Paul; DB23 confirmed following a DB21 typo. Actual dimensions, solder-cup configuration and fit not physically verified."
     }
   ],
   "hardware_status": "Ordered, as reported by Paul; receipt and dimensions not physically verified.",
