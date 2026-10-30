@@ -1,6 +1,6 @@
 {
   "revision": "0.5",
-  "date": "2026-10-29",
+  "date": "2026-10-30",
   "status": "FIT PROTOTYPE - CONNECTOR SAMPLE NOT MEASURED",
   "coordinate_system": "mm; x across port, y inward from flange front reference plane, z above motherboard top; top view has flange towards negative y; male pin 1 is at positive x",
   "motherboard": {
@@ -129,7 +129,7 @@
     "overall_width": 52.0,
     "front_y": 0.65,
     "rear_y": 13.0,
-    "bottom_clearance": 0.6,
+    "bottom_clearance": 0.0,
     "pin_block_width": 35.5,
     "pin_block_front_y": 7.1,
     "pin_block_rear_y": 12.0,
@@ -146,7 +146,7 @@
     "nut_axis_y_assumed": 3.0,
     "nut_axis_z": 6.25,
     "nut_thread_requirement": "Prototype defaults use M3 captive nuts and jackposts with M3 male rear stems / 4-40 UNC female cable-facing threads. HARTING 09670009924 is a candidate, not a frozen BOM item. Match actual nut dimensions and mounting stem; no assumption of M3.5.",
-    "note": "FIT PROTOTYPE. Solid printed base; only two integrated mounting feet reach motherboard Z0. The rest retains Z0.60 clearance. No separate anchor shims. Solder-cup connector, material, print fit and insertion strength require physical trials.",
+    "note": "FIT PROTOTYPE. The printed base has one broad, coplanar Z0 underside with no projecting mounting feet or separate anchor shims. The PCB support plane remains at Z5.75. Motherboard contact, solder-cup connector, material, print fit and insertion strength require physical trials.",
     "rail_inner_x": 17.25,
     "rail_front_inner_x": 18.6,
     "rail_step_y": 7.1,
@@ -157,8 +157,6 @@
     "anchor_boss_top_z": 5.75,
     "rear_infill_front_y": 12.0,
     "rear_infill_top_z": 5.75,
-    "foot_diameter": 7.0,
-    "foot_bottom_z": 0.0,
     "jackpost_relief_end_y": 6.2,
     "jackpost_stem_max_end_y": 6.0,
     "jackpost_stem_preferred_end_y": 4.8,
@@ -171,7 +169,7 @@
     "latch_notch_rear_y": 5.13,
     "latch_notch_bottom_z": 7.05,
     "latch_notch_top_z": 8.05,
-    "anchor_assembly_note": "Insert M3 screws upwards with an insulating washer beneath each head and the motherboard; fit nuts directly on the supported adapter-PCB SHIELD mounting pads. Verify flat seating and underside clearances. No default top washer and no separate printed foot shims.",
+    "anchor_assembly_note": "Insert M3 screws upwards with an insulating washer beneath each head and the motherboard; fit nuts directly on the supported adapter-PCB SHIELD mounting pads. Verify the broad base underside sits flat and that the motherboard has no obstructing parts or solder joints beneath it. No default top washer and no separate printed shims.",
     "shell_relief_note": "Shallow top recesses under dedicated J4 shell-bond wire holes clear pre-soldered fillets. Route insulated shell wires above PCB, clear of signal pins and cap latches.",
     "outer_relief_x": 25.0,
     "outer_relief_front_y": 5.1,
@@ -181,7 +179,7 @@
     "ground_wire_groove_inner_x": 24.0,
     "ground_wire_groove_width": 1.2,
     "ground_wire_groove_height": 1.0,
-    "ground_wire_note": "Right integrated foot has an outward-open 1.20mm wire groove, Z0..1.00, beginning at X24.00 on the original shell-pad annulus. Pre-solder the deliberate ground lead to the motherboard shell pad, route the insulated lead outwards then up to J4. Actual solder/insulation clearance must be trialled; the remaining foot bearing must sit flat.",
+    "ground_wire_note": "The right side of the flat base has an outward-open 1.20mm recessed wire channel, Z0..1.00, beginning at X24.00 on the original shell-pad axis. Pre-solder the deliberate ground lead to the motherboard shell pad, route the insulated lead outwards then up to J4. Actual solder/insulation clearance must be trialled; the wire and fillet must not prevent the base sitting flat.",
     "forward_end_outer_x": 25.6,
     "forward_end_note": "Squared end faces at X+/-25.60 from Y0.65 through Y5.10. This fills the former X25 rear-corner cutback by 0.60mm and trims the earlier front X26 face by 0.40mm so the outer end wall is continuous. The nut pocket remains unchanged; outer wall is nominal0.615mm and rear web0.80mm. The neighbouring-lug relief starts behind the end towers at Y5.10 and remains X25 to Y7.50. No new height-dependent neighbour-clearance assumption is introduced."
   },
@@ -193,11 +191,11 @@
     "floor_thickness": 3.0,
     "tip_stop_z": -3.2,
     "support_top_z": 0.0,
-    "support_foot_diameter": 7.0,
+    "support_pad_diameter": 7.0,
     "locating_peg_diameter": 2.9,
     "locating_peg_height": 1.2,
     "print_z_offset": 6.2,
-    "note": "Loading only. Two annular supports carry the integrated mounting feet at motherboard datumZ0; the central floor stops all pin tips atZ-3.20. Remove before soldering. Equal top heights require equal measured10.70mm pin lengths and sufficient guide retention."
+    "note": "Loading only. Two annular pads support the flat base at motherboard datum Z0; the central floor stops all pin tips at Z-3.20. Remove before soldering. Equal top heights require equal measured 10.70mm pin lengths and sufficient guide retention."
   },
   "mounting": {
     "direction": "Screw head and insulating washer beneath motherboard; screw upward through base and PCB; nut directly on supported SHIELD pad above adapter PCB",

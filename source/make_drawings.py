@@ -37,7 +37,7 @@ def header(num,title,sub):
  txt(18,290,'AMIGA DB23 PROJECT',9,True,white)
  txt(18,283,'Paul of UK Computing Limited | Jon of JMC Electronics | AI assistance through Codex',6.8,False,white)
  txt(18,264,title,20,True,NAVY);txt(18,256,sub,8.5,col=GREY)
- line(18,17,192,17);txt(18,11,f'29 October 2026 | Revision {REV} | Fit prototype; physical fit unverified',7,col=GREY);txt(181,11,f'{num} / 5',7,col=GREY)
+ line(18,17,192,17);txt(18,11,f'30 October 2026 | Revision {REV} | Fit prototype; physical fit unverified',7,col=GREY);txt(181,11,f'{num} / 5',7,col=GREY)
 
 def image(name,x,y,w,h):c.drawImage(str(ROOT/'previews'/name),x*mm,y*mm,width=w*mm,height=h*mm,preserveAspectRatio=True,anchor='c',mask='auto')
 def table(y,rows,left=18,width=174,col2=111,step=8,size=8.4):
@@ -63,7 +63,7 @@ c.showPage()
 
 header(2,'The two printed parts','A solid base carries the PCB; a keyed cover clips onto the front towers')
 image('base-and-cap.png',18,143,174,108)
-para(18,137,'The squared forward ends have flat X+/-25.60 outer faces, with 0.60 mm added at the former rear-corner rebates. Integrated feet replace separate shims. '
+para(18,137,'The squared forward ends have flat X+/-25.60 outer faces, with 0.60 mm added at the former rear-corner rebates. The complete underside is lowered to a coplanar Z0 surface; there are no projecting feet or separate shims. '
      'The 23-pin guide retains a 1.25 mm gap below the PCB; J4 recesses clear covered joints.',size=8.8,leading=12)
 image('pin-height-jig.png',18,49,98,70)
 txt(121,112,'Load the pins first',10,True,NAVY)
@@ -86,7 +86,7 @@ stage(73,'Part 3 - Fit the jackpost hardware',
       'Insert the jackpost nuts and fit the hex posts through the connector flange. Check actual flange bearing, nut fit and rear stem projection. '
       'Leave the decorative cap off while fitting and checking the mounting hardware.')
 stage(48,'Part 4 - Mount, solder, check, then cap',
-      'Check all 23 circuits off the motherboard. Pre-tack the motherboard shell-pad lead with the base removed, then route it through the foot groove. Install screws upwards from below, with insulating washers below the motherboard and nuts on the PCB mounting pads. '
+      'Check all 23 circuits off the motherboard. Pre-tack the motherboard shell-pad lead with the base removed, then route it through the recessed right-side base channel. Install screws upwards from below, with insulating washers below the motherboard and nuts on the PCB mounting pads. '
       'Secure the supported stack, solder the motherboard tails and complete the shell bond. Inspect and test before clipping the cover on last.')
 c.showPage()
 

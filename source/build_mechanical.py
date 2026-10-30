@@ -75,7 +75,6 @@ def holder():
   x0,x1=sorted((s*H['rail_front_inner_x'],s*hw));add.append(box(x0,x1,H['front_y'],H['rail_step_y'],bz,B['bottom_z']))
   x0,x1=sorted((s*H['rail_inner_x'],s*hw));add.append(box(x0,x1,H['rail_step_y'],H['rear_y'],bz,B['bottom_z']))
   x0,x1=sorted((s*H['tower_inner_x'],s*hw));add.append(box(x0,x1,H['front_y'],H['tower_rear_y'],bz,H['tower_top_z']))
-  add.append(zc(s*AX,AY,H['foot_diameter'],H['foot_bottom_z'],B['bottom_z']))
   sub.append(zc(s*AX,AY,H['anchor_clearance_diameter'],-EPS,H['tower_top_z']+EPS))
   sub.append(yc(s*AX,nz,H['jackpost_through_diameter'],H['front_y']-EPS,H['jackpost_relief_end_y']))
   pts=[[s*AX+af/math.sqrt(3)*math.cos(math.radians(a)),nz+af/math.sqrt(3)*math.sin(math.radians(a))] for a in range(30,331,60)]
@@ -126,7 +125,7 @@ def jig():
  hw=J['overall_width']/2;stop=J['tip_stop_z'];top=J['support_top_z']
  add=[box(-hw,hw,J['front_y'],J['rear_y'],stop-J['floor_thickness'],stop)]
  for s in(-1,1):
-  add.append(zc(s*AX,AY,J['support_foot_diameter'],stop,top))
+  add.append(zc(s*AX,AY,J['support_pad_diameter'],stop,top))
   add.append(zc(s*AX,AY,J['locating_peg_diameter'],top-EPS,top+J['locating_peg_height']))
  return union(*add)
 
@@ -153,7 +152,8 @@ header=f'''// DB23 v{R}: FIT PROTOTYPE. CONNECTOR AND PRINT FIT UNMEASURED.
 // Generated from source/design_parameters.json by source/build_mechanical.py.
 // Holder/STEP coordinates: x across, y rearward, z above motherboard top.
 // Cap STL exports roof-down; cap STEP retains assembly coordinates.
-// No separate foot shims: integrated feet reach Z0; body remains Z0.60.
+// Flat base: all underside bearing faces are coplanar at motherboard Z0.
+// There are no projecting mounting feet and no separate printed shims.
 // Choose holder, cap, cap_assembly, pin_height_jig, coupon,
 // clip_coupon_base or clip_coupon_cap. Default is holder.
 part="holder";
@@ -246,7 +246,7 @@ for side in(-1,1):
  checks[f'stem_mounting_nut_{side}_overlap_mm3']=chk('stem versus nut',vol(stem,outer_nut))
  if washer is not None:checks[f'stem_mounting_washer_{side}_overlap_mm3']=chk('stem versus washer',vol(stem,washer))
  checks[f'stem_base_{side}_overlap_mm3']=chk('stem versus base',vol(stem,base))
-checks.update(screw_tip_z=tip,nut_top_z=nut_top,default_screw_protrusion_above_nut=tip-nut_top,cap_roof_clearance_above_tip=C['roof_bottom_z']-tip,guide_fillet_gap=B['bottom_z']-H['pin_block_top_z'],integrated_foot_bottom_z=H['foot_bottom_z'],main_body_bottom_z=H['bottom_clearance'],jackpost_stem_max_end_y=H['jackpost_stem_max_end_y'],jackpost_relief_end_y=H['jackpost_relief_end_y'],cap_latch_engagement_y=H['tower_rear_y']-C['latch_hook_front_y'],latch_minimum_assembly_deflection_estimate=H['tower_rear_y']-C['latch_hook_front_y']+.1,latch_elastic_strength_tested=False,cap_print_transform={'rotate_x_degrees':180,'translate_z':C['print_translate_z']},jig_print_offset_z=J['print_z_offset'])
+checks.update(screw_tip_z=tip,nut_top_z=nut_top,default_screw_protrusion_above_nut=tip-nut_top,cap_roof_clearance_above_tip=C['roof_bottom_z']-tip,guide_fillet_gap=B['bottom_z']-H['pin_block_top_z'],flat_base_bottom_z=H['bottom_clearance'],projecting_mounting_feet=False,jackpost_stem_max_end_y=H['jackpost_stem_max_end_y'],jackpost_relief_end_y=H['jackpost_relief_end_y'],cap_latch_engagement_y=H['tower_rear_y']-C['latch_hook_front_y'],latch_minimum_assembly_deflection_estimate=H['tower_rear_y']-C['latch_hook_front_y']+.1,latch_elastic_strength_tested=False,cap_print_transform={'rotate_x_degrees':180,'translate_z':C['print_translate_z']},jig_print_offset_z=J['print_z_offset'])
 results['structural_checks']=checks
 (OUT/'mechanical_validation.json').write_text(json.dumps(results,indent=2)+'\n')
 # Remove obsolete mechanical revision names only after a complete successful build.

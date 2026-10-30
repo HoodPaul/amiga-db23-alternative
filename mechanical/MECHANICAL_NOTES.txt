@@ -45,9 +45,9 @@ bearing check. Fit a measured bearing spacer if needed; do not strain cups or
 signal tails to close an assumed gap.
 
 BASE AND SUPPORTS
-Only the two integrated annular mounting feet reach motherboard Z0. The rest
-of the main body remains Z0.60 above the motherboard. The former loose0.60
-shims have been integrated into these feet without changing the PCB height.
+The complete base underside reaches motherboard Z0 as one broad, coplanar
+bearing surface. The two former circular mounting feet and loose0.60 shims
+are absent. The PCB underside remains atZ5.75, so its height is unchanged.
 Mounting axes remain X+/-22.135,Y9.50; base and new PCB holes are diameter3.30.
 The referenced motherboard holes remain nominal3.20: DO NOT enlarge or drill
 the original motherboard to match printed clearances.
@@ -85,11 +85,11 @@ The insulated underside screw heads cannot be relied on for shell continuity.
 Provide a deliberate wire bond from an original motherboard shell-ground pad
 to J4, and from J4/SHIELD to the DB23 metal shell. Neither captive nuts nor
 plastic carry this electrical bond. Keep SHIELD separate from signal grounds.
-The RIGHT integrated foot contains a radial wire/solder relief: X24.00 to
+The RIGHT side of the flat base contains a recessed wire/solder channel: X24.00 to
 the outside edge, Y9.50+/-0.60, Z0..1.00. Pre-tack the ground lead to the actual
 shell-pad annulus, route its insulated section outwards and then up to J4.
-Check real joint/insulation fit so the foot sits flat and does not crush the
-wire. The rest of the annular foot remains the bearing surface. Do not route
+Check real joint/insulation fit so the base sits flat and does not crush the
+wire. The surrounding underside remains the bearing surface. Do not route
 bare wire across the23-pin signal field or obstruct the cap latches.
 
 JACKPOST NUTS AND STEMS
@@ -117,10 +117,9 @@ fit. Side/rear skirt reliefs deliberately clear the upper mounting nuts.
 Fit the cap LAST, after mounting, soldering and continuity inspection.
 
 PRINT ORIENTATION AND SUPPORTS
-Base STL retains feetZ0, bodyZ0.60. Its lower face is NOT fully planar: provide
-local removable support beneath the main body/guide where needed. Do not
-assume an untested wide bridge over the0.60 gap will print accurately. Keep
-supports clear of small bores and remove all debris before pin loading.
+Base STL has one broad, coplanar underside atZ0 for direct print-bed placement.
+The former two circular feet and0.60mm underside bridge are absent. Check first
+layer expansion and keep small bores clear; remove all debris before pin loading.
 The cap STL is already roof-down: the flat outer roof rests on the bed and
 keys/latches build upwards. Local hook ramps need actual print trials.
 The coupon, jig and both clip-fit trial parts are already on the print bed.
@@ -131,7 +130,7 @@ For jig STL/STEP: translateZ-6.20 to restore its loading position.
 Do not apply slicer drop-to-bed to assembly renders of the base or cap STEP.
 
 PIN HEIGHT JIG
-The jig supports the integrated mounting feet atZ0 with loose2.90mm locating
+The jig supports the flat base atZ0 on two annular pads with loose2.90mm locating
 pegs in the3.30mm bores. Its common flat floor stops all23 tips atZ-3.20.
 Equal10.70mm pin lengths then place the upper ends atZ7.50. Equal LOWER
 projection depends on clean seating and flat stops; equal TOP heights also
@@ -144,7 +143,7 @@ BUILD ORDER
 2. Load23pins into base on height jig. Remove jig, lower joinedPCB/DB23,
    seat it without force, and solder pin tops using a tested heat strategy.
 3. Fit jackpost nuts/hardware, check flange bearing and finite stem clearance.
-4. Pre-tack motherboard shell-ground wire and route through the foot cavity.
+4. Pre-tack motherboard shell-ground wire and route through the recessed base channel.
    Install adapter; insert insulated-head screws upward and fit top nuts.
    Secure flat seating, solder motherboard tails and complete shell bonds.
 5. Inspect23independent circuits and the separate shell path; fit cap last.

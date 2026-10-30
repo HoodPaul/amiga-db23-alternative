@@ -2,7 +2,8 @@
 // Generated from source/design_parameters.json by source/build_mechanical.py.
 // Holder/STEP coordinates: x across, y rearward, z above motherboard top.
 // Cap STL exports roof-down; cap STEP retains assembly coordinates.
-// No separate foot shims: integrated feet reach Z0; body remains Z0.60.
+// Flat base: all underside bearing faces are coplanar at motherboard Z0.
+// There are no projecting mounting feet and no separate printed shims.
 // Choose holder, cap, cap_assembly, pin_height_jig, coupon,
 // clip_coupon_base or clip_coupon_cap. Default is holder.
 part="holder";
@@ -10,40 +11,38 @@ $fn=64;
 module holder(){
  difference(){
   union(){
-   translate([-17.75, 7.1, 0.6]) cube([35.5, 4.9, 3.9]);
-   translate([-25.6, 12.0, 0.6]) cube([51.2, 1.0, 5.15]);
-   translate([-26.0, 0.65, 0.6]) cube([7.399999999999999, 6.449999999999999, 5.15]);
-   translate([-26.0, 7.1, 0.6]) cube([8.75, 5.9, 5.15]);
-   translate([-26.0, 0.65, 0.6]) cube([7.399999999999999, 4.449999999999999, 10.4]);
-   translate([-22.135, 9.5, 0.0]) cylinder(d=7.0,h=5.75);
-   translate([18.6, 0.65, 0.6]) cube([7.399999999999999, 6.449999999999999, 5.15]);
-   translate([17.25, 7.1, 0.6]) cube([8.75, 5.9, 5.15]);
-   translate([18.6, 0.65, 0.6]) cube([7.399999999999999, 4.449999999999999, 10.4]);
-   translate([22.135, 9.5, 0.0]) cylinder(d=7.0,h=5.75);
+   translate([-17.75, 7.1, 0.0]) cube([35.5, 4.9, 4.5]);
+   translate([-25.6, 12.0, 0.0]) cube([51.2, 1.0, 5.75]);
+   translate([-26.0, 0.65, 0.0]) cube([7.399999999999999, 6.449999999999999, 5.75]);
+   translate([-26.0, 7.1, 0.0]) cube([8.75, 5.9, 5.75]);
+   translate([-26.0, 0.65, 0.0]) cube([7.399999999999999, 4.449999999999999, 11.0]);
+   translate([18.6, 0.65, 0.0]) cube([7.399999999999999, 6.449999999999999, 5.75]);
+   translate([17.25, 7.1, 0.0]) cube([8.75, 5.9, 5.75]);
+   translate([18.6, 0.65, 0.0]) cube([7.399999999999999, 4.449999999999999, 11.0]);
   }
-  translate([-15.235, 10.92, 0.57]) cylinder(d=0.92,h=3.9600000000000004);
-  translate([-12.465, 10.92, 0.57]) cylinder(d=0.92,h=3.9600000000000004);
-  translate([-9.695, 10.92, 0.57]) cylinder(d=0.92,h=3.9600000000000004);
-  translate([-6.924999999999999, 10.92, 0.57]) cylinder(d=0.92,h=3.9600000000000004);
-  translate([-4.154999999999999, 10.92, 0.57]) cylinder(d=0.92,h=3.9600000000000004);
-  translate([-1.3849999999999998, 10.92, 0.57]) cylinder(d=0.92,h=3.9600000000000004);
-  translate([1.3850000000000016, 10.92, 0.57]) cylinder(d=0.92,h=3.9600000000000004);
-  translate([4.155000000000001, 10.92, 0.57]) cylinder(d=0.92,h=3.9600000000000004);
-  translate([6.925000000000001, 10.92, 0.57]) cylinder(d=0.92,h=3.9600000000000004);
-  translate([9.695, 10.92, 0.57]) cylinder(d=0.92,h=3.9600000000000004);
-  translate([12.465, 10.92, 0.57]) cylinder(d=0.92,h=3.9600000000000004);
-  translate([15.235, 10.92, 0.57]) cylinder(d=0.92,h=3.9600000000000004);
-  translate([-13.85, 8.08, 0.57]) cylinder(d=0.92,h=3.9600000000000004);
-  translate([-11.08, 8.08, 0.57]) cylinder(d=0.92,h=3.9600000000000004);
-  translate([-8.309999999999999, 8.08, 0.57]) cylinder(d=0.92,h=3.9600000000000004);
-  translate([-5.539999999999999, 8.08, 0.57]) cylinder(d=0.92,h=3.9600000000000004);
-  translate([-2.7699999999999996, 8.08, 0.57]) cylinder(d=0.92,h=3.9600000000000004);
-  translate([0.0, 8.08, 0.57]) cylinder(d=0.92,h=3.9600000000000004);
-  translate([2.7700000000000014, 8.08, 0.57]) cylinder(d=0.92,h=3.9600000000000004);
-  translate([5.540000000000001, 8.08, 0.57]) cylinder(d=0.92,h=3.9600000000000004);
-  translate([8.31, 8.08, 0.57]) cylinder(d=0.92,h=3.9600000000000004);
-  translate([11.08, 8.08, 0.57]) cylinder(d=0.92,h=3.9600000000000004);
-  translate([13.85, 8.08, 0.57]) cylinder(d=0.92,h=3.9600000000000004);
+  translate([-15.235, 10.92, -0.03]) cylinder(d=0.92,h=4.5600000000000005);
+  translate([-12.465, 10.92, -0.03]) cylinder(d=0.92,h=4.5600000000000005);
+  translate([-9.695, 10.92, -0.03]) cylinder(d=0.92,h=4.5600000000000005);
+  translate([-6.924999999999999, 10.92, -0.03]) cylinder(d=0.92,h=4.5600000000000005);
+  translate([-4.154999999999999, 10.92, -0.03]) cylinder(d=0.92,h=4.5600000000000005);
+  translate([-1.3849999999999998, 10.92, -0.03]) cylinder(d=0.92,h=4.5600000000000005);
+  translate([1.3850000000000016, 10.92, -0.03]) cylinder(d=0.92,h=4.5600000000000005);
+  translate([4.155000000000001, 10.92, -0.03]) cylinder(d=0.92,h=4.5600000000000005);
+  translate([6.925000000000001, 10.92, -0.03]) cylinder(d=0.92,h=4.5600000000000005);
+  translate([9.695, 10.92, -0.03]) cylinder(d=0.92,h=4.5600000000000005);
+  translate([12.465, 10.92, -0.03]) cylinder(d=0.92,h=4.5600000000000005);
+  translate([15.235, 10.92, -0.03]) cylinder(d=0.92,h=4.5600000000000005);
+  translate([-13.85, 8.08, -0.03]) cylinder(d=0.92,h=4.5600000000000005);
+  translate([-11.08, 8.08, -0.03]) cylinder(d=0.92,h=4.5600000000000005);
+  translate([-8.309999999999999, 8.08, -0.03]) cylinder(d=0.92,h=4.5600000000000005);
+  translate([-5.539999999999999, 8.08, -0.03]) cylinder(d=0.92,h=4.5600000000000005);
+  translate([-2.7699999999999996, 8.08, -0.03]) cylinder(d=0.92,h=4.5600000000000005);
+  translate([0.0, 8.08, -0.03]) cylinder(d=0.92,h=4.5600000000000005);
+  translate([2.7700000000000014, 8.08, -0.03]) cylinder(d=0.92,h=4.5600000000000005);
+  translate([5.540000000000001, 8.08, -0.03]) cylinder(d=0.92,h=4.5600000000000005);
+  translate([8.31, 8.08, -0.03]) cylinder(d=0.92,h=4.5600000000000005);
+  translate([11.08, 8.08, -0.03]) cylinder(d=0.92,h=4.5600000000000005);
+  translate([13.85, 8.08, -0.03]) cylinder(d=0.92,h=4.5600000000000005);
   translate([-22.135, 9.5, -0.03]) cylinder(d=3.3,h=11.059999999999999);
   translate([-22.135, 0.62, 6.25]) rotate([-90,0,0]) cylinder(d=3.4,h=5.58);
   translate([0, 4.3, 0]) rotate([90,0,0]) linear_extrude(2.5999999999999996) polygon([[-19.285, 7.895448267190433], [-22.135, 9.540896534380867], [-24.985000000000003, 7.895448267190433], [-24.985000000000003, 4.604551732809566], [-22.135, 2.959103465619133], [-19.285000000000004, 4.604551732809565]]);

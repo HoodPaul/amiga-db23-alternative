@@ -4,7 +4,7 @@
 
 Revision 0.5 uses a solid printed base, a short PCB with mounting ears and two upward metal mounting screws. The separate keyed cap retains the port-jackpost nuts and covers the upper fasteners. Broad supported parts and positive bolts provide the intended load path; no physical strength or print lifetime is established.
 
-The base supports the DB23 flange, the 23-pin guide and the PCB mounting ears. Its integral feet contact the motherboard at the original shell-anchor positions. **The old separate 0.60 mm anchor shims are not used:** that height is incorporated in the feet while preserving the PCB underside at Z5.75.
+The base supports the DB23 flange, the 23-pin guide and the PCB mounting ears. Its complete underside is lowered to one coplanar motherboard Z0 bearing surface. **The two circular feet and old separate 0.60 mm anchor shims are not used.** The upper PCB support plane remains at Z5.75, so the adapter and connector heights are unchanged.
 
 The PCB and connector are soldered together first, then lowered onto the loaded base from above. The cap is fitted after mounting, soldering and inspection. It does not obstruct the top mounting nuts during installation.
 
@@ -28,7 +28,7 @@ All dimensions are millimetres. X runs across the port; positive Y runs inward f
 | Pin guide top | Z4.50 |
 | Guide-to-PCB underside gap | 1.25 mm |
 
-The PCB rear has moved from Y16.00 to Y13.00, 0.50 mm behind the OEM reference rear at Y12.50. The cap reaches Y13.20, 0.70 mm behind that OEM reference. The two Ø8 underside washers span 52.27 mm, slightly wider than the 52.00 mm prints; do not treat the whole assembly as a 52 mm rectangular envelope. Actual wire emerging from the foot and side window also needs clearance. The outer assembly still needs checking with the target motherboard and case: matching the original holes does not establish the same external envelope. Photos around CN450 identify a useful region to inspect, but are not dimensional fit evidence. Use the shared parameters for current base/cap extents and the drawing PDF for views.
+The PCB rear has moved from Y16.00 to Y13.00, 0.50 mm behind the OEM reference rear at Y12.50. The cap reaches Y13.20, 0.70 mm behind that OEM reference. The two Ø8 underside washers span 52.27 mm, slightly wider than the 52.00 mm prints; do not treat the whole assembly as a 52 mm rectangular envelope. Actual wire emerging from the recessed base channel and side window also needs clearance. The outer assembly still needs checking with the target motherboard and case: matching the original holes does not establish the same external envelope. Photos around CN450 identify a useful region to inspect, but are not dimensional fit evidence. Use the shared parameters for current base/cap extents and the drawing PDF for views.
 
 The front PCB steps clear the nut towers and assumed connector envelope. Following the marked review, each forward tower now has a flat outer face at X±25.60 from Y0.65 to Y5.10. This adds 0.60 mm at the former rear-corner rebate and trims the formerly wider front by 0.40 mm, removing the stepped thin corner. The matching cap has the same forward profile. The nominal outer nut-pocket wall is 0.615 mm and the rear web 0.80 mm; actual print strength still needs testing.
 
@@ -63,7 +63,7 @@ Print the hole-fit coupon first. Record pin shape, actual bore, any drill/reamer
 
 Nominal equal pin length is 10.70 mm, from Z−3.20 to Z7.50. With an assumed 1.60 mm motherboard this leaves about 1.60 mm below its underside. Confirm actual board thickness, solder protrusion and chassis clearance.
 
-The separate jig supports the new integral feet and provides a common lower-tip stop. Equal lower projection requires a seated base and clean flat stop; equal upper heights additionally require equal pin lengths. Remove the jig vertically before soldering, then recheck the guide grip and all heights. Do not use the motherboard as the fixture.
+The separate jig uses two annular pads to support the flat base and provides a common lower-tip stop. Equal lower projection requires a seated base and clean flat stop; equal upper heights additionally require equal pin lengths. Remove the jig vertically before soldering, then recheck the guide grip and all heights. Do not use the motherboard as the fixture.
 
 The guide top remains 1.25 mm below the PCB for fillets and heat separation. Local J4 reliefs clear pre-soldered wire joints. Keep the actual fillet and insulation envelope within those recesses and away from signal pins; this is not underside soldering access after seating.
 
@@ -83,14 +83,14 @@ Read `mechanical/MECHANICAL_NOTES.txt` for the complete generated notes. Deliver
 
 | File | Use and orientation |
 |---|---|
-| `DB23_Holder_v0.5.stl` / `.step` | Solid base in assembly coordinates; integral feet at Z0, main underside at Z0.60 |
+| `DB23_Holder_v0.5.stl` / `.step` | Solid base in assembly coordinates; broad coplanar underside at Z0 |
 | `DB23_Cap_v0.5.stl` | Cap already roof-down for printing |
 | `DB23_Cap_v0.5.step` | Cap in assembly coordinates |
 | `DB23_Pin_Height_Jig_v0.5.stl` / `.step` | Jig on the print bed; translate Z−6.20 for assembly placement |
 | `DB23_Hole_Fit_Coupon_v0.5.stl` | Guide-hole trials before the base |
 | `DB23_Clip_Fit_Base_v0.5.stl` and `DB23_Clip_Fit_Cap_v0.5.stl` | Matched latch-fit trial before full-size cap |
 
-To restore the cap STL to assembly coordinates, rotate 180° about X, then translate Z+12.20. The base has a stepped underside: printing it on its Z0 feet leaves the main body 0.60 mm above the bed. Use local underside support or a bridging process proven on a trial; do not assume that broad region prints unsupported. The roof-down cap avoids a broad ceiling bridge, but small latch-hook overhangs still need a print trial.
+To restore the cap STL to assembly coordinates, rotate 180° about X, then translate Z+12.20. The base's broad underside is coplanar at Z0 and is the intended print-bed face; the former 0.60 mm underside bridge and two circular feet are absent. Check first-layer expansion and bore closure on a trial. The roof-down cap avoids a broad ceiling bridge, but small latch-hook overhangs still need a print trial.
 
 The base, cap and individual jig are intended as connected parts. Reference meshes under `previews/reference-meshes/` illustrate bought components and are not functional print files.
 
@@ -100,7 +100,7 @@ Remove support and drilling debris before electrical assembly. The print is not 
 
 ## Shell grounding and regeneration
 
-J3 mounting lands and J4 wire pads share the isolated `SHIELD` circuit. Bond the DB23 metal shell deliberately to J4. A separate wire from J4 to the motherboard's original shell-ground pad is required. The right mounting foot has an outward groove beginning at X24.00, centred on Y9.50, nominally 1.20 mm wide and 1.00 mm high. Pre-tack the motherboard pad wire with the base removed, route it outward through this groove and up to J4, and verify the actual wire/fillet envelope does not lift the foot or become pinched. Do not rely on mounting-bolt contact: the default under-head washers are insulating. Plastic does not provide grounding. Check both deliberate bonds after final mechanical assembly.
+J3 mounting lands and J4 wire pads share the isolated `SHIELD` circuit. Bond the DB23 metal shell deliberately to J4. A separate wire from J4 to the motherboard's original shell-ground pad is required. The right side of the flat base has an outward recessed channel beginning at X24.00, centred on Y9.50, nominally 1.20 mm wide and 1.00 mm high. Pre-tack the motherboard pad wire with the base removed, route it outward through this channel and up to J4, and verify the actual wire/fillet envelope does not lift the base or become pinched. Do not rely on mounting-bolt contact: the default under-head washers are insulating. Plastic does not provide grounding. Check both deliberate bonds after final mechanical assembly.
 
 From the project root:
 

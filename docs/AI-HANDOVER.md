@@ -1,7 +1,7 @@
 # AI and engineering handover
 
 **PCB, assembly and mechanical revision:** 0.5  
-**Date:** 29 October 2026  
+**Date:** 30 October 2026
 **State:** Fit prototype. Connector sample, hardware, print fit and physical insertion strength are unmeasured. No assembled electrical operation on an Amiga has been verified.
 
 Project development: **Paul of UK Computing Limited**, **Jon of JMC Electronics** and **AI assistance through Codex**.
@@ -45,7 +45,7 @@ Sourced nominal values: 2.77 mm row pitch, 2.84 mm row spacing and 1.385 mm stag
 
 Revision 0.5 PCB: 51.20 mm overall width, Y4.00–13.00, 1.00 mm assumed thickness, underside Z5.75. Ears begin at Y6.00, reach X±25.00 until Y7.50 and then X±25.60; the local cutback clears a reference neighbouring lug. The stepped front clears the nut towers. Its new J3 mounting holes are Ø3.30 with Ø6.50 exposed lands at the original shell-anchor axes. J4 wire pads at X±18.00, Y7.00 are Ø1.20/2.40. Keep wire and solder away from the top nut-bearing lands.
 
-The 23-pin guide nominally uses Ø0.92 bores for assumed 0.64 mm square pins and stops at Z4.50, leaving 1.25 mm beneath the PCB. The 10.70 mm pins run from Z−3.20 to Z7.50. The base's integral mounting feet reach Z0, incorporating the former 0.60 mm shims without raising the PCB. The separate jig must accommodate these feet and be removed before heat. Printer, pin retention and bore fits require coupons.
+The 23-pin guide nominally uses Ø0.92 bores for assumed 0.64 mm square pins and stops at Z4.50, leaving 1.25 mm beneath the PCB. The 10.70 mm pins run from Z−3.20 to Z7.50. The complete base underside now reaches Z0 as one broad, coplanar surface; the two former circular feet and loose 0.60 mm shims are absent, while the PCB remains at Z5.75. The separate jig supports this flat base and must be removed before heat. Printer, pin retention and bore fits require coupons.
 
 ## Hardware assumptions
 
@@ -61,7 +61,7 @@ Keep the flange-to-cradle bearing check. The illustrative flange is unmeasured; 
 
 Every `P01`–`P23` circuit stays independent and pin-for-pin. The four J3/J4 pads share `SHIELD`, separate from every signal position. Never join video pin 13 to video grounds 16–20 by assumption.
 
-A deliberate DB23 metal-shell bond is required. The default under-head washers are insulating. Require a deliberate J4-to-motherboard original shell-ground-pad wire as well as the connector-shell bond; do not rely on bolt or shank contact. Pre-tack that wire on the motherboard with the base removed, then route it out through the right foot groove (X24 outward, Y9.50 ±0.60, Z0–1.00) and up to J4. Plastic and solder mask are insulating. Verify both bonds.
+A deliberate DB23 metal-shell bond is required. The default under-head washers are insulating. Require a deliberate J4-to-motherboard original shell-ground-pad wire as well as the connector-shell bond; do not rely on bolt or shank contact. Pre-tack that wire on the motherboard with the base removed, then route it out through the recessed right-side base channel (X24 outward, Y9.50 ±0.60, Z0–1.00) and up to J4. Plastic and solder mask are insulating. Verify both bonds and confirm the wire does not lift the flat base.
 
 The board remains passive. It is not a scan-rate converter, floppy converter or protection circuit.
 

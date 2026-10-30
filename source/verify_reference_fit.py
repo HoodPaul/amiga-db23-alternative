@@ -13,10 +13,10 @@ import cadquery as cq
 import verify_pcb as native
 
 ROOT=Path(__file__).resolve().parents[1]
-PARAMS=json.loads((ROOT/'source/design_parameters.json').read_text())
+PARAMS=json.loads((ROOT/'source/design_parameters.json').read_text(encoding='utf-8'))
 B=PARAMS['pcb'];H=PARAMS['holder'];M=PARAMS['motherboard'];R=PARAMS['revision']
 RECORD=ROOT/'verification/motherboard-reference-fit.json'
-record=json.loads(RECORD.read_text())
+record=json.loads(RECORD.read_text(encoding='utf-8'))
 checks={}
 
 def check(name,ok,details=True):
@@ -51,7 +51,7 @@ def main():
     outline=cq.Workplane('XY').polyline(B['outline_xy']).close().extrude(t).translate((0,0,z)).val()
     outline_v=zero(outline,cyl);outline_gap=outline.distance(cyl);outline_pad_gap=outline.distance(pad_cyl)
     for project,gender in [('DB23M_RGB','M'),('DB23F_Floppy','F')]:
-        pcb_path=ROOT/'pcb'/project/f'{project}.kicad_pcb';board=native.parse(pcb_path.read_text())
+        pcb_path=ROOT/'pcb'/project/f'{project}.kicad_pcb';board=native.parse(pcb_path.read_text(encoding='utf-8'))
         fps={native.child(fp,'fp_text')[2]:fp for fp in native.children(board,'footprint')}
         origin=(150.0,80.0)
         check(project+'_origin_and_thickness',all(native_pair(f,'at')==origin for f in fps.values()) and abs(float(native.child(native.child(board,'general'),'thickness')[1])-t)<1e-6)
@@ -89,7 +89,7 @@ def main():
     for key in list(neighbour):
         if key.startswith('base_cap_') or key in ('adapter_nearest_outline_point_mm','adapter_gap_to_reference_drill_circle_mm','adapter_gap_to_reference_copper_pad_circle_mm'):neighbour.pop(key)
     record['native_adapter_to_print_alignment']={'status':'PASS','checks_passed':len(checks),'both_variants_same_geometric_tail_set':True,'scope':'Current saved native adapter boards and delivered STEP, plus source-file hash verification. Recorded historic copper-screen results are retained without re-extraction. Nominal drill cylinders are not measured component bodies.','projects':projects,'checks':checks,'checker':'source/verify_reference_fit.py','source_SHA256_reverified':True,'reviewed_STEP_SHA256':{name:sha(ROOT/f'mechanical/{name}_v{R}.step') for name in ('DB23_Holder','DB23_Cap')}}
-    RECORD.write_text(json.dumps(record,indent=2)+'\n')
+    RECORD.write_text(json.dumps(record,indent=2)+'\n',encoding='utf-8')
     xend=H.get('forward_end_outer_x',H['overall_width']/2)
     gap=steps['base']['minimum_distance_to_reference_drill_cylinder_mm'];cap_gap=steps['cap']['minimum_distance_to_reference_drill_cylinder_mm']
     # The signed planar pad gap at the nearest square front corner explains why
@@ -97,7 +97,7 @@ def main():
     cy=H.get('outer_relief_front_y',5.1)
     signed_pad_gap=math.hypot(nx-xend,ny-cy)-pd/2
     md=f'''# Reference motherboard fit screen\n\nProject development: **Paul of UK Computing Limited**, **Jon of JMC Electronics** and **AI assistance through Codex**.\n\nThis is a limited comparison with the locally retained [A4000 replica KiCad board]({record['source_url']}). It is not a physical fit result, clearance certificate or substitute for measurements of the target motherboard. The source file is not republished here. Its exact SHA-256 and retained copper-screen findings are in [motherboard-reference-fit.json](motherboard-reference-fit.json).\n\n## Reproducible current checks\n\nThe current saved boards and STEP files pass **{len(checks)} checks**, run with:\n\n```sh\npython3 source/verify_reference_fit.py --reference-board /path/to/A4k-Replica-Acill.kicad_pcb\n```\n\nThe helper requires CadQuery and the exact external source file identified by the stored SHA-256. It verifies that source hash, directly parses both saved adapter boards and rechecks their bores, J4 fillet clearances, outlines and the current base/cap STEP. Historic reference-board copper findings are retained rather than re-extracted; this limitation is explicit in the machine-readable report.\n\n## Nominal mounting positions\n\nThe source CN450 RGB and CN352 floppy anchor line lies 0.1524 mm behind the midpoint of the source signal rows, with 44.2976 mm anchor spacing and 3.175 mm anchor drills. The sourced iComp contract uses 44.2700 mm spacing and nominal 3.20 mm motherboard drills. The replacement retains iComp centres and uses Ø3.30 mm adapter holes. Under ideal circular-hole assumptions, the reference/adapter radial allowance for a nominal M3 shank is 0.2375 mm versus about 0.1530 mm axis eccentricity; real tolerances and physical fit remain unverified. Do not enlarge or countersink the motherboard.\n\n## Underside screw heads\n\nThe unchanged source-board screen records a bare Ø7 mm head overlapping a foreign CN450 bottom-copper trace by 0.2107 mm in plan; the nearest recorded CN352 foreign trace has only 0.0369 mm nominal gap. Mask condition and actual exposed metal are not established. The default Ø8 × 0.50 mm underside insulating washers and deliberate motherboard shell-ground wire therefore remain required. Verify actual coverage, bearing, components and chassis clearance; do not rely on bolt contact for grounding.\n\n## Revised square end faces and neighbouring connector\n\nThe recorded CN175 mounting pad is centred at X26.797, Y5.7916, with a Ø2.3622 mm drill and Ø3.175 mm copper land. The strengthened forward ends now use one uniform outer face at X±25.60 through Y5.10. The aft local relief then reduces the outer edge to X±25.00 until Y7.50. PCB ears remain unchanged: X±25.00 at Y6.00–7.50 and X±25.60 behind it.\n\n| Current saved shape | Gap to reference drill cylinder | Drill-cylinder intersection |\n|---|---:|---:|\n| Base | {gap:.6f} mm | {steps['base']['intersection_with_reference_drill_cylinder_mm3']:.6f} mm³ |\n| Cap | {cap_gap:.6f} mm | {steps['cap']['intersection_with_reference_drill_cylinder_mm3']:.6f} mm³ |\n| Adapter outline | {outline_gap:.6f} mm | {outline_v:.6f} mm³ |\n\nThe closest square end corner has a signed planar gap to the copper-pad circle of approximately **{signed_pad_gap:.6f} mm**. A negative value means projected overlap with the ground land, not a proven collision or electrical contact: the printed parts are insulating and the actual lug, solder fillet and housing heights are not modelled. This is an explicit physical fit check for the target motherboard. Do not interpret a clear drill cylinder as proof of clearance to the complete neighbouring connector.\n\n## Saved adapter-to-print alignment\n\nFor each gender, 23 guide probes, two mounting-bore probes and two conservative J4 underside-fillet probes clear the delivered base. Native tail positions match the nominal grid, both variants retain the same geometric tail set, and all 16 outline segments match the shared contract. The J4 probe is Ø2.40 mm and extends 0.75 mm below the adapter PCB. These are saved-file alignment checks, not actual solder-fillet or print-fit measurements.\n\nThe photographs identify the CN450 area but do not establish exact depth or height clearance. Record the real motherboard revision, neighbouring metal and solder geometry, fastener stack and case fit in the measurement worksheet.\n'''
-    (ROOT/'verification/motherboard-reference-fit.md').write_text(md)
+    (ROOT/'verification/motherboard-reference-fit.md').write_text(md,encoding='utf-8')
     print(json.dumps({'checks_passed':len(checks),'neighbour_gaps_mm':{'base':gap,'cap':cap_gap,'adapter':round(outline_gap,6)},'report':str(RECORD)},indent=2))
 
 if __name__=='__main__':main()

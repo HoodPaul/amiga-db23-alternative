@@ -2,10 +2,10 @@
   "revision": "0.5",
   "status": "FIT PROTOTYPE; all physical fits and strengths untested",
   "DB23_Holder_v0.5.stl": {
-    "triangles": 8320,
+    "triangles": 7796,
     "nonmanifold_edges": 0,
     "components": 1,
-    "volume_mm3": 1765.174,
+    "volume_mm3": 1945.97,
     "bounds": [
       [
         -26.0,
@@ -124,7 +124,7 @@
   "DB23_Holder_v0.5.step": {
     "valid": true,
     "solids": 1,
-    "volume_mm3": 1764.925,
+    "volume_mm3": 1945.635,
     "coordinates": "assembly"
   },
   "DB23_Cap_v0.5.step": {
@@ -159,8 +159,8 @@
     "default_screw_protrusion_above_nut": 0.75,
     "cap_roof_clearance_above_tip": 1.0999999999999996,
     "guide_fillet_gap": 1.25,
-    "integrated_foot_bottom_z": 0.0,
-    "main_body_bottom_z": 0.6,
+    "flat_base_bottom_z": 0.0,
+    "projecting_mounting_feet": false,
     "jackpost_stem_max_end_y": 6.0,
     "jackpost_relief_end_y": 6.2,
     "cap_latch_engagement_y": 0.1999999999999993,

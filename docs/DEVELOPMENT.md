@@ -33,7 +33,7 @@ python3 source/verify_mechanical.py
 
 The mechanical builder requires both OpenSCAD and CadQuery. OpenSCAD generates printable STL parts from the shared geometry; CadQuery exports analytic STEP and performs solid checks. The independent mechanical verifier also requires VTK and reads saved STEP/STL rather than importing the builder. Read the actual validation record for its scope and results.
 
-The base's integral mounting feet reach motherboard Z0, replacing the old loose shims. The pin guide remains raised for clearance. Keep print-bed and assembly transforms distinct, particularly the cap and loading jig. Consult `mechanical/MECHANICAL_NOTES.txt` for generated part names and orientations.
+The complete base underside reaches motherboard Z0 as a coplanar bearing and print surface, replacing both the old loose shims and the two former circular feet. The pin guide remains raised for clearance. Keep print-bed and assembly transforms distinct, particularly the cap and loading jig. Consult `mechanical/MECHANICAL_NOTES.txt` for generated part names and orientations.
 
 ## Previews and drawings
 
@@ -51,7 +51,7 @@ The printed geometry is the actual delivered STL. Bought DB23 bodies, cups, pins
 
 1. Rebuild affected native and mechanical outputs after parameter changes.
 2. Re-run native parsing, DRC, exact connections and saved-geometry checks.
-3. Review the PCB ears, J3 nut-bearing lands, J4/foot wire reliefs, underside insulating washers, all 23 pin bores, integral feet, cap keys/latches and both fastener directions together.
+3. Review the PCB ears, J3 nut-bearing lands, J4/base wire channel, underside insulating washers, all 23 pin bores, flat base bearing, cap keys/latches and both fastener directions together.
 4. Check default and alternative screw-length envelopes explicitly; do not treat a longer jackpost passage as unlimited clearance.
 5. Update assembly, measurements, BOM, previews, drawings, changelog and handover.
 6. Record actual commands, versions, failed/unavailable checks and outstanding assumptions.

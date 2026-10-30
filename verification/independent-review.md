@@ -2,13 +2,13 @@
 
 Project development: **Paul of UK Computing Limited**, **Jon of JMC Electronics** and **AI assistance through Codex**.
 
-Reviewed 29 October 2026. **Fit prototype using unmeasured solder-cup connector, hardware and printed-fit assumptions.** Both electrical PCB variants are now revision 0.5.
+Reviewed 30 October 2026. **Fit prototype using unmeasured solder-cup connector, hardware and printed-fit assumptions.** Both electrical PCB variants are revision 0.5.
 
-The delivered STEP and STL files were examined with `python3 source/verify_mechanical.py`. The audit reads saved files without importing the mechanical builder and passes **206 checks**. Detailed results are in [mechanical-audit.json](mechanical-audit.json). CadQuery/OpenCascade supplies solid intersections; VTK independently checks STL topology, print transforms and loading-jig stop surfaces. A separate [native-board/reference comparison](motherboard-reference-fit.md) records **70 checks** against the saved male/female KiCad boards and delivered base STEP.
+The delivered STEP and STL files were examined with `python3 source/verify_mechanical.py`. The audit reads saved files without importing the mechanical builder and passes **217 checks**. Detailed results are in [mechanical-audit.json](mechanical-audit.json). CadQuery/OpenCascade supplies solid intersections; VTK independently checks STL topology, print transforms and loading-jig stop surfaces. A separate [native-board/reference comparison](motherboard-reference-fit.md) records **70 checks** against the saved male/female KiCad boards and delivered base STEP.
 
 ## Solid base and shorter PCB
 
-The holder STEP is valid and contains one solid of **1,764.925466 mm³**. It retains a maximum **52.00 mm width**, ends at **Y13.00**, and supports the adapter PCB underside at **Z5.75**. Two integral feet reach the motherboard datum at **Z0**. The remainder retains nominal **Z0.60** underside clearance; there are no separate anchor shims.
+The holder STEP is valid and contains one solid of **1,945.635200 mm³**. It retains a maximum **52.00 mm width**, ends at **Y13.00**, and supports the adapter PCB underside at **Z5.75**. Its rails, pin-guide block and rear infill now share one coplanar motherboard Z0 underside. The two former circular feet, their source parameters and the nominal Z0.60 gap are absent; there are no separate anchor shims.
 
 The new PCB has a 16-vertex outline, **51.20 mm maximum width**, front **Y4.00** and rear **Y13.00**. Its mounting ears align with the nominal original shell-anchor positions, **X±22.135, Y9.50**. Its own J3 drills are **3.30 mm**, distinct from the **3.20 mm nominal motherboard** drawing value. No original motherboard hole enlargement is specified. Dedicated J4 shell-bond holes are **X±18.00, Y7.00**.
 
@@ -46,7 +46,7 @@ The saved geometry clears nominal **M3 × 12 mm under-head** mounting screws, **
 
 The default 12 mm screw tip is at **Z9.90**, the nut top at **Z9.15**, leaving **0.75 mm nominal thread projection**. Head plus insulation projects **1.50 mm below the motherboard underside**, with its bottom at Z−3.10. Actual board thickness, hardware tolerances, nut engagement and chassis clearance require checking.
 
-Solid tests give zero intersection between the default fasteners, base, PCB and seated cap. Material probes confirm PCB support and the integral feet around the mounting axes. The right foot intentionally has a ground-wire exit through part of its outboard side; it is not an uninterrupted bearing annulus. The nominal mounting bores are clear through the saved base STEP.
+Solid tests give zero intersection between the default fasteners, base, PCB and seated cap. The saved holder has minimum Z0 and one broad **359.105 mm²** downward-facing bottom face; eight representative underside probes confirm material immediately above that same plane across the rails, guide and rear infill. Material probes also confirm full-height PCB support around the mounting axes, except for the deliberate right-side recessed ground-wire channel. The nominal mounting bores are clear through the saved base STEP.
 
 **Untrimmed longer screws are unsupported by this cap:**
 
@@ -63,7 +63,7 @@ The separate motherboard reference screen found a bare Ø7 mm head overlapping a
 
 The horizontal clearance passage extends to **Y6.20**. The tested maximum M3 jackpost stem end is **Y6.00**, measured from the flange reference, with **Y4.80 preferred**. Saved-base, PCB, cap, vertical mounting shank and top-nut intersections with that stem envelope are all zero. Conservative circular envelopes enclosing every rotation of the top nuts also clear both the cap and maximum stem. An arbitrary longer jackpost is not a drop-in part; the top mounting hardware still limits the available space.
 
-The dedicated J4 points leave the mounting-nut lands clear for flat seating. Small top-lead clearance probes clear the cap. A continuous rectangular core probe passes through the right foot's outboard grounding-wire exit. Actual insulated-wire diameter and solder-fillets must fit without lifting the foot. Pre-tack the motherboard shell-ground lead with the base removed, route it through the exit and make the deliberate J4/shell bonds. No continuity or contact-resistance test has been performed.
+The dedicated J4 points leave the mounting-nut lands clear for flat seating. Small top-lead clearance probes clear the cap. A continuous rectangular core probe passes through the recessed right-side base channel. Actual insulated-wire diameter and solder fillets must fit without lifting the base. Pre-tack the motherboard shell-ground lead with the base removed, route it through the channel and make the deliberate J4/shell bonds. No continuity or contact-resistance test has been performed.
 
 ## Clip-on cap
 
@@ -75,15 +75,15 @@ The cap STL is exported roof-down: rotate 180° around X and translate +12.20 mm
 
 ## Pin-height loading jig
 
-The jig STEP is valid and one solid. Restoring its print offset by translating **−6.20 mm in Z** gives no overlap with the base or any of the 23 assumed square pins. Independent VTK ray intersections with the delivered STL confirm all **23 lower-tip stops at Z−3.20**, foot supports at **Z0.00**, and locator tops at **Z1.20**.
+The jig STEP is valid and one solid. Restoring its print offset by translating **−6.20 mm in Z** gives no overlap with the base or any of the 23 assumed square pins. Independent VTK ray intersections with the delivered STL confirm all **23 lower-tip stops at Z−3.20**, annular base-support pads at **Z0.00**, and locator tops at **Z1.20**.
 
-Equal **10.70 mm** pins then have upper tips at **Z7.50**. Equal lower projection depends on clean stops and seated feet; equal tops also require equal pin lengths. The tested guide fit must retain the pins after removing the jig. Remove the jig before soldering.
+Equal **10.70 mm** pins then have upper tips at **Z7.50**. Equal lower projection depends on clean stops and the flat base seating on both jig pads; equal tops also require equal pin lengths. The tested guide fit must retain the pins after removing the jig. Remove the jig before soldering.
 
 ## Independent STL topology
 
 | Delivered printable part | Triangles | Boundary/non-manifold edges | Connected regions |
 |---|---:|---:|---:|
-| Base | 8,320 | 0 | 1 |
+| Base | 7,796 | 0 | 1 |
 | Cap, roof-down | 220 | 0 | 1 |
 | Pin-height jig | 1,036 | 0 | 1 |
 | Hole-fit coupon | 26,384 | 0 | 1 |

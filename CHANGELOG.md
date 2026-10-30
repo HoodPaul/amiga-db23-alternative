@@ -1,7 +1,8 @@
 # Changelog
 
-## 0.5 review amendments - 29 October 2026
+## 0.5 review amendments - 29-30 October 2026
 
+- On 30 October, removed the two circular mounting feet and lowered the complete base underside from Z0.60 to motherboard Z0, creating one broad, coplanar bearing and print surface without changing the PCB support height.
 - Squared the forward tower sides and matching cap to X±25.60, adding 0.60 mm at the marked rear-corner rebates and placing the remaining neighbour relief behind the towers.
 - Changed both PCB faces to `Amiga DB23 REV 0.5`, retaining the same revision number.
 - Updated the project credits to Paul of UK Computing Limited, Jon of JMC Electronics and AI assistance through Codex.

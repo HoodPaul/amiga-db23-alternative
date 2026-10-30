@@ -30,7 +30,7 @@ This is evidence that a solder-cup DB23 can accommodate a straddle PCB. It does 
 
 ## Project basis and assumptions
 
-The starting concept is Paul's supplied `DB23_Straddle_Adapter_v0.1.zip`. Revision 0.3 retains the genuine DB23 interface and horizontal straddle arrangement while developing a smaller PCB and a structural printed pin guide. Revision 0.4 develops the holder into a solid cradle and adds a pin-height loading jig, following Paul's assembly review. Revision 0.5 follows his upward through-bolt proposal, with PCB mounting ears, separate shell-wire pads, integral feet and a keyed cap.
+The starting concept is Paul's supplied `DB23_Straddle_Adapter_v0.1.zip`. Revision 0.3 retains the genuine DB23 interface and horizontal straddle arrangement while developing a smaller PCB and a structural printed pin guide. Revision 0.4 develops the holder into a solid cradle and adds a pin-height loading jig, following Paul's assembly review. Revision 0.5 follows his upward through-bolt proposal, with PCB mounting ears, separate shell-wire pads, a flat-base revision replacing the initial circular feet, and a keyed cap.
 
 Current assumed values include the solder-cup connector rear envelope, 1.00 mm PCB thickness, nut dimensions, pin dimensions and length, printed-hole compensation, material and retention hardware. The authoritative list is `source/design_parameters.json`; measurements should replace assumptions in future revisions.
 

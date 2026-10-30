@@ -171,11 +171,11 @@ def render(paths,mode,name,camera=(64,72,50)):
     win=vtk.vtkRenderWindow();win.SetOffScreenRendering(1);win.AddRenderer(ren);win.SetSize(1600,1000);win.SetMultiSamples(8);win.Render()
     cap=vtk.vtkWindowToImageFilter();cap.SetInput(win);cap.SetInputBufferTypeToRGB();cap.ReadFrontBufferOff();cap.Update()
     writer=vtk.vtkPNGWriter();writer.SetFileName(str(OUT/name));writer.SetInputConnection(cap.GetOutputPort());writer.Write();win.Finalize()
-    titles={'assembly':'DB23 replacement - black clip-on cap fitted','open':'DB23 replacement - cap removed for inspection','exploded':'Assembly - joined DB23 and PCB, upward screws, clip-on cap','holder':'Solid base - mounting bores and integrated feet','parts':'Printed base and keyed clip-on cap','jig':'Pin loading - removable common-height jig'}
+    titles={'assembly':'DB23 replacement - black clip-on cap fitted','open':'DB23 replacement - cap removed for inspection','exploded':'Assembly - joined DB23 and PCB, upward screws, clip-on cap','holder':'Solid base - flat motherboard bearing surface','parts':'Printed base and keyed clip-on cap','jig':'Pin loading - removable common-height jig'}
     notes={'assembly':['A solid base and two upward M3 screws provide the intended mounting; the cap retains jackpost nuts.', 'Unmeasured DB23 and bought-hardware reference shapes. Shell bonding wires are omitted.'],
       'open':['The large PCB mounting pads align with the original motherboard anchor holes; J4 provides shell-bond pads.', 'M3 x 12 mm screws; insulating washers below the motherboard and nuts directly on the PCB mounting pads.'],
       'exploded':['The DB23 and PCB move together. Two screws enter from below the motherboard; fit the cover last.', 'Offsets show part relationships, not a required insertion direction for every component.'],
-      'holder':['Squared forward ends fill the former corner rebates; integral feet preserve the Z5.75 PCB support plane.', 'All 23 pins remain guided below the PCB. Strength, print fit and soldering heat still require physical trials.'],
+      'holder':['The broad underside is coplanar at Z0 while the PCB support plane remains at Z5.75.', 'All 23 pins remain guided below the PCB. Strength, print fit and soldering heat still require physical trials.'],
       'parts':['Actual printable geometry: base at its assembly position, cap in its roof-down print orientation.', 'Keyed contact faces locate the cover; flexible latches and nut-retaining tongues need a print-fit trial.'],
       'jig':['Load equal-length pins against the lower-tip stop, then remove the jig before soldering.', 'The jig is a loading aid and is not fitted to the motherboard. Test pin retention after transfer.']}
     annotate(OUT/name,titles[mode],notes[mode])

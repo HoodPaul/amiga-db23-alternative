@@ -130,6 +130,19 @@ intersection('holder_cup_conservative_vertical_sweep_20mm',holder,compound(cup_s
 mb=box(-30,30,0,16,-M['thickness_assumed'],0)
 mb=mb.cut(*(zc(x,y,M['anchor_hole_reference'],-M['thickness_assumed']-.01,.01) for x,y in mounts))
 intersection('holder_nominal_motherboard_plane',holder,mb)
+hb=holder.BoundingBox()
+check('flat_base_minimum_Z',abs(hb.zmin)<1e-6,hb.zmin)
+bottom_faces=[f for f in holder.Faces() if abs(f.Center().z)<1e-6 and f.normalAt().z<-.99]
+bottom_area=sum(f.Area() for f in bottom_faces)
+check('flat_base_single_broad_bottom_face',len(bottom_faces)==1 and bottom_area>350,
+      {'faces':len(bottom_faces),'area_mm2':round(bottom_area,6)})
+check('projecting_mounting_feet_removed',H['bottom_clearance']==0 and 'foot_diameter' not in H and 'foot_bottom_z' not in H,
+      {'bottom_clearance':H['bottom_clearance'],'foot_diameter_present':'foot_diameter' in H,'foot_bottom_z_present':'foot_bottom_z' in H})
+# Representative points in each underside region must all have material just
+# above the same Z0 plane. Open connector and wire-channel regions are omitted.
+flat_base_samples=[(-24,2),(24,2),(-20,8),(20,8),(0,9.5),(-20,12.5),(0,12.5),(20,12.5)]
+for i,(x,y) in enumerate(flat_base_samples,1):
+    check(f'flat_base_bearing_sample_{i:02d}',holder.isInside(cq.Vector(x,y,.05)),[x,y,.05])
 for i,(x,y) in enumerate(pins,1):
     intersection(f'guide_bore_{i:02d}',holder,zc(x,y,H['pin_guide_hole_diameter']-.002,H['bottom_clearance']-.01,H['pin_block_top_z']+.01))
 # PTH bond fillets are deliberately conservative small cylinders; actual joints
@@ -142,7 +155,7 @@ for i,(x,y) in enumerate(bonds,1):
 # Metal fasteners: nominal shanks, flat head, washer and vertical nut.
 wash_z=pcb_top;nut_z=wash_z+A['washer_thickness_assumed'];nut_top=nut_z+A['nut_height_assumed']
 ins_t=A['underside_washer_thickness_assumed'];head_seat_z=-M['thickness_assumed']-ins_t
-report['mounting_stack_mm']={'motherboard':M['thickness_assumed'],'base_foot_to_PCB_underside':B['bottom_z'],
+report['mounting_stack_mm']={'motherboard':M['thickness_assumed'],'flat_base_to_PCB_underside':B['bottom_z'],
     'PCB':B['thickness'],'underside_insulating_washer':ins_t,'top_washer':A['washer_thickness_assumed'],'nut':A['nut_height_assumed'],
     'under_head_to_nut_top':M['thickness_assumed']+ins_t+nut_top,'default_screw_tip_Z':A['screw_length_under_head']+head_seat_z,
     'default_protrusion_above_nut':A['screw_length_under_head']+head_seat_z-nut_top,
@@ -167,12 +180,12 @@ for side,(x,y) in zip((-1,1),mounts):
     check(f'head_supported_by_insulator_OD_{side}',A['underside_washer_diameter_assumed']>=A['head_diameter_assumed'],{'head_OD':A['head_diameter_assumed'],'insulator_OD':A['underside_washer_diameter_assumed']})
     intersection(f'jackpost_nut_top_loading_holder_{side}',holder,jack_nut(x,15))
     intersection(f'jackpost_nut_top_loading_PCB_{side}',board,jack_nut(x,15))
-    # Four support directions, above and below the integrated foot transition.
+    # Four support directions through the full-height, flat-base mounting rail.
     for angle in(0,90,180,270):
         xx=x+2.4*math.cos(math.radians(angle));yy=y+2.4*math.sin(math.radians(angle))
-        for label,z in [('integral_foot',.10),('PCB_support',B['bottom_z']-.1)]:
-            # The right foot intentionally contains one outboard ground-wire groove.
-            in_ground_groove=(side==1 and angle==0 and label=='integral_foot')
+        for label,z in [('flat_base_bearing',.10),('PCB_support',B['bottom_z']-.1)]:
+            # The right rail intentionally contains one outboard ground-wire channel.
+            in_ground_groove=(side==1 and angle==0 and label=='flat_base_bearing')
             if not in_ground_groove:check(f'{label}_{side}_{angle}',holder.isInside(cq.Vector(xx,yy,z)),[xx,yy,z])
     intersection(f'holder_mounting_bore_{side}',holder,zc(x,y,A['holder_bore_diameter']-.002,-.01,B['bottom_z']+.01))
     # Full end-to-end horizontal clearance tunnel and chosen maximum stem.
@@ -192,11 +205,11 @@ for side,(x,y) in zip((-1,1),mounts):
         tip=length+head_seat_z;s=zc(x,y,3,head_seat_z,tip)
         v=s.intersect(cap).Volume()
         report['unsupported_screw_lengths'].setdefault(str(length),{'tip_Z':tip,'cap_overlap_mm3':[]})['cap_overlap_mm3'].append(round(v,6))
-# The right mounting-foot exit is a deliberate insulated grounding-wire route.
-# Check a small core passes from the foot annulus out through the side.
+# The right base-channel exit is a deliberate insulated grounding-wire route.
+# Check a small core passes from the mounting axis out through the side.
 right_x=M['anchor_spacing']/2
 wire_core=box(right_x+1.9,H['overall_width']/2+.01,M['anchor_y']-.35,M['anchor_y']+.35,.02,.75)
-intersection('right_foot_ground_wire_exit_core',holder,wire_core)
+intersection('right_base_ground_wire_exit_core',holder,wire_core)
 # A conservative clip bending envelope checks room to flex without striking the PCB.
 # It does not establish allowable material strain or fatigue life.
 flex=max(0,H['tower_rear_y']-K['latch_hook_front_y'])+.05
@@ -250,9 +263,9 @@ def vertical_hits(x,y):
 for i,(x,y) in enumerate(pins,1):
     hits=vertical_hits(x,y);check(f'jig_tip_stop_{i:02d}',len(hits)==2 and abs(hits[-1]-H['pin_bottom_z'])<.001,hits)
 for side,(x,y) in zip((-1,1),mounts):
-    # Offset from the locator to sample the mounting-foot support, not its peg.
+    # Offset from the locator to sample the annular flat-base support pad, not its peg.
     hits=vertical_hits(x,y+2.4)
-    check(f'jig_integral_foot_support_{side}',len(hits)==2 and abs(hits[-1])<.001,hits)
+    check(f'jig_flat_base_support_{side}',len(hits)==2 and abs(hits[-1])<.001,hits)
     hits=vertical_hits(x,y)
     check(f'jig_locator_top_{side}',len(hits)==2 and abs(hits[-1]-(J['support_top_z']+J['locating_peg_height']))<.001,hits)
 check('pin_length_matches_datums',abs((H['pin_top_z']-H['pin_bottom_z'])-10.7)<1e-6)

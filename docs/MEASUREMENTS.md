@@ -69,7 +69,7 @@ A finished Ø0.80 mm bore does not clear an assumed 0.64 mm square pin. The coup
 | Full nut engagement and spare thread | Unverified | |
 | Fourteen/sixteen millimetre screw trim requirement | Separately check; default cap not assumed compatible | |
 | Flat PCB-ear support below each nut | Unverified | |
-| J4-to-original motherboard ground-pad wire | Required; route in foot groove | |
+| J4-to-original motherboard ground-pad wire | Required; route in recessed right-side base channel without lifting base | |
 | Connector-shell bond | Required; verify continuity | |
 
 ## Motherboard and case

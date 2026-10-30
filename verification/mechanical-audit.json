@@ -314,6 +314,89 @@
       "passed": true,
       "details": 0.0
     },
+    "flat_base_minimum_Z": {
+      "passed": true,
+      "details": 0.0
+    },
+    "flat_base_single_broad_bottom_face": {
+      "passed": true,
+      "details": {
+        "faces": 1,
+        "area_mm2": 359.104525
+      }
+    },
+    "projecting_mounting_feet_removed": {
+      "passed": true,
+      "details": {
+        "bottom_clearance": 0.0,
+        "foot_diameter_present": false,
+        "foot_bottom_z_present": false
+      }
+    },
+    "flat_base_bearing_sample_01": {
+      "passed": true,
+      "details": [
+        -24,
+        2,
+        0.05
+      ]
+    },
+    "flat_base_bearing_sample_02": {
+      "passed": true,
+      "details": [
+        24,
+        2,
+        0.05
+      ]
+    },
+    "flat_base_bearing_sample_03": {
+      "passed": true,
+      "details": [
+        -20,
+        8,
+        0.05
+      ]
+    },
+    "flat_base_bearing_sample_04": {
+      "passed": true,
+      "details": [
+        20,
+        8,
+        0.05
+      ]
+    },
+    "flat_base_bearing_sample_05": {
+      "passed": true,
+      "details": [
+        0,
+        9.5,
+        0.05
+      ]
+    },
+    "flat_base_bearing_sample_06": {
+      "passed": true,
+      "details": [
+        -20,
+        12.5,
+        0.05
+      ]
+    },
+    "flat_base_bearing_sample_07": {
+      "passed": true,
+      "details": [
+        0,
+        12.5,
+        0.05
+      ]
+    },
+    "flat_base_bearing_sample_08": {
+      "passed": true,
+      "details": [
+        20,
+        12.5,
+        0.05
+      ]
+    },
     "guide_bore_01": {
       "passed": true,
       "details": 0.0
@@ -517,7 +600,7 @@
       "passed": true,
       "details": 0.0
     },
-    "integral_foot_-1_0": {
+    "flat_base_bearing_-1_0": {
       "passed": true,
       "details": [
         -19.735000000000003,
@@ -533,7 +616,7 @@
         5.65
       ]
     },
-    "integral_foot_-1_90": {
+    "flat_base_bearing_-1_90": {
       "passed": true,
       "details": [
         -22.135,
@@ -549,7 +632,7 @@
         5.65
       ]
     },
-    "integral_foot_-1_180": {
+    "flat_base_bearing_-1_180": {
       "passed": true,
       "details": [
         -24.535,
@@ -565,7 +648,7 @@
         5.65
       ]
     },
-    "integral_foot_-1_270": {
+    "flat_base_bearing_-1_270": {
       "passed": true,
       "details": [
         -22.135,
@@ -715,7 +798,7 @@
         5.65
       ]
     },
-    "integral_foot_1_90": {
+    "flat_base_bearing_1_90": {
       "passed": true,
       "details": [
         22.135,
@@ -731,7 +814,7 @@
         5.65
       ]
     },
-    "integral_foot_1_180": {
+    "flat_base_bearing_1_180": {
       "passed": true,
       "details": [
         19.735000000000003,
@@ -747,7 +830,7 @@
         5.65
       ]
     },
-    "integral_foot_1_270": {
+    "flat_base_bearing_1_270": {
       "passed": true,
       "details": [
         22.135,
@@ -802,7 +885,7 @@
         "maximum_stem_end_Y": 6.0
       }
     },
-    "right_foot_ground_wire_exit_core": {
+    "right_base_ground_wire_exit_core": {
       "passed": true,
       "details": 0.0
     },
@@ -908,7 +991,7 @@
       "passed": true,
       "details": {
         "motherboard": 1.6,
-        "base_foot_to_PCB_underside": 5.75,
+        "flat_base_to_PCB_underside": 5.75,
         "PCB": 1.0,
         "underside_insulating_washer": 0.5,
         "top_washer": 0.0,
@@ -971,7 +1054,7 @@
     "mesh_DB23_Holder_v0.5": {
       "passed": true,
       "details": {
-        "triangles": 8320,
+        "triangles": 7796,
         "boundary_or_nonmanifold_edges": 0,
         "regions": 1,
         "bounds": [
@@ -1210,7 +1293,7 @@
         -3.2
       ]
     },
-    "jig_integral_foot_support_-1": {
+    "jig_flat_base_support_-1": {
       "passed": true,
       "details": [
         -6.2,
@@ -1224,7 +1307,7 @@
         1.2
       ]
     },
-    "jig_integral_foot_support_1": {
+    "jig_flat_base_support_1": {
       "passed": true,
       "details": [
         -6.2,
@@ -1349,7 +1432,7 @@
     "cap_top_nut_all_rotations_envelope_1": 0.0,
     "top_nut_all_rotations_jackpost_stem_1": 0.0,
     "vertical_shank_jackpost_stem_1": 0.0,
-    "right_foot_ground_wire_exit_core": 0.0,
+    "right_base_ground_wire_exit_core": 0.0,
     "PCB_conservative_clip_flex_envelope_-1": 0.0,
     "PCB_conservative_clip_flex_envelope_1": 0.0,
     "jig_holder_loading_position": 0.0,
@@ -1396,7 +1479,7 @@
       ]
     },
     "DB23_Holder_v0.5.stl": {
-      "triangles": 8320,
+      "triangles": 7796,
       "boundary_or_nonmanifold_edges": 0,
       "regions": 1,
       "bounds": [
@@ -1451,7 +1534,7 @@
       ]
     }
   },
-  "holder_volume_mm3": 1764.925466,
+  "holder_volume_mm3": 1945.6352,
   "holder_assembly_bounds": [
     -26.0,
     26.0,
@@ -1483,7 +1566,7 @@
   },
   "mounting_stack_mm": {
     "motherboard": 1.6,
-    "base_foot_to_PCB_underside": 5.75,
+    "flat_base_to_PCB_underside": 5.75,
     "PCB": 1.0,
     "underside_insulating_washer": 0.5,
     "top_washer": 0.0,
@@ -1501,5 +1584,5 @@
     "vertical_gap_latch_bottom_above_PCB": 0.4500000000000002,
     "note": "A negative XY gap is permitted only where the raised latch has vertical clearance; the solid-envelope check below is authoritative."
   },
-  "checks_passed": 206
+  "checks_passed": 217
 }

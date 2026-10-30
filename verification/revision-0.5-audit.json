@@ -1,8 +1,8 @@
 {
   "revision": "0.5",
   "pcb_revision": "0.5",
-  "amendment": "Squared forward end walls, exact PCB legend and three-way project credits",
-  "baseline_commit": "d955061620d6cfa38a8a3d53e913e118aec0ad2e",
+  "amendment": "Flat Z0 base underside without projecting circular feet; squared end walls, exact PCB legend and three-way project credits retained",
+  "baseline_commit": "8f03a5c369408a3d82fc9bf17329d02945433c02",
   "project_credits": [
     "Paul of UK Computing Limited",
     "Jon of JMC Electronics",
@@ -11,10 +11,10 @@
   "pcb_legend": "Amiga DB23 REV 0.5",
   "electrical_geometry_unchanged": true,
   "portable_electrical_checks": 648,
-  "independent_mechanical_checks": 206,
+  "independent_mechanical_checks": 217,
   "independent_native_reference_checks": 70,
   "broken_markdown_links": 0,
   "physical_testing_performed": false,
   "native_erc_performed": false,
-  "notes": "Both native PCB DRC reports are clean. The reference drill envelope clears the squared end; ground-land projection and actual neighbouring lug/fillet/housing heights require physical fit checking."
+  "notes": "Both native PCB DRC reports are clean. The base minimum is Z0 and representative underside probes confirm coplanar bearing material while the PCB support remains Z5.75. The reference drill envelope clears the squared end; motherboard components, solder joints, ground-land projection and actual neighbouring lug/fillet/housing heights require physical fit checking."
 }

@@ -6,7 +6,7 @@ Project development: **Paul of UK Computing Limited**, **Jon of JMC Electronics*
 
 Repository: [HoodPaul/amiga-db23-alternative](https://github.com/HoodPaul/amiga-db23-alternative).
 
-**Status, 29 October 2026: fit prototype. The chosen solder-cup connector, fasteners, printer tolerances and installed fit have not been measured. No physical strength, assembled electrical operation or Amiga compatibility test has been completed.** Native files and trial prints make those checks possible; this is not a production release.
+**Status, 30 October 2026: fit prototype. The chosen solder-cup connector, fasteners, printer tolerances and installed fit have not been measured. No physical strength, assembled electrical operation or Amiga compatibility test has been completed.** Native files and trial prints make those checks possible; this is not a production release.
 
 For engineering or AI work, read [AGENTS.md](AGENTS.md), the [handover](docs/AI-HANDOVER.md) and [documentation index](docs/README.md).
 
@@ -21,7 +21,7 @@ The printed geometry comes from the delivered CAD. Bought connector bodies, cups
 
 The DB23 cups straddle the front of the PCB: contacts 1–12 solder to the top and 13–23 to the bottom. Twenty-three separate pins pass through the base into the original motherboard signal holes.
 
-The shorter PCB has side ears with plated `SHIELD` mounting lands at the original shell-anchor positions. **M3 screws enter from underneath the motherboard**, pass through the solid base and PCB, and take nuts on top, with insulating washers beneath the screw heads. Flat bosses support the PCB directly beneath the nuts. Integral mounting feet replace the former loose shims.
+The shorter PCB has side ears with plated `SHIELD` mounting lands at the original shell-anchor positions. **M3 screws enter from underneath the motherboard**, pass through the solid base and PCB, and take nuts on top, with insulating washers beneath the screw heads. The entire printed underside is lowered to one coplanar motherboard Z0 surface, eliminating the former two circular feet and loose shims while preserving the PCB support plane at Z5.75.
 
 Following the marked review, the forward tower sides are squared off to a uniform X±25.60 face. The former rear-corner rebates gain 0.60 mm of material, while the remaining neighbour clearance starts behind the towers.
 
@@ -66,7 +66,7 @@ The [mechanical folder](mechanical/) contains editable OpenSCAD and the followin
 - [Pin-height jig](mechanical/DB23_Pin_Height_Jig_v0.5.stl) and [hole-fit coupon](mechanical/DB23_Hole_Fit_Coupon_v0.5.stl).
 - [Clip-fit base coupon](mechanical/DB23_Clip_Fit_Base_v0.5.stl) and [matching cap coupon](mechanical/DB23_Clip_Fit_Cap_v0.5.stl).
 
-Read [mechanical notes](docs/MECHANICAL.md) and `mechanical/MECHANICAL_NOTES.txt` for orientations and fit allowances. The cap STL is already roof-down for printing; its STEP uses assembly coordinates. The base underside is stepped: only the mounting feet reach Z0, so local underside supports or a verified bridging process are needed.
+Read [mechanical notes](docs/MECHANICAL.md) and `mechanical/MECHANICAL_NOTES.txt` for orientations and fit allowances. The cap STL is already roof-down for printing; its STEP uses assembly coordinates. The base has a broad, flat Z0 underside for direct bed placement, subject to the usual first-layer and dimensional trial.
 
 The default guides are nominally **Ø0.92 mm** for assumed **0.64 mm square pins**. Their diagonal is about **0.905 mm**, so a finished Ø0.80 mm round bore is too small. Establish snug pin retention using the coupon and actual pins. The loading jig sets a common lower-tip stop; equal upper heights also need equal pin lengths. Remove the jig before soldering.
 

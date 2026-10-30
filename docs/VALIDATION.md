@@ -1,12 +1,12 @@
 # Validation record
 
 **PCB, assembly and mechanical revision:** 0.5  
-**Date:** 29 October 2026  
+**Date:** 30 October 2026
 **State:** Fit prototype. No physical print, cable-load trial, assembled continuity test or Amiga operation has been verified.
 
 Project development: **Paul of UK Computing Limited**, **Jon of JMC Electronics** and **AI assistance through Codex**.
 
-The retained-0.5 review amendment squares the forward end faces, fills the marked rear corners, changes both PCB faces to `Amiga DB23 REV 0.5` and updates project credits. The PCB copper, pad positions, holes, routing and outline remain unchanged from commit `d955061620d6cfa38a8a3d53e913e118aec0ad2e`.
+The retained-0.5 review amendments square the forward end faces, fill the marked rear corners, change both PCB faces to `Amiga DB23 REV 0.5`, update project credits and lower the complete printed base underside to motherboard Z0. The two former circular feet and the 0.60 mm underside gap are removed without changing the PCB support height. The PCB copper, pad positions, holes, routing and outline remain unchanged from commit `d955061620d6cfa38a8a3d53e913e118aec0ad2e`.
 
 ## Electrical CAD
 
@@ -27,11 +27,11 @@ Reports are in `verification/*-drc.rpt`, `*-netlist.xml`, `pcb-build-summary.jso
 
 ## Mechanical CAD
 
-The base and cap STL files were regenerated with OpenSCAD. All six delivered printable STL files, including the unchanged trial aids, passed topology checks. CadQuery generated analytic base, cap and jig STEP files. The independent saved-file verifier reads the delivered STEP/STL without importing the mechanical builder and passes **206 checks**.
+The revised base STL was regenerated with OpenSCAD and its analytic STEP with CadQuery; unchanged cap and trial-aid binaries were retained. All six delivered printable STL files passed topology checks. The independent saved-file verifier reads the delivered base, cap and jig STEP/STL files without importing the mechanical builder and passes **217 checks**.
 
 | Delivered part | STL triangles | Closed regions | STEP |
 |---|---:|---:|---|
-| Solid base | 8,320 | 1 | Valid, one solid, 1,764.925 mm³ |
+| Solid base | 7,796 | 1 | Valid, one solid, 1,945.635 mm³ |
 | Keyed cap | 220 | 1 | Valid, one solid, 978.692 mm³ |
 | Pin-height jig | 1,036 | 1 | Valid, one solid, 3,008.953 mm³ |
 | Hole-fit coupon | 26,384 | 1 | STL trial part |
@@ -44,12 +44,12 @@ The following saved-file checks pass:
 
 - Base, cap and seated PCB have no unintended intersection. Assumed connector flange, body, cups, mounting hardware and jackpost nuts clear the relevant printed parts.
 - The joined PCB/DB23 clears the base throughout a 20 mm vertical lowering sweep, using exact prismatic sweeps and conservative cup envelopes.
-- All 23 guide bores are open. The assumed square pins clear the jig and cap, and independent mesh rays verify their common Z−3.20 tip stop and the Z0 foot-support datum.
+- The holder minimum is Z0 and its saved STEP has one broad 359.105 mm² bottom face. The old foot parameters are absent, and representative material probes confirm the rail, pin-guide and rear-infill undersides all share that plane. All 23 guide bores are open. The assumed square pins clear the jig and cap, and independent mesh rays verify their common Z−3.20 tip stop and the jig's Z0 base-support datum.
 - The default M3 × 12 mm screw, Ø8 × 0.50 mm underside insulating washer and direct top nut clear the cap. The tip is Z9.90, nut top Z9.15, nominal protrusion 0.75 mm and roof clearance above the tip 1.10 mm.
 - Untrimmed 14 and 16 mm screws intersect the default cap. They are explicitly unsupported alternatives without trimming or a separately checked cover.
 - The supported horizontal jackpost stem endpoint Y6.00 clears the printed passage and top mounting nuts. The printed clearance passage ends at Y6.20; this is not an unlimited stem-length allowance.
 - The raised latch's conservative rearward-flex envelope clears the PCB. This checks space for assembly, not elastic strain, insertion force, retention force or fatigue.
-- The foot grounding-wire exit and dedicated J4 underside relief are present. Actual wire insulation, solder fillets and routing are not modelled as validated harnesses.
+- The recessed right-side base grounding-wire channel and dedicated J4 underside relief are present. Actual wire insulation, solder fillets and routing are not modelled as validated harnesses; they must not lift the base.
 - Both forward ends have one straight outer face at X±25.60 through Y5.10. The former X25 rear-corner rebate is filled by 0.60 mm and the earlier X26 front face is trimmed by 0.40 mm to make a continuous square face. Material probes verify the filled corners and unchanged nut pockets; nominal outer wall and rear web are 0.615 and 0.80 mm. These are geometry checks, not a strength rating.
 
 See `mechanical/mechanical_validation.json`, `verification/mechanical-audit.json` and `verification/independent-review.md` for detailed results.
@@ -69,7 +69,7 @@ The six coordinated renders show the black cap fitted, cap removed, joined PCB/D
 Commands used from the project root include:
 
 ```sh
-python3 source/build_mechanical.py --parts holder cap
+python3 source/build_mechanical.py
 python3 source/verify_mechanical.py
 python3 source/verify_pcb.py
 python3 source/verify_reference_fit.py --reference-board /path/to/A4k-Replica-Acill.kicad_pcb
@@ -77,7 +77,7 @@ python3 source/render_previews.py
 python3 source/make_drawings.py
 ```
 
-The reference helper requires the exact external board identified by its stored hash; that file is not included in the project. The full mechanical build remains available without `--parts`. The PCB builder was run with KiCad's Python interpreter and its CLI path. VTK rendering used an Xvfb display. Tool versions are recorded in `verification/tool-versions.json`; the source and dependency notes are in `docs/DEVELOPMENT.md`.
+The reference helper requires the exact external board identified by its stored hash; that file is not included in the project. The PCB builder was run with KiCad's Python interpreter and its CLI path. This flat-base rebuild used the pinned Windows libraries and portable OpenSCAD recorded in `verification/tool-versions.json`; the source and dependency notes are in `docs/DEVELOPMENT.md`.
 
 ## Physical checks still required
 

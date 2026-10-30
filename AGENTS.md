@@ -38,7 +38,7 @@ The nominal signal grid is 2.77 mm along each row, 2.84 mm between rows and 1.38
 - Revision 0.5 uses screws upward from beneath the motherboard through the solid printed base and adapter PCB, with nuts above the PCB and insulating washers beneath the heads.
 - Preserve the squared forward tower outer faces at X±25.60, Y0.65–5.10 and the matching cap profile. The remaining X±25.00 neighbour relief begins behind the towers at Y5.10; do not restore the former full-height rebates through the end walls.
 - Preserve flat support immediately beneath each PCB mounting ear. Do not tighten across a gap or bow the PCB.
-- The mounting feet now reach Z0 and incorporate the former 0.60 mm shims. Do not add the obsolete loose anchor shims to this height stack.
+- The complete base underside is lowered to motherboard Z0 and must remain a broad, coplanar bearing surface. Do not restore projecting feet or add the obsolete loose anchor shims.
 - Keep the PCB underside at Z5.75 and the connector centreline at Z6.25 unless a measured connector change requires a coordinated revision.
 - The separate keyed cap retains jackpost nuts and covers hardware. The base and through-bolts provide the intended structural attachment; do not rely on cap latches for cable loads.
 - Use only the original motherboard holes. Do not countersink or enlarge the motherboard to fit fasteners. Verify head, pad, underside and chassis clearances.
