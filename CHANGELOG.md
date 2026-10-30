@@ -1,5 +1,11 @@
 # Changelog
 
+## Repository documentation - 30 October 2026
+
+- Use Amiga DB23 Video and Floppy Adapter as the README title and describe the current assembly directly.
+- Align the BOM and handover with the current flat base, recessed ground-wire channel and loading jig support.
+- Retain revision 0.5, existing file names, project credits and fit-prototype status. CAD geometry and manufacturing files are unchanged.
+
 ## 0.5 review amendments - 29-30 October 2026
 
 - On 30 October, removed the two circular mounting feet and lowered the complete base underside from Z0.60 to motherboard Z0, creating one broad, coplanar bearing and print surface without changing the PCB support height.

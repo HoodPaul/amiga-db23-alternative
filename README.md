@@ -1,6 +1,6 @@
-# Amiga DB23 Video and Floppy Replacement
+# Amiga DB23 Video and Floppy Adapter
 
-A replacement assembly for the Amiga's motherboard-mounted **DB23 RGB video and external floppy connectors**. A genuine solder-cup DB23 joins a small horizontal PCB, 23 supported straight pins and a solid printed base. Two screws clamp the assembly through the original motherboard mounting holes, with nuts above the adapter PCB and insulating washers under the motherboard-side heads. A keyed black clip-on cap retains the port-jackpost nuts and covers the hardware. **Current PCB, assembly and mechanical revision: 0.5.**
+An adapter assembly for the Amiga's motherboard-mounted **DB23 RGB video and external floppy connectors**. A genuine solder-cup DB23 joins a small horizontal PCB, 23 supported straight pins and a solid printed base. Two screws clamp the assembly through the original motherboard mounting holes, with nuts above the adapter PCB and insulating washers under the motherboard-side heads. A keyed black clip-on cap retains the port-jackpost nuts and covers the hardware. **Current PCB, assembly and mechanical revision: 0.5.**
 
 Project development: **Paul of UK Computing Limited**, **Jon of JMC Electronics** and **AI assistance through Codex**. This develops Paul's supplied straddle-PCB concept and supported loose-pin construction.
 
@@ -21,9 +21,9 @@ The printed geometry comes from the delivered CAD. Bought connector bodies, cups
 
 The DB23 cups straddle the front of the PCB: contacts 1–12 solder to the top and 13–23 to the bottom. Twenty-three separate pins pass through the base into the original motherboard signal holes.
 
-The shorter PCB has side ears with plated `SHIELD` mounting lands at the original shell-anchor positions. **M3 screws enter from underneath the motherboard**, pass through the solid base and PCB, and take nuts on top, with insulating washers beneath the screw heads. The entire printed underside is lowered to one coplanar motherboard Z0 surface, eliminating the former two circular feet and loose shims while preserving the PCB support plane at Z5.75.
+The PCB has side ears with plated `SHIELD` mounting lands at the original shell-anchor positions. **M3 screws enter from underneath the motherboard**, pass through the solid base and PCB, and take nuts on top, with insulating washers beneath the screw heads. The printed base has one broad, flat underside at motherboard Z0 and supports the PCB at Z5.75.
 
-Following the marked review, the forward tower sides are squared off to a uniform X±25.60 face. The former rear-corner rebates gain 0.60 mm of material, while the remaining neighbour clearance starts behind the towers.
+The forward towers have straight, square outer faces at X±25.60. Clearance for neighbouring components starts behind the towers.
 
 Dedicated J4 shell-bond pads keep wire and solder away from the J3 nut-bearing lands. The cap fits last, after mounting and inspection. It provides nut retention and the discreet black appearance; the solid base and through-bolts carry the intended cable loads. Actual insertion strength and clamping behaviour remain untested.
 

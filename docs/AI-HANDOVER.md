@@ -8,7 +8,7 @@ Project development: **Paul of UK Computing Limited**, **Jon of JMC Electronics*
 
 ## Objective and agreed direction
 
-Make an affordable motherboard DB23 replacement using a genuine solder-cup DB23, horizontal PCB, straight pins recovered from ordinary header stock if suitable, and a substantial printed base. Retain existing Amiga cables.
+Make an affordable motherboard DB23 adapter using a genuine solder-cup DB23, horizontal PCB, suitable straight pins from ordinary header stock and a substantial printed base. Retain existing Amiga cables.
 
 Paul reviewed the earlier print for strength and assembly. Revision 0.4 filled the rear and raised its rails. He then proposed a stronger and simpler mounting stack: two metal screws **upwards from beneath the motherboard**, through a solid base and the adapter PCB, with nuts above and insulating washers beneath the heads. Revision 0.5 implements that direction with a shorter PCB, mounting ears and a keyed black clip-on cap. The PCB legend is **Amiga DB23 REV 0.5** on both faces; company names belong in the project credits rather than the silkscreen. Do not restore the old top-access screw-head recesses, separate 0.60 mm shims or printed expanding motherboard pegs.
 
@@ -70,7 +70,7 @@ The board remains passive. It is not a scan-rate converter, floppy converter or 
 1. Obtain and measure each male/female solder-cup part, pins, nuts, jackposts and mounting hardware.
 2. Complete [MEASUREMENTS.md](MEASUREMENTS.md) for the intended motherboard revision and case.
 3. Trial the hole/cap fits and soldering heat behaviour using actual print settings.
-4. Check base feet, PCB-ear support, local front-corner reliefs, cap removal, underside washers/heads, all screw lengths, both shell bonds and neighbouring components. Reference A4000 layout checks are not proof of fit on the user's actual board revision.
+4. Check the flat base bearing surface, PCB-ear support, local front-corner reliefs, cap removal, underside washers/heads, all screw lengths, both shell bonds and neighbouring components. Reference A4000 layout checks are not proof of fit on the user's actual board revision.
 5. Update shared parameters and regenerate coordinated CAD, previews and reports as needed.
 6. Assemble, inspect and record an unpowered prototype before controlled functional and insertion/extraction trials.
 

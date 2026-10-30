@@ -79,6 +79,21 @@ python3 source/make_drawings.py
 
 The reference helper requires the exact external board identified by its stored hash; that file is not included in the project. The PCB builder was run with KiCad's Python interpreter and its CLI path. This flat-base rebuild used the pinned Windows libraries and portable OpenSCAD recorded in `verification/tool-versions.json`; the source and dependency notes are in `docs/DEVELOPMENT.md`.
 
+## Repository documentation checks - 30 October 2026
+
+The documentation tidy-up changes the README title and current assembly descriptions, and aligns the BOM and handover with the flat base. File names, revision, CAD geometry, manufacturing exports and existing engineering results are unchanged.
+
+Checks run from the repository root using Python 3.12.14:
+
+```sh
+python3 source/verify_pcb.py
+git -c core.whitespace=cr-at-eol diff --check
+```
+
+The portable PCB audit passed all 648 checks. This reads saved boards, netlists and DRC reports; native KiCad DRC and mechanical CAD checks were not rerun for these documentation edits. A local path check found all 62 relative Markdown links valid, and a CSV parse confirmed all 16 BOM entries retain six columns.
+
+The SHA-256 manifest now covers the exact repository file bytes. Its previous values matched the files before Git's line-ending normalisation: 92 entries matched CRLF exports and 33 already matched repository bytes. The refreshed manifest includes the documentation edits and excludes itself. It records file integrity, not additional engineering validation.
+
 ## Physical checks still required
 
 - Purchased male/female solder-cup connector dimensions, cup gap and flange bearing.

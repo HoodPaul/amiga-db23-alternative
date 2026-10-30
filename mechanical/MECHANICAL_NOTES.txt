@@ -1,4 +1,4 @@
-DB23 REPLACEMENT v0.5: MECHANICAL FIT PROTOTYPE
+AMIGA DB23 v0.5: MECHANICAL FIT PROTOTYPE
 
 The genuine solder-cup DB23 and bought hardware are not measured samples.
 Print fit, cap retention, cable insertion strength and soldering heat tolerance
