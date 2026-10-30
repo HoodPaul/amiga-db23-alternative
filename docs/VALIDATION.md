@@ -4,6 +4,10 @@
 **Date:** 29 October 2026  
 **State:** Fit prototype. No physical print, cable-load trial, assembled continuity test or Amiga operation has been verified.
 
+Project development: **Paul of UK Computing Limited**, **Jon of JMC Electronics** and **AI assistance through Codex**.
+
+The retained-0.5 review amendment squares the forward end faces, fills the marked rear corners, changes both PCB faces to `Amiga DB23 REV 0.5` and updates project credits. The PCB copper, pad positions, holes, routing and outline remain unchanged from commit `d955061620d6cfa38a8a3d53e913e118aec0ad2e`.
+
 ## Electrical CAD
 
 Both revised PCB projects were generated, saved, reloaded and checked using KiCad 7.0.11. Their exported schematic netlists agree exactly with the saved boards. Each board contains 50 pads, 24 nets, 26 track segments and no vias: 23 independent signal circuits and a separate four-pad SHIELD circuit.
@@ -16,19 +20,19 @@ Both revised PCB projects were generated, saved, reloaded and checked using KiCa
 | Mounting holes | J3 at nominal original anchors, Ø3.30 mm adapter drill / Ø6.50 mm land |
 | Dedicated shell-wire pads | J4, separate from nut-bearing mounting lands |
 | Between-row SHIELD crossbar | Nominal minimum clearance to row pads: 0.27 mm |
-| Actual silkscreen stroke containment | 27 items per board contained within outline; conservative minimum edge clearance 0.176145 mm |
+| Actual silkscreen stroke containment | 27 items per board contained within outline; conservative minimum edge clearance 0.108035 mm; new label uses 0.70 mm text / 0.10 mm strokes |
 | Native schematic ERC | Not run: KiCad 7 CLI does not expose ERC; parser/netlist checks are separate |
 
-Reports are in `verification/*-drc.rpt`, `*-netlist.xml`, `pcb-build-summary.json`, `pcb-geometry-review.json`, `pin-map.csv` and `portable-audit.json`. Gerber and Excellon exports were regenerated from these saved revision 0.5 boards and remain under `fabrication/FIT-PROTOTYPE/`.
+Reports are in `verification/*-drc.rpt`, `*-netlist.xml`, `pcb-build-summary.json`, `pcb-geometry-review.json`, `pcb-text-update.json`, `pin-map.csv` and `portable-audit.json`. The text-update report also compares non-text geometry with the pre-edit boards. Gerber and Excellon exports were regenerated from these saved revision 0.5 boards and remain under `fabrication/FIT-PROTOTYPE/`.
 
 ## Mechanical CAD
 
-OpenSCAD generated the six printable STL files. CadQuery generated analytic base, cap and jig STEP files. The independent saved-file verifier reads the delivered STEP/STL without importing the mechanical builder and passes **176 checks**.
+The base and cap STL files were regenerated with OpenSCAD. All six delivered printable STL files, including the unchanged trial aids, passed topology checks. CadQuery generated analytic base, cap and jig STEP files. The independent saved-file verifier reads the delivered STEP/STL without importing the mechanical builder and passes **206 checks**.
 
 | Delivered part | STL triangles | Closed regions | STEP |
 |---|---:|---:|---|
-| Solid base | 8,324 | 1 | Valid, one solid, 1,787.389 mm³ |
-| Keyed cap | 220 | 1 | Valid, one solid, 981.284 mm³ |
+| Solid base | 8,320 | 1 | Valid, one solid, 1,764.925 mm³ |
+| Keyed cap | 220 | 1 | Valid, one solid, 978.692 mm³ |
 | Pin-height jig | 1,036 | 1 | Valid, one solid, 3,008.953 mm³ |
 | Hole-fit coupon | 26,384 | 1 | STL trial part |
 | Clip-fit base coupon | 28 | 1 | STL trial part |
@@ -46,16 +50,17 @@ The following saved-file checks pass:
 - The supported horizontal jackpost stem endpoint Y6.00 clears the printed passage and top mounting nuts. The printed clearance passage ends at Y6.20; this is not an unlimited stem-length allowance.
 - The raised latch's conservative rearward-flex envelope clears the PCB. This checks space for assembly, not elastic strain, insertion force, retention force or fatigue.
 - The foot grounding-wire exit and dedicated J4 underside relief are present. Actual wire insulation, solder fillets and routing are not modelled as validated harnesses.
+- Both forward ends have one straight outer face at X±25.60 through Y5.10. The former X25 rear-corner rebate is filled by 0.60 mm and the earlier X26 front face is trimmed by 0.40 mm to make a continuous square face. Material probes verify the filled corners and unchanged nut pockets; nominal outer wall and rear web are 0.615 and 0.80 mm. These are geometry checks, not a strength rating.
 
 See `mechanical/mechanical_validation.json`, `verification/mechanical-audit.json` and `verification/independent-review.md` for detailed results.
 
 ## Reference motherboard layout
 
-A limited two-dimensional cross-check and independent board-to-mechanical alignment audit pass 68 checks. They used the local A4000 replica layout identified by source URL and SHA-256 in `verification/motherboard-reference-fit.json`. It is a reference CAD layout, not a measurement of the user's motherboard or chassis.
+A limited reference and independent board-to-mechanical alignment audit passes 70 current checks, reproducible with `source/verify_reference_fit.py`. It verifies the local A4000 replica layout's SHA-256, directly parses both adapter boards and checks the saved STEP and outlines. The earlier source-board copper findings are retained rather than re-extracted; this scope is explicit in `verification/motherboard-reference-fit.json`. It is a reference CAD layout, not a measurement of the user's motherboard or chassis.
 
 Its legacy mounting axes differ slightly from the iComp nominal grid. The adapter retains the iComp coordinate contract and uses Ø3.30 mm clearance holes; no enlargement of the motherboard holes is specified. The reference check also found that a bare Ø7 mm underside screw head overlaps a foreign copper track in plan. The default therefore requires an underside insulating washer and a deliberate J4-to-motherboard shell-ground wire, independently of screw contact.
 
-A nearby connector lug motivated the local front-corner reliefs in the PCB, base and cap. The final nominal clearance to that reference drill envelope is about 0.423 mm for the base/cap and 0.628 mm for the adapter outline. The projected copper-pad gap at the closest printed corner is only about 0.016 mm, so actual metal, solder fillet and housing clearance still needs checking. The comparison and its limitations are recorded in `verification/motherboard-reference-fit.md`. Component heights, metal lug shape, exposed copper, washer compression, actual board thickness and chassis clearance remain unverified. The Ø8 washers span 52.27 mm overall; the printed parts are 52.00 mm wide. Side-exiting wires can extend beyond these bounds.
+A nearby connector lug motivated the remaining relief behind the squared end towers. The updated nominal clearance to its reference drill envelope is about 0.201 mm for the base/cap and 0.628 mm for the unchanged adapter outline, with zero drill-cylinder intersection. The square printed corner overlaps the ground land in plan by about 0.205 mm; this is not a verified physical collision or electrical contact because actual metal, solder-fillet and housing heights are unknown. It requires a physical clearance check. The comparison and its limitations are recorded in `verification/motherboard-reference-fit.md`. Component heights, metal lug shape, exposed copper, washer compression, actual board thickness and chassis clearance remain unverified. The Ø8 washers span 52.27 mm overall; the printed parts remain 52.00 mm at their widest aft section. Side-exiting wires can extend beyond these bounds.
 
 ## Visual and reproducibility checks
 
@@ -64,14 +69,15 @@ The six coordinated renders show the black cap fitted, cap removed, joined PCB/D
 Commands used from the project root include:
 
 ```sh
-python3 source/build_mechanical.py
+python3 source/build_mechanical.py --parts holder cap
 python3 source/verify_mechanical.py
 python3 source/verify_pcb.py
+python3 source/verify_reference_fit.py --reference-board /path/to/A4k-Replica-Acill.kicad_pcb
 python3 source/render_previews.py
 python3 source/make_drawings.py
 ```
 
-The PCB builder was run with KiCad's Python interpreter and its CLI path. VTK rendering used an Xvfb display. Tool versions are recorded in `verification/tool-versions.json`; the source and dependency notes are in `docs/DEVELOPMENT.md`.
+The reference helper requires the exact external board identified by its stored hash; that file is not included in the project. The full mechanical build remains available without `--parts`. The PCB builder was run with KiCad's Python interpreter and its CLI path. VTK rendering used an Xvfb display. Tool versions are recorded in `verification/tool-versions.json`; the source and dependency notes are in `docs/DEVELOPMENT.md`.
 
 ## Physical checks still required
 

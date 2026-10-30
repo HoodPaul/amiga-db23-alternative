@@ -21,7 +21,8 @@ FONT='/usr/share/fonts/truetype/dejavu/'
 pdfmetrics.registerFont(TTFont('DSans',FONT+'DejaVuSans.ttf'));pdfmetrics.registerFont(TTFont('DSans-Bold',FONT+'DejaVuSans-Bold.ttf'))
 pdfmetrics.registerFontFamily('DSans',normal='DSans',bold='DSans-Bold')
 OUT=ROOT/f'previews/DB23_Prototype_Drawings_v{REV}.pdf'
-c=canvas.Canvas(str(OUT),pagesize=A4);c.setTitle(f'Amiga DB23 Replacement - Prototype Drawings v{REV}');c.setAuthor('UK Computing Limited')
+CREDITS='Paul of UK Computing Limited; Jon of JMC Electronics; AI assistance through Codex'
+c=canvas.Canvas(str(OUT),pagesize=A4);c.setTitle(f'Amiga DB23 Replacement - Prototype Drawings v{REV}');c.setAuthor(CREDITS)
 NAVY=HexColor('#183b50');BLUE=HexColor('#2e6e90');INK=HexColor('#253946');GREY=HexColor('#647985');PALE=HexColor('#edf3f6');LINE=HexColor('#c6d6de');GOLD=HexColor('#b9913f')
 
 def txt(x,y,s,size=9,bold=False,col=INK):
@@ -33,7 +34,8 @@ def para(x,y,s,width=174,size=9,leading=12):
 
 def header(num,title,sub):
  c.setFillColor(NAVY);c.rect(0,279*mm,210*mm,18*mm,fill=1,stroke=0)
- txt(18,286,'UK COMPUTING  /  AMIGA HARDWARE',9,True,white)
+ txt(18,290,'AMIGA DB23 PROJECT',9,True,white)
+ txt(18,283,'Paul of UK Computing Limited | Jon of JMC Electronics | AI assistance through Codex',6.8,False,white)
  txt(18,264,title,20,True,NAVY);txt(18,256,sub,8.5,col=GREY)
  line(18,17,192,17);txt(18,11,f'29 October 2026 | Revision {REV} | Fit prototype; physical fit unverified',7,col=GREY);txt(181,11,f'{num} / 5',7,col=GREY)
 
@@ -61,8 +63,8 @@ c.showPage()
 
 header(2,'The two printed parts','A solid base carries the PCB; a keyed cover clips onto the front towers')
 image('base-and-cap.png',18,143,174,108)
-para(18,137,'The base has continuous end supports and integrated feet at the original mounting positions. No separate 0.60 mm shims are used in this revision. '
-     'Its 23-pin guide remains below the adapter PCB, leaving the nominal 1.25 mm solder-fillet and heat gap. J4 reliefs clear covered underside joints.',size=8.8,leading=12)
+para(18,137,'The squared forward ends have flat X+/-25.60 outer faces, with 0.60 mm added at the former rear-corner rebates. Integrated feet replace separate shims. '
+     'The 23-pin guide retains a 1.25 mm gap below the PCB; J4 recesses clear covered joints.',size=8.8,leading=12)
 image('pin-height-jig.png',18,49,98,70)
 txt(121,112,'Load the pins first',10,True,NAVY)
 para(121,105,'Print the hole-fit coupon and clip-fit pair before the full parts. The trial guide diameter is 0.92 mm for assumed 0.64 mm square pins; their diagonal is 0.905 mm. '

@@ -2,7 +2,7 @@
 
 A replacement assembly for the Amiga's motherboard-mounted **DB23 RGB video and external floppy connectors**. A genuine solder-cup DB23 joins a small horizontal PCB, 23 supported straight pins and a solid printed base. Two screws clamp the assembly through the original motherboard mounting holes, with nuts above the adapter PCB and insulating washers under the motherboard-side heads. A keyed black clip-on cap retains the port-jackpost nuts and covers the hardware. **Current PCB, assembly and mechanical revision: 0.5.**
 
-Project development: **Paul of UK Computing Limited**, with **AI assistance through Codex**. This develops Paul's supplied straddle-PCB concept and supported loose-pin construction.
+Project development: **Paul of UK Computing Limited**, **Jon of JMC Electronics** and **AI assistance through Codex**. This develops Paul's supplied straddle-PCB concept and supported loose-pin construction.
 
 Repository: [HoodPaul/amiga-db23-alternative](https://github.com/HoodPaul/amiga-db23-alternative).
 
@@ -22,6 +22,8 @@ The printed geometry comes from the delivered CAD. Bought connector bodies, cups
 The DB23 cups straddle the front of the PCB: contacts 1–12 solder to the top and 13–23 to the bottom. Twenty-three separate pins pass through the base into the original motherboard signal holes.
 
 The shorter PCB has side ears with plated `SHIELD` mounting lands at the original shell-anchor positions. **M3 screws enter from underneath the motherboard**, pass through the solid base and PCB, and take nuts on top, with insulating washers beneath the screw heads. Flat bosses support the PCB directly beneath the nuts. Integral mounting feet replace the former loose shims.
+
+Following the marked review, the forward tower sides are squared off to a uniform X±25.60 face. The former rear-corner rebates gain 0.60 mm of material, while the remaining neighbour clearance starts behind the towers.
 
 Dedicated J4 shell-bond pads keep wire and solder away from the J3 nut-bearing lands. The cap fits last, after mounting and inspection. It provides nut retention and the discreet black appearance; the solid base and through-bolts carry the intended cable loads. Actual insertion strength and clamping behaviour remain untested.
 
@@ -43,6 +45,7 @@ Local symbols and footprints are included. Male and female pin numbering is mirr
 | Overall board envelope | **51.20 × 9.00 mm**, Y4.00–13.00, with mounting ears, front clearance steps and local reliefs |
 | Layers / assumed thickness | **Two / 1.00 mm**; confirm the actual cup gap |
 | Proposed finish | Black mask, white silkscreen, ENIG exposed pads |
+| PCB legend, both faces | **Amiga DB23 REV 0.5**, nominal 0.70 mm text height / 0.10 mm stroke |
 | Signal track / clearance | **0.50 / 0.20 mm** |
 | Tail drill / pad | **1.04 / 1.70 mm** |
 | J3 mounting drill / pad | **3.30 / 6.50 mm** |

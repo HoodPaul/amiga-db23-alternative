@@ -126,14 +126,16 @@ def actor_for(path,key,offset=(0,0,0),rotation=(0,0,0),colour=None):
         mat.SetInterpolationToPBR();mat.SetMetallic(0);mat.SetRoughness(.64)
     return actor
 
+CREDITS='Paul of UK Computing Limited | Jon of JMC Electronics | AI assistance through Codex'
 FONT='/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf';FONTB='/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf'
 def annotate(path,title,notes):
     im=Image.open(path).convert('RGB');w,h=im.size
-    canvas=Image.new('RGB',(w,h+170),'white');canvas.paste(im,(0,100));d=ImageDraw.Draw(canvas)
+    canvas=Image.new('RGB',(w,h+194),'white');canvas.paste(im,(0,124));d=ImageDraw.Draw(canvas)
     d.rectangle((0,0,w,9),fill='#17394e');d.text((42,24),title,font=ImageFont.truetype(FONTB,30),fill='#17394e')
-    d.text((42,65),f'UK Computing Limited | Revision {REV} | CAD fit prototype',font=ImageFont.truetype(FONT,19),fill='#526873')
-    d.rectangle((0,h+100,w,h+170),fill='#edf3f6')
-    for i,n in enumerate(notes):d.text((42,h+112+i*25),n,font=ImageFont.truetype(FONT,17),fill='#354b59')
+    d.text((42,65),CREDITS,font=ImageFont.truetype(FONT,18),fill='#526873')
+    d.text((42,95),f'Revision {REV} | CAD fit prototype',font=ImageFont.truetype(FONT,15),fill='#526873')
+    d.rectangle((0,h+124,w,h+194),fill='#edf3f6')
+    for i,n in enumerate(notes):d.text((42,h+136+i*25),n,font=ImageFont.truetype(FONT,17),fill='#354b59')
     canvas.save(path)
 
 def cap_actor(offset=(0,0,0),colour=None):
@@ -173,7 +175,7 @@ def render(paths,mode,name,camera=(64,72,50)):
     notes={'assembly':['A solid base and two upward M3 screws provide the intended mounting; the cap retains jackpost nuts.', 'Unmeasured DB23 and bought-hardware reference shapes. Shell bonding wires are omitted.'],
       'open':['The large PCB mounting pads align with the original motherboard anchor holes; J4 provides shell-bond pads.', 'M3 x 12 mm screws; insulating washers below the motherboard and nuts directly on the PCB mounting pads.'],
       'exploded':['The DB23 and PCB move together. Two screws enter from below the motherboard; fit the cover last.', 'Offsets show part relationships, not a required insertion direction for every component.'],
-      'holder':['The former head pockets are removed. Integral mounting feet preserve the Z5.75 PCB support plane.', 'All 23 pins remain guided below the PCB. Strength, print fit and soldering heat still require physical trials.'],
+      'holder':['Squared forward ends fill the former corner rebates; integral feet preserve the Z5.75 PCB support plane.', 'All 23 pins remain guided below the PCB. Strength, print fit and soldering heat still require physical trials.'],
       'parts':['Actual printable geometry: base at its assembly position, cap in its roof-down print orientation.', 'Keyed contact faces locate the cover; flexible latches and nut-retaining tongues need a print-fit trial.'],
       'jig':['Load equal-length pins against the lower-tip stop, then remove the jig before soldering.', 'The jig is a loading aid and is not fitted to the motherboard. Test pin retention after transfer.']}
     annotate(OUT/name,titles[mode],notes[mode])

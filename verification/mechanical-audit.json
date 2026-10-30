@@ -10,6 +10,246 @@
       "passed": true,
       "details": true
     },
+    "square_end_base_-1_1_inside_face": {
+      "passed": true,
+      "details": [
+        -25.55,
+        0.8,
+        9.0
+      ]
+    },
+    "square_end_base_-1_1_outside_face": {
+      "passed": true,
+      "details": [
+        -25.650000000000002,
+        0.8,
+        9.0
+      ]
+    },
+    "square_end_cap_-1_1_inside_face": {
+      "passed": true,
+      "details": [
+        -25.55,
+        0.8,
+        11.5
+      ]
+    },
+    "square_end_cap_-1_1_outside_face": {
+      "passed": true,
+      "details": [
+        -25.650000000000002,
+        0.8,
+        11.5
+      ]
+    },
+    "square_end_base_-1_2_inside_face": {
+      "passed": true,
+      "details": [
+        -25.55,
+        2.9,
+        9.0
+      ]
+    },
+    "square_end_base_-1_2_outside_face": {
+      "passed": true,
+      "details": [
+        -25.650000000000002,
+        2.9,
+        9.0
+      ]
+    },
+    "square_end_cap_-1_2_inside_face": {
+      "passed": true,
+      "details": [
+        -25.55,
+        2.9,
+        11.5
+      ]
+    },
+    "square_end_cap_-1_2_outside_face": {
+      "passed": true,
+      "details": [
+        -25.650000000000002,
+        2.9,
+        11.5
+      ]
+    },
+    "square_end_base_-1_3_inside_face": {
+      "passed": true,
+      "details": [
+        -25.55,
+        4.8999999999999995,
+        9.0
+      ]
+    },
+    "square_end_base_-1_3_outside_face": {
+      "passed": true,
+      "details": [
+        -25.650000000000002,
+        4.8999999999999995,
+        9.0
+      ]
+    },
+    "square_end_cap_-1_3_inside_face": {
+      "passed": true,
+      "details": [
+        -25.55,
+        4.8999999999999995,
+        11.5
+      ]
+    },
+    "square_end_cap_-1_3_outside_face": {
+      "passed": true,
+      "details": [
+        -25.650000000000002,
+        4.8999999999999995,
+        11.5
+      ]
+    },
+    "filled_marked_rear_corner_-1_1": {
+      "passed": true,
+      "details": [
+        -25.3,
+        4.6,
+        8.5
+      ]
+    },
+    "filled_marked_rear_corner_-1_2": {
+      "passed": true,
+      "details": [
+        -25.3,
+        5.0,
+        8.5
+      ]
+    },
+    "filled_lower_end_corner_-1": {
+      "passed": true,
+      "details": [
+        -25.3,
+        4.9,
+        1.0
+      ]
+    },
+    "square_end_base_1_1_inside_face": {
+      "passed": true,
+      "details": [
+        25.55,
+        0.8,
+        9.0
+      ]
+    },
+    "square_end_base_1_1_outside_face": {
+      "passed": true,
+      "details": [
+        25.650000000000002,
+        0.8,
+        9.0
+      ]
+    },
+    "square_end_cap_1_1_inside_face": {
+      "passed": true,
+      "details": [
+        25.55,
+        0.8,
+        11.5
+      ]
+    },
+    "square_end_cap_1_1_outside_face": {
+      "passed": true,
+      "details": [
+        25.650000000000002,
+        0.8,
+        11.5
+      ]
+    },
+    "square_end_base_1_2_inside_face": {
+      "passed": true,
+      "details": [
+        25.55,
+        2.9,
+        9.0
+      ]
+    },
+    "square_end_base_1_2_outside_face": {
+      "passed": true,
+      "details": [
+        25.650000000000002,
+        2.9,
+        9.0
+      ]
+    },
+    "square_end_cap_1_2_inside_face": {
+      "passed": true,
+      "details": [
+        25.55,
+        2.9,
+        11.5
+      ]
+    },
+    "square_end_cap_1_2_outside_face": {
+      "passed": true,
+      "details": [
+        25.650000000000002,
+        2.9,
+        11.5
+      ]
+    },
+    "square_end_base_1_3_inside_face": {
+      "passed": true,
+      "details": [
+        25.55,
+        4.8999999999999995,
+        9.0
+      ]
+    },
+    "square_end_base_1_3_outside_face": {
+      "passed": true,
+      "details": [
+        25.650000000000002,
+        4.8999999999999995,
+        9.0
+      ]
+    },
+    "square_end_cap_1_3_inside_face": {
+      "passed": true,
+      "details": [
+        25.55,
+        4.8999999999999995,
+        11.5
+      ]
+    },
+    "square_end_cap_1_3_outside_face": {
+      "passed": true,
+      "details": [
+        25.650000000000002,
+        4.8999999999999995,
+        11.5
+      ]
+    },
+    "filled_marked_rear_corner_1_1": {
+      "passed": true,
+      "details": [
+        25.3,
+        4.6,
+        8.5
+      ]
+    },
+    "filled_marked_rear_corner_1_2": {
+      "passed": true,
+      "details": [
+        25.3,
+        5.0,
+        8.5
+      ]
+    },
+    "filled_lower_end_corner_1": {
+      "passed": true,
+      "details": [
+        25.3,
+        4.9,
+        1.0
+      ]
+    },
     "holder_PCB": {
       "passed": true,
       "details": 0.0
@@ -731,7 +971,7 @@
     "mesh_DB23_Holder_v0.5": {
       "passed": true,
       "details": {
-        "triangles": 8324,
+        "triangles": 8320,
         "boundary_or_nonmanifold_edges": 0,
         "regions": 1,
         "bounds": [
@@ -1156,7 +1396,7 @@
       ]
     },
     "DB23_Holder_v0.5.stl": {
-      "triangles": 8324,
+      "triangles": 8320,
       "boundary_or_nonmanifold_edges": 0,
       "regions": 1,
       "bounds": [
@@ -1211,16 +1451,16 @@
       ]
     }
   },
-  "holder_volume_mm3": 1787.389466,
+  "holder_volume_mm3": 1764.925466,
   "holder_assembly_bounds": [
     -26.0,
     26.0,
-    0.65,
+    0.6499999999999999,
     13.0,
     0.0,
     11.0
   ],
-  "cap_volume_mm3": 981.284,
+  "cap_volume_mm3": 978.692,
   "cap_assembly_bounds": [
     -26.0,
     26.0,
@@ -1229,6 +1469,18 @@
     7.1,
     12.2
   ],
+  "squared_end_review": {
+    "forward_outer_plane_abs_X": 25.6,
+    "forward_end_Y_range": [
+      0.65,
+      5.1
+    ],
+    "rear_corner_fill_outward_from_previous_X25_mm": 0.6000000000000014,
+    "front_face_trim_inward_from_previous_X26_mm": 0.3999999999999986,
+    "outer_wall_to_nut_loading_slot_mm": 0.6149999999999984,
+    "rear_web_behind_nut_pocket_mm": 0.7999999999999998,
+    "note": "Geometric section dimensions and material probes only; no physical strength or fatigue result."
+  },
   "mounting_stack_mm": {
     "motherboard": 1.6,
     "base_foot_to_PCB_underside": 5.75,
@@ -1249,5 +1501,5 @@
     "vertical_gap_latch_bottom_above_PCB": 0.4500000000000002,
     "note": "A negative XY gap is permitted only where the raised latch has vertical clearance; the solid-envelope check below is authoritative."
   },
-  "checks_passed": 176
+  "checks_passed": 206
 }

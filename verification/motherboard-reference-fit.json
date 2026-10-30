@@ -209,37 +209,25 @@
     ],
     "copper_pad_diameter_mm": 3.175,
     "drill_diameter_mm": 2.3622,
-    "note": "Updated local outline/polyline projection, not the old unrelieved rectangle: the closest base/cap boundary is its front relief corner, not the X25 straight segment. Copper-pad projection has very little gap there. No lug, solder-fillet or connector-housing height is modelled; physical clearance remains unverified.",
+    "note": "Current saved STEP/outline check against the recorded CN175 drill and copper-pad cylinders; no actual metal lug, solder fillet or housing height is modelled. Copper-pad cylinder overlap is recorded separately and is not a physical collision result.",
     "adapter_outline_vertices": 16,
-    "adapter_nearest_outline_point_mm": [
-      25.0,
-      6.0
-    ],
-    "adapter_gap_to_reference_drill_circle_mm": 0.627944,
-    "adapter_gap_to_reference_copper_pad_circle_mm": 0.221544,
-    "base_cap_local_outer_relief_x_mm": 25.0,
-    "base_cap_local_outer_relief_y_interval_mm": [
-      4.4,
-      7.5
-    ],
-    "base_cap_closest_outer_polyline_point_mm": [
-      26,
-      4.4
-    ],
-    "base_cap_gap_to_reference_drill_circle_mm": 0.422571,
-    "base_cap_gap_to_reference_copper_pad_circle_mm": 0.016171,
     "actual_delivered_STEP_and_adapter_outline_checks": {
       "base": {
         "intersection_with_reference_drill_cylinder_mm3": 0.0,
-        "minimum_distance_to_reference_drill_cylinder_mm": 0.422571
+        "minimum_distance_to_reference_drill_cylinder_mm": 0.201332,
+        "intersection_with_reference_copper_pad_cylinder_mm3": 0.46442026,
+        "minimum_distance_to_reference_copper_pad_cylinder_mm": 0.0
       },
       "cap": {
         "intersection_with_reference_drill_cylinder_mm3": 0.0,
-        "minimum_distance_to_reference_drill_cylinder_mm": 0.422571
+        "minimum_distance_to_reference_drill_cylinder_mm": 0.201332,
+        "intersection_with_reference_copper_pad_cylinder_mm3": 0.05358695,
+        "minimum_distance_to_reference_copper_pad_cylinder_mm": 0.0
       },
       "adapter_outline_solid": {
         "intersection_with_reference_drill_cylinder_mm3": 0.0,
-        "minimum_distance_to_reference_drill_cylinder_mm": 0.627944
+        "minimum_distance_to_reference_drill_cylinder_mm": 0.627944,
+        "minimum_distance_to_reference_copper_pad_cylinder_mm": 0.221544
       }
     }
   },
@@ -254,14 +242,14 @@
   },
   "native_adapter_to_print_alignment": {
     "status": "PASS",
-    "checks_passed": 68,
+    "checks_passed": 70,
     "both_variants_same_geometric_tail_set": true,
-    "scope": "Independent direct parsing of final saved KiCad native files and final delivered STEP. Probes are clearance envelopes, not actual solder fillet or physical print measurements.",
+    "scope": "Current saved native adapter boards and delivered STEP, plus source-file hash verification. Recorded historic copper-screen results are retained without re-extraction. Nominal drill cylinders are not measured component bodies.",
     "projects": {
       "DB23M_RGB": {
         "signal_guides_checked_from_saved_native_centres": 23,
-        "max_signal_position_change_from_revision_0_4_mm": 0.0,
-        "max_bore_probe_intersection_mm3": 0.0,
+        "all_native_tail_positions_match_nominal_grid": true,
+        "max_bore_probe_intersection_mm3": 0,
         "signal_drill_mm": 1.04,
         "mount_bores_checked_from_saved_native_centres": 2,
         "mounting_xy_mm": [
@@ -275,7 +263,7 @@
           ]
         ],
         "adapter_mount_drill_mm": 3.3,
-        "max_mount_probe_intersection_mm3": 0.0,
+        "max_mount_probe_intersection_mm3": 0,
         "J4_fillets_checked_from_saved_native_centres": 2,
         "J4_xy_mm": [
           [
@@ -289,18 +277,19 @@
         ],
         "J4_drill_mm": 1.2,
         "J4_fillet_probe_envelope": "Diameter2.4mm,0.75mm belowPCBunderside",
-        "max_J4_probe_intersection_mm3": 0.0,
+        "max_J4_probe_intersection_mm3": 0,
         "outline_vertices": 16,
         "outline_matches_shared_parameters": true,
         "footprint_to_assembly_origin_verified_mm": [
           150.0,
           80.0
-        ]
+        ],
+        "native_PCB_SHA256": "08321cd6aaf3689188ef42088af3b7c69cc3978360ec06ca1feb6a56500852fb"
       },
       "DB23F_Floppy": {
         "signal_guides_checked_from_saved_native_centres": 23,
-        "max_signal_position_change_from_revision_0_4_mm": 0.0,
-        "max_bore_probe_intersection_mm3": 0.0,
+        "all_native_tail_positions_match_nominal_grid": true,
+        "max_bore_probe_intersection_mm3": 0,
         "signal_drill_mm": 1.04,
         "mount_bores_checked_from_saved_native_centres": 2,
         "mounting_xy_mm": [
@@ -314,7 +303,7 @@
           ]
         ],
         "adapter_mount_drill_mm": 3.3,
-        "max_mount_probe_intersection_mm3": 0.0,
+        "max_mount_probe_intersection_mm3": 0,
         "J4_fillets_checked_from_saved_native_centres": 2,
         "J4_xy_mm": [
           [
@@ -328,14 +317,309 @@
         ],
         "J4_drill_mm": 1.2,
         "J4_fillet_probe_envelope": "Diameter2.4mm,0.75mm belowPCBunderside",
-        "max_J4_probe_intersection_mm3": 0.0,
+        "max_J4_probe_intersection_mm3": 0,
         "outline_vertices": 16,
         "outline_matches_shared_parameters": true,
         "footprint_to_assembly_origin_verified_mm": [
           150.0,
           80.0
-        ]
+        ],
+        "native_PCB_SHA256": "4c9acce681b346b2dcf6b4afff1e1ec8e9ed03837a67397c5fded983bdb2c158"
       }
+    },
+    "checks": {
+      "reference_source_SHA256_unchanged": {
+        "passed": true,
+        "details": "4155ef7a00132b9eea8feed87b3504cc958765ecd263edc102177ac43f24300b"
+      },
+      "base_STEP_valid_one_solid": {
+        "passed": true,
+        "details": true
+      },
+      "base_reference_drill_cylinder_clear": {
+        "passed": true,
+        "details": 0.0
+      },
+      "base_positive_reference_drill_gap": {
+        "passed": true,
+        "details": 0.2013324793638212
+      },
+      "cap_STEP_valid_one_solid": {
+        "passed": true,
+        "details": true
+      },
+      "cap_reference_drill_cylinder_clear": {
+        "passed": true,
+        "details": 0.0
+      },
+      "cap_positive_reference_drill_gap": {
+        "passed": true,
+        "details": 0.2013324793638212
+      },
+      "DB23M_RGB_origin_and_thickness": {
+        "passed": true,
+        "details": true
+      },
+      "DB23M_RGB_native_outline_matches_contract": {
+        "passed": true,
+        "details": true
+      },
+      "DB23M_RGB_native_tail_guide_01": {
+        "passed": true,
+        "details": 0.0
+      },
+      "DB23M_RGB_native_tail_guide_02": {
+        "passed": true,
+        "details": 0.0
+      },
+      "DB23M_RGB_native_tail_guide_03": {
+        "passed": true,
+        "details": 0.0
+      },
+      "DB23M_RGB_native_tail_guide_04": {
+        "passed": true,
+        "details": 0.0
+      },
+      "DB23M_RGB_native_tail_guide_05": {
+        "passed": true,
+        "details": 0.0
+      },
+      "DB23M_RGB_native_tail_guide_06": {
+        "passed": true,
+        "details": 0.0
+      },
+      "DB23M_RGB_native_tail_guide_07": {
+        "passed": true,
+        "details": 0.0
+      },
+      "DB23M_RGB_native_tail_guide_08": {
+        "passed": true,
+        "details": 0.0
+      },
+      "DB23M_RGB_native_tail_guide_09": {
+        "passed": true,
+        "details": 0.0
+      },
+      "DB23M_RGB_native_tail_guide_10": {
+        "passed": true,
+        "details": 0.0
+      },
+      "DB23M_RGB_native_tail_guide_11": {
+        "passed": true,
+        "details": 0.0
+      },
+      "DB23M_RGB_native_tail_guide_12": {
+        "passed": true,
+        "details": 0.0
+      },
+      "DB23M_RGB_native_tail_guide_13": {
+        "passed": true,
+        "details": 0.0
+      },
+      "DB23M_RGB_native_tail_guide_14": {
+        "passed": true,
+        "details": 0.0
+      },
+      "DB23M_RGB_native_tail_guide_15": {
+        "passed": true,
+        "details": 0.0
+      },
+      "DB23M_RGB_native_tail_guide_16": {
+        "passed": true,
+        "details": 0.0
+      },
+      "DB23M_RGB_native_tail_guide_17": {
+        "passed": true,
+        "details": 0.0
+      },
+      "DB23M_RGB_native_tail_guide_18": {
+        "passed": true,
+        "details": 0.0
+      },
+      "DB23M_RGB_native_tail_guide_19": {
+        "passed": true,
+        "details": 0.0
+      },
+      "DB23M_RGB_native_tail_guide_20": {
+        "passed": true,
+        "details": 0.0
+      },
+      "DB23M_RGB_native_tail_guide_21": {
+        "passed": true,
+        "details": 0.0
+      },
+      "DB23M_RGB_native_tail_guide_22": {
+        "passed": true,
+        "details": 0.0
+      },
+      "DB23M_RGB_native_tail_guide_23": {
+        "passed": true,
+        "details": 0.0
+      },
+      "DB23M_RGB_all_native_tails_match_nominal_grid": {
+        "passed": true,
+        "details": true
+      },
+      "DB23M_RGB_native_mount_1": {
+        "passed": true,
+        "details": 0.0
+      },
+      "DB23M_RGB_native_mount_2": {
+        "passed": true,
+        "details": 0.0
+      },
+      "DB23M_RGB_native_J4_fillet_1": {
+        "passed": true,
+        "details": 0.0
+      },
+      "DB23M_RGB_native_J4_fillet_2": {
+        "passed": true,
+        "details": 0.0
+      },
+      "DB23M_RGB_outline_reference_drill_clear": {
+        "passed": true,
+        "details": {
+          "overlap_mm3": 0.0,
+          "gap_mm": 0.627944
+        }
+      },
+      "DB23F_Floppy_origin_and_thickness": {
+        "passed": true,
+        "details": true
+      },
+      "DB23F_Floppy_native_outline_matches_contract": {
+        "passed": true,
+        "details": true
+      },
+      "DB23F_Floppy_native_tail_guide_01": {
+        "passed": true,
+        "details": 0.0
+      },
+      "DB23F_Floppy_native_tail_guide_02": {
+        "passed": true,
+        "details": 0.0
+      },
+      "DB23F_Floppy_native_tail_guide_03": {
+        "passed": true,
+        "details": 0.0
+      },
+      "DB23F_Floppy_native_tail_guide_04": {
+        "passed": true,
+        "details": 0.0
+      },
+      "DB23F_Floppy_native_tail_guide_05": {
+        "passed": true,
+        "details": 0.0
+      },
+      "DB23F_Floppy_native_tail_guide_06": {
+        "passed": true,
+        "details": 0.0
+      },
+      "DB23F_Floppy_native_tail_guide_07": {
+        "passed": true,
+        "details": 0.0
+      },
+      "DB23F_Floppy_native_tail_guide_08": {
+        "passed": true,
+        "details": 0.0
+      },
+      "DB23F_Floppy_native_tail_guide_09": {
+        "passed": true,
+        "details": 0.0
+      },
+      "DB23F_Floppy_native_tail_guide_10": {
+        "passed": true,
+        "details": 0.0
+      },
+      "DB23F_Floppy_native_tail_guide_11": {
+        "passed": true,
+        "details": 0.0
+      },
+      "DB23F_Floppy_native_tail_guide_12": {
+        "passed": true,
+        "details": 0.0
+      },
+      "DB23F_Floppy_native_tail_guide_13": {
+        "passed": true,
+        "details": 0.0
+      },
+      "DB23F_Floppy_native_tail_guide_14": {
+        "passed": true,
+        "details": 0.0
+      },
+      "DB23F_Floppy_native_tail_guide_15": {
+        "passed": true,
+        "details": 0.0
+      },
+      "DB23F_Floppy_native_tail_guide_16": {
+        "passed": true,
+        "details": 0.0
+      },
+      "DB23F_Floppy_native_tail_guide_17": {
+        "passed": true,
+        "details": 0.0
+      },
+      "DB23F_Floppy_native_tail_guide_18": {
+        "passed": true,
+        "details": 0.0
+      },
+      "DB23F_Floppy_native_tail_guide_19": {
+        "passed": true,
+        "details": 0.0
+      },
+      "DB23F_Floppy_native_tail_guide_20": {
+        "passed": true,
+        "details": 0.0
+      },
+      "DB23F_Floppy_native_tail_guide_21": {
+        "passed": true,
+        "details": 0.0
+      },
+      "DB23F_Floppy_native_tail_guide_22": {
+        "passed": true,
+        "details": 0.0
+      },
+      "DB23F_Floppy_native_tail_guide_23": {
+        "passed": true,
+        "details": 0.0
+      },
+      "DB23F_Floppy_all_native_tails_match_nominal_grid": {
+        "passed": true,
+        "details": true
+      },
+      "DB23F_Floppy_native_mount_1": {
+        "passed": true,
+        "details": 0.0
+      },
+      "DB23F_Floppy_native_mount_2": {
+        "passed": true,
+        "details": 0.0
+      },
+      "DB23F_Floppy_native_J4_fillet_1": {
+        "passed": true,
+        "details": 0.0
+      },
+      "DB23F_Floppy_native_J4_fillet_2": {
+        "passed": true,
+        "details": 0.0
+      },
+      "DB23F_Floppy_outline_reference_drill_clear": {
+        "passed": true,
+        "details": {
+          "overlap_mm3": 0.0,
+          "gap_mm": 0.627944
+        }
+      },
+      "both_variants_same_geometric_tail_set": {
+        "passed": true,
+        "details": true
+      }
+    },
+    "checker": "source/verify_reference_fit.py",
+    "source_SHA256_reverified": true,
+    "reviewed_STEP_SHA256": {
+      "DB23_Holder": "bbdfd488bdad26286d9e50cae287d381cab3c0bc8fd0d0e70fd2f723c4275ce5",
+      "DB23_Cap": "a68a55d257f0881ce48904185c0736ed641db55cd8a7d996294e5a42a888cb35"
     }
   }
 }

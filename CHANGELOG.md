@@ -1,9 +1,15 @@
 # Changelog
 
+## 0.5 review amendments - 29 October 2026
+
+- Squared the forward tower sides and matching cap to X±25.60, adding 0.60 mm at the marked rear-corner rebates and placing the remaining neighbour relief behind the towers.
+- Changed both PCB faces to `Amiga DB23 REV 0.5`, retaining the same revision number.
+- Updated the project credits to Paul of UK Computing Limited, Jon of JMC Electronics and AI assistance through Codex.
+
 ## 0.5 - 29 October 2026
 
-- Replaced recessed top-loaded anchor bolts with M3 screws upward from beneath the motherboard, through the base and PCB ears, to top washers and nuts.
-- Moved and enlarged J3 into plated mounting lands at the original shell-anchor axes; added separate J4 shell-wire pads clear of washer seats.
+- Replaced recessed top-loaded anchor bolts with M3 screws upward from beneath the motherboard, through the base and PCB ears, with underside insulating washers and nuts directly on top.
+- Moved and enlarged J3 into plated mounting lands at the original shell-anchor axes; added separate J4 shell-wire pads clear of nut seats.
 - Shortened both male and female PCBs from rear Y16.00 to Y13.00, with mounting ears and coordinated shell routing.
 - Replaced loose anchor shims with integral mounting feet and removed old screw-head recesses.
 - Added a keyed clip-on cap retaining the jackpost nuts and covering top hardware; default M3 × 12 mm mounting screws and cap fit remain unmeasured.

@@ -2,17 +2,17 @@
 <export version="E">
   <design>
     <source>/workspace/scratch/a29874c2019a/DB23_Replacement_v0.5/pcb/DB23M_RGB/DB23M_RGB.kicad_sch</source>
-    <date>Thu Oct 29 16:00:14 2026</date>
+    <date>Thu Oct 29 16:35:05 2026</date>
     <tool>Eeschema 7.0.11+dfsg-1build4</tool>
     <sheet number="1" name="/" tstamps="/">
       <title_block>
         <title>DB23M_RGB DB23 replacement</title>
-        <company>UK Computing Limited</company>
+        <company>Amiga DB23</company>
         <rev>0.5</rev>
         <date>2026-10-29</date>
         <source>DB23M_RGB.kicad_sch</source>
         <comment number="1" value="FIT PROTOTYPE - measure selected solder-cup DB23 before manufacture"/>
-        <comment number="2" value=""/>
+        <comment number="2" value="Paul of UK Computing Limited; Jon of JMC Electronics; AI assistance through Codex"/>
         <comment number="3" value=""/>
         <comment number="4" value=""/>
         <comment number="5" value=""/>

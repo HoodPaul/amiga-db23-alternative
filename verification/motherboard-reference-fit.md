@@ -1,47 +1,41 @@
 # Reference motherboard fit screen
 
-This is a limited two-dimensional comparison with the locally retained [A4000 replica KiCad board](https://github.com/Acill/A4000RevB/blob/master/Kicad/A4k-Replica-Acill.kicad_pcb). It is not a physical fit result, a clearance certificate or a substitute for measurements of the target motherboard.
+Project development: **Paul of UK Computing Limited**, **Jon of JMC Electronics** and **AI assistance through Codex**.
 
-The exact source SHA-256, native format version, pad/track locations and numeric results are recorded in [motherboard-reference-fit.json](motherboard-reference-fit.json). The source file is not included in this project. Component bodies, solder fillets, actual screw dimensions, solder-mask condition and chassis surfaces are outside this screen.
+This is a limited comparison with the locally retained [A4000 replica KiCad board](https://github.com/Acill/A4000RevB/blob/master/Kicad/A4k-Replica-Acill.kicad_pcb). It is not a physical fit result, clearance certificate or substitute for measurements of the target motherboard. The source file is not republished here. Its exact SHA-256 and retained copper-screen findings are in [motherboard-reference-fit.json](motherboard-reference-fit.json).
+
+## Reproducible current checks
+
+The current saved boards and STEP files pass **70 checks**, run with:
+
+```sh
+python3 source/verify_reference_fit.py --reference-board /path/to/A4k-Replica-Acill.kicad_pcb
+```
+
+The helper requires CadQuery and the exact external source file identified by the stored SHA-256. It verifies that source hash, directly parses both saved adapter boards and rechecks their bores, J4 fillet clearances, outlines and the current base/cap STEP. Historic reference-board copper findings are retained rather than re-extracted; this limitation is explicit in the machine-readable report.
 
 ## Nominal mounting positions
 
-The reference CN450 RGB and CN352 floppy signal-hole sets closely follow the iComp nominal grid. There are small differences consistent with legacy unit conversion or motherboard revision differences. In particular, the reference anchor line is 0.1524 mm behind the midpoint of its two signal rows, whereas the iComp drawing places it at that midpoint. The reference anchor spacing is 44.2976 mm rather than 44.2700 mm, and its anchor drill is 3.175 mm rather than the 3.20 mm nominal drawing value.
-
-The replacement retains the sourced iComp hole centres. Its own J3 mounting drills are 3.30 mm, providing clearance for nominal M3 shanks without changing the original motherboard. Under ideal circular-hole assumptions, combined radial allowance from the reference motherboard and adapter holes is 0.2375 mm, compared with approximately 0.1530 mm centre mismatch after registering the signal rows. This simple allowance does not include screw, drilling, print or assembly tolerances; actual fit must be checked.
+The source CN450 RGB and CN352 floppy anchor line lies 0.1524 mm behind the midpoint of the source signal rows, with 44.2976 mm anchor spacing and 3.175 mm anchor drills. The sourced iComp contract uses 44.2700 mm spacing and nominal 3.20 mm motherboard drills. The replacement retains iComp centres and uses Ø3.30 mm adapter holes. Under ideal circular-hole assumptions, the reference/adapter radial allowance for a nominal M3 shank is 0.2375 mm versus about 0.1530 mm axis eccentricity; real tolerances and physical fit remain unverified. Do not enlarge or countersink the motherboard.
 
 ## Underside screw heads
 
-The user's proposed head is approximately 7 mm in diameter and 1 mm high. A bare 7 mm metal disc at the reference CN450 left anchor overlaps the plan projection of a foreign bottom-copper `-M450` trace by 0.2107 mm. At the reference CN352 left anchor, the nominal gap to a foreign bottom trace is only 0.0369 mm. These are copper projections; this screen does not establish which areas are exposed or safely insulated by solder mask.
+The unchanged source-board screen records a bare Ø7 mm head overlapping a foreign CN450 bottom-copper trace by 0.2107 mm in plan; the nearest recorded CN352 foreign trace has only 0.0369 mm nominal gap. Mask condition and actual exposed metal are not established. The default Ø8 × 0.50 mm underside insulating washers and deliberate motherboard shell-ground wire therefore remain required. Verify actual coverage, bearing, components and chassis clearance; do not rely on bolt contact for grounding.
 
-For comparison, a 6 mm head leaves approximately 0.2893 mm clearance to the nearest CN450 foreign trace in this reference model. That is not approval of a different screw or universal fit.
+## Revised square end faces and neighbouring connector
 
-Revision 0.5 therefore requires a separate insulating washer beneath the motherboard for the retained 7 mm head arrangement. Verify the washer dimensions and dielectric coverage, head bearing, underside component clearance and chassis clearance on the real machine. The insulating washer means that a reliable shell-ground connection must be provided deliberately, rather than assumed through the mounting screw's bearing face.
+The recorded CN175 mounting pad is centred at X26.797, Y5.7916, with a Ø2.3622 mm drill and Ø3.175 mm copper land. The strengthened forward ends now use one uniform outer face at X±25.60 through Y5.10. The aft local relief then reduces the outer edge to X±25.00 until Y7.50. PCB ears remain unchanged: X±25.00 at Y6.00–7.50 and X±25.60 behind it.
 
-## Neighbouring connector
+| Current saved shape | Gap to reference drill cylinder | Drill-cylinder intersection |
+|---|---:|---:|
+| Base | 0.201332 mm | 0.000000 mm³ |
+| Cap | 0.201332 mm | 0.000000 mm³ |
+| Adapter outline | 0.627944 mm | 0.000000 mm³ |
 
-On the reference CN450 right side, CN175 mounting pad 7 is centred at approximately X+26.797, Y5.7916 in the replacement's assembly frame. Its copper land is 3.175 mm in diameter and its drill is 2.3622 mm. An unrelieved 52 mm rectangular base projection would overlap that neighbouring hole/lug region.
-
-The delivered adapter PCB has a 16-vertex outline, with outer ears locally reduced to X±25.00 from Y6.00 to Y7.50. The base and cap have a matching local reduction to X±25.00 from Y4.40 to Y7.50, while retaining the full 52 mm width elsewhere. The local boundary comparison gives:
-
-| Shape | Closest boundary point | Gap to reference drill circle | Gap to reference copper-pad circle |
-|---|---|---:|---:|
-| Adapter PCB | X25.00, Y6.00 | 0.627944 mm | 0.221544 mm |
-| Base/cap outer polyline | X26.00, Y4.40 | 0.422571 mm | 0.016171 mm |
-
-The base/cap's closest feature is the front corner of the relief, not the X25 straight segment. The copper-pad projection has very little gap at that corner. These are local plan-outline distances only; no actual neighbouring metal-lug, solder-fillet or connector-housing height is modelled. Their physical clearance remains unverified.
-
-An independent check against the final delivered base and cap STEP solids confirms zero intersection with a vertical cylinder having the reference drill's 2.3622 mm diameter. Their minimum distance to that cylinder is 0.422571 mm. The corresponding final adapter-outline solid has zero intersection and 0.627944 mm minimum distance. These cylinder checks use the drill circle as a reference envelope, not a measured neighbouring component body.
+The closest square end corner has a signed planar gap to the copper-pad circle of approximately **-0.205068 mm**. A negative value means projected overlap with the ground land, not a proven collision or electrical contact: the printed parts are insulating and the actual lug, solder fillet and housing heights are not modelled. This is an explicit physical fit check for the target motherboard. Do not interpret a clear drill cylinder as proof of clearance to the complete neighbouring connector.
 
 ## Saved adapter-to-print alignment
 
-The final native KiCad files for both adapter genders were parsed directly, independently of the builders. Sixty-eight checks passed across the final native boards, delivered STEP clearances and neighbouring reference-cylinder comparison. They confirm:
+For each gender, 23 guide probes, two mounting-bore probes and two conservative J4 underside-fillet probes clear the delivered base. Native tail positions match the nominal grid, both variants retain the same geometric tail set, and all 16 outline segments match the shared contract. The J4 probe is Ø2.40 mm and extends 0.75 mm below the adapter PCB. These are saved-file alignment checks, not actual solder-fillet or print-fit measurements.
 
-- All 23 signal-hole centres in each board are unchanged from revision 0.4, with maximum centre movement of 0.000000 mm. The male and female variants retain the same geometric hole set with their own numbering.
-- The new mounting holes are at X±22.135, Y9.500, with 3.30 mm adapter drills. The dedicated J4 shell-bond holes are at X±18.000, Y7.000, with 1.20 mm drills.
-- Each saved board's 16 outline segments match the shared final relieved outline, and its footprint origin offset is correctly converted to assembly coordinates.
-- All 23 guide-clearance probes, both mounting-bore probes and both J4 nominal underside-fillet envelopes return zero base intersection for each board.
-
-The J4 probes are 2.4 mm diameter and extend 0.75 mm beneath the adapter PCB. These results demonstrate saved-file alignment and nominal clearance only. They do not establish actual solder-fillet shape, hole finishing, printer accuracy or pin retention.
-
-The photographs are useful for identifying the CN450 area and nearby parts. They do not establish exact depth or height clearance by themselves. Keep the original motherboard unmodified and record the actual target revision and hardware in the measurement worksheet.
+The photographs identify the CN450 area but do not establish exact depth or height clearance. Record the real motherboard revision, neighbouring metal and solder geometry, fastener stack and case fit in the measurement worksheet.

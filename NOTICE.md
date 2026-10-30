@@ -2,9 +2,9 @@
 
 ## Project development
 
-This project is developed for Paul of UK Computing Limited, with AI assistance through Codex. It develops Paul's horizontal straddle-PCB concept and supported individual-pin construction. Revision 0.5 adds the shorter mounting-ear PCB, solid base, upward metal fasteners and keyed clip-on cap.
+Project development: **Paul of UK Computing Limited**, **Jon of JMC Electronics** and **AI assistance through Codex**. It develops Paul's horizontal straddle-PCB concept and supported individual-pin construction. Revision 0.5 adds the shorter mounting-ear PCB, solid base, upward metal fasteners and keyed clip-on cap.
 
-No authorship or participation is assigned to unnamed colleagues. No third-party logo has been recreated or added by assumption.
+No third-party logo has been recreated or added by assumption.
 
 ## Reference information
 

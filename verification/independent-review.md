@@ -1,18 +1,26 @@
 # Independent geometry review, revision 0.5
 
+Project development: **Paul of UK Computing Limited**, **Jon of JMC Electronics** and **AI assistance through Codex**.
+
 Reviewed 29 October 2026. **Fit prototype using unmeasured solder-cup connector, hardware and printed-fit assumptions.** Both electrical PCB variants are now revision 0.5.
 
-The delivered STEP and STL files were examined with `python3 source/verify_mechanical.py`. The audit reads saved files without importing the mechanical builder and passes **176 checks**. Detailed results are in [mechanical-audit.json](mechanical-audit.json). CadQuery/OpenCascade supplies solid intersections; VTK independently checks STL topology, print transforms and loading-jig stop surfaces. A separate [native-board/reference comparison](motherboard-reference-fit.md) records **68 checks** against the saved male/female KiCad boards and delivered base STEP.
+The delivered STEP and STL files were examined with `python3 source/verify_mechanical.py`. The audit reads saved files without importing the mechanical builder and passes **206 checks**. Detailed results are in [mechanical-audit.json](mechanical-audit.json). CadQuery/OpenCascade supplies solid intersections; VTK independently checks STL topology, print transforms and loading-jig stop surfaces. A separate [native-board/reference comparison](motherboard-reference-fit.md) records **70 checks** against the saved male/female KiCad boards and delivered base STEP.
 
 ## Solid base and shorter PCB
 
-The holder STEP is valid and contains one solid of **1,787.389466 mm³**. It retains a maximum **52.00 mm width**, ends at **Y13.00**, and supports the adapter PCB underside at **Z5.75**. Two integral feet reach the motherboard datum at **Z0**. The remainder retains nominal **Z0.60** underside clearance; there are no separate anchor shims.
+The holder STEP is valid and contains one solid of **1,764.925466 mm³**. It retains a maximum **52.00 mm width**, ends at **Y13.00**, and supports the adapter PCB underside at **Z5.75**. Two integral feet reach the motherboard datum at **Z0**. The remainder retains nominal **Z0.60** underside clearance; there are no separate anchor shims.
 
 The new PCB has a 16-vertex outline, **51.20 mm maximum width**, front **Y4.00** and rear **Y13.00**. Its mounting ears align with the nominal original shell-anchor positions, **X±22.135, Y9.50**. Its own J3 drills are **3.30 mm**, distinct from the **3.20 mm nominal motherboard** drawing value. No original motherboard hole enlargement is specified. Dedicated J4 shell-bond holes are **X±18.00, Y7.00**.
 
-The PCB outer ears are relieved to X±25.00 from Y6.00–7.50. Matching base and cap reliefs reduce their outer edges to X±25.00 from Y4.40–7.50. These avoid the unrelieved rectangular projection over the neighbouring CN175 mounting-lug region in the separate reference model. That model's actual lug, solder fillet, component housing and chassis dimensions remain unverified; see the restricted scope below.
+The PCB outer ears remain relieved to X±25.00 from Y6.00–7.50. Following the marked review, the base and cap now have one square forward end plane at X±25.60 from Y0.65 through Y5.10. The aft local relief starts behind those end towers and reduces the outer edge to X±25.00 until Y7.50. This fills the former X25 rear-corner cutback by 0.60 mm and trims the former X26 forward face by 0.40 mm. The nut-loading pocket stays in its original position, leaving a nominal 0.615 mm outer wall and 0.80 mm rear web. These are geometric section sizes, not a print-strength rating. The neighbouring model's actual lug, solder fillet, housing and chassis dimensions remain unverified.
 
 The 23-pin guide top remains **Z4.50**, providing **1.25 mm nominal clearance** beneath the PCB. All 23 delivered guide bores are open, and the assumed square pin envelopes clear the base. J4 underside reliefs clear conservative **Ø2.40 × 0.75 mm** fillet envelopes and their complete 20 mm vertical lowering sweeps. These assumed fillets do not replace inspection of actual solder joints.
+
+## Square-end review amendment
+
+Thirty new saved-solid checks verify the change. At three stations along each forward end, probes lie inside the new X25.60 face and immediately outside it. Separate probes confirm material in both marked rear corners at Y4.60 and Y5.00, and in both lower end corners. Equivalent cap-roof probes verify its matching square outline. These checks examine the delivered STEP solids without importing the construction tree.
+
+A one-off Boolean comparison with the previous revision 0.5 STEP files from commit `d955061620d6cfa38a8a3d53e913e118aec0ad2e` found 8.736 mm³ added at the base's former cutbacks and 31.200 mm³ trimmed from the earlier forward faces. The cap adds 1.008 mm³ and trims 3.600 mm³. The net volume decreases while the selected rear-corner sections are filled. No stress analysis, material strength, layer adhesion or long-term load result is inferred from those volumes.
 
 ## Joined DB23/PCB assembly path
 
@@ -59,7 +67,7 @@ The dedicated J4 points leave the mounting-nut lands clear for flat seating. Sma
 
 ## Clip-on cap
 
-The cap STEP is valid, one solid of **981.284000 mm³**, with roof underside **Z11.00**, roof top **Z12.20**, and rear **Y13.20**. It has zero seated overlap with the base, PCB, assumed connector, 23 square pins, default mounting hardware and captive jackpost nuts. Actual STEP material probes confirm both retaining hooks, their relieved seated positions, the base catch ceilings and the nut-retaining keys.
+The cap STEP is valid, one solid of **978.692000 mm³**, with roof underside **Z11.00**, roof top **Z12.20**, and rear **Y13.20**. It has zero seated overlap with the base, PCB, assumed connector, 23 square pins, default mounting hardware and captive jackpost nuts. Actual STEP material probes confirm both retaining hooks, their relieved seated positions, the base catch ceilings and the nut-retaining keys.
 
 The inboard latches have **0.20 mm nominal retaining bite**. A conservative **0.25 mm rearward-motion envelope** gives 0.05 mm tip clearance at the tower rear. That envelope clears the PCB because the latch bottoms are at **Z7.20**, **0.45 mm above the PCB top**. It may overlap the PCB's plan projection, but has zero three-dimensional intersection. These checks do not calculate material strain, insertion force, fatigue or creep. Print the two clip-fit trial parts before committing to the complete cap, and do not force a tight print.
 
@@ -75,7 +83,7 @@ Equal **10.70 mm** pins then have upper tips at **Z7.50**. Equal lower projectio
 
 | Delivered printable part | Triangles | Boundary/non-manifold edges | Connected regions |
 |---|---:|---:|---:|
-| Base | 8,324 | 0 | 1 |
+| Base | 8,320 | 0 | 1 |
 | Cap, roof-down | 220 | 0 | 1 |
 | Pin-height jig | 1,036 | 0 | 1 |
 | Hole-fit coupon | 26,384 | 0 | 1 |
@@ -84,6 +92,6 @@ Equal **10.70 mm** pins then have upper tips at **Z7.50**. Equal lower projectio
 
 ## Reference-board and physical limits
 
-The separate [reference comparison](motherboard-reference-fit.md) records exact source identity and its limited two-dimensional/cylinder checks. It found small mounting-coordinate differences from the sourced iComp nominal pattern. The final base and cap clear a cylinder having the neighbouring CN175 reference drill diameter by **0.422571 mm**; the adapter outline clears it by **0.627944 mm**. That cylinder is not a measured metal lug or housing, and the base/cap corner is only **0.016171 mm** from the copper-pad circle in plan. Physical neighbouring-part clearance remains unverified.
+The separate [reference comparison](motherboard-reference-fit.md) records exact source identity and its limited two-dimensional/cylinder checks. Its current reproducible helper passes 70 checks. It found small mounting-coordinate differences from the sourced iComp nominal pattern. The revised square base and cap clear a cylinder having the neighbouring CN175 reference drill diameter by **0.201332 mm**; the adapter outline still clears it by **0.627944 mm**. The new square corner has a signed gap of **−0.205068 mm** to the copper-pad circle in plan, indicating projected overlap with that ground land. Plastic overlapping copper in plan does not by itself establish contact or collision. The drill cylinder is not a measured metal lug, solder fillet or housing, and physical neighbouring-part clearance remains unverified.
 
 These saved-file checks establish the CAD consistency stated here. They do not establish purchased-part compatibility, printing accuracy, latch life, pin retention, soldering heat tolerance, clamping torque, cable insertion strength, electrical continuity, chassis fit or operation on an Amiga. The target motherboard and actual hardware must be measured and trial-fitted before a production release.

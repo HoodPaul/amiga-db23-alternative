@@ -1,6 +1,6 @@
 (kicad_sch (version 20230121) (generator eeschema)
  (uuid e7f47970-2dba-5147-88c6-28ccba973f0e) (paper "A4")
- (title_block (title "DB23M_RGB DB23 replacement") (date "2026-10-29") (rev "0.5") (company "UK Computing Limited") (comment 1 "FIT PROTOTYPE - measure selected solder-cup DB23 before manufacture"))
+ (title_block (title "DB23M_RGB DB23 replacement") (date "2026-10-29") (rev "0.5") (company "Amiga DB23") (comment 1 "FIT PROTOTYPE - measure selected solder-cup DB23 before manufacture") (comment 2 "Paul of UK Computing Limited; Jon of JMC Electronics; AI assistance through Codex"))
  (lib_symbols
 (symbol "DB23_Local:Cups23" (pin_names (offset 1.016) hide) (in_bom yes) (on_board yes)
  (property "Reference" "J" (at 0 5.08 0) (effects (font (size 1.27 1.27))))

@@ -174,14 +174,16 @@
     "anchor_assembly_note": "Insert M3 screws upwards with an insulating washer beneath each head and the motherboard; fit nuts directly on the supported adapter-PCB SHIELD mounting pads. Verify flat seating and underside clearances. No default top washer and no separate printed foot shims.",
     "shell_relief_note": "Shallow top recesses under dedicated J4 shell-bond wire holes clear pre-soldered fillets. Route insulated shell wires above PCB, clear of signal pins and cap latches.",
     "outer_relief_x": 25.0,
-    "outer_relief_front_y": 4.4,
+    "outer_relief_front_y": 5.1,
     "outer_relief_rear_y": 7.5,
     "latch_notch_x_outer": 20.15,
     "ground_wire_groove_side": 1,
     "ground_wire_groove_inner_x": 24.0,
     "ground_wire_groove_width": 1.2,
     "ground_wire_groove_height": 1.0,
-    "ground_wire_note": "Right integrated foot has an outward-open 1.20mm wire groove, Z0..1.00, beginning at X24.00 on the original shell-pad annulus. Pre-solder the deliberate ground lead to the motherboard shell pad, route the insulated lead outwards then up to J4. Actual solder/insulation clearance must be trialled; the remaining foot bearing must sit flat."
+    "ground_wire_note": "Right integrated foot has an outward-open 1.20mm wire groove, Z0..1.00, beginning at X24.00 on the original shell-pad annulus. Pre-solder the deliberate ground lead to the motherboard shell pad, route the insulated lead outwards then up to J4. Actual solder/insulation clearance must be trialled; the remaining foot bearing must sit flat.",
+    "forward_end_outer_x": 25.6,
+    "forward_end_note": "Squared end faces at X+/-25.60 from Y0.65 through Y5.10. This fills the former X25 rear-corner cutback by 0.60mm and trims the earlier front X26 face by 0.40mm so the outer end wall is continuous. The nut pocket remains unchanged; outer wall is nominal0.615mm and rear web0.80mm. The neighbouring-lug relief starts behind the end towers at Y5.10 and remains X25 to Y7.50. No new height-dependent neighbour-clearance assumption is introduced."
   },
   "pcb_revision": "0.5",
   "pin_height_jig": {

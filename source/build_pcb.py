@@ -62,11 +62,11 @@ def line(board, start, end, layer, width=0.05):
     board.Add(item)
 
 
-def board_text(board, s, x, y, layer=k.F_SilkS, size=0.9, mirror=False):
+def board_text(board, s, x, y, layer=k.F_SilkS, size=0.9, mirror=False, thickness=None):
     item = k.PCB_TEXT(board)
     item.SetText(s); item.SetPosition(pos(x, y)); item.SetLayer(layer)
     item.SetTextSize(k.VECTOR2I(mm(size), mm(size)))
-    item.SetTextThickness(mm(0.12 if size < 0.9 else 0.15))
+    item.SetTextThickness(mm(thickness if thickness is not None else (0.12 if size < 0.9 else 0.15)))
     item.SetMirrored(mirror)
     board.Add(item)
 
@@ -88,7 +88,7 @@ def configure_rules(board):
     ds=board.GetDesignSettings()
     ds.SetBoardThickness(mm(P['thickness']));ds.SetCopperLayerCount(2)
     ds.m_MinClearance=mm(P['clearance']);ds.m_CopperEdgeClearance=mm(0.2)
-    ds.m_SilkClearance=mm(0.1);ds.m_MinSilkTextHeight=mm(0.8);ds.m_MinSilkTextThickness=mm(0.1)
+    ds.m_SilkClearance=mm(0.1);ds.m_MinSilkTextHeight=mm(0.7);ds.m_MinSilkTextThickness=mm(0.1)
     ds.m_TrackMinWidth=mm(0.2);ds.m_MinThroughDrill=mm(0.3);ds.m_HoleToHoleMin=mm(0.25)
     ds.m_ViasMinSize=mm(0.6);ds.m_ViasMinAnnularWidth=mm(0.1)
     nc=ds.m_NetSettings.m_DefaultNetClass
@@ -166,7 +166,7 @@ def schematic(project, gender):
     defs = [('Cups23', 'R', 23), ('Motherboard23', 'L', 23), ('MountingShield', 'R', 2), ('ShellBond', 'R', 2)]
     o = [f'(kicad_sch (version 20230121) (generator eeschema)',
          f' (uuid {root}) (paper "A4")',
-         f' (title_block (title "{project} DB23 replacement") (date "{PARAMS["date"]}") (rev "{REV}") (company "UK Computing Limited") (comment 1 "FIT PROTOTYPE - measure selected solder-cup DB23 before manufacture"))',
+         f' (title_block (title "{project} DB23 replacement") (date "{PARAMS["date"]}") (rev "{REV}") (company "Amiga DB23") (comment 1 "FIT PROTOTYPE - measure selected solder-cup DB23 before manufacture") (comment 2 "Paul of UK Computing Limited; Jon of JMC Electronics; AI assistance through Codex"))',
          ' (lib_symbols']
     o.extend(symbol_definition(*d) for d in defs)
     o.append(' )')
@@ -211,7 +211,7 @@ def project_config(project):
         'min_clearance': 0.2, 'min_track_width': 0.2,
         'min_via_diameter': 0.6, 'min_through_hole_diameter': 0.3,
         'min_hole_to_hole': 0.25, 'min_copper_edge_clearance': 0.2,
-        'min_silk_clearance': 0.1, 'min_text_height': 0.8,
+        'min_silk_clearance': 0.1, 'min_text_height': 0.7,
         'min_text_thickness': 0.1
       }}},
       'net_settings': {'meta': {'version': 3}, 'classes': [{
@@ -285,8 +285,9 @@ def build(project, gender, label):
               (side*P['shield_pad_x'],P['shield_pad_y']),k.F_Cu,shield,P['shield_track_width'])
     points=P['outline_xy']
     for a,b in zip(points,points[1:]+points[:1]):line(board,a,b,k.Edge_Cuts)
-    board_text(board,f'DB23{gender} {"RGB" if gender=="M" else "FLOPPY"}  REV {REV}',0,12.4,k.F_SilkS,0.8)
-    board_text(board,f'UK COMPUTING  {REV}',0,12.4,k.B_SilkS,0.8,True)
+    # Mixed-case descenders need a smaller label in the unchanged rear strip.
+    board_text(board,f'Amiga DB23 REV {REV}',0,12.29,k.F_SilkS,0.7,thickness=0.1)
+    board_text(board,f'Amiga DB23 REV {REV}',0,12.29,k.B_SilkS,0.7,True,thickness=0.1)
     board_text(board,'S',-18.0,10.4,k.F_SilkS,0.8)
     board_text(board,'S',18.0,10.4,k.F_SilkS,0.8)
     board_text(board,'FLANGE REFERENCE y=0; NOMINAL CONTACT C/L z=6.25; FIT PROTOTYPE',0,-2.0,k.Dwgs_User,1.0)

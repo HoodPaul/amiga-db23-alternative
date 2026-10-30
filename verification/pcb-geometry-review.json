@@ -5,15 +5,15 @@
     "DB23M_RGB": {
       "text_items_checked": 27,
       "all_actual_strokes_within_outline": true,
-      "minimum_conservative_edge_clearance_mm": 0.176145,
+      "minimum_conservative_edge_clearance_mm": 0.108035,
       "items": [
         {
-          "text": "19",
+          "text": "17",
           "layer": "B.Silkscreen",
           "actual_stroke_bounds_mm": [
-            -3.439524,
+            2.06238,
             9.003855,
-            -2.100476,
+            3.439524,
             9.923855
           ],
           "conservative_edge_clearance_mm": 3.076145
@@ -30,12 +30,56 @@
           "conservative_edge_clearance_mm": 3.076145
         },
         {
+          "text": "15",
+          "layer": "B.Silkscreen",
+          "actual_stroke_bounds_mm": [
+            7.640476,
+            9.003855,
+            8.979524,
+            9.923855
+          ],
+          "conservative_edge_clearance_mm": 3.076145
+        },
+        {
+          "text": "19",
+          "layer": "B.Silkscreen",
+          "actual_stroke_bounds_mm": [
+            -3.439524,
+            9.003855,
+            -2.100476,
+            9.923855
+          ],
+          "conservative_edge_clearance_mm": 3.076145
+        },
+        {
           "text": "20",
           "layer": "B.Silkscreen",
           "actual_stroke_bounds_mm": [
             -6.209524,
             9.003855,
             -4.832381,
+            9.923855
+          ],
+          "conservative_edge_clearance_mm": 3.076145
+        },
+        {
+          "text": "22",
+          "layer": "B.Silkscreen",
+          "actual_stroke_bounds_mm": [
+            -11.749524,
+            9.003855,
+            -10.372381,
+            9.923855
+          ],
+          "conservative_edge_clearance_mm": 3.076145
+        },
+        {
+          "text": "21",
+          "layer": "B.Silkscreen",
+          "actual_stroke_bounds_mm": [
+            -8.979524,
+            9.003855,
+            -7.602381,
             9.923855
           ],
           "conservative_edge_clearance_mm": 3.076145
@@ -74,78 +118,23 @@
           "conservative_edge_clearance_mm": 3.076145
         },
         {
+          "text": "Amiga DB23 REV 0.5",
+          "layer": "B.Silkscreen",
+          "actual_stroke_bounds_mm": [
+            -5.45,
+            11.858632,
+            5.516665,
+            12.891965
+          ],
+          "conservative_edge_clearance_mm": 0.108035
+        },
+        {
           "text": "18",
           "layer": "B.Silkscreen",
           "actual_stroke_bounds_mm": [
             -0.669524,
             9.003855,
             0.669524,
-            9.923855
-          ],
-          "conservative_edge_clearance_mm": 3.076145
-        },
-        {
-          "text": "15",
-          "layer": "B.Silkscreen",
-          "actual_stroke_bounds_mm": [
-            7.640476,
-            9.003855,
-            8.979524,
-            9.923855
-          ],
-          "conservative_edge_clearance_mm": 3.076145
-        },
-        {
-          "text": "22",
-          "layer": "B.Silkscreen",
-          "actual_stroke_bounds_mm": [
-            -11.749524,
-            9.003855,
-            -10.372381,
-            9.923855
-          ],
-          "conservative_edge_clearance_mm": 3.076145
-        },
-        {
-          "text": "21",
-          "layer": "B.Silkscreen",
-          "actual_stroke_bounds_mm": [
-            -8.979524,
-            9.003855,
-            -7.602381,
-            9.923855
-          ],
-          "conservative_edge_clearance_mm": 3.076145
-        },
-        {
-          "text": "UK COMPUTING  0.5",
-          "layer": "B.Silkscreen",
-          "actual_stroke_bounds_mm": [
-            -6.002857,
-            11.903855,
-            5.964761,
-            12.823855
-          ],
-          "conservative_edge_clearance_mm": 0.176145
-        },
-        {
-          "text": "17",
-          "layer": "B.Silkscreen",
-          "actual_stroke_bounds_mm": [
-            2.06238,
-            9.003855,
-            3.439524,
-            9.923855
-          ],
-          "conservative_edge_clearance_mm": 3.076145
-        },
-        {
-          "text": "2",
-          "layer": "F.Silkscreen",
-          "actual_stroke_bounds_mm": [
-            12.138333,
-            9.003855,
-            12.753571,
             9.923855
           ],
           "conservative_edge_clearance_mm": 3.076145
@@ -162,45 +151,12 @@
           "conservative_edge_clearance_mm": 3.076145
         },
         {
-          "text": "7",
+          "text": "12",
           "layer": "F.Silkscreen",
           "actual_stroke_bounds_mm": [
-            -1.711667,
+            -15.904525,
             9.003855,
-            -1.058333,
-            9.923855
-          ],
-          "conservative_edge_clearance_mm": 3.076145
-        },
-        {
-          "text": "8",
-          "layer": "F.Silkscreen",
-          "actual_stroke_bounds_mm": [
-            -4.443572,
-            9.003855,
-            -3.866429,
-            9.923855
-          ],
-          "conservative_edge_clearance_mm": 3.076145
-        },
-        {
-          "text": "DB23M RGB  REV 0.5",
-          "layer": "F.Silkscreen",
-          "actual_stroke_bounds_mm": [
-            -6.364763,
-            11.903855,
-            6.402857,
-            12.823855
-          ],
-          "conservative_edge_clearance_mm": 0.176145
-        },
-        {
-          "text": "9",
-          "layer": "F.Silkscreen",
-          "actual_stroke_bounds_mm": [
-            -7.213572,
-            9.003855,
-            -6.636429,
+            -14.565477,
             9.923855
           ],
           "conservative_edge_clearance_mm": 3.076145
@@ -217,39 +173,6 @@
           "conservative_edge_clearance_mm": 2.176145
         },
         {
-          "text": "1",
-          "layer": "F.Silkscreen",
-          "actual_stroke_bounds_mm": [
-            14.946428,
-            9.003855,
-            15.523571,
-            9.923855
-          ],
-          "conservative_edge_clearance_mm": 3.076145
-        },
-        {
-          "text": "12",
-          "layer": "F.Silkscreen",
-          "actual_stroke_bounds_mm": [
-            -15.904525,
-            9.003855,
-            -14.565477,
-            9.923855
-          ],
-          "conservative_edge_clearance_mm": 3.076145
-        },
-        {
-          "text": "5",
-          "layer": "F.Silkscreen",
-          "actual_stroke_bounds_mm": [
-            3.866428,
-            9.003855,
-            4.443571,
-            9.923855
-          ],
-          "conservative_edge_clearance_mm": 3.076145
-        },
-        {
           "text": "S",
           "layer": "F.Silkscreen",
           "actual_stroke_bounds_mm": [
@@ -261,23 +184,34 @@
           "conservative_edge_clearance_mm": 2.176145
         },
         {
-          "text": "11",
-          "layer": "F.Silkscreen",
-          "actual_stroke_bounds_mm": [
-            -13.134525,
-            9.003855,
-            -11.795477,
-            9.923855
-          ],
-          "conservative_edge_clearance_mm": 3.076145
-        },
-        {
           "text": "10",
           "layer": "F.Silkscreen",
           "actual_stroke_bounds_mm": [
             -10.364525,
             9.003855,
             -9.025477,
+            9.923855
+          ],
+          "conservative_edge_clearance_mm": 3.076145
+        },
+        {
+          "text": "Amiga DB23 REV 0.5",
+          "layer": "F.Silkscreen",
+          "actual_stroke_bounds_mm": [
+            -5.516666,
+            11.858632,
+            5.449999,
+            12.891965
+          ],
+          "conservative_edge_clearance_mm": 0.108035
+        },
+        {
+          "text": "2",
+          "layer": "F.Silkscreen",
+          "actual_stroke_bounds_mm": [
+            12.138333,
+            9.003855,
+            12.753571,
             9.923855
           ],
           "conservative_edge_clearance_mm": 3.076145
@@ -294,6 +228,50 @@
           "conservative_edge_clearance_mm": 3.076145
         },
         {
+          "text": "8",
+          "layer": "F.Silkscreen",
+          "actual_stroke_bounds_mm": [
+            -4.443572,
+            9.003855,
+            -3.866429,
+            9.923855
+          ],
+          "conservative_edge_clearance_mm": 3.076145
+        },
+        {
+          "text": "1",
+          "layer": "F.Silkscreen",
+          "actual_stroke_bounds_mm": [
+            14.946428,
+            9.003855,
+            15.523571,
+            9.923855
+          ],
+          "conservative_edge_clearance_mm": 3.076145
+        },
+        {
+          "text": "7",
+          "layer": "F.Silkscreen",
+          "actual_stroke_bounds_mm": [
+            -1.711667,
+            9.003855,
+            -1.058333,
+            9.923855
+          ],
+          "conservative_edge_clearance_mm": 3.076145
+        },
+        {
+          "text": "11",
+          "layer": "F.Silkscreen",
+          "actual_stroke_bounds_mm": [
+            -13.134525,
+            9.003855,
+            -11.795477,
+            9.923855
+          ],
+          "conservative_edge_clearance_mm": 3.076145
+        },
+        {
           "text": "6",
           "layer": "F.Silkscreen",
           "actual_stroke_bounds_mm": [
@@ -303,14 +281,47 @@
             9.923855
           ],
           "conservative_edge_clearance_mm": 3.076145
+        },
+        {
+          "text": "9",
+          "layer": "F.Silkscreen",
+          "actual_stroke_bounds_mm": [
+            -7.213572,
+            9.003855,
+            -6.636429,
+            9.923855
+          ],
+          "conservative_edge_clearance_mm": 3.076145
+        },
+        {
+          "text": "5",
+          "layer": "F.Silkscreen",
+          "actual_stroke_bounds_mm": [
+            3.866428,
+            9.003855,
+            4.443571,
+            9.923855
+          ],
+          "conservative_edge_clearance_mm": 3.076145
         }
       ]
     },
     "DB23F_Floppy": {
       "text_items_checked": 27,
       "all_actual_strokes_within_outline": true,
-      "minimum_conservative_edge_clearance_mm": 0.176145,
+      "minimum_conservative_edge_clearance_mm": 0.108035,
       "items": [
+        {
+          "text": "15",
+          "layer": "B.Silkscreen",
+          "actual_stroke_bounds_mm": [
+            -8.979524,
+            9.003855,
+            -7.640476,
+            9.923855
+          ],
+          "conservative_edge_clearance_mm": 3.076145
+        },
         {
           "text": "19",
           "layer": "B.Silkscreen",
@@ -318,6 +329,17 @@
             2.100476,
             9.003855,
             3.439524,
+            9.923855
+          ],
+          "conservative_edge_clearance_mm": 3.076145
+        },
+        {
+          "text": "18",
+          "layer": "B.Silkscreen",
+          "actual_stroke_bounds_mm": [
+            -0.669524,
+            9.003855,
+            0.669524,
             9.923855
           ],
           "conservative_edge_clearance_mm": 3.076145
@@ -334,67 +356,12 @@
           "conservative_edge_clearance_mm": 3.076145
         },
         {
-          "text": "22",
+          "text": "14",
           "layer": "B.Silkscreen",
           "actual_stroke_bounds_mm": [
-            10.410476,
-            9.003855,
-            11.787619,
-            9.923855
-          ],
-          "conservative_edge_clearance_mm": 3.076145
-        },
-        {
-          "text": "UK COMPUTING  0.5",
-          "layer": "B.Silkscreen",
-          "actual_stroke_bounds_mm": [
-            -6.002857,
-            11.903855,
-            5.964761,
-            12.823855
-          ],
-          "conservative_edge_clearance_mm": 0.176145
-        },
-        {
-          "text": "18",
-          "layer": "B.Silkscreen",
-          "actual_stroke_bounds_mm": [
-            -0.669524,
-            9.003855,
-            0.669524,
-            9.923855
-          ],
-          "conservative_edge_clearance_mm": 3.076145
-        },
-        {
-          "text": "23",
-          "layer": "B.Silkscreen",
-          "actual_stroke_bounds_mm": [
-            13.180476,
-            9.003855,
-            14.557619,
-            9.923855
-          ],
-          "conservative_edge_clearance_mm": 3.076145
-        },
-        {
-          "text": "20",
-          "layer": "B.Silkscreen",
-          "actual_stroke_bounds_mm": [
-            4.870476,
-            9.003855,
-            6.247619,
-            9.923855
-          ],
-          "conservative_edge_clearance_mm": 3.076145
-        },
-        {
-          "text": "21",
-          "layer": "B.Silkscreen",
-          "actual_stroke_bounds_mm": [
-            7.640476,
-            9.003855,
-            9.017619,
+            -11.78762,
+            8.96576,
+            -10.410476,
             9.923855
           ],
           "conservative_edge_clearance_mm": 3.076145
@@ -411,6 +378,28 @@
           "conservative_edge_clearance_mm": 3.076145
         },
         {
+          "text": "Amiga DB23 REV 0.5",
+          "layer": "B.Silkscreen",
+          "actual_stroke_bounds_mm": [
+            -5.45,
+            11.858632,
+            5.516665,
+            12.891965
+          ],
+          "conservative_edge_clearance_mm": 0.108035
+        },
+        {
+          "text": "22",
+          "layer": "B.Silkscreen",
+          "actual_stroke_bounds_mm": [
+            10.410476,
+            9.003855,
+            11.787619,
+            9.923855
+          ],
+          "conservative_edge_clearance_mm": 3.076145
+        },
+        {
           "text": "16",
           "layer": "B.Silkscreen",
           "actual_stroke_bounds_mm": [
@@ -422,26 +411,48 @@
           "conservative_edge_clearance_mm": 3.076145
         },
         {
-          "text": "14",
+          "text": "20",
           "layer": "B.Silkscreen",
           "actual_stroke_bounds_mm": [
-            -11.78762,
-            8.96576,
-            -10.410476,
+            4.870476,
+            9.003855,
+            6.247619,
             9.923855
           ],
           "conservative_edge_clearance_mm": 3.076145
         },
         {
-          "text": "15",
+          "text": "23",
           "layer": "B.Silkscreen",
           "actual_stroke_bounds_mm": [
-            -8.979524,
+            13.180476,
             9.003855,
-            -7.640476,
+            14.557619,
             9.923855
           ],
           "conservative_edge_clearance_mm": 3.076145
+        },
+        {
+          "text": "21",
+          "layer": "B.Silkscreen",
+          "actual_stroke_bounds_mm": [
+            7.640476,
+            9.003855,
+            9.017619,
+            9.923855
+          ],
+          "conservative_edge_clearance_mm": 3.076145
+        },
+        {
+          "text": "Amiga DB23 REV 0.5",
+          "layer": "F.Silkscreen",
+          "actual_stroke_bounds_mm": [
+            -5.516666,
+            11.858632,
+            5.449999,
+            12.891965
+          ],
+          "conservative_edge_clearance_mm": 0.108035
         },
         {
           "text": "12",
@@ -450,116 +461,6 @@
             14.565475,
             9.003855,
             15.904523,
-            9.923855
-          ],
-          "conservative_edge_clearance_mm": 3.076145
-        },
-        {
-          "text": "8",
-          "layer": "F.Silkscreen",
-          "actual_stroke_bounds_mm": [
-            3.866428,
-            9.003855,
-            4.443571,
-            9.923855
-          ],
-          "conservative_edge_clearance_mm": 3.076145
-        },
-        {
-          "text": "S",
-          "layer": "F.Silkscreen",
-          "actual_stroke_bounds_mm": [
-            17.711428,
-            9.903855,
-            18.288571,
-            10.823855
-          ],
-          "conservative_edge_clearance_mm": 2.176145
-        },
-        {
-          "text": "6",
-          "layer": "F.Silkscreen",
-          "actual_stroke_bounds_mm": [
-            -1.673572,
-            9.003855,
-            -1.096429,
-            9.923855
-          ],
-          "conservative_edge_clearance_mm": 3.076145
-        },
-        {
-          "text": "2",
-          "layer": "F.Silkscreen",
-          "actual_stroke_bounds_mm": [
-            -12.791667,
-            9.003855,
-            -12.176429,
-            9.923855
-          ],
-          "conservative_edge_clearance_mm": 3.076145
-        },
-        {
-          "text": "3",
-          "layer": "F.Silkscreen",
-          "actual_stroke_bounds_mm": [
-            -10.021667,
-            9.003855,
-            -9.406429,
-            9.923855
-          ],
-          "conservative_edge_clearance_mm": 3.076145
-        },
-        {
-          "text": "11",
-          "layer": "F.Silkscreen",
-          "actual_stroke_bounds_mm": [
-            11.795475,
-            9.003855,
-            13.134523,
-            9.923855
-          ],
-          "conservative_edge_clearance_mm": 3.076145
-        },
-        {
-          "text": "1",
-          "layer": "F.Silkscreen",
-          "actual_stroke_bounds_mm": [
-            -15.523572,
-            9.003855,
-            -14.946429,
-            9.923855
-          ],
-          "conservative_edge_clearance_mm": 3.076145
-        },
-        {
-          "text": "9",
-          "layer": "F.Silkscreen",
-          "actual_stroke_bounds_mm": [
-            6.636428,
-            9.003855,
-            7.213571,
-            9.923855
-          ],
-          "conservative_edge_clearance_mm": 3.076145
-        },
-        {
-          "text": "DB23F FLOPPY  REV 0.5",
-          "layer": "F.Silkscreen",
-          "actual_stroke_bounds_mm": [
-            -7.279048,
-            11.903855,
-            7.317142,
-            12.823855
-          ],
-          "conservative_edge_clearance_mm": 0.176145
-        },
-        {
-          "text": "5",
-          "layer": "F.Silkscreen",
-          "actual_stroke_bounds_mm": [
-            -4.443572,
-            9.003855,
-            -3.866429,
             9.923855
           ],
           "conservative_edge_clearance_mm": 3.076145
@@ -576,15 +477,26 @@
           "conservative_edge_clearance_mm": 3.076145
         },
         {
-          "text": "S",
+          "text": "8",
           "layer": "F.Silkscreen",
           "actual_stroke_bounds_mm": [
-            -18.288572,
-            9.903855,
-            -17.711429,
-            10.823855
+            3.866428,
+            9.003855,
+            4.443571,
+            9.923855
           ],
-          "conservative_edge_clearance_mm": 2.176145
+          "conservative_edge_clearance_mm": 3.076145
+        },
+        {
+          "text": "9",
+          "layer": "F.Silkscreen",
+          "actual_stroke_bounds_mm": [
+            6.636428,
+            9.003855,
+            7.213571,
+            9.923855
+          ],
+          "conservative_edge_clearance_mm": 3.076145
         },
         {
           "text": "4",
@@ -593,6 +505,17 @@
             -7.213572,
             8.96576,
             -6.598333,
+            9.923855
+          ],
+          "conservative_edge_clearance_mm": 3.076145
+        },
+        {
+          "text": "6",
+          "layer": "F.Silkscreen",
+          "actual_stroke_bounds_mm": [
+            -1.673572,
+            9.003855,
+            -1.096429,
             9.923855
           ],
           "conservative_edge_clearance_mm": 3.076145
@@ -607,6 +530,83 @@
             9.923855
           ],
           "conservative_edge_clearance_mm": 3.076145
+        },
+        {
+          "text": "S",
+          "layer": "F.Silkscreen",
+          "actual_stroke_bounds_mm": [
+            -18.288572,
+            9.903855,
+            -17.711429,
+            10.823855
+          ],
+          "conservative_edge_clearance_mm": 2.176145
+        },
+        {
+          "text": "5",
+          "layer": "F.Silkscreen",
+          "actual_stroke_bounds_mm": [
+            -4.443572,
+            9.003855,
+            -3.866429,
+            9.923855
+          ],
+          "conservative_edge_clearance_mm": 3.076145
+        },
+        {
+          "text": "1",
+          "layer": "F.Silkscreen",
+          "actual_stroke_bounds_mm": [
+            -15.523572,
+            9.003855,
+            -14.946429,
+            9.923855
+          ],
+          "conservative_edge_clearance_mm": 3.076145
+        },
+        {
+          "text": "11",
+          "layer": "F.Silkscreen",
+          "actual_stroke_bounds_mm": [
+            11.795475,
+            9.003855,
+            13.134523,
+            9.923855
+          ],
+          "conservative_edge_clearance_mm": 3.076145
+        },
+        {
+          "text": "3",
+          "layer": "F.Silkscreen",
+          "actual_stroke_bounds_mm": [
+            -10.021667,
+            9.003855,
+            -9.406429,
+            9.923855
+          ],
+          "conservative_edge_clearance_mm": 3.076145
+        },
+        {
+          "text": "2",
+          "layer": "F.Silkscreen",
+          "actual_stroke_bounds_mm": [
+            -12.791667,
+            9.003855,
+            -12.176429,
+            9.923855
+          ],
+          "conservative_edge_clearance_mm": 3.076145
+        },
+        {
+          "text": "S",
+          "layer": "F.Silkscreen",
+          "actual_stroke_bounds_mm": [
+            17.711428,
+            9.903855,
+            18.288571,
+            10.823855
+          ],
+          "conservative_edge_clearance_mm": 2.176145
         }
       ]
     }

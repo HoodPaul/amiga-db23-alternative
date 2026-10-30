@@ -1,0 +1,24 @@
+{
+  "revision": "0.5",
+  "scope": "Requested PCB label and schematic-credit edit; UUIDs and PCB text excluded from geometry comparison. Copper, pads, routes, holes, net assignments and outline unchanged.",
+  "baseline_commit": "d955061620d6cfa38a8a3d53e913e118aec0ad2e",
+  "projects": {
+    "DB23M_RGB": {
+      "non_text_board_geometry_unchanged": true,
+      "exact_label_count": 2,
+      "label": "Amiga DB23 REV 0.5",
+      "label_nominal_size_mm": 0.7,
+      "label_stroke_mm": 0.1,
+      "label_y_mm": 12.29
+    },
+    "DB23F_Floppy": {
+      "non_text_board_geometry_unchanged": true,
+      "exact_label_count": 2,
+      "label": "Amiga DB23 REV 0.5",
+      "label_nominal_size_mm": 0.7,
+      "label_stroke_mm": 0.1,
+      "label_y_mm": 12.29
+    }
+  },
+  "portable_checks": 648
+}

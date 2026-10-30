@@ -36,6 +36,7 @@ The nominal signal grid is 2.77 mm along each row, 2.84 mm between rows and 1.38
 ## Mechanical requirements
 
 - Revision 0.5 uses screws upward from beneath the motherboard through the solid printed base and adapter PCB, with nuts above the PCB and insulating washers beneath the heads.
+- Preserve the squared forward tower outer faces at X±25.60, Y0.65–5.10 and the matching cap profile. The remaining X±25.00 neighbour relief begins behind the towers at Y5.10; do not restore the former full-height rebates through the end walls.
 - Preserve flat support immediately beneath each PCB mounting ear. Do not tighten across a gap or bow the PCB.
 - The mounting feet now reach Z0 and incorporate the former 0.60 mm shims. Do not add the obsolete loose anchor shims to this height stack.
 - Keep the PCB underside at Z5.75 and the connector centreline at Z6.25 unless a measured connector change requires a coordinated revision.
@@ -49,6 +50,6 @@ The nominal signal grid is 2.77 mm along each row, 2.84 mm between rows and 1.38
 
 ## Documentation and release
 
-Use British English. Separate sourced nominal values, design choices, assumptions and physically tested results. Describe an original replacement project developed from Paul's supplied concept. Do not invent licences, collaborators, certifications or validation results.
+Use British English. Separate sourced nominal values, design choices, assumptions and physically tested results. Describe an original replacement project developed from Paul's supplied concept. Project credits are **Paul of UK Computing Limited**, **Jon of JMC Electronics** and **AI assistance through Codex**. Preserve the PCB legend `Amiga DB23 REV 0.5`; keep company names in the documentation credits. Do not invent licences, collaborators, certifications or validation results.
 
 Keep releases coordinated across source, native CAD, prints, previews and reports. Manufacturing exports remain clearly labelled fit prototypes until measurements and physical checks establish otherwise.

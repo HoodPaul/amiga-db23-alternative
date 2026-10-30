@@ -6,7 +6,7 @@ CadQuery STEP. OpenSCAD is the printable STL route. Purchased parts remain
 unmeasured reference envelopes; geometry checks do not establish print strength.
 """
 from pathlib import Path
-import json, math, subprocess, re, struct, collections
+import argparse, json, math, subprocess, re, struct, collections
 import cadquery as cq
 ROOT=Path(__file__).resolve().parents[1]
 OUT=ROOT/'mechanical';OUT.mkdir(exist_ok=True)
@@ -85,7 +85,12 @@ def holder():
   sub.append(box(sx-sw,sx+sw,H['shell_relief_front_y'],H['shell_relief_rear_y'],H['shell_relief_floor_z'],B['bottom_z']+EPS))
   x0,x1=sorted((s*H['latch_notch_x_inner'],s*H['latch_notch_x_outer']))
   sub.append(box(x0,x1,H['latch_notch_front_y'],H['latch_notch_rear_y'],H['latch_notch_bottom_z'],H['latch_notch_top_z']))
- # Local outside relief clears the neighbouring connector lug in the reference CAD.
+ # Square each forward end at one continuous outer plane. This fills the
+ # former rear-corner notch while retaining full-height neighbour clearance.
+ for s in (-1,1):
+  x0,x1=sorted((s*H['forward_end_outer_x'],s*(hw+EPS)))
+  sub.append(box(x0,x1,H['front_y']-EPS,H['tower_rear_y'],-EPS,H['tower_top_z']+EPS))
+ # The local outside relief now starts behind the end tower, not through it.
  for s in (-1,1):
   x0,x1=sorted((s*H['outer_relief_x'],s*(hw+EPS)))
   sub.append(box(x0,x1,H['outer_relief_front_y'],H['outer_relief_rear_y'],-EPS,H['tower_top_z']+EPS))
@@ -111,6 +116,8 @@ def cap():
   add.append(latch(lx0,lx1))
 
  for s in(-1,1):
+  x0,x1=sorted((s*H['forward_end_outer_x'],s*(hw+EPS)))
+  sub.append(box(x0,x1,C['front_y']-EPS,H['tower_rear_y'],sk-EPS,rt+EPS))
   x0,x1=sorted((s*H['outer_relief_x'],s*(hw+EPS)))
   sub.append(box(x0,x1,H['outer_relief_front_y'],H['outer_relief_rear_y'],sk-EPS,rt+EPS))
  return cut(union(*add),*sub)
@@ -189,10 +196,17 @@ def mesh_stats(path):
 
 
 stems={'holder':'DB23_Holder','cap':'DB23_Cap','pin_height_jig':'DB23_Pin_Height_Jig','coupon':'DB23_Hole_Fit_Coupon','clip_coupon_base':'DB23_Clip_Fit_Base','clip_coupon_cap':'DB23_Clip_Fit_Cap'}
+parser=argparse.ArgumentParser(description=__doc__)
+parser.add_argument('--parts',nargs='+',choices=tuple(stems),help='Export only these STL parts; existing other STL files are still topology-checked. Default: all parts.')
+args=parser.parse_args()
+selected=set(args.parts or stems)
 results={'revision':R,'status':'FIT PROTOTYPE; all physical fits and strengths untested'}
 for name,stem in stems.items():
  target=OUT/f'{stem}_v{R}.stl'
- run=subprocess.run(['openscad','--export-format','binstl','-o',str(target),'-D',f'part="{name}"',str(scad_path)],capture_output=True,text=True,check=True)
+ if name in selected:
+  run=subprocess.run(['openscad','--export-format','binstl','-o',str(target),'-D',f'part="{name}"',str(scad_path)],capture_output=True,text=True,check=True)
+ elif not target.exists():
+  raise RuntimeError(f'Unselected part has no existing STL: {target.name}; run a full build first')
  st=mesh_stats(target)
  if st['nonmanifold_edges'] or st['components']!=1 or st['volume_mm3']<=0:raise RuntimeError(f'Invalid mesh {target.name}: {st}')
  results[target.name]=st

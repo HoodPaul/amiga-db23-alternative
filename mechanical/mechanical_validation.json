@@ -2,10 +2,10 @@
   "revision": "0.5",
   "status": "FIT PROTOTYPE; all physical fits and strengths untested",
   "DB23_Holder_v0.5.stl": {
-    "triangles": 8324,
+    "triangles": 8320,
     "nonmanifold_edges": 0,
     "components": 1,
-    "volume_mm3": 1787.638,
+    "volume_mm3": 1765.174,
     "bounds": [
       [
         -26.0,
@@ -25,7 +25,7 @@
     "triangles": 220,
     "nonmanifold_edges": 0,
     "components": 1,
-    "volume_mm3": 981.284,
+    "volume_mm3": 978.692,
     "bounds": [
       [
         -26.0,
@@ -124,13 +124,13 @@
   "DB23_Holder_v0.5.step": {
     "valid": true,
     "solids": 1,
-    "volume_mm3": 1787.389,
+    "volume_mm3": 1764.925,
     "coordinates": "assembly"
   },
   "DB23_Cap_v0.5.step": {
     "valid": true,
     "solids": 1,
-    "volume_mm3": 981.284,
+    "volume_mm3": 978.692,
     "coordinates": "assembly"
   },
   "DB23_Pin_Height_Jig_v0.5.step": {

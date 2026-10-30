@@ -30,7 +30,9 @@ All dimensions are millimetres. X runs across the port; positive Y runs inward f
 
 The PCB rear has moved from Y16.00 to Y13.00, 0.50 mm behind the OEM reference rear at Y12.50. The cap reaches Y13.20, 0.70 mm behind that OEM reference. The two Ø8 underside washers span 52.27 mm, slightly wider than the 52.00 mm prints; do not treat the whole assembly as a 52 mm rectangular envelope. Actual wire emerging from the foot and side window also needs clearance. The outer assembly still needs checking with the target motherboard and case: matching the original holes does not establish the same external envelope. Photos around CN450 identify a useful region to inspect, but are not dimensional fit evidence. Use the shared parameters for current base/cap extents and the drawing PDF for views.
 
-The front PCB steps clear the nut towers and assumed connector envelope. Local outer-corner reliefs near X±25, Y4.40–7.50 accommodate a neighbouring lug in the reference layout; verify the actual target board. Preserve the actual stepped outline when changing the ears or shortening the board.
+The front PCB steps clear the nut towers and assumed connector envelope. Following the marked review, each forward tower now has a flat outer face at X±25.60 from Y0.65 to Y5.10. This adds 0.60 mm at the former rear-corner rebate and trims the formerly wider front by 0.40 mm, removing the stepped thin corner. The matching cap has the same forward profile. The nominal outer nut-pocket wall is 0.615 mm and the rear web 0.80 mm; actual print strength still needs testing.
+
+The remaining neighbour relief is X±25.00 from Y5.10 to Y7.50, behind the towers. The aft base/cap retain their 52.00 mm maximum width. The adapter PCB outline is unchanged by this end-wall amendment. Verify the actual neighbouring lug, fillet and housing: reference-CAD clearance is not a physical fit result. Preserve this shaped outline when changing the ears or shortening the board.
 
 ## Mounting stack
 

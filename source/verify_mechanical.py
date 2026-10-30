@@ -81,6 +81,32 @@ for name,s in [('holder',holder),('cap',cap)]:
     check(name+'_STEP_valid_one_solid',s.isValid() and len(s.Solids())==1)
     report[name+'_volume_mm3']=round(s.Volume(),6)
     bb=s.BoundingBox();report[name+'_assembly_bounds']=[bb.xmin,bb.xmax,bb.ymin,bb.ymax,bb.zmin,bb.zmax]
+# Review amendment: both marked forward end faces must be one flat plane.
+# Probe the delivered solids rather than importing/reusing the construction tree.
+# The rear-corner samples were voids in the preceding stepped end shape.
+end_x=H['forward_end_outer_x']
+pocket_outer_x=M['anchor_spacing']/2+(H['nut_across_flats_assumed']+H['nut_pocket_clearance'])/2
+pocket_rear_y=H['nut_axis_y_assumed']+(H['nut_thickness_assumed']+H['nut_pocket_clearance'])/2
+report['squared_end_review']={
+    'forward_outer_plane_abs_X':end_x,
+    'forward_end_Y_range':[H['front_y'],H['tower_rear_y']],
+    'rear_corner_fill_outward_from_previous_X25_mm':end_x-25.0,
+    'front_face_trim_inward_from_previous_X26_mm':26.0-end_x,
+    'outer_wall_to_nut_loading_slot_mm':end_x-pocket_outer_x,
+    'rear_web_behind_nut_pocket_mm':H['tower_rear_y']-pocket_rear_y,
+    'note':'Geometric section dimensions and material probes only; no physical strength or fatigue result.'}
+for side in(-1,1):
+    for i,y in enumerate((H['front_y']+.15,2.9,H['tower_rear_y']-.20),1):
+        for name,obj,z in [('base',holder,9.0),('cap',cap,K['roof_bottom_z']+.50)]:
+            inside=cq.Vector(side*(end_x-.05),y,z)
+            outside=cq.Vector(side*(end_x+.05),y,z)
+            check(f'square_end_{name}_{side}_{i}_inside_face',obj.isInside(inside),inside.toTuple())
+            check(f'square_end_{name}_{side}_{i}_outside_face',not obj.isInside(outside),outside.toTuple())
+    for i,y in enumerate((4.60,5.00),1):
+        p=cq.Vector(side*25.30,y,8.50)
+        check(f'filled_marked_rear_corner_{side}_{i}',holder.isInside(p),p.toTuple())
+    p=cq.Vector(side*25.30,4.90,1.00)
+    check(f'filled_lower_end_corner_{side}',holder.isInside(p),p.toTuple())
 board=pcb();zc0=M['connector_centre_height'];pcb_top=B['bottom_z']+B['thickness']
 flange=box(-C['flange_width']/2,C['flange_width']/2,0,C['flange_thickness'],0,C['flange_height'])
 body=box(-C['rear_body_width']/2,C['rear_body_width']/2,C['flange_thickness'],C['rear_body_end_y'],zc0-C['rear_body_height']/2,zc0+C['rear_body_height']/2)

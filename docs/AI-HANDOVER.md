@@ -4,11 +4,15 @@
 **Date:** 29 October 2026  
 **State:** Fit prototype. Connector sample, hardware, print fit and physical insertion strength are unmeasured. No assembled electrical operation on an Amiga has been verified.
 
+Project development: **Paul of UK Computing Limited**, **Jon of JMC Electronics** and **AI assistance through Codex**.
+
 ## Objective and agreed direction
 
 Make an affordable motherboard DB23 replacement using a genuine solder-cup DB23, horizontal PCB, straight pins recovered from ordinary header stock if suitable, and a substantial printed base. Retain existing Amiga cables.
 
-Paul reviewed the earlier print for strength and assembly. Revision 0.4 filled the rear and raised its rails. He then proposed a stronger and simpler mounting stack: two metal screws **upwards from beneath the motherboard**, through a solid base and the adapter PCB, with nuts above and insulating washers beneath the heads. Revision 0.5 implements that direction with a shorter PCB, mounting ears and a keyed black clip-on cap. Do not restore the old top-access screw-head recesses, separate 0.60 mm shims or printed expanding motherboard pegs.
+Paul reviewed the earlier print for strength and assembly. Revision 0.4 filled the rear and raised its rails. He then proposed a stronger and simpler mounting stack: two metal screws **upwards from beneath the motherboard**, through a solid base and the adapter PCB, with nuts above and insulating washers beneath the heads. Revision 0.5 implements that direction with a shorter PCB, mounting ears and a keyed black clip-on cap. The PCB legend is **Amiga DB23 REV 0.5** on both faces; company names belong in the project credits rather than the silkscreen. Do not restore the old top-access screw-head recesses, separate 0.60 mm shims or printed expanding motherboard pegs.
+
+The retained-revision 0.5 review squares the forward tower outer faces to X±25.60 over Y0.65–5.10, filling 0.60 mm at the former rear-corner rebates and moving the remaining X±25.00 neighbour relief to Y5.10–7.50 behind the towers. The cap matches this front profile. The adapter PCB outline, signal mapping and hardware stack are unchanged; its legend is `Amiga DB23 REV 0.5`.
 
 The cap retains jackpost nuts and conceals hardware. It is fitted last. Cable loads are intended to pass from the clamped DB23 flange into the solid base and positive through-bolt attachment, with broad support under PCB mounting ears. No load rating is established.
 

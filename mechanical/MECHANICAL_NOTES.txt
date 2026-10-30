@@ -9,6 +9,9 @@ From project root: python3 source/build_mechanical.py
 The builder reads source/design_parameters.json. One constructive geometry
 model generates editable OpenSCAD, native OpenSCAD STL and analytic STEP.
 Run source/verify_mechanical.py for the separate saved-file geometry audit.
+For a base/cap-only edit, --parts holder cap re-exports those STL files while
+topology-checking the existing unchanged trial-part STLs. A full build remains
+the default and is needed if those trial parts or their parameters change.
 
 Print one each:
  DB23_Holder_v0.5.stl          solid lower base, in assembly coordinates
@@ -27,9 +30,16 @@ Flange front Y0; illustrative flange metal Y0..0.50, base front Y0.65.
 PCB underside Z5.75, thickness1.00; nominal mating centreline Z6.25.
 Base width52.00, rearY13.00; PCB overall width51.20, rearY13.00.
 Cap width52.00, rearY13.20, roof undersideZ11.00, roof topZ12.20.
-A local X25.00 outside-edge relief from Y4.40..7.50 clears a neighbouring
-connector-lug envelope identified in one A4000 reference board. Actual target
-revision and bought connector lug clearance must still be checked.
+The two forward end faces are now continuous square planes at X+/-25.60
+from Y0.65 through Y5.10. The marked rear corners have been filled from X25.00
+to X25.60; the former front X26.00 surface is trimmed to the same plane so
+there is no re-entrant step through the end wall. Matching cap corners follow
+that plane. The unchanged nut pockets leave nominal0.615mm outer walls and
+0.80mm rear webs. These dimensions are not a measured strength rating.
+The local X25.00 neighbour-lug relief now starts BEHIND the end towers at
+Y5.10 and ends at Y7.50. Overall aft width remains52.00. Actual target revision,
+neighbouring metal lug/solder fillet and connector housing still need a fit
+check; no new height-dependent clearance assumption is used.
 The assumed shell/cup envelope, base seat and flange clamping need a real
 bearing check. Fit a measured bearing spacer if needed; do not strain cups or
 signal tails to close an assumed gap.

@@ -14,11 +14,14 @@ PCB, assembly and mechanical revision 0.5 is a fit prototype for measurement, tr
 | Finished thickness | 1.00 mm assumed; confirm from the measured cup gap |
 | Copper | 1 oz proposed |
 | Mask / silkscreen | Black / white proposed |
+| Legend, both faces | `Amiga DB23 REV 0.5`; nominal 0.70 mm text height / 0.10 mm stroke |
 | Surface finish | ENIG preferred; order choice |
 | Signal track / clearance | 0.50 / 0.20 mm nominal |
 | Tail finished drill / pad | 1.04 / 1.70 mm |
 | J3 mounting finished drill / pad | 3.30 / 6.50 mm |
 | J4 shell-wire finished drill / pad | 1.20 / 2.40 mm |
+
+Check that the selected fabricator can reproduce the small 0.70 mm legend and 0.10 mm strokes legibly. The saved-file containment result is recorded in the validation report; printed readability has not been tested.
 
 The J3 lands need exposed, flat bearing surfaces for the top nuts. Keep shell-wire solder on J4 and clear of those bearing surfaces. Cup pads are hand-soldered on both PCB faces; confirm overlap, gap and edge position. No assembly stencil or reflow process is specified.
 
