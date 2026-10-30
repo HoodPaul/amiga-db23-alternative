@@ -1,0 +1,23 @@
+DB23 v0.6 alternative lid — PCB support wall
+
+Use DB23_Cap_v0.6_PCB_support.stl instead of DB23_Cap_v0.6.stl.
+The existing v0.6 base is unchanged. STL is already roof-down for printing;
+STEP uses assembly coordinates. The standalone SCAD defaults to printing.
+
+Retains the central rear wall: X +/-18.60, Y12.00–13.20, bottom Z6.75,
+meeting the nominal top of the 1.00 mm PCB at underside Z5.75.
+Wall length 37.20 mm, thickness 1.20 mm, depth below roof 4.25 mm.
+Short ends preserve mounting-nut clearance. Four thin projections and
+both hooks remain removed; roof thickness remains 1.60 mm.
+
+Recovered from the interrupted 30 October 2026 correction. That run reported
+290 saved-file mechanical checks passing, including PCB/pin/nut clearance.
+This recovery independently checked the exact STL Git blob identity,
+148 triangles, closed edge topology, volume 1309.112 mm3 and print bounds
+52.00 x 12.55 x 5.85 mm. The STEP was previously checked as one valid solid.
+No CAD tools were rerun during recovery. Physical fit remains unverified.
+
+Dry-fit with the actual PCB and nuts: the wall should meet the board without
+bowing it or preventing the lid seating. Glue only after inspection.
+This alternative is self-contained; the main shared builder and existing
+v0.6 exports still describe the original short-rim lid.
