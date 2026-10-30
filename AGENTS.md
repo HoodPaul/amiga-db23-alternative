@@ -8,7 +8,7 @@ Develop an affordable motherboard DB23 replacement using a genuine solder-cup DB
 
 ## Current state
 
-PCB, assembly and mechanical revision 0.5 is an unmeasured fit prototype. Nominal motherboard geometry is sourced; the selected solder-cup connector, hardware, printed fit and surrounding clearances are not verified. Never turn assumed geometry or CAD-only checks into a claim of physical compatibility or successful operation.
+Mechanical/assembly revision 0.6 with PCB revision 0.5 is a fit prototype. Paul trial-printed revision 0.5 and reported fragile lid projections and nuts within the footprint; revision 0.6 has not yet been printed. Nominal motherboard geometry is sourced; the selected solder-cup connector, hardware, printed fit and surrounding clearances are not verified. Never turn assumed geometry or CAD-only checks into a claim of physical compatibility or successful operation.
 
 ## Files and regeneration
 
@@ -35,18 +35,18 @@ The nominal signal grid is 2.77 mm along each row, 2.84 mm between rows and 1.38
 
 ## Mechanical requirements
 
-- Revision 0.5 uses screws upward from beneath the motherboard through the solid printed base and adapter PCB, with nuts above the PCB and insulating washers beneath the heads.
+- The assembly uses screws upward from beneath the motherboard through the solid printed base and adapter PCB, with nuts above the PCB and insulating washers beneath the heads.
 - Preserve the squared forward tower outer faces at X±25.60, Y0.65–5.10 and the matching cap profile. The remaining X±25.00 neighbour relief begins behind the towers at Y5.10; do not restore the former full-height rebates through the end walls.
 - Preserve flat support immediately beneath each PCB mounting ear. Do not tighten across a gap or bow the PCB.
 - The complete base underside is lowered to motherboard Z0 and must remain a broad, coplanar bearing surface. Do not restore projecting feet or add the obsolete loose anchor shims.
 - Keep the PCB underside at Z5.75 and the connector centreline at Z6.25 unless a measured connector change requires a coordinated revision.
-- The separate keyed cap retains jackpost nuts and covers hardware. The base and through-bolts provide the intended structural attachment; do not rely on cap latches for cable loads.
+- The optional cover has a 1.60 mm roof, short 1.20 mm rim, and two broad locating tabs. Keep the four thin projections, both hooks and base catch recesses removed. Tiny adhesive spots may attach it to the tower tops after inspection. Fitted jackposts must retain their nuts without the cover. The base and through-bolts provide the intended structural attachment.
 - Use only the original motherboard holes. Do not countersink or enlarge the motherboard to fit fasteners. Verify head, pad, underside and chassis clearances.
 - The default mounting screw is M3 × 12 mm under-head length, with an assumed Ø7 × 1 mm head. Use Ø8 × 0.50 mm insulating washers under the heads, nuts directly on the supported top lands, and no default top washers. Actual parts are not measured. Longer screws or added top washers require a separately checked stack and cap envelope.
 - Preserve the extended rear-stem clearance behind the jackpost nuts: passage to Y6.20, permitted stem end Y≤6.00. Long jackposts must clear the upward mounting hardware.
 - Assemble DB23 and PCB first. Load equal-length pins with the height jig, remove the jig, lower the joined assembly and solder pin tops. Fit port hardware, attach to the motherboard, solder and inspect, then fit the cap last.
 - Keep signal pins supported with solder and heat clearance. A 0.64 mm square pin has about a 0.905 mm diagonal; a finished Ø0.80 bore does not clear it.
-- Establish bore, nut, latch and jig fits using coupons and the actual printer. No printed material or insertion strength is qualified.
+- Preserve the 0.40 mm deep, 45-degree lead-ins on all 23 guide bores: Ø1.72 mouth above a straight Ø0.92 bore. Establish bore, nut, cover and jig fits using the hole coupon and actual printer. Hot insertion is unvalidated. No printed material or insertion strength is qualified.
 
 ## Documentation and release
 

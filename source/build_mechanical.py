@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build the v0.5 DB23 fit-prototype base, clip-on cap and loading aids.
+"""Build the DB23 fit-prototype base, optional glue-on cap and loading aids.
 
 One constructive geometry description generates editable OpenSCAD and analytic
 CadQuery STEP. OpenSCAD is the printable STL route. Purchased parts remain
@@ -18,6 +18,7 @@ PINS += [(i*M['pin_pitch']-5*M['pin_pitch'],M['front_row_y']) for i in range(11)
 
 def box(x0,x1,y0,y1,z0,z1):return ('box',[x0,x1,y0,y1,z0,z1])
 def zc(x,y,d,z0,z1):return ('zc',[x,y,d,z0,z1])
+def cone(x,y,d0,d1,z0,z1):return ('cone',[x,y,d0,d1,z0,z1])
 def yc(x,z,d,y0,y1):return ('yc',[x,z,d,y0,y1])
 def px(x0,x1,pts):return ('px',[x0,x1,pts])
 def py(y0,y1,pts):return ('py',[y0,y1,pts])
@@ -31,6 +32,8 @@ def scad(n,depth=0):
   x0,x1,y0,y1,z0,z1=a;return f'{indent}translate({[x0,y0,z0]}) cube({[x1-x0,y1-y0,z1-z0]});\n'
  if op=='zc':
   x,y,d,z0,z1=a;return f'{indent}translate({[x,y,z0]}) cylinder(d={d},h={z1-z0});\n'
+ if op=='cone':
+  x,y,d0,d1,z0,z1=a;return f'{indent}translate({[x,y,z0]}) cylinder(d1={d0},d2={d1},h={z1-z0});\n'
  if op=='yc':
   x,z,d,y0,y1=a;return f'{indent}translate({[x,y0,z]}) rotate([-90,0,0]) cylinder(d={d},h={y1-y0});\n'
  if op=='px':
@@ -50,6 +53,8 @@ def shape(n):
   x0,x1,y0,y1,z0,z1=a;return cq.Solid.makeBox(x1-x0,y1-y0,z1-z0,cq.Vector(x0,y0,z0))
  if op=='zc':
   x,y,d,z0,z1=a;return cq.Solid.makeCylinder(d/2,z1-z0,cq.Vector(x,y,z0))
+ if op=='cone':
+  x,y,d0,d1,z0,z1=a;return cq.Solid.makeCone(d0/2,d1/2,z1-z0,cq.Vector(x,y,z0))
  if op=='yc':
   x,z,d,y0,y1=a;return cq.Solid.makeCylinder(d/2,y1-y0,cq.Vector(x,y0,z),cq.Vector(0,1,0))
  if op in ('px','py'):
@@ -70,6 +75,7 @@ def holder():
  hw=H['overall_width']/2;bz=H['bottom_clearance'];pb=H['pin_block_width']/2
  add=[box(-pb,pb,H['pin_block_front_y'],H['pin_block_rear_y'],bz,H['pin_block_top_z']),box(-25.6,25.6,H['rear_infill_front_y'],H['rear_y'],bz,B['bottom_z'])]
  sub=[zc(x,y,H['pin_guide_hole_diameter'],bz-EPS,H['pin_block_top_z']+EPS) for x,y in PINS]
+ sub += [cone(x,y,H['pin_guide_hole_diameter'],H['pin_entry_diameter']+2*EPS,H['pin_block_top_z']-H['pin_entry_depth'],H['pin_block_top_z']+EPS) for x,y in PINS]
  af=H['nut_across_flats_assumed']+H['nut_pocket_clearance'];nt=H['nut_thickness_assumed']+H['nut_pocket_clearance'];ny=H['nut_axis_y_assumed'];nz=H['nut_axis_z']
  for s in (-1,1):
   x0,x1=sorted((s*H['rail_front_inner_x'],s*hw));add.append(box(x0,x1,H['front_y'],H['rail_step_y'],bz,B['bottom_z']))
@@ -82,8 +88,6 @@ def holder():
   sub.append(box(s*AX-af/2,s*AX+af/2,ny-nt/2,ny+nt/2,nz,H['tower_top_z']+EPS))
   sx=s*B['shell_bond_pad_x'];sw=H['shell_relief_width']/2
   sub.append(box(sx-sw,sx+sw,H['shell_relief_front_y'],H['shell_relief_rear_y'],H['shell_relief_floor_z'],B['bottom_z']+EPS))
-  x0,x1=sorted((s*H['latch_notch_x_inner'],s*H['latch_notch_x_outer']))
-  sub.append(box(x0,x1,H['latch_notch_front_y'],H['latch_notch_rear_y'],H['latch_notch_bottom_z'],H['latch_notch_top_z']))
  # Square each forward end at one continuous outer plane. This fills the
  # former rear-corner notch while retaining full-height neighbour clearance.
  for s in (-1,1):
@@ -97,22 +101,21 @@ def holder():
  sub.append(box(gx0,gx1,AY-H['ground_wire_groove_width']/2,AY+H['ground_wire_groove_width']/2,-EPS,H['ground_wire_groove_height']))
  return cut(union(*add),*sub)
 
-def latch(x0,x1):
- # A single 2D outline avoids coincident beam/hook CSG facets in STL export.
- return px(x0,x1,[[C['latch_front_y'],C['roof_bottom_z']+EPS],[C['latch_rear_y'],C['roof_bottom_z']+EPS],[C['latch_rear_y'],C['latch_bottom_z']],[C['latch_front_y'],C['latch_bottom_z']],[C['latch_hook_front_y'],C['latch_hook_ramp_top_z']],[C['latch_hook_front_y'],C['latch_hook_top_z']],[C['latch_front_y'],C['latch_hook_top_z']]])
-
 def cap():
  hw=C['overall_width']/2;rb=C['roof_bottom_z'];rt=C['roof_top_z'];sk=C['skirt_bottom_z'];t=C['side_wall_thickness']
- add=[box(-hw,hw,C['front_y'],C['rear_y'],rb,rt),box(-H['tower_inner_x'],H['tower_inner_x'],C['front_y'],C['front_skirt_rear_y'],C['front_skirt_bottom_z'],rb+EPS),box(-C['rear_central_half_width'],C['rear_central_half_width'],C['rear_wall_front_y'],C['rear_y'],sk,rb+EPS)]
+ # A thick roof, short continuous rim and broad keys print roof-down.
+ # The complete rim is above the nominal nuts, including the 1 mm PCB.
+ add=[box(-hw,hw,C['front_y'],C['rear_y'],rb,rt),
+      box(-H['tower_inner_x'],H['tower_inner_x'],C['front_y'],C['front_skirt_rear_y'],C['front_skirt_bottom_z'],rb+EPS),
+      box(-hw,hw,C['rear_wall_front_y'],C['rear_y'],sk,rb+EPS)]
  sub=[]
  af=H['nut_across_flats_assumed']+H['nut_pocket_clearance']-C['tongue_clearance_total'];nt=H['nut_thickness_assumed']+H['nut_pocket_clearance']-C['tongue_clearance_total']
- for s in (-1,1):
-  x0,x1=sorted((s*(hw-t),s*hw));add.append(box(x0,x1,C['side_skirt_front_y'],C['rear_y'],sk,rb+EPS))
-  sub.append(box(x0-EPS,x1+EPS,C['side_nut_relief_front_y'],C['side_nut_relief_rear_y'],sk-EPS,C['mount_nut_relief_top_z']))
-  x0,x1=sorted((s*C['rear_central_half_width'],s*hw));add.append(box(x0,x1,C['rear_wall_front_y'],C['rear_y'],C['mount_nut_relief_top_z'],rb+EPS))
-  add.append(box(s*AX-af/2,s*AX+af/2,H['nut_axis_y_assumed']-nt/2,H['nut_axis_y_assumed']+nt/2,C['tongue_bottom_z'],rb+EPS))
-  cx=s*C['latch_centre_x'];lx0,lx1=cx-C['latch_width']/2,cx+C['latch_width']/2
-  add.append(latch(lx0,lx1))
+ for side in (-1,1):
+  # Follow the neighbour relief with a full-thickness stepped rim.
+  for inner,outer,y0,y1 in [(hw-t,hw,H['outer_relief_rear_y'],C['rear_y']),
+                            (H['outer_relief_x']-t,H['outer_relief_x'],C['side_skirt_front_y'],H['outer_relief_rear_y']+t)]:
+   x0,x1=sorted((side*inner,side*outer));add.append(box(x0,x1,y0,y1,sk,rb+EPS))
+  add.append(box(side*AX-af/2,side*AX+af/2,H['nut_axis_y_assumed']-nt/2,H['nut_axis_y_assumed']+nt/2,C['tongue_bottom_z'],rb+EPS))
 
  for s in(-1,1):
   x0,x1=sorted((s*H['forward_end_outer_x'],s*(hw+EPS)))
@@ -132,30 +135,22 @@ def jig():
 def coupon():
  tools=[zc(-16.8+i*4.8,5,.75+i*.05,-EPS,3+EPS) for i in range(8)]
  tools += [zc(x,y+5.4,H['pin_guide_hole_diameter'],-EPS,3+EPS) for x,y in PINS]
+ tools += [cone(x,y+5.4,H['pin_guide_hole_diameter'],H['pin_entry_diameter']+2*EPS,3-H['pin_entry_depth'],3+EPS) for x,y in PINS]
+ tools += [cone(-16.8+i*4.8,5,.75+i*.05,.75+i*.05+2*(H['pin_entry_depth']+EPS),3-H['pin_entry_depth'],3+EPS) for i in range(8)]
  add=[cut(box(-21,21,0,22,0,3),*tools)]
  add += [textnode(f'{.75+i*.05:.2f}',-16.8+i*4.8,1.7,2.99,1.3) for i in range(8)]
  add.append(textnode(f'23-PIN GRID  {H["pin_guide_hole_diameter"]}',0,20,2.99,1.65))
  return union(*add)
 
-def clip_coupon_pair():
- # A small cross-section of the actual tower latch and matching cap, exported
- # separately. These preserve latch dimensions but omit metal nut pockets.
- x0=18.6;x1=20.8;tx0=x0;tx1=x1
- base=cut(box(tx0,tx1,2.8,5.1,.6,11),box(H['latch_notch_x_inner'],H['latch_notch_x_outer'],H['latch_notch_front_y'],H['latch_notch_rear_y'],H['latch_notch_bottom_z'],H['latch_notch_top_z']))
- cx=C['latch_centre_x'];lx0=cx-C['latch_width']/2;lx1=cx+C['latch_width']/2
- clip=union(box(tx0,tx1,2.8,6.2,11,12.2),latch(lx0,lx1))
- return tx(base,x=-tx0,y=-2.8,z=-.6),tx(tx(clip,rx=180,z=12.2),x=-tx0,y=6.2)
-
-BASE=holder();CAP=cap();JIG=jig();CBASE,CCAP=clip_coupon_pair()
-parts={'holder':BASE,'cap_assembly':CAP,'cap':tx(CAP,rx=180,z=C['print_translate_z']),'pin_height_jig':tx(JIG,z=J['print_z_offset']),'coupon':coupon(),'clip_coupon_base':CBASE,'clip_coupon_cap':CCAP}
+BASE=holder();CAP=cap();JIG=jig()
+parts={'holder':BASE,'cap_assembly':CAP,'cap':tx(CAP,rx=180,z=C['print_translate_z']),'pin_height_jig':tx(JIG,z=J['print_z_offset']),'coupon':coupon()}
 header=f'''// DB23 v{R}: FIT PROTOTYPE. CONNECTOR AND PRINT FIT UNMEASURED.
 // Generated from source/design_parameters.json by source/build_mechanical.py.
 // Holder/STEP coordinates: x across, y rearward, z above motherboard top.
 // Cap STL exports roof-down; cap STEP retains assembly coordinates.
 // Flat base: all underside bearing faces are coplanar at motherboard Z0.
 // There are no projecting mounting feet and no separate printed shims.
-// Choose holder, cap, cap_assembly, pin_height_jig, coupon,
-// clip_coupon_base or clip_coupon_cap. Default is holder.
+// Choose holder, cap, cap_assembly, pin_height_jig or coupon. Default is holder.
 part="holder";
 $fn=64;
 '''
@@ -195,7 +190,7 @@ def mesh_stats(path):
                 bounds=[[min(p[i] for p in pts),max(p[i] for p in pts)] for i in range(3)])
 
 
-stems={'holder':'DB23_Holder','cap':'DB23_Cap','pin_height_jig':'DB23_Pin_Height_Jig','coupon':'DB23_Hole_Fit_Coupon','clip_coupon_base':'DB23_Clip_Fit_Base','clip_coupon_cap':'DB23_Clip_Fit_Cap'}
+stems={'holder':'DB23_Holder','cap':'DB23_Cap','pin_height_jig':'DB23_Pin_Height_Jig','coupon':'DB23_Hole_Fit_Coupon'}
 parser=argparse.ArgumentParser(description=__doc__)
 parser.add_argument('--parts',nargs='+',choices=tuple(stems),help='Export only these STL parts; existing other STL files are still topology-checked. Default: all parts.')
 args=parser.parse_args()
@@ -246,9 +241,10 @@ for side in(-1,1):
  checks[f'stem_mounting_nut_{side}_overlap_mm3']=chk('stem versus nut',vol(stem,outer_nut))
  if washer is not None:checks[f'stem_mounting_washer_{side}_overlap_mm3']=chk('stem versus washer',vol(stem,washer))
  checks[f'stem_base_{side}_overlap_mm3']=chk('stem versus base',vol(stem,base))
-checks.update(screw_tip_z=tip,nut_top_z=nut_top,default_screw_protrusion_above_nut=tip-nut_top,cap_roof_clearance_above_tip=C['roof_bottom_z']-tip,guide_fillet_gap=B['bottom_z']-H['pin_block_top_z'],flat_base_bottom_z=H['bottom_clearance'],projecting_mounting_feet=False,jackpost_stem_max_end_y=H['jackpost_stem_max_end_y'],jackpost_relief_end_y=H['jackpost_relief_end_y'],cap_latch_engagement_y=H['tower_rear_y']-C['latch_hook_front_y'],latch_minimum_assembly_deflection_estimate=H['tower_rear_y']-C['latch_hook_front_y']+.1,latch_elastic_strength_tested=False,cap_print_transform={'rotate_x_degrees':180,'translate_z':C['print_translate_z']},jig_print_offset_z=J['print_z_offset'])
+checks.update(screw_tip_z=tip,nut_top_z=nut_top,default_screw_protrusion_above_nut=tip-nut_top,cap_roof_clearance_above_tip=C['roof_bottom_z']-tip,guide_fillet_gap=B['bottom_z']-H['pin_block_top_z'],flat_base_bottom_z=H['bottom_clearance'],projecting_mounting_feet=False,jackpost_stem_max_end_y=H['jackpost_stem_max_end_y'],jackpost_relief_end_y=H['jackpost_relief_end_y'],cap_attachment='optional adhesive spots on tower tops',cap_hooks_present=False,base_catch_recesses_present=False,pin_entry_depth_mm=H['pin_entry_depth'],pin_entry_diameter_mm=H['pin_entry_diameter'],cap_print_transform={'rotate_x_degrees':180,'translate_z':C['print_translate_z']},jig_print_offset_z=J['print_z_offset'])
 results['structural_checks']=checks
 (OUT/'mechanical_validation.json').write_text(json.dumps(results,indent=2)+'\n')
 # Remove obsolete mechanical revision names only after a complete successful build.
-for old in OUT.glob('*_v0.[34].*'):old.unlink()
+for old in OUT.glob('DB23_*_v*.*'):
+ if f'_v{R}.' not in old.name:old.unlink()
 print(json.dumps(results,indent=2))

@@ -2,7 +2,7 @@
 
 ## Release state
 
-PCB, assembly and mechanical revision 0.5 is a fit prototype for measurement, trial printing and unpowered assembly review. The selected solder-cup connector and fasteners have not been measured. Native CAD and clean DRC do not establish production readiness.
+Mechanical/assembly revision 0.6 with unchanged PCB revision 0.5 is a fit prototype for measurement, trial printing and unpowered assembly review. The selected solder-cup connector and fasteners have not been measured. Native CAD and clean DRC do not establish production readiness.
 
 ## Proposed PCB settings
 
@@ -29,13 +29,13 @@ Keep manufacturing exports under `fabrication/FIT-PROTOTYPE/`, with matching rep
 
 ## Printed-part preparation
 
-Start with the hole-fit coupon and actual pins. Establish the nominal bore and any drilling or reaming allowance. Print the matched clip-fit base/cap coupons and trial nut pockets, cap engagement/release and jig fit using the actual printer and hardware before assembling the full unit.
+Start with the hole-fit coupon and actual pins. Establish the nominal bore and any drilling or reaming allowance. The guide entries and coupon have 0.40 mm deep, 45° funnels. Trial nut pockets, the optional cover and jig fit using the actual printer and hardware before assembling the full unit. Hand clearing with a pin vice needs a retention check; hot pressing remains unvalidated.
 
 The solid base uses one broad, coplanar underside at motherboard Z0. **Do not add the old separate 0.60 mm mounting shims or restore the two circular feet.** Check the complete bearing area against actual shell-ground pads, solder joints and neighbouring components. Verify space for the base, cap, rear wire route and underside fastener heads. No new motherboard drilling or countersinking is part of the design. Reference A4000 layout checks identified nearby underside copper; the insulating washers and local front-corner reliefs do not establish clearance on every board revision.
 
 The default mounting hardware is M3 × 12 mm under-head length, with user-listed Ø7 mm, approximately 1 mm thick heads. The default under-head insulating washers are assumed Ø8 × 0.50 mm and the top nuts bear directly on supported J3 lands. Washer, nut and board thicknesses are assumed; measure the real stack before accepting thread engagement and cap clearance. The resulting nominal head bottom is Z−3.10. A top washer is not included and requires a separate stack check. Fourteen or sixteen millimetre screws require trimming or a separately checked cover.
 
-The cap STL is roof-down for printing; the base has a broad, flat Z0 print face and can be placed directly on the bed without the former 0.60 mm underside bridge. Read the mechanical notes for transforms and small-hook support trials. No material, printer process, strength or thermal performance has been qualified. The keyed cap retains port nuts and conceals hardware; the base and through-bolts provide the intended cable-force path. Verify that path with the actual flange, hardware, print orientation and motherboard before relying on it.
+The cap STL is roof-down for printing; the base has a broad, flat Z0 print face and can be placed directly on the bed without the former 0.60 mm underside bridge. Read the mechanical notes for transforms and the 1.60 mm roof / short 1.20 mm rim. No material, printer process, strength or thermal performance has been qualified. The optional cover conceals hardware and can be glued to the tower tops after inspection; fitted jackposts must retain their nuts with the cover absent; the base and through-bolts provide the intended cable-force path. Verify that path with the actual flange, hardware, print orientation and motherboard before relying on it.
 
 ## Before an order or release
 

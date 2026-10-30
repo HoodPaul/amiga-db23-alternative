@@ -1,23 +1,23 @@
 # Amiga DB23 Video and Floppy Adapter
 
-An adapter assembly for the Amiga's motherboard-mounted **DB23 RGB video and external floppy connectors**. A genuine solder-cup DB23 joins a small horizontal PCB, 23 supported straight pins and a solid printed base. Two screws clamp the assembly through the original motherboard mounting holes, with nuts above the adapter PCB and insulating washers under the motherboard-side heads. A keyed black clip-on cap retains the port-jackpost nuts and covers the hardware. **Current PCB, assembly and mechanical revision: 0.5.**
+An adapter assembly for the Amiga's motherboard-mounted **DB23 RGB video and external floppy connectors**. A genuine solder-cup DB23 joins a small horizontal PCB, 23 supported straight pins and a solid printed base. Two screws clamp the assembly through the original motherboard mounting holes, with nuts above the adapter PCB and insulating washers under the motherboard-side heads. An optional cosmetic cover locates on the front towers and can be secured with tiny glue spots. **Mechanical/assembly revision: 0.6. PCB revision: 0.5.**
 
 Project development: **Paul of UK Computing Limited**, **Jon of JMC Electronics** and **AI assistance through Codex**. This develops Paul's supplied straddle-PCB concept and supported loose-pin construction.
 
 Repository: [HoodPaul/amiga-db23-alternative](https://github.com/HoodPaul/amiga-db23-alternative).
 
-**Status, 30 October 2026: fit prototype. The chosen solder-cup connector, fasteners, printer tolerances and installed fit have not been measured. No physical strength, assembled electrical operation or Amiga compatibility test has been completed.** Native files and trial prints make those checks possible; this is not a production release.
+**Status, 30 October 2026: fit prototype. Paul has trial-printed revision 0.5 and reported delicate lid projections and nuts contained within the print footprint. The revised 0.6 parts have not yet been printed. The complete connector, fastener and PCB stack remains unmeasured. No physical strength, assembled electrical operation or Amiga compatibility test has been completed.** Native files and trial prints make those checks possible; this is not a production release.
 
 For engineering or AI work, read [AGENTS.md](AGENTS.md), the [handover](docs/AI-HANDOVER.md) and [documentation index](docs/README.md).
 
 ![Assembly with black cap](previews/assembly-isometric.png)
 ![Assembly with cap removed](previews/assembly-cap-removed.png)
 ![Exploded assembly](previews/assembly-exploded.png)
-![Solid base and keyed cap](previews/base-and-cap.png)
+![Solid base and optional cover](previews/base-and-cap.png)
 
-The printed geometry comes from the delivered CAD. Bought connector bodies, cups, pins and hardware are unmeasured reference envelopes. Their appearance does not prove a purchased part fits. See the [drawing PDF](previews/DB23_Prototype_Drawings_v0.5.pdf) for fit references and assembly views.
+The printed geometry comes from the delivered CAD. Bought connector bodies, cups, pins and hardware are unmeasured reference envelopes. Their appearance does not prove a purchased part fits. See the [drawing PDF](previews/DB23_Prototype_Drawings_v0.6.pdf) for fit references and assembly views.
 
-## Revision 0.5 arrangement
+## Revision 0.6 mechanical arrangement
 
 The DB23 cups straddle the front of the PCB: contacts 1–12 solder to the top and 13–23 to the bottom. Twenty-three separate pins pass through the base into the original motherboard signal holes.
 
@@ -25,7 +25,7 @@ The PCB has side ears with plated `SHIELD` mounting lands at the original shell-
 
 The forward towers have straight, square outer faces at X±25.60. Clearance for neighbouring components starts behind the towers.
 
-Dedicated J4 shell-bond pads keep wire and solder away from the J3 nut-bearing lands. The cap fits last, after mounting and inspection. It provides nut retention and the discreet black appearance; the solid base and through-bolts carry the intended cable loads. Actual insertion strength and clamping behaviour remain untested.
+Dedicated J4 shell-bond pads keep wire and solder away from the J3 nut-bearing lands. The cap fits last, after mounting and inspection. It provides the discreet black appearance; fitted jackposts must retain their nuts with the cover absent. The solid base and through-bolts carry the intended cable loads. Actual insertion strength and clamping behaviour remain untested.
 
 The build order follows four parts: **join DB23 and PCB; load pins with the separate height jig and solder the joined assembly onto them; fit jackpost nuts and posts; mount and solder to the motherboard, inspect, then fit the cap.** See the [assembly guide](docs/ASSEMBLY.md).
 
@@ -61,14 +61,15 @@ The hole pattern and mating references are nominal values from the [iComp OEM-eq
 
 The [mechanical folder](mechanical/) contains editable OpenSCAD and the following trial parts:
 
-- [Solid base STL](mechanical/DB23_Holder_v0.5.stl) and [STEP](mechanical/DB23_Holder_v0.5.step).
-- [Keyed cap STL](mechanical/DB23_Cap_v0.5.stl) and [STEP](mechanical/DB23_Cap_v0.5.step).
-- [Pin-height jig](mechanical/DB23_Pin_Height_Jig_v0.5.stl) and [hole-fit coupon](mechanical/DB23_Hole_Fit_Coupon_v0.5.stl).
-- [Clip-fit base coupon](mechanical/DB23_Clip_Fit_Base_v0.5.stl) and [matching cap coupon](mechanical/DB23_Clip_Fit_Cap_v0.5.stl).
+- [Solid base STL](mechanical/DB23_Holder_v0.6.stl) and [STEP](mechanical/DB23_Holder_v0.6.step).
+- [Optional cover STL](mechanical/DB23_Cap_v0.6.stl) and [STEP](mechanical/DB23_Cap_v0.6.step).
+- [Pin-height jig](mechanical/DB23_Pin_Height_Jig_v0.6.stl) and [hole-fit coupon](mechanical/DB23_Hole_Fit_Coupon_v0.6.stl).
 
 Read [mechanical notes](docs/MECHANICAL.md) and `mechanical/MECHANICAL_NOTES.txt` for orientations and fit allowances. The cap STL is already roof-down for printing; its STEP uses assembly coordinates. The base has a broad, flat Z0 underside for direct bed placement, subject to the usual first-layer and dimensional trial.
 
-The default guides are nominally **Ø0.92 mm** for assumed **0.64 mm square pins**. Their diagonal is about **0.905 mm**, so a finished Ø0.80 mm round bore is too small. Establish snug pin retention using the coupon and actual pins. The loading jig sets a common lower-tip stop; equal upper heights also need equal pin lengths. Remove the jig before soldering.
+All 23 guides now have **0.40 mm deep, 45° entry funnels**, opening to **Ø1.72 mm** at the surface. This is two layers at 0.20 mm layer height, with the straight retaining bore preserved below. The cover has a **1.60 mm roof**, a short **1.20 mm rim**, and two broad locating tabs. The four thin projections, two hooks and their base catches are removed; obsolete clip coupons are removed too.
+
+The default guides are nominally **Ø0.92 mm** for assumed **0.64 mm square pins**. Their diagonal is about **0.905 mm**, so a finished Ø0.80 mm round bore is too small. Establish snug pin retention using the coupon and actual pins. Use the funnel to guide careful hand clearing with a pin vice if needed. Hot insertion is unvalidated and can move or soften the guide. The loading jig sets a common lower-tip stop; equal upper heights also need equal pin lengths. Remove the jig before soldering.
 
 The default motherboard fastener is **M3 × 12 mm under-head length**, with a user-listed **Ø7 mm, approximately 1 mm thick head**. Fit a **Ø8 mm insulating washer, assumed 0.50 mm thick, beneath each head**; the top nut bears directly on its supported J3 land. With an assumed 1.60 mm motherboard and 2.40 mm nut, the stack takes 11.25 mm, leaving 0.75 mm beyond the nut. The screw tip is Z9.90 and the head bottom Z−3.10, 1.50 mm beneath the assumed motherboard underside. Measure the real stack and underside/chassis clearance. **14 and 16 mm screws require trimming or separately checked cap clearance.** A top washer is not part of the default stack and needs a separate length check. No motherboard countersinking or drilling is specified.
 

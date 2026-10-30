@@ -1,5 +1,5 @@
 {
-  "revision": "0.5",
+  "revision": "0.6",
   "scope": "Saved-file CAD only; connector, hardware and print fits remain unmeasured assumptions",
   "checks": {
     "holder_STEP_valid_one_solid": {
@@ -889,43 +889,43 @@
       "passed": true,
       "details": 0.0
     },
-    "PCB_conservative_clip_flex_envelope_-1": {
+    "cover_roof_at_least_1_6mm": {
+      "passed": true,
+      "details": true
+    },
+    "cover_rim_at_least_1_2mm": {
+      "passed": true,
+      "details": true
+    },
+    "old_cap_hook_and_beam_absent_-1": {
       "passed": true,
       "details": 0.0
     },
-    "actual_cap_retaining_hook_material_-1": {
+    "base_catch_recess_filled_-1": {
       "passed": true,
-      "details": [
-        -19.3,
-        5.0,
-        7.675
-      ]
+      "details": true
     },
-    "actual_base_relief_at_seated_hook_-1": {
+    "thin_corner_projection_removed_-1_1": {
       "passed": true,
-      "details": [
-        -19.3,
-        5.0,
-        7.675
-      ]
+      "details": 0.0
     },
-    "actual_base_retaining_ceiling_-1": {
+    "thin_corner_projection_removed_-1_2": {
       "passed": true,
-      "details": [
-        -19.3,
-        5.0,
-        8.200000000000001
-      ]
+      "details": 0.0
     },
-    "actual_cap_flex_beam_material_-1": {
+    "continuous_upper_rim_-1_1": {
       "passed": true,
-      "details": [
-        -19.3,
-        5.5,
-        9.0
-      ]
+      "details": true
     },
-    "actual_cap_nut_retaining_key_-1": {
+    "continuous_upper_rim_-1_2": {
+      "passed": true,
+      "details": true
+    },
+    "continuous_upper_rim_-1_3": {
+      "passed": true,
+      "details": true
+    },
+    "broad_cap_locating_key_-1": {
       "passed": true,
       "details": [
         -22.135,
@@ -933,43 +933,47 @@
         10.45
       ]
     },
-    "PCB_conservative_clip_flex_envelope_1": {
+    "tower_glue_bearing_-1_1.1": {
+      "passed": true,
+      "details": true
+    },
+    "tower_glue_bearing_-1_4.65": {
+      "passed": true,
+      "details": true
+    },
+    "fitted_jackpost_blocks_nut_lift_without_cap_-1": {
+      "passed": true,
+      "details": true
+    },
+    "old_cap_hook_and_beam_absent_1": {
       "passed": true,
       "details": 0.0
     },
-    "actual_cap_retaining_hook_material_1": {
+    "base_catch_recess_filled_1": {
       "passed": true,
-      "details": [
-        19.3,
-        5.0,
-        7.675
-      ]
+      "details": true
     },
-    "actual_base_relief_at_seated_hook_1": {
+    "thin_corner_projection_removed_1_1": {
       "passed": true,
-      "details": [
-        19.3,
-        5.0,
-        7.675
-      ]
+      "details": 0.0
     },
-    "actual_base_retaining_ceiling_1": {
+    "thin_corner_projection_removed_1_2": {
       "passed": true,
-      "details": [
-        19.3,
-        5.0,
-        8.200000000000001
-      ]
+      "details": 0.0
     },
-    "actual_cap_flex_beam_material_1": {
+    "continuous_upper_rim_1_1": {
       "passed": true,
-      "details": [
-        19.3,
-        5.5,
-        9.0
-      ]
+      "details": true
     },
-    "actual_cap_nut_retaining_key_1": {
+    "continuous_upper_rim_1_2": {
+      "passed": true,
+      "details": true
+    },
+    "continuous_upper_rim_1_3": {
+      "passed": true,
+      "details": true
+    },
+    "broad_cap_locating_key_1": {
       "passed": true,
       "details": [
         22.135,
@@ -977,15 +981,109 @@
         10.45
       ]
     },
-    "clip_hook_has_positive_retention_bite": {
+    "tower_glue_bearing_1_1.1": {
       "passed": true,
-      "details": {
-        "rearward_tip_motion_for_0_05mm_clearance": 0.24999999999999928,
-        "hook_bite_nominal": 0.1999999999999993,
-        "XY_gap_to_PCB_ear_front_at_max_flex": -0.0499999999999991,
-        "vertical_gap_latch_bottom_above_PCB": 0.4500000000000002,
-        "note": "A negative XY gap is permitted only where the raised latch has vertical clearance; the solid-envelope check below is authoritative."
-      }
+      "details": true
+    },
+    "tower_glue_bearing_1_4.65": {
+      "passed": true,
+      "details": true
+    },
+    "fitted_jackpost_blocks_nut_lift_without_cap_1": {
+      "passed": true,
+      "details": true
+    },
+    "pin_entry_taper_and_lower_guide_01": {
+      "passed": true,
+      "details": true
+    },
+    "pin_entry_taper_and_lower_guide_02": {
+      "passed": true,
+      "details": true
+    },
+    "pin_entry_taper_and_lower_guide_03": {
+      "passed": true,
+      "details": true
+    },
+    "pin_entry_taper_and_lower_guide_04": {
+      "passed": true,
+      "details": true
+    },
+    "pin_entry_taper_and_lower_guide_05": {
+      "passed": true,
+      "details": true
+    },
+    "pin_entry_taper_and_lower_guide_06": {
+      "passed": true,
+      "details": true
+    },
+    "pin_entry_taper_and_lower_guide_07": {
+      "passed": true,
+      "details": true
+    },
+    "pin_entry_taper_and_lower_guide_08": {
+      "passed": true,
+      "details": true
+    },
+    "pin_entry_taper_and_lower_guide_09": {
+      "passed": true,
+      "details": true
+    },
+    "pin_entry_taper_and_lower_guide_10": {
+      "passed": true,
+      "details": true
+    },
+    "pin_entry_taper_and_lower_guide_11": {
+      "passed": true,
+      "details": true
+    },
+    "pin_entry_taper_and_lower_guide_12": {
+      "passed": true,
+      "details": true
+    },
+    "pin_entry_taper_and_lower_guide_13": {
+      "passed": true,
+      "details": true
+    },
+    "pin_entry_taper_and_lower_guide_14": {
+      "passed": true,
+      "details": true
+    },
+    "pin_entry_taper_and_lower_guide_15": {
+      "passed": true,
+      "details": true
+    },
+    "pin_entry_taper_and_lower_guide_16": {
+      "passed": true,
+      "details": true
+    },
+    "pin_entry_taper_and_lower_guide_17": {
+      "passed": true,
+      "details": true
+    },
+    "pin_entry_taper_and_lower_guide_18": {
+      "passed": true,
+      "details": true
+    },
+    "pin_entry_taper_and_lower_guide_19": {
+      "passed": true,
+      "details": true
+    },
+    "pin_entry_taper_and_lower_guide_20": {
+      "passed": true,
+      "details": true
+    },
+    "pin_entry_taper_and_lower_guide_21": {
+      "passed": true,
+      "details": true
+    },
+    "pin_entry_taper_and_lower_guide_22": {
+      "passed": true,
+      "details": true
+    },
+    "pin_entry_taper_and_lower_guide_23": {
+      "passed": true,
+      "details": true
     },
     "M3_default_length_full_nut_engagement": {
       "passed": true,
@@ -1003,10 +1101,10 @@
         "projection_below_motherboard_underside": 1.5
       }
     },
-    "mesh_DB23_Cap_v0.5": {
+    "mesh_DB23_Cap_v0.6": {
       "passed": true,
       "details": {
-        "triangles": 220,
+        "triangles": 132,
         "boundary_or_nonmanifold_edges": 0,
         "regions": 1,
         "bounds": [
@@ -1014,47 +1112,15 @@
           26.0,
           -13.199999809265137,
           -0.6499996185302734,
-          1.9073486612342094e-07,
-          5.100000381469727
+          5.722046125811175e-07,
+          2.700000286102295
         ]
       }
     },
-    "mesh_DB23_Clip_Fit_Base_v0.5": {
+    "mesh_DB23_Holder_v0.6": {
       "passed": true,
       "details": {
-        "triangles": 28,
-        "boundary_or_nonmanifold_edges": 0,
-        "regions": 1,
-        "bounds": [
-          -5.722046125811175e-07,
-          2.1999993324279785,
-          -7.629394644936838e-07,
-          2.299999475479126,
-          -5.722046125811175e-07,
-          10.399999618530273
-        ]
-      }
-    },
-    "mesh_DB23_Clip_Fit_Cap_v0.5": {
-      "passed": true,
-      "details": {
-        "triangles": 40,
-        "boundary_or_nonmanifold_edges": 0,
-        "regions": 1,
-        "bounds": [
-          -5.722046125811175e-07,
-          2.1999993324279785,
-          1.9073486612342094e-07,
-          3.400000810623169,
-          1.9073486612342094e-07,
-          5.000002861022949
-        ]
-      }
-    },
-    "mesh_DB23_Holder_v0.5": {
-      "passed": true,
-      "details": {
-        "triangles": 7796,
+        "triangles": 13652,
         "boundary_or_nonmanifold_edges": 0,
         "regions": 1,
         "bounds": [
@@ -1067,10 +1133,10 @@
         ]
       }
     },
-    "mesh_DB23_Hole_Fit_Coupon_v0.5": {
+    "mesh_DB23_Hole_Fit_Coupon_v0.6": {
       "passed": true,
       "details": {
-        "triangles": 26384,
+        "triangles": 34320,
         "boundary_or_nonmanifold_edges": 0,
         "regions": 1,
         "bounds": [
@@ -1083,7 +1149,7 @@
         ]
       }
     },
-    "mesh_DB23_Pin_Height_Jig_v0.5": {
+    "mesh_DB23_Pin_Height_Jig_v0.6": {
       "passed": true,
       "details": {
         "triangles": 1036,
@@ -1099,6 +1165,176 @@
         ]
       }
     },
+    "STL_pin_entry_midsection_01": {
+      "passed": true,
+      "details": [
+        -0.6600011444091791,
+        0.6600004577636724
+      ]
+    },
+    "STL_pin_entry_midsection_02": {
+      "passed": true,
+      "details": [
+        -0.660000648498535,
+        0.6600000000000001
+      ]
+    },
+    "STL_pin_entry_midsection_03": {
+      "passed": true,
+      "details": [
+        -0.6600011062622073,
+        0.6599995422363278
+      ]
+    },
+    "STL_pin_entry_midsection_04": {
+      "passed": true,
+      "details": [
+        -0.6600010871887205,
+        0.6600000381469728
+      ]
+    },
+    "STL_pin_entry_midsection_05": {
+      "passed": true,
+      "details": [
+        -0.6600008296966555,
+        0.6600000572204587
+      ]
+    },
+    "STL_pin_entry_midsection_06": {
+      "passed": true,
+      "details": [
+        -0.6600008702278137,
+        0.6599998378753662
+      ]
+    },
+    "STL_pin_entry_midsection_07": {
+      "passed": true,
+      "details": [
+        -0.6599998378753662,
+        0.6600008702278137
+      ]
+    },
+    "STL_pin_entry_midsection_08": {
+      "passed": true,
+      "details": [
+        -0.6600000572204587,
+        0.6600008296966555
+      ]
+    },
+    "STL_pin_entry_midsection_09": {
+      "passed": true,
+      "details": [
+        -0.6600000381469728,
+        0.6600010871887205
+      ]
+    },
+    "STL_pin_entry_midsection_10": {
+      "passed": true,
+      "details": [
+        -0.6599995422363278,
+        0.6600011062622073
+      ]
+    },
+    "STL_pin_entry_midsection_11": {
+      "passed": true,
+      "details": [
+        -0.6600000000000001,
+        0.660000648498535
+      ]
+    },
+    "STL_pin_entry_midsection_12": {
+      "passed": true,
+      "details": [
+        -0.6600004577636724,
+        0.6600011444091791
+      ]
+    },
+    "STL_pin_entry_midsection_13": {
+      "passed": true,
+      "details": [
+        -0.6600013732910153,
+        0.6600002288818363
+      ]
+    },
+    "STL_pin_entry_midsection_14": {
+      "passed": true,
+      "details": [
+        -0.6600008773803712,
+        0.659999771118164
+      ]
+    },
+    "STL_pin_entry_midsection_15": {
+      "passed": true,
+      "details": [
+        -0.6600013351440435,
+        0.6600002670288081
+      ]
+    },
+    "STL_pin_entry_midsection_16": {
+      "passed": true,
+      "details": [
+        -0.6600008392333985,
+        0.6600002861022949
+      ]
+    },
+    "STL_pin_entry_midsection_17": {
+      "passed": true,
+      "details": [
+        -0.6600010585784912,
+        0.6600000667572021
+      ]
+    },
+    "STL_pin_entry_midsection_18": {
+      "passed": true,
+      "details": [
+        -0.659999668598175,
+        0.659999668598175
+      ]
+    },
+    "STL_pin_entry_midsection_19": {
+      "passed": true,
+      "details": [
+        -0.6600000667572021,
+        0.6600010585784912
+      ]
+    },
+    "STL_pin_entry_midsection_20": {
+      "passed": true,
+      "details": [
+        -0.6599998092651367,
+        0.6600008392333985
+      ]
+    },
+    "STL_pin_entry_midsection_21": {
+      "passed": true,
+      "details": [
+        -0.6600002670288081,
+        0.6600013351440435
+      ]
+    },
+    "STL_pin_entry_midsection_22": {
+      "passed": true,
+      "details": [
+        -0.659999771118164,
+        0.6600008773803712
+      ]
+    },
+    "STL_pin_entry_midsection_23": {
+      "passed": true,
+      "details": [
+        -0.6600002288818363,
+        0.6600013732910153
+      ]
+    },
+    "four_current_printable_parts": {
+      "passed": true,
+      "details": [
+        "DB23_Cap_v0.6.stl",
+        "DB23_Holder_v0.6.stl",
+        "DB23_Hole_Fit_Coupon_v0.6.stl",
+        "DB23_Pin_Height_Jig_v0.6.stl"
+      ]
+    },
     "cap_print_STL_restores_STEP_assembly_bounds": {
       "passed": true,
       "details": {
@@ -1107,16 +1343,16 @@
           26.0,
           0.6499996185302734,
           13.199999809265137,
-          7.099999618530273,
-          12.199999809265133
+          9.899999713897705,
+          12.599999427795387
         ],
         "STEP": [
           -26.0,
           26.0,
           0.65,
           13.2,
-          7.1,
-          12.2
+          9.9,
+          12.6
         ]
       }
     },
@@ -1433,14 +1669,18 @@
     "top_nut_all_rotations_jackpost_stem_1": 0.0,
     "vertical_shank_jackpost_stem_1": 0.0,
     "right_base_ground_wire_exit_core": 0.0,
-    "PCB_conservative_clip_flex_envelope_-1": 0.0,
-    "PCB_conservative_clip_flex_envelope_1": 0.0,
+    "old_cap_hook_and_beam_absent_-1": 0.0,
+    "thin_corner_projection_removed_-1_1": 0.0,
+    "thin_corner_projection_removed_-1_2": 0.0,
+    "old_cap_hook_and_beam_absent_1": 0.0,
+    "thin_corner_projection_removed_1_1": 0.0,
+    "thin_corner_projection_removed_1_2": 0.0,
     "jig_holder_loading_position": 0.0,
     "jig_all_square_pins": 0.0
   },
   "meshes": {
-    "DB23_Cap_v0.5.stl": {
-      "triangles": 220,
+    "DB23_Cap_v0.6.stl": {
+      "triangles": 132,
       "boundary_or_nonmanifold_edges": 0,
       "regions": 1,
       "bounds": [
@@ -1448,38 +1688,12 @@
         26.0,
         -13.199999809265137,
         -0.6499996185302734,
-        1.9073486612342094e-07,
-        5.100000381469727
+        5.722046125811175e-07,
+        2.700000286102295
       ]
     },
-    "DB23_Clip_Fit_Base_v0.5.stl": {
-      "triangles": 28,
-      "boundary_or_nonmanifold_edges": 0,
-      "regions": 1,
-      "bounds": [
-        -5.722046125811175e-07,
-        2.1999993324279785,
-        -7.629394644936838e-07,
-        2.299999475479126,
-        -5.722046125811175e-07,
-        10.399999618530273
-      ]
-    },
-    "DB23_Clip_Fit_Cap_v0.5.stl": {
-      "triangles": 40,
-      "boundary_or_nonmanifold_edges": 0,
-      "regions": 1,
-      "bounds": [
-        -5.722046125811175e-07,
-        2.1999993324279785,
-        1.9073486612342094e-07,
-        3.400000810623169,
-        1.9073486612342094e-07,
-        5.000002861022949
-      ]
-    },
-    "DB23_Holder_v0.5.stl": {
-      "triangles": 7796,
+    "DB23_Holder_v0.6.stl": {
+      "triangles": 13652,
       "boundary_or_nonmanifold_edges": 0,
       "regions": 1,
       "bounds": [
@@ -1491,8 +1705,8 @@
         11.0
       ]
     },
-    "DB23_Hole_Fit_Coupon_v0.5.stl": {
-      "triangles": 26384,
+    "DB23_Hole_Fit_Coupon_v0.6.stl": {
+      "triangles": 34320,
       "boundary_or_nonmanifold_edges": 0,
       "regions": 1,
       "bounds": [
@@ -1504,7 +1718,7 @@
         3.34999942779541
       ]
     },
-    "DB23_Pin_Height_Jig_v0.5.stl": {
+    "DB23_Pin_Height_Jig_v0.6.stl": {
       "triangles": 1036,
       "boundary_or_nonmanifold_edges": 0,
       "regions": 1,
@@ -1529,12 +1743,12 @@
     "16.0": {
       "tip_Z": 13.9,
       "cap_overlap_mm3": [
-        8.4823,
-        8.4823
+        11.309734,
+        11.309734
       ]
     }
   },
-  "holder_volume_mm3": 1945.6352,
+  "holder_volume_mm3": 1939.705637,
   "holder_assembly_bounds": [
     -26.0,
     26.0,
@@ -1543,14 +1757,14 @@
     0.0,
     11.0
   ],
-  "cap_volume_mm3": 978.692,
+  "cap_volume_mm3": 1150.64,
   "cap_assembly_bounds": [
     -26.0,
     26.0,
     0.65,
     13.2,
-    7.1,
-    12.2
+    9.9,
+    12.6
   ],
   "squared_end_review": {
     "forward_outer_plane_abs_X": 25.6,
@@ -1577,12 +1791,19 @@
     "head_bottom_Z": -3.1,
     "projection_below_motherboard_underside": 1.5
   },
-  "clip_geometry": {
-    "rearward_tip_motion_for_0_05mm_clearance": 0.24999999999999928,
-    "hook_bite_nominal": 0.1999999999999993,
-    "XY_gap_to_PCB_ear_front_at_max_flex": -0.0499999999999991,
-    "vertical_gap_latch_bottom_above_PCB": 0.4500000000000002,
-    "note": "A negative XY gap is permitted only where the raised latch has vertical clearance; the solid-envelope check below is authoritative."
+  "cover_design": {
+    "attachment": "optional adhesive spots on tower top bearing faces",
+    "roof_thickness_mm": 1.5999999999999996,
+    "rim_thickness_mm": 1.2,
+    "rim_bottom_Z": 10.3,
+    "glue_strength_tested": false,
+    "physical_revision_0_6_print_tested": false
   },
-  "checks_passed": 217
+  "pin_entry": {
+    "depth_mm": 0.4,
+    "mouth_diameter_mm": 1.72,
+    "bore_diameter_mm": 0.92,
+    "straight_guide_height_mm": 4.1
+  },
+  "checks_passed": 273
 }

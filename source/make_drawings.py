@@ -22,7 +22,7 @@ pdfmetrics.registerFont(TTFont('DSans',FONT+'DejaVuSans.ttf'));pdfmetrics.regist
 pdfmetrics.registerFontFamily('DSans',normal='DSans',bold='DSans-Bold')
 OUT=ROOT/f'previews/DB23_Prototype_Drawings_v{REV}.pdf'
 CREDITS='Paul of UK Computing Limited; Jon of JMC Electronics; AI assistance through Codex'
-c=canvas.Canvas(str(OUT),pagesize=A4);c.setTitle(f'Amiga DB23 Replacement - Prototype Drawings v{REV}');c.setAuthor(CREDITS)
+c=canvas.Canvas(str(OUT),pagesize=A4);c.setTitle(f'Amiga DB23 - Prototype Drawings v{REV}');c.setAuthor(CREDITS)
 NAVY=HexColor('#183b50');BLUE=HexColor('#2e6e90');INK=HexColor('#253946');GREY=HexColor('#647985');PALE=HexColor('#edf3f6');LINE=HexColor('#c6d6de');GOLD=HexColor('#b9913f')
 
 def txt(x,y,s,size=9,bold=False,col=INK):
@@ -37,7 +37,7 @@ def header(num,title,sub):
  txt(18,290,'AMIGA DB23 PROJECT',9,True,white)
  txt(18,283,'Paul of UK Computing Limited | Jon of JMC Electronics | AI assistance through Codex',6.8,False,white)
  txt(18,264,title,20,True,NAVY);txt(18,256,sub,8.5,col=GREY)
- line(18,17,192,17);txt(18,11,f'30 October 2026 | Revision {REV} | Fit prototype; physical fit unverified',7,col=GREY);txt(181,11,f'{num} / 5',7,col=GREY)
+ line(18,17,192,17);txt(18,11,f'30 October 2026 | Mechanical {REV} / PCB 0.5 | Fit prototype',7,col=GREY);txt(181,11,f'{num} / 5',7,col=GREY)
 
 def image(name,x,y,w,h):c.drawImage(str(ROOT/'previews'/name),x*mm,y*mm,width=w*mm,height=h*mm,preserveAspectRatio=True,anchor='c',mask='auto')
 def table(y,rows,left=18,width=174,col2=111,step=8,size=8.4):
@@ -49,10 +49,10 @@ def table(y,rows,left=18,width=174,col2=111,step=8,size=8.4):
 def stage(y,title,body):
  txt(18,y,title,10,True,NAVY);return para(18,y-6,body,size=8.3,leading=11.2)
 
-header(1,'DB23 replacement assembly','Shorter mounting-ear PCB, solid printed base and black keyed clip-on cap')
+header(1,'DB23 replacement assembly','Mechanical 0.6 / PCB 0.5: solid printed base and optional cosmetic cover')
 image('assembly-isometric.png',18,138,174,113)
-para(18,132,'The revision 0.5 assembly uses two metal screws from beneath the motherboard, through a solid base and the adapter PCB, with insulating washers below the motherboard and nuts above the adapter PCB. '
-     'The cover conceals the mounting hardware and retains the jackpost nuts; it is not the primary cable-load attachment.',size=9.2,leading=13)
+para(18,132,'The revision 0.6 mechanical assembly uses two metal screws from beneath the motherboard, through a solid base and the adapter PCB, with insulating washers below the motherboard and nuts above the adapter PCB. '
+     'The optional cover conceals the hardware. Fitted jackposts must retain their nuts without the cover; check the actual assembly.',size=9.2,leading=13)
 table(104,[('Adapter PCB overall width / depth','51.20 / 9.00 mm (Y4.00-13.00)'),('PCB thickness / underside height','1.00 mm / Z5.75 mm assumed'),('Printed base width / rear position','52.00 mm / Y13.00 mm'),('Printed cap width / rear position','52.00 mm / Y13.20 mm'),('Original shell mounting centres','44.27 mm; Y9.50 mm')])
 para(18,58,'<b>OEM comparison:</b> iComp\'s original-equivalent drawing has a 50.27 mm width and 12.50 mm depth behind the flange datum. '
      'The present printed envelope is 52.00 mm wide and reaches Y13.20: +0.865 mm per side and +0.70 mm at the rear. '
@@ -61,17 +61,17 @@ para(18,34,'<b>Fit prototype:</b> purchased connector, printed fit, clamping, un
      'The DB23 body, cups and bought hardware in the views are explicitly assumed reference shapes.',size=8,leading=10.5)
 c.showPage()
 
-header(2,'The two printed parts','A solid base carries the PCB; a keyed cover clips onto the front towers')
+header(2,'The two printed parts','A solid base carries the PCB; the optional cover glues to the tower tops')
 image('base-and-cap.png',18,143,174,108)
 para(18,137,'The squared forward ends have flat X+/-25.60 outer faces, with 0.60 mm added at the former rear-corner rebates. The complete underside is lowered to a coplanar Z0 surface; there are no projecting feet or separate shims. '
-     'The 23-pin guide retains a 1.25 mm gap below the PCB; J4 recesses clear covered joints.',size=8.8,leading=12)
+     'All 23 guide entries have a 0.40 mm deep, 45-degree funnel. The guide retains a 1.25 mm gap below the PCB.',size=8.8,leading=12)
 image('pin-height-jig.png',18,49,98,70)
 txt(121,112,'Load the pins first',10,True,NAVY)
-para(121,105,'Print the hole-fit coupon and clip-fit pair before the full parts. The trial guide diameter is 0.92 mm for assumed 0.64 mm square pins; their diagonal is 0.905 mm. '
+para(121,105,'Print the chamfered hole-fit coupon before the full base. The trial guide diameter is 0.92 mm for assumed 0.64 mm square pins; their diagonal is 0.905 mm. '
      'A finished 0.80 mm bore does not clear them.<br/><br/>Use the separate loading jig to set the lower tips. Equal 10.70 mm pins span Z-3.20 to Z7.50. '
      'Remove the jig before soldering and check that the base retains the pins.',width=71,size=8.3,leading=11.2)
 para(18,42,'<b>Printing:</b> the base, cap, jig and hole coupon are trial parts. Follow the mechanical notes for print orientations and cap assembly transforms. '
-     'The cap\'s flexible latches, nut tongues and keyed surfaces need an actual print-fit trial; material, soldering heat and long-term strength have not been validated.',size=8.2,leading=11)
+     'The cover has a 1.60 mm roof, 1.20 mm short rim and two broad locating tabs. Four thin projections and both hooks are removed. Trial print fit and tiny glue spots on the tower tops.',size=8.2,leading=11)
 c.showPage()
 
 header(3,'Assembly in four parts','The DB23 and PCB stay joined; upward mounting screws are fitted during installation')
@@ -87,7 +87,7 @@ stage(73,'Part 3 - Fit the jackpost hardware',
       'Leave the decorative cap off while fitting and checking the mounting hardware.')
 stage(48,'Part 4 - Mount, solder, check, then cap',
       'Check all 23 circuits off the motherboard. Pre-tack the motherboard shell-pad lead with the base removed, then route it through the recessed right-side base channel. Install screws upwards from below, with insulating washers below the motherboard and nuts on the PCB mounting pads. '
-      'Secure the supported stack, solder the motherboard tails and complete the shell bond. Inspect and test before clipping the cover on last.')
+      'Secure the supported stack, solder the motherboard tails and complete the shell bond. Inspect and test, then optionally attach the cover with tiny glue spots on the tower tops, away from contacts and hardware.')
 c.showPage()
 
 header(4,'Upward screw mounting stack','Nominal dimensions only; the actual motherboard, washer and nut must be measured')
@@ -108,8 +108,8 @@ rect(cx-F['head_diameter_assumed']/2*scale,cx+F['head_diameter_assumed']/2*scale
 rect(cx-1.5*scale,cx+1.5*scale,seat,tip,HexColor('#b8c1c7'))
 if F['washer_thickness_assumed']>0:rect(cx-3*scale,cx+3*scale,pcb_top,washer_top,HexColor('#d4dce1'))
 rect(cx-F['nut_across_flats_assumed']/2*scale,cx+F['nut_across_flats_assumed']/2*scale,washer_top,nut_top,HexColor('#aebbc3'))
-rect(cx-22,cx+22,cap_under,cap_under+1.2,HexColor('#394650'))
-for z,label in [(cap_under+.6,'Clip-on cap roof'),(tip,f'M3 x 12 tip: Z{tip:.2f}'),(nut_top-.6,'Nut directly on PCB pad'),(3,'Solid base / supported PCB'),(-.4,'Motherboard'),(seat-.6,'Head + insulating washer')]:
+rect(cx-22,cx+22,cap_under,P['cap']['roof_top_z'],HexColor('#394650'))
+for z,label in [(cap_under+.6,'Optional cover roof'),(tip,f'M3 x 12 tip: Z{tip:.2f}'),(nut_top-.6,'Nut directly on PCB pad'),(3,'Solid base / supported PCB'),(-.4,'Motherboard'),(seat-.6,'Head + insulating washer')]:
  line(cx+22,Y(z),116,Y(z),GREY,.4);txt(119,Y(z)-1,label,7.8)
 txt(25,124,'Local section enlarged; geometry simplified',7.4,col=GREY)
 txt(18,112,'Length selection',11,True,NAVY)
@@ -143,7 +143,7 @@ def fp(cx,top,gender):
 fp(53,225,'MALE');fp(151,225,'FEMALE')
 line(18,190,68,190,INK,.8);line(18,188.5,18,191.5,INK,.8);line(68,188.5,68,191.5,INK,.8);txt(73,188.8,'50.00 mm scale check',8,True)
 txt(18,177,'Measure before fabrication or final assembly',11,True,NAVY)
-rows=[('Purchased DB23 part / gender','____________________________'),('Cup gap / cup length / body depth','____________________________'),('Actual motherboard / PCB thickness','____________________________'),('Pin section / finished bore / retention','____________________________'),('Jackpost rear thread / stem projection','____________________________'),('Nut AF / thickness / pocket fit','____________________________'),('Upward screw / washer / nut stack','____________________________'),('Head bearing / underside chassis gap','____________________________'),('Cap latch fit / removal / tip clearance','____________________________'),('Shell bond / clamping / insertion trial','____________________________')]
+rows=[('Purchased DB23 part / gender','____________________________'),('Cup gap / cup length / body depth','____________________________'),('Actual motherboard / PCB thickness','____________________________'),('Pin section / finished bore / retention','____________________________'),('Jackpost rear thread / stem projection','____________________________'),('Nut AF / thickness / pocket fit','____________________________'),('Upward screw / washer / nut stack','____________________________'),('Head bearing / underside chassis gap','____________________________'),('Cover fit / glue spots / tip clearance','____________________________'),('Shell bond / clamping / insertion trial','____________________________')]
 table(165,rows)
 para(18,73,'<b>Coordinate system:</b> X runs across the connector; Y points inward from the flange front plane; Z is measured upward from the motherboard top. '
      'Male pin 1 is at positive X in this top view; female numbering is mirrored. The pin pitch is 2.77 mm, row spacing 2.84 mm and row stagger 1.385 mm.',size=8.5,leading=11.5)

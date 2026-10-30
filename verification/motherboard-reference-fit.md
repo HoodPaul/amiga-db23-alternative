@@ -6,7 +6,7 @@ This is a limited comparison with the locally retained [A4000 replica KiCad boar
 
 ## Reproducible current checks
 
-The current saved boards and STEP files pass **70 checks**, run with:
+Mechanical revision 0.6 and PCB revision 0.5 pass **70 saved-file checks**, run with:
 
 ```sh
 python3 source/verify_reference_fit.py --reference-board /path/to/A4k-Replica-Acill.kicad_pcb

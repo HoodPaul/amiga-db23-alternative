@@ -140,7 +140,7 @@ def audit(project,gender):
 
 def main():
     result={name:audit(name,g) for name,g in [('DB23M_RGB','M'),('DB23F_Floppy','F')]}
-    print(json.dumps({'revision':PARAMS['revision'],'design_checks':CHECKS,'projects':result},indent=2))
+    print(json.dumps({'revision':PARAMS.get('pcb_revision',PARAMS['revision']),'design_checks':CHECKS,'projects':result},indent=2))
 
 
 if __name__=='__main__':main()

@@ -1,0 +1,40 @@
+{
+  "revision": "0.6",
+  "pcb_revision": "0.5",
+  "date": "2026-10-30",
+  "baseline_commit": "c59b0faba1f23329de7d6f23b2fcd576300d418a",
+  "change": "Simple optional glue-on cover; no thin projections, hooks or catches; 23 shallow pin-entry funnels; chamfered coupon; obsolete mechanical files removed",
+  "project_credits": [
+    "Paul of UK Computing Limited",
+    "Jon of JMC Electronics",
+    "AI assistance through Codex"
+  ],
+  "pcb_legend": "Amiga DB23 REV 0.5",
+  "pcb_and_fabrication_files_byte_identical_to_baseline": 40,
+  "electrical_geometry_unchanged": true,
+  "portable_electrical_checks": 648,
+  "independent_saved_file_mechanical_checks": 273,
+  "reference_layout_checks": 70,
+  "current_printable_STLs": 4,
+  "valid_single_solid_STEPs": 3,
+  "relative_markdown_links_checked": 62,
+  "broken_markdown_links": 0,
+  "BOM_entries": 15,
+  "BOM_columns": 6,
+  "preview_images_visually_reviewed": 6,
+  "drawing_PDF_pages_visually_reviewed": 5,
+  "physical_observations": {
+    "date": "2026-10-30",
+    "revision_tested": "0.5",
+    "reported_by": "Paul",
+    "observations": [
+      "Test print shows delicate lid features and missing small projections.",
+      "Selected mounting nut lies within the printed footprint in the supplied trial photograph."
+    ],
+    "limits": "No measured hardware dimensions, complete PCB/nut stack, load test or functional electrical result supplied. Revision 0.6 has not yet been printed."
+  },
+  "physical_revision_0_6_test_performed": false,
+  "native_DRC_rerun_this_update": false,
+  "native_ERC_performed": false,
+  "notes": "Saved-file checks passed. Revision 0.5 print observations are distinct from untested revision 0.6. PCB and fabrication bytes unchanged; retained native DRC reports remain clean. See docs/VALIDATION.md for scope and outstanding physical checks."
+}

@@ -1,8 +1,8 @@
 # AI and engineering handover
 
-**PCB, assembly and mechanical revision:** 0.5  
+**Mechanical/assembly revision:** 0.6; **PCB revision:** 0.5
 **Date:** 30 October 2026
-**State:** Fit prototype. Connector sample, hardware, print fit and physical insertion strength are unmeasured. No assembled electrical operation on an Amiga has been verified.
+**State:** Fit prototype. Paul has trial-printed 0.5 and reported fragile lid projections and nuts within the footprint. Revision 0.6 is not yet physically tested; the full PCB/hardware stack and strength remain unmeasured. No assembled electrical operation on an Amiga has been verified.
 
 Project development: **Paul of UK Computing Limited**, **Jon of JMC Electronics** and **AI assistance through Codex**.
 
@@ -10,11 +10,13 @@ Project development: **Paul of UK Computing Limited**, **Jon of JMC Electronics*
 
 Make an affordable motherboard DB23 adapter using a genuine solder-cup DB23, horizontal PCB, suitable straight pins from ordinary header stock and a substantial printed base. Retain existing Amiga cables.
 
-Paul reviewed the earlier print for strength and assembly. Revision 0.4 filled the rear and raised its rails. He then proposed a stronger and simpler mounting stack: two metal screws **upwards from beneath the motherboard**, through a solid base and the adapter PCB, with nuts above and insulating washers beneath the heads. Revision 0.5 implements that direction with a shorter PCB, mounting ears and a keyed black clip-on cap. The PCB legend is **Amiga DB23 REV 0.5** on both faces; company names belong in the project credits rather than the silkscreen. Do not restore the old top-access screw-head recesses, separate 0.60 mm shims or printed expanding motherboard pegs.
+Revision 0.6 implements Paul's print feedback: remove the four thin lid projections and both hook legs, fill their catch recesses in the base, and simplify the lid into an optional cosmetic cover. Use a 1.60 mm roof and short 1.20 mm side/rear rim starting at Z10.30, above the nominal mounting nuts. Keep two broad locating tabs over the jackpost pockets; tiny superglue spots on the tower tops can attach the cover after inspection. Fitted jackposts must retain their nuts without it. Adhesive is not the primary cable-load attachment.
 
-The retained-revision 0.5 review squares the forward tower outer faces to X±25.60 over Y0.65–5.10, filling 0.60 mm at the former rear-corner rebates and moving the remaining X±25.00 neighbour relief to Y5.10–7.50 behind the towers. The cap matches this front profile. The adapter PCB outline, signal mapping and hardware stack are unchanged; its legend is `Amiga DB23 REV 0.5`.
+All 23 guide bores have 0.40 mm deep, 45-degree entry funnels from Z4.10 to Z4.50, opening from Ø0.92 to Ø1.72. Keep the straight bore below for pin retention. The coupon has matching funnels. Trial careful hand clearing with a pin vice and the actual pins; hot insertion has not been validated.
 
-The cap retains jackpost nuts and conceals hardware. It is fitted last. Cable loads are intended to pass from the clamped DB23 flange into the solid base and positive through-bolt attachment, with broad support under PCB mounting ears. No load rating is established.
+Paul reports that the selected nuts sit within the current print footprint. The photo does not include the PCB beneath the nut. Preserve clearance for the complete stack: PCB thickness 1.00 mm, mounting nut top Z9.15, M3 x 12 tip Z9.90. Retain the square forward tower faces at X±25.60 over Y0.65–5.10 and neighbour relief X±25.00 over Y5.10–7.50. The cap keeps the same XY envelope. Do not fill the neighbour relief merely from a nut-only photograph.
+
+PCB files, routing, outline, fabrication exports and the legend **Amiga DB23 REV 0.5** are unchanged. Keep company names in the project credits. The broad base underside stays at Z0 and the PCB support at Z5.75. Cable loads are intended to pass from the clamped flange to the base and through-bolts. No physical load rating is established.
 
 Do not reopen the rejected HD26/custom-cable interface without a reason or request. Keep the genuine DB23 external interface.
 
@@ -23,7 +25,7 @@ Do not reopen the rejected HD26/custom-cable interface without a reason or reque
 1. Solder DB23 cups to the matching PCB on both faces, and prepare covered shell-wire joints.
 2. Load 23 equal-length pins into the base on the height jig; remove the jig, lower the joined PCB/DB23 from above and solder pin tops.
 3. Fit the selected jackpost nuts and hex posts, checking flange bearing and rear-stem clearance.
-4. Fit to the motherboard; insert screws upward, fit underside insulating washers and top nuts, solder tails and shell bonds, inspect, then fit the keyed cap.
+4. Fit to the motherboard; insert screws upward, fit underside insulating washers and top nuts, solder tails and shell bonds, inspect, then optionally glue the cover to the tower tops.
 
 The motherboard is not a forming fixture. See [ASSEMBLY.md](ASSEMBLY.md) for checks and heat precautions.
 
@@ -31,7 +33,7 @@ The motherboard is not a forming fixture. See [ASSEMBLY.md](ASSEMBLY.md) for che
 
 - Shared geometry and assumptions: `source/design_parameters.json`.
 - PCB projects: `pcb/DB23M_RGB/` and `pcb/DB23F_Floppy/`.
-- Mechanical builder: `source/build_mechanical.py`; editable source and print files under `mechanical/` include `DB23_Holder_v0.5`, `DB23_Cap_v0.5`, pin-height jig, hole coupon and two clip-fit coupons.
+- Mechanical builder: `source/build_mechanical.py`; editable source and print files under `mechanical/` include `DB23_Holder_v0.6`, `DB23_Cap_v0.6`, pin-height jig and chamfered hole coupon. Superseded outputs and clip-fit coupons are removed.
 - Native and independent checks: `verification/`, `mechanical/mechanical_validation.json` and [VALIDATION.md](VALIDATION.md).
 - Assembly renders and drawing PDF: `previews/`.
 
@@ -70,7 +72,7 @@ The board remains passive. It is not a scan-rate converter, floppy converter or 
 1. Obtain and measure each male/female solder-cup part, pins, nuts, jackposts and mounting hardware.
 2. Complete [MEASUREMENTS.md](MEASUREMENTS.md) for the intended motherboard revision and case.
 3. Trial the hole/cap fits and soldering heat behaviour using actual print settings.
-4. Check the flat base bearing surface, PCB-ear support, local front-corner reliefs, cap removal, underside washers/heads, all screw lengths, both shell bonds and neighbouring components. Reference A4000 layout checks are not proof of fit on the user's actual board revision.
+4. Check the flat base bearing surface, PCB-ear support, local front-corner reliefs, optional-cover seating and adhesive access, underside washers/heads, all screw lengths, both shell bonds and neighbouring components. Reference A4000 layout checks are not proof of fit on the user's actual board revision.
 5. Update shared parameters and regenerate coordinated CAD, previews and reports as needed.
 6. Assemble, inspect and record an unpowered prototype before controlled functional and insertion/extraction trials.
 

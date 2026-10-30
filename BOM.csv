@@ -2,16 +2,15 @@ Reference,Quantity,Description,Specification,Selection status,Notes
 J1,1,DB23 solder-cup connector,Male for RGB or female for floppy,Part not selected,"Measure rear body, cup gap/length, flange and mounting clearances before freezing CAD"
 PCB,1,DB23 adapter PCB,Revision 0.5; matching variant; overall 51.20 x 9.00 mm; two layers; 1.00 mm assumed,Fit prototype,J3 mounting lands at original shell anchors; dedicated J4 shell-wire pads
 P01-P23,23,Straight motherboard pins,0.64 mm square assumed; 10.70 mm equal overall lengths,Actual pins not measured,Use suitable long pins from 0.1-inch header stock after removing its carrier; determine finished guide fit by coupon
-H1,1,Solid printed base,DB23_Holder_v0.5.stl,Trial print,Broad flat underside at motherboard Z0; supports PCB ears and all 23 pins
-H2,1,Keyed clip-on cap,DB23_Cap_v0.5.stl,Trial print,Black proposed; retains jackpost nuts and covers top hardware; fit last; latch strength and release untested
+H1,1,Solid printed base,DB23_Holder_v0.6.stl,Trial print,Broad flat underside at motherboard Z0; supports PCB ears and all 23 pins; 0.40 mm deep entry funnels above straight retaining bores
+H2,1,Optional cosmetic cover,DB23_Cap_v0.6.stl,Trial print,1.60 mm roof; short 1.20 mm rim; broad locating tabs; tiny glue spots on tower tops after inspection; jackposts must retain nuts without cover
 N1-N2,2,Captive port-jackpost nuts,M3 prototype default; AF5.50 x 2.40 mm assumed,Part not frozen,Match actual rear stems; do not assume M3.5
 JS1-JS2,2,Hex port jackposts,4-40 UNC cable-facing socket; M3 rear stem candidate,Part not frozen,Permitted rear stem end Y<=6.00 from flange datum; passage ends Y6.20; check actual nuts and mounting hardware
 MB1-MB2,2,Upward motherboard mounting screws,M3 x 12 mm under-head length; head diameter 7 mm and thickness about 1 mm,User listing; unmeasured,"Pass upward through underside insulating washer, original motherboard holes, base and J3; verify nominal head bottom Z-3.10 against chassis; no drilling/countersinking"
 MB-IW1-MB-IW2,2,Under-head insulating washers,OD8.00 / ID3.20 x thickness0.50 mm assumed,Required default; actual part not measured,Fit between screw heads and motherboard underside; verify nearby copper and chassis space; no reliance on bolt grounding
 MB-N1-MB-N2,2,Top mounting nuts,M3; AF5.50 x height2.40 mm assumed,Part not frozen,Seat directly on supported J3 lands with no default top washer; check full thread engagement and cap clearance
 SH1-SH2,As required,Shell-ground bonds,Short insulated wire or suitable metal strap to J4,Assembly design to confirm,Bond DB23 shell and original motherboard shell-ground pad deliberately to J4; route board bond through recessed right-side base channel; do not rely on bolt contact
-CP1,1,Hole-fit coupon,DB23_Hole_Fit_Coupon_v0.5.stl,Trial tool only,Print and test actual pins before the full base; not installed
-JIG1,1,Pin-height loading jig,DB23_Pin_Height_Jig_v0.5.stl,Loading tool only,Supports flat base at Z0 and provides common lower-tip stop; remove before soldering
+CP1,1,Hole-fit coupon,DB23_Hole_Fit_Coupon_v0.6.stl,Trial tool only,Chamfered trial bores and 23-hole grid; establish hand-clearing and pin retention before full base; not installed
+JIG1,1,Pin-height loading jig,DB23_Pin_Height_Jig_v0.6.stl,Loading tool only,Supports flat base at Z0 and provides common lower-tip stop; remove before soldering
 FB1-FB2,As required,Flange bearing spacers,Thickness selected from actual flange-to-base gap,Fit-dependent,Nominal reference gap0.15 mm is not a fixed required spacer; establish bearing without bending cups or tails
-CP2-CP3,1 matched pair,Clip-fit coupons,DB23_Clip_Fit_Base_v0.5.stl and DB23_Clip_Fit_Cap_v0.5.stl,Trial tools only,Validate latch engagement/release and printer/material behaviour before full cap; not installed
 CS1-CS2,Optional; if developed,Rigid compression stops,Match actual support height and selected base bore,Not a frozen drop-in part,Consider only with reviewed matching hardware/base; do not crush print or bow PCB

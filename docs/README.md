@@ -12,6 +12,6 @@
 | [VALIDATION.md](VALIDATION.md) | Actual results and outstanding physical checks |
 | [SOURCES.md](SOURCES.md) | Primary references and assumption boundaries |
 
-Current PCB, assembly and mechanical revision: **0.5**. Start with the [project README](../README.md). The shared [parameters](../source/design_parameters.json) are the coordinate contract for native CAD, printed parts, hardware and previews.
+Current mechanical/assembly revision: **0.6**. PCB revision: **0.5**. Start with the [project README](../README.md). The shared [parameters](../source/design_parameters.json) are the coordinate contract for native CAD, printed parts, hardware and previews.
 
 Project development: **Paul of UK Computing Limited**, **Jon of JMC Electronics** and **AI assistance through Codex**.

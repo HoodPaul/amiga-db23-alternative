@@ -2,7 +2,7 @@
 
 ## Project development
 
-Project development: **Paul of UK Computing Limited**, **Jon of JMC Electronics** and **AI assistance through Codex**. It develops Paul's horizontal straddle-PCB concept and supported individual-pin construction. Revision 0.5 adds the shorter mounting-ear PCB, solid base, upward metal fasteners and keyed clip-on cap.
+Project development: **Paul of UK Computing Limited**, **Jon of JMC Electronics** and **AI assistance through Codex**. It develops Paul's horizontal straddle-PCB concept and supported individual-pin construction. The current assembly combines the revision 0.5 mounting-ear PCB with revision 0.6 mechanical parts: a solid base, upward metal fasteners and optional cosmetic cover.
 
 No third-party logo has been recreated or added by assumption.
 
@@ -18,7 +18,7 @@ Third-party source documents are linked for reference rather than republished as
 
 ## Release and licensing status
 
-Revision 0.5 is supplied for fit evaluation and further development. It has not been physically verified or approved for production.
+Mechanical revision 0.6 with PCB revision 0.5 is supplied for fit evaluation and further development. Revision 0.5 print feedback informed the changes; revision 0.6 has not been physically verified or approved for production.
 
 No open-hardware or software licence has been selected for the project. A future repository owner should choose and document the intended licence before publishing a licensed release. The absence of a licence is not a grant of rights to third-party material.
 

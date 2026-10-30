@@ -1,6 +1,6 @@
 # Development and regeneration
 
-PCB, assembly and mechanical revision 0.5 share `source/design_parameters.json`. This revision changes the board outline, mounting lands, shell-wire pads, routing and printed hardware. Do not reuse revision 0.3 manufacturing files or revision 0.4 mounting instructions with it.
+Mechanical/assembly revision 0.6 and PCB revision 0.5 share `source/design_parameters.json`. This update changes only the mechanical parts, previews and documentation. Preserve the existing PCB projects, copper, manufacturing exports and REV 0.5 legend. The mechanical builder uses `revision`; PCB tools use `pcb_revision`.
 
 Review manual native-CAD edits before running builders. Port deliberate edits into the source or preserve a reviewed baseline before overwriting files. Keep shared parameters, builders, native CAD, prints, previews and validation together.
 
@@ -40,7 +40,7 @@ The complete base underside reaches motherboard Z0 as a coplanar bearing and pri
 The Python dependencies for the mechanical build, audit, previews and PDF are listed in `source/requirements-previews.txt`; OpenSCAD is a separate application. Native PCB appearance views also need Inkscape. VTK rendering requires an available X display; Xvfb can provide this on headless Linux.
 
 ```sh
-python3 source/render_previews.py
+xvfb-run -a python3 source/render_previews.py
 python3 source/make_pcb_appearance.py
 python3 source/make_drawings.py
 ```
@@ -51,7 +51,7 @@ The printed geometry is the actual delivered STL. Bought DB23 bodies, cups, pins
 
 1. Rebuild affected native and mechanical outputs after parameter changes.
 2. Re-run native parsing, DRC, exact connections and saved-geometry checks.
-3. Review the PCB ears, J3 nut-bearing lands, J4/base wire channel, underside insulating washers, all 23 pin bores, flat base bearing, cap keys/latches and both fastener directions together.
+3. Review the PCB ears, J3 nut-bearing lands, J4/base wire channel, underside insulating washers, all 23 pin bores, flat base bearing, cover locating tabs, rim, glue bearing and pin-entry funnels and both fastener directions together.
 4. Check default and alternative screw-length envelopes explicitly; do not treat a longer jackpost passage as unlimited clearance.
 5. Update assembly, measurements, BOM, previews, drawings, changelog and handover.
 6. Record actual commands, versions, failed/unavailable checks and outstanding assumptions.

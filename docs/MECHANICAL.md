@@ -1,8 +1,8 @@
 # Mechanical design and print notes
 
-## Solid base and keyed cap
+## Solid base and optional cover
 
-Revision 0.5 uses a solid printed base, a short PCB with mounting ears and two upward metal mounting screws. The separate keyed cap retains the port-jackpost nuts and covers the upper fasteners. Broad supported parts and positive bolts provide the intended load path; no physical strength or print lifetime is established.
+Mechanical revision 0.6 uses the unchanged revision 0.5 PCB with a solid printed base and two upward metal mounting screws. The optional cover hides the upper fasteners. Fitted jackposts must retain their nuts without it; verify the actual threaded assembly. Broad supported parts and positive bolts provide the intended load path; no physical strength or print lifetime is established.
 
 The base supports the DB23 flange, the 23-pin guide and the PCB mounting ears. Its complete underside is lowered to one coplanar motherboard Z0 bearing surface. **The two circular feet and old separate 0.60 mm anchor shims are not used.** The upper PCB support plane remains at Z5.75, so the adapter and connector heights are unchanged.
 
@@ -16,7 +16,7 @@ All dimensions are millimetres. X runs across the port; positive Y runs inward f
 |---|---|
 | PCB overall width / front / rear | 51.20 mm / Y4.00 / Y13.00 |
 | Base width / rear | 52.00 mm / Y13.00 |
-| Cap width / rear / roof | 52.00 mm / Y13.20 / Z11.00–12.20 |
+| Cap width / rear / roof | 52.00 mm / Y13.20 / Z11.00–12.60 |
 | Maximum nominal underside washer span | 52.27 mm across both Ø8 washers |
 | Head and washer projection beneath motherboard underside | 1.50 mm, assuming 1.00 + 0.50 mm |
 | PCB thickness / underside | 1.00 mm / Z5.75 |
@@ -59,6 +59,8 @@ Tightening behaviour, plastic compression, creep and long-term preload have not 
 
 The default guide bore is nominally Ø0.92 mm for assumed 0.64 mm square pins. The pin diagonal is `0.64 × sqrt(2) = 0.9051 mm`. Nominal CAD clearance is not a guaranteed printed press fit. A finished Ø0.80 mm hole is too small for those pins.
 
+All 23 guide entries have a 45° conical funnel, 0.40 mm deep from Z4.10 to Z4.50. Each mouth is Ø1.72 mm; the lower Ø0.92 mm retaining bore remains straight. This is two layers at 0.20 mm. The coupon uses the same depth on its trial bores and 23-hole grid. Carefully clear a trial bore with a hand pin vice if needed; hot pressing has not been validated and may distort the guide.
+
 Print the hole-fit coupon first. Record pin shape, actual bore, any drill/reamer diameter and retention after soldering trials. The base must hold the pins at their set height when the jig is removed and while the PCB is lowered.
 
 Nominal equal pin length is 10.70 mm, from Z−3.20 to Z7.50. With an assumed 1.60 mm motherboard this leaves about 1.60 mm below its underside. Confirm actual board thickness, solder protrusion and chassis clearance.
@@ -71,7 +73,7 @@ The guide top remains 1.25 mm below the PCB for fillets and heat separation. Loc
 
 Cable-facing jackpost sockets require 4-40 UNC. Their rear mounting stems can use a different thread. The prototype assumes M3 rear stems and nuts, 5.50 mm across flats and 2.40 mm thick, plus fit allowance. Match the actual parts. HARTING 09670009924 is a candidate thread arrangement, not a frozen drop-in part; M3.5 has not been specified.
 
-The cap's retaining tongues close the top-loading jackpost nut pockets. The solid base locates those nuts; do not rely on a decorative latch as the main cable-load attachment.
+The base locates the top-loading jackpost nuts. Threaded jackposts must prevent nut escape with the cover removed. The cover retains two broad locating tabs above the pockets for positioning; it is optional and is not the cable-load attachment.
 
 The rear-stem passage ends at **Y6.20**, with a conservative permitted stem end **Y≤6.00 from the flange datum**. This limit clears the top motherboard mounting nut, not just the vertical bolt shank. Check actual projection, not only the advertised jackpost length; an 8 mm stem is not an assumed drop-in part.
 
@@ -83,18 +85,17 @@ Read `mechanical/MECHANICAL_NOTES.txt` for the complete generated notes. Deliver
 
 | File | Use and orientation |
 |---|---|
-| `DB23_Holder_v0.5.stl` / `.step` | Solid base in assembly coordinates; broad coplanar underside at Z0 |
-| `DB23_Cap_v0.5.stl` | Cap already roof-down for printing |
-| `DB23_Cap_v0.5.step` | Cap in assembly coordinates |
-| `DB23_Pin_Height_Jig_v0.5.stl` / `.step` | Jig on the print bed; translate Z−6.20 for assembly placement |
-| `DB23_Hole_Fit_Coupon_v0.5.stl` | Guide-hole trials before the base |
-| `DB23_Clip_Fit_Base_v0.5.stl` and `DB23_Clip_Fit_Cap_v0.5.stl` | Matched latch-fit trial before full-size cap |
+| `DB23_Holder_v0.6.stl` / `.step` | Solid base in assembly coordinates; broad coplanar underside at Z0 |
+| `DB23_Cap_v0.6.stl` | Cap already roof-down for printing |
+| `DB23_Cap_v0.6.step` | Cap in assembly coordinates |
+| `DB23_Pin_Height_Jig_v0.6.stl` / `.step` | Jig on the print bed; translate Z−6.20 for assembly placement |
+| `DB23_Hole_Fit_Coupon_v0.6.stl` | Guide-hole trials before the base |
 
-To restore the cap STL to assembly coordinates, rotate 180° about X, then translate Z+12.20. The base's broad underside is coplanar at Z0 and is the intended print-bed face; the former 0.60 mm underside bridge and two circular feet are absent. Check first-layer expansion and bore closure on a trial. The roof-down cap avoids a broad ceiling bridge, but small latch-hook overhangs still need a print trial.
+To restore the cap STL to assembly coordinates, rotate 180° about X, then translate Z+12.60. The base's broad underside is coplanar at Z0 and is the intended print-bed face; the former 0.60 mm underside bridge and two circular feet are absent. Check first-layer expansion and bore closure on a trial. The roof-down cover has no hooks or tall thin corner projections. Its roof is 1.60 mm thick and the short side/rear rim is 1.20 mm thick, starting at Z10.30 above the mounting nuts. The front skirt starts at Z10.20; the two broad locating tabs reach Z9.90.
 
 The base, cap and individual jig are intended as connected parts. Reference meshes under `previews/reference-meshes/` illustrate bought components and are not functional print files.
 
-Black print colour is proposed for a discreet appearance. No material, nozzle, process, layer direction or thermal capability has been qualified. The clip coupon has nominal 0.60 mm thick, 1.40 mm wide latch features. Trial the nut pockets, keys, latch travel and release with the actual printer before using the cap; material, fatigue life and latch strength are unvalidated. Do not force a cap that interferes with fasteners or pulls the PCB out of its seats.
+Black print colour is proposed for a discreet appearance. No material, nozzle, process, layer direction or thermal capability has been qualified. The two hook legs and their base catch recesses have been removed; the base recesses are filled solid. Dry-fit the nut pockets, broad tabs and tower-top bearing. After final electrical inspection, tiny superglue spots on the tower tops can hold the cover. Keep adhesive clear of contacts, threads and pockets. Bond strength is untested, and removal may damage a glued cover. Do not force a cap that interferes with fasteners or pulls the PCB out of its seats.
 
 Remove support and drilling debris before electrical assembly. The print is not specified as reflow-rated. Soldering heat can soften a guide through the pins even without direct iron contact. Complete cup joints away from the print, keep heat dwell controlled and test the real process on trial parts.
 

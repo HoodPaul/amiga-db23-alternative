@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Independent saved-file CAD checks for the DB23 revision 0.5 fit prototype.
+"""Independent saved-file CAD checks for the DB23 mechanical revision 0.6 fit prototype.
 
 Read the delivered STEP/STL files without importing the mechanical builder.
 CadQuery/OpenCascade checks solid clearance and VTK independently checks meshes
@@ -210,28 +210,42 @@ for side,(x,y) in zip((-1,1),mounts):
 right_x=M['anchor_spacing']/2
 wire_core=box(right_x+1.9,H['overall_width']/2+.01,M['anchor_y']-.35,M['anchor_y']+.35,.02,.75)
 intersection('right_base_ground_wire_exit_core',holder,wire_core)
-# A conservative clip bending envelope checks room to flex without striking the PCB.
-# It does not establish allowable material strain or fatigue life.
-flex=max(0,H['tower_rear_y']-K['latch_hook_front_y'])+.05
-report['clip_geometry']={'rearward_tip_motion_for_0_05mm_clearance':flex,
-    'hook_bite_nominal':H['tower_rear_y']-K['latch_hook_front_y'],
-    'XY_gap_to_PCB_ear_front_at_max_flex':B['mounting_ear_front_y']-K['latch_rear_y']-flex,
-    'vertical_gap_latch_bottom_above_PCB':K['latch_bottom_z']-pcb_top,
-    'note':'A negative XY gap is permitted only where the raised latch has vertical clearance; the solid-envelope check below is authoritative.'}
+# Read the delivered solids to verify removal of hooks/catches and thin posts.
+report['cover_design']={'attachment':'optional adhesive spots on tower top bearing faces',
+    'roof_thickness_mm':K['roof_top_z']-K['roof_bottom_z'],
+    'rim_thickness_mm':K['side_wall_thickness'],'rim_bottom_Z':K['skirt_bottom_z'],
+    'glue_strength_tested':False,'physical_revision_0_6_print_tested':False}
+check('cover_roof_at_least_1_6mm',K['roof_top_z']-K['roof_bottom_z']>=1.6-1e-9)
+check('cover_rim_at_least_1_2mm',K['side_wall_thickness']>=1.2)
 for side in(-1,1):
-    cx=side*K['latch_centre_x']; w=K['latch_width']/2
-    flexbox=box(cx-w,cx+w,K['latch_front_y'],K['latch_rear_y']+flex,K['latch_bottom_z'],K['roof_bottom_z'])
-    intersection(f'PCB_conservative_clip_flex_envelope_{side}',board,flexbox)
-    hook_probe=cq.Vector(cx,(K['latch_hook_front_y']+H['tower_rear_y'])/2,(K['latch_hook_ramp_top_z']+K['latch_hook_top_z'])/2)
-    check(f'actual_cap_retaining_hook_material_{side}',cap.isInside(hook_probe),hook_probe.toTuple())
-    check(f'actual_base_relief_at_seated_hook_{side}',not holder.isInside(hook_probe),hook_probe.toTuple())
-    catch_probe=cq.Vector(hook_probe.x,hook_probe.y,H['latch_notch_top_z']+.15)
-    check(f'actual_base_retaining_ceiling_{side}',holder.isInside(catch_probe),catch_probe.toTuple())
-    beam_probe=cq.Vector(cx,(K['latch_front_y']+K['latch_rear_y'])/2,9)
-    check(f'actual_cap_flex_beam_material_{side}',cap.isInside(beam_probe),beam_probe.toTuple())
+    x=side*19.3
+    intersection(f'old_cap_hook_and_beam_absent_{side}',cap,box(x-.69,x+.69,4.89,5.81,7.19,10.9))
+    # The recess previously cut into the back of the base tower is now filled.
+    probe=box(x-.65,x+.65,4.85,5.05,7.1,8.0)
+    check(f'base_catch_recess_filled_{side}',abs(holder.intersect(probe).Volume()-probe.Volume())<1e-6)
+    for i,y in enumerate((6.6,12.6),1):
+        projection=box(min(side*24.8,side*26.01),max(side*24.8,side*26.01),y-.15,y+.15,7.1,10.29)
+        intersection(f'thin_corner_projection_removed_{side}_{i}',cap,projection)
+    for i,(xx,y) in enumerate(((24.4,6.8),(25.4,9.5),(25.4,12.6)),1):
+        check(f'continuous_upper_rim_{side}_{i}',cap.isInside(cq.Vector(side*xx,y,10.6)))
     key_probe=cq.Vector(side*M['anchor_spacing']/2,H['nut_axis_y_assumed'],(K['tongue_bottom_z']+K['roof_bottom_z'])/2)
-    check(f'actual_cap_nut_retaining_key_{side}',cap.isInside(key_probe),key_probe.toTuple())
-check('clip_hook_has_positive_retention_bite',report['clip_geometry']['hook_bite_nominal']>0,report['clip_geometry'])
+    check(f'broad_cap_locating_key_{side}',cap.isInside(key_probe),key_probe.toTuple())
+    for y in(1.1,4.65):
+        check(f'tower_glue_bearing_{side}_{y}',holder.isInside(cq.Vector(side*20.0,y,10.95)) and cap.isInside(cq.Vector(side*20.0,y,11.05)))
+    # A fitted horizontal stem prevents upward escape of a threaded nut.
+    # This nominal unthreaded envelope check is not a torque/retention test.
+    shifted_nut=jack_nut(side*M['anchor_spacing']/2).translate((0,0,.5))
+    stem=yc(side*M['anchor_spacing']/2,H['nut_axis_z'],3,0,H['jackpost_stem_max_end_y'])
+    check(f'fitted_jackpost_blocks_nut_lift_without_cap_{side}',shifted_nut.intersect(stem).Volume()>0.1)
+# All 23 entries must flare only at the top and keep a straight guide below.
+report['pin_entry']={'depth_mm':H['pin_entry_depth'],'mouth_diameter_mm':H['pin_entry_diameter'],
+    'bore_diameter_mm':H['pin_guide_hole_diameter'],'straight_guide_height_mm':H['pin_block_top_z']-H['pin_entry_depth']}
+for i,(x,y) in enumerate(pins,1):
+    ok=True
+    for z,r in ((4.11,.47),(4.30,.66),(4.49,.85)):
+        ok=ok and not holder.isInside(cq.Vector(x+r-.015,y,z)) and holder.isInside(cq.Vector(x+r+.015,y,z))
+    ok=ok and holder.isInside(cq.Vector(x+.50,y,2.0))
+    check(f'pin_entry_taper_and_lower_guide_{i:02d}',ok)
 check('M3_default_length_full_nut_engagement',report['mounting_stack_mm']['default_protrusion_above_nut']>=.5,report['mounting_stack_mm'])
 # Delivered STL topology, including separate printable cap orientation.
 def mesh(path):
@@ -243,6 +257,13 @@ def mesh(path):
     check('mesh_'+path.stem,st['boundary_or_nonmanifold_edges']==0 and st['regions']==1,st)
     return data
 meshes={p.name:mesh(p) for p in sorted((ROOT/'mechanical').glob(f'*v{R}.stl'))}
+base_mesh=meshes[f'DB23_Holder_v{R}.stl']
+entry_tree=vtk.vtkOBBTree();entry_tree.SetDataSet(base_mesh);entry_tree.BuildLocator()
+for i,(x,y) in enumerate(pins,1):
+    hits=vtk.vtkPoints();entry_tree.IntersectWithLine((x-1,y,4.30),(x+1,y,4.30),hits,None)
+    xs=sorted(hits.GetPoint(j)[0]-x for j in range(hits.GetNumberOfPoints()))
+    check(f'STL_pin_entry_midsection_{i:02d}',len(xs)==2 and abs(xs[0]+.66)<.003 and abs(xs[1]-.66)<.003,xs)
+check('four_current_printable_parts',len(meshes)==4,list(meshes))
 capdata=meshes[f'DB23_Cap_v{R}.stl']
 # Print transform is R_x(180) plus a Z translation by the roof top; it is self-inverse.
 roof_top=K.get('roof_top_z',12.2)

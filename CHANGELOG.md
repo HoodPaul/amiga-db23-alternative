@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.6 mechanics / 0.5 PCB - 30 October 2026
+
+- Simplify the optional cover following Paul's revision 0.5 print feedback: remove the four thin projections and both hook legs, fill the base catch recesses, and use a 1.60 mm roof with a short 1.20 mm rim above the mounting hardware. Retain two broad locating tabs and allow tiny glue spots on the tower tops.
+- Add 0.40 mm deep, 45-degree entry funnels to all 23 pin guides and the hole-fit coupon. Preserve the straight Ø0.92 retaining bores below each Ø1.72 guide mouth.
+- Preserve square forward tower corners, nut pockets, the PCB support height, neighbour relief, original mounting axes and flat base. Record the observed nut fit separately from the unmeasured full PCB stack.
+- Remove superseded mechanical outputs and obsolete clip-fit coupons. Regenerate STL, STEP, OpenSCAD, previews, drawings and geometry reports.
+- Keep both revision 0.5 PCB projects and manufacturing exports byte-for-byte unchanged. Revision 0.6 remains an unprinted fit prototype.
+
 ## Repository documentation - 30 October 2026
 
 - Give the three revision 0.5 amendment commits descriptive engineering titles and update the audit baseline reference to the corresponding commit. The file contents at each renamed commit are unchanged.

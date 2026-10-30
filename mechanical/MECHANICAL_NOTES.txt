@@ -1,153 +1,85 @@
-AMIGA DB23 v0.5: MECHANICAL FIT PROTOTYPE
+AMIGA DB23: MECHANICAL REVISION 0.6 / PCB REVISION 0.5
+FIT PROTOTYPE - revision 0.6 has not yet been physically printed or tested.
+Paul's revision 0.5 print showed delicate lid projections and a nut within the
+printed footprint. The full PCB, nut and screw stack remains unmeasured.
 
-The genuine solder-cup DB23 and bought hardware are not measured samples.
-Print fit, cap retention, cable insertion strength and soldering heat tolerance
-remain untested. Black is the intended printed appearance, not a material spec.
+CURRENT PRINT FILES
+ DB23_Holder_v0.6.stl          solid base with 23 entry funnels
+ DB23_Cap_v0.6.stl             optional cosmetic cover, already roof-down
+ DB23_Pin_Height_Jig_v0.6.stl   loading aid; remove before soldering
+ DB23_Hole_Fit_Coupon_v0.6.stl  chamfered bore trials and 23-hole grid
+Base and cap STEP use assembly coordinates. Jig STEP uses print coordinates.
+The OpenSCAD file selects holder, cap, cap_assembly, pin_height_jig or coupon.
+Superseded mechanical files and the obsolete clip-fit pair are removed.
 
-FILES AND REBUILD
-From project root: python3 source/build_mechanical.py
-The builder reads source/design_parameters.json. One constructive geometry
-model generates editable OpenSCAD, native OpenSCAD STL and analytic STEP.
-Run source/verify_mechanical.py for the separate saved-file geometry audit.
-For a base/cap-only edit, --parts holder cap re-exports those STL files while
-topology-checking the existing unchanged trial-part STLs. A full build remains
-the default and is needed if those trial parts or their parameters change.
+COORDINATES AND PRINT ORIENTATION (mm)
+X across the port, Y inwards from flange front Y0, Z above motherboard top Z0.
+Base: broad flat underside at Z0, maximum width 52, rear Y13.
+PCB: underside Z5.75, thickness 1.00, mating centreline Z6.25.
+Cover: maximum width 52, rear Y13.20, roof Z11.00 to Z12.60.
+Restore cap STL to assembly by rotating 180 degrees around X, then Z+12.60.
+Restore jig STL/STEP to loading position by translating Z-6.20.
+No separate mounting shims or projecting feet. Keep the original motherboard
+holes unchanged; no drilling or countersinking of the motherboard is specified.
 
-Print one each:
- DB23_Holder_v0.5.stl          solid lower base, in assembly coordinates
- DB23_Cap_v0.5.stl             keyed cosmetic cap, exported roof-down
- DB23_Pin_Height_Jig_v0.5.stl   loading only, not installed
- DB23_Hole_Fit_Coupon_v0.5.stl  pin-hole trials before selecting bore diameter
- DB23_Clip_Fit_Base_v0.5.stl    small representative latch-fit trial
- DB23_Clip_Fit_Cap_v0.5.stl     mating clip-fit trial
-STEP files for base and cap retain assembly coordinates. Jig STEP, like its
-STL, is on the print bed. Clip-fit parts are only fit aids, not load-rated parts.
-No separate mounting shims and no printed expanding motherboard pegs are used.
+SIMPLIFIED OPTIONAL COVER
+Roof thickness 1.60. Short side/rear rim thickness 1.20, bottom Z10.30.
+Front skirt bottom Z10.20. Two broad locating tabs extend down to Z9.90.
+Four thin corner projections and both hooks are removed. The corresponding
+base catches are filled solid. This is not a snap-fit design.
+Dry-fit the cover with the PCB and nuts installed. After final inspection,
+tiny superglue spots on the tower tops may hold it. Keep adhesive away from
+contacts, pockets and threads. A glued cover may be damaged during removal.
+Fitted jackposts must retain their nuts with the cover absent. The cover is
+cosmetic; the solid base and through-bolts provide the intended cable load path.
 
-NOMINAL ASSEMBLY GEOMETRY (mm)
-X runs across the port, Y points inwards, Z is above the motherboard top.
-Flange front Y0; illustrative flange metal Y0..0.50, base front Y0.65.
-PCB underside Z5.75, thickness1.00; nominal mating centreline Z6.25.
-Base width52.00, rearY13.00; PCB overall width51.20, rearY13.00.
-Cap width52.00, rearY13.20, roof undersideZ11.00, roof topZ12.20.
-The two forward end faces are now continuous square planes at X+/-25.60
-from Y0.65 through Y5.10. The marked rear corners have been filled from X25.00
-to X25.60; the former front X26.00 surface is trimmed to the same plane so
-there is no re-entrant step through the end wall. Matching cap corners follow
-that plane. The unchanged nut pockets leave nominal0.615mm outer walls and
-0.80mm rear webs. These dimensions are not a measured strength rating.
-The local X25.00 neighbour-lug relief now starts BEHIND the end towers at
-Y5.10 and ends at Y7.50. Overall aft width remains52.00. Actual target revision,
-neighbouring metal lug/solder fillet and connector housing still need a fit
-check; no new height-dependent clearance assumption is used.
-The assumed shell/cup envelope, base seat and flange clamping need a real
-bearing check. Fit a measured bearing spacer if needed; do not strain cups or
-signal tails to close an assumed gap.
+PIN GUIDES AND COUPON
+Each of the 23 guides has a 45-degree funnel, depth 0.40 from Z4.10 to Z4.50,
+mouth diameter 1.72 and straight retaining bore diameter 0.92 below it.
+This equals two layers at 0.20 layer height. The coupon uses the same depth
+on its trial bores and 23-hole grid. Test actual printer and pin tolerances.
+Assumed 0.64 square pins have diagonal 0.9051; a finished 0.80 bore is too small.
+A hand pin vice can clear a trial hole; confirm snug retention afterwards.
+Hot pressing is unvalidated and may distort the guide or pin alignment.
+Remove all debris before loading pins. Guide top remains 1.25 below the PCB.
+Equal 10.70 pins run from Z-3.20 to Z7.50. The jig supports the base at Z0 and
+sets a common lower stop at Z-3.20. Remove it and recheck grip before lowering
+the joined PCB/DB23. The motherboard is not a forming or pin-loading fixture.
 
-BASE AND SUPPORTS
-The complete base underside reaches motherboard Z0 as one broad, coplanar
-bearing surface. The two former circular mounting feet and loose0.60 shims
-are absent. The PCB underside remains atZ5.75, so its height is unchanged.
-Mounting axes remain X+/-22.135,Y9.50; base and new PCB holes are diameter3.30.
-The referenced motherboard holes remain nominal3.20: DO NOT enlarge or drill
-the original motherboard to match printed clearances.
+CORNERS AND HARDWARE
+Forward tower outer faces remain X+/-25.60 over Y0.65 to Y5.10.
+Neighbour relief remains X+/-25.00 from Y5.10 to Y7.50, behind the towers.
+Actual neighbouring metal, solder fillets and housing need a clearance check.
+Mounting axes X+/-22.135, Y9.50. Base and adapter bores diameter 3.30.
+Default: M3 x 12 screws upwards from beneath motherboard, diameter 7 x 1 heads,
+diameter 8 x 0.50 insulating washers below heads, top nuts 5.50 AF x 2.40
+on the supported PCB mounting lands. No default top washers.
+Assumed motherboard 1.60 + underside washer 0.50 + base height 5.75 + PCB 1.00
++ nut 2.40 gives 11.25 under-head stack. Tip Z9.90; nut top Z9.15;
+nominal protrusion 0.75; roof underside clearance above tip 1.10.
+Head bottom Z-3.10: check underside copper and chassis clearance. Washers span
+52.27 across the pair, slightly beyond the 52 mm print. Untrimmed 14/16 screws
+intersect this cover. Changed washers/hardware require a fresh stack check.
+Cable-facing jackposts require 4-40 UNC; prototype rear stems and nuts are M3.
+Stem end must remain Y<=6.00; printed passage ends Y6.20. Check flange bearing
+and actual stem projection. Do not bend cups or pins to close a flange gap.
 
-The23-pin guide uses nominal0.92 bores for assumed0.64 square pins. Their
-corner diagonal is0.9051. A finished0.80 round bore cannot clear them. Print
-the hole coupon first and establish a snug retaining fit with actual pins.
-The guide top isZ4.50, leaving1.25 below the PCB for fillets/heat separation.
-Rear material is continuous. Two shallow relief pockets below J4 shell-wire
-holes at X+/-18,Y7.00 have floorsZ4.50 and3.90mm of material beneath them.
-Pre-solder any underside joints before lowering the joined PCB/DB23.
+GROUNDING AND ASSEMBLY
+Provide deliberate J4 bonds to the DB23 shell AND motherboard shell-ground pad.
+Do not rely on insulated mounting heads or plastic for continuity.
+The right-side wire channel runs from X24 to the edge, Y9.50 +/-0.60, Z0 to1.00.
+Pre-tack the motherboard lead with the base removed. It must not lift the base.
+Keep wire/solder away from the J3 nut seats and all 23 signal pins.
+1. Solder DB23 and PCB together away from print; prepare covered shell joints.
+2. Load pins using jig, remove jig, lower joined assembly, seat and solder tops.
+3. Fit jackpost nuts/posts; check retention without cover and flange bearing.
+4. Mount through original holes, solder tails, finish shell bonds and inspect.
+5. Optionally glue cover to tower tops after all electrical and fit checks.
 
-UPWARD MOUNTING SCREWS
-Default is M3x12, measured under the head. Assumed head diameter7.00 and
-height1.00 are based on the selected ultra-thin style and require measurement.
-A mandatory insulating washer beneath the motherboard is provisionally0.50
-thick, OD8.00, ID3.20. Reference CAD shows that a bare7mm head can overlap
-unrelated copper. The insulating washer's actual coverage and compression,
-underside traces, solder joints and chassis clearance must be verified.
-There is NO top washer in the default stack. The nut bears directly on the
-supported6.50mm exposed SHIELD land of the adapter PCB. Use tested light
-clamping only; print creep and long-term fastener retention remain untested.
-An optional rigid compression stop needs a reviewed bore variant and an
-actual measured length, nominal5.75. It is not required by this fit prototype.
-
-Assuming a1.60mm motherboard,0.50mm underside insulator,5.75mm base height,
-1.00mm adapter and2.40mm nut gives11.25mm to the top of the nut. M3x12 leaves
-0.75mm nominal protrusion. TipZ9.90, nut topZ9.15, roof clearance1.10mm.
-An optional top washer consumes protrusion. M3x14 andx16 need trimming or a
-revised cap; they are NOT stated to fit the default cover. Verify actual nut
-engagement, bolt length and underboard clearance before assembly.
-
-SHELL GROUNDING AND WIRE CAVITY
-The insulated underside screw heads cannot be relied on for shell continuity.
-Provide a deliberate wire bond from an original motherboard shell-ground pad
-to J4, and from J4/SHIELD to the DB23 metal shell. Neither captive nuts nor
-plastic carry this electrical bond. Keep SHIELD separate from signal grounds.
-The RIGHT side of the flat base contains a recessed wire/solder channel: X24.00 to
-the outside edge, Y9.50+/-0.60, Z0..1.00. Pre-tack the ground lead to the actual
-shell-pad annulus, route its insulated section outwards and then up to J4.
-Check real joint/insulation fit so the base sits flat and does not crush the
-wire. The surrounding underside remains the bearing surface. Do not route
-bare wire across the23-pin signal field or obstruct the cap latches.
-
-JACKPOST NUTS AND STEMS
-Cable-facing sockets require original-compatible4-40UNC. The rear stem and
-captive nut must match; prototype defaults are M3. The assumed nut is5.50AF,
-2.40thick, with0.20total pocket allowance. Its axis isZ6.25,Y3.00.
-The printed horizontal passage is diameter3.40 and extends toY6.20. The
-conservative permitted rear stem endpoint isY<=6.00 from the flange front,
-preferably around4.80. This limit includes the TOP motherboard mounting nuts,
-not merely the vertical bolt shanks. A longer stem may hit them. Select or
-trim actual hardware only after measurement; no claim that every jackpost
-length fits is made.
-
-CAP AND LATCH FIT
-The cap is cosmetic and retains the jackpost nuts; the solid base and metal
-through-bolts provide the intended main cable-load attachment. Nut-pocket
-keys project toZ9.90. Two inboard latches behind the front towers have nominal
-0.60mm beam thickness,1.40mm width and0.20mm engagement. Nominal insertion
-needs about0.20mm rearward movement, with additional fit allowance. This is a
-geometric estimate, not an elastic strength or fatigue result.
-Print BOTH clip-fit trial pieces first, with the intended material, nozzle
-and settings. Remove burrs/support and verify gentle assembly, retention and
-removal before printing/forcing the full cap. Adjust shared parameters for
-fit. Side/rear skirt reliefs deliberately clear the upper mounting nuts.
-Fit the cap LAST, after mounting, soldering and continuity inspection.
-
-PRINT ORIENTATION AND SUPPORTS
-Base STL has one broad, coplanar underside atZ0 for direct print-bed placement.
-The former two circular feet and0.60mm underside bridge are absent. Check first
-layer expansion and keep small bores clear; remove all debris before pin loading.
-The cap STL is already roof-down: the flat outer roof rests on the bed and
-keys/latches build upwards. Local hook ramps need actual print trials.
-The coupon, jig and both clip-fit trial parts are already on the print bed.
-
-Assembly transform for cap STL: rotate180degrees about X, then translate
-Z+12.20. This self-inverse transform restores the assembly-coordinate cap.
-For jig STL/STEP: translateZ-6.20 to restore its loading position.
-Do not apply slicer drop-to-bed to assembly renders of the base or cap STEP.
-
-PIN HEIGHT JIG
-The jig supports the flat base atZ0 on two annular pads with loose2.90mm locating
-pegs in the3.30mm bores. Its common flat floor stops all23 tips atZ-3.20.
-Equal10.70mm pin lengths then place the upper ends atZ7.50. Equal LOWER
-projection depends on clean seating and flat stops; equal TOP heights also
-require equal cut lengths. Verify guide grip retains the pins on transfer.
-Remove the jig before lowering/soldering the PCB, and never use the Amiga
-motherboard as the pin-forming or soldering fixture.
-
-BUILD ORDER
-1. Solder the DB23 and PCB together; prepare covered underside shell joints.
-2. Load23pins into base on height jig. Remove jig, lower joinedPCB/DB23,
-   seat it without force, and solder pin tops using a tested heat strategy.
-3. Fit jackpost nuts/hardware, check flange bearing and finite stem clearance.
-4. Pre-tack motherboard shell-ground wire and route through the recessed base channel.
-   Install adapter; insert insulated-head screws upward and fit top nuts.
-   Secure flat seating, solder motherboard tails and complete shell bonds.
-5. Inspect23independent circuits and the separate shell path; fit cap last.
-
-All dimensional, electrical and mechanical checks remain scoped to this fit
-prototype. Actual print strength, assembly forces, soldering heat performance,
-case fit, hardware contact and Amiga operation are not validated.
+REGENERATION
+ python3 source/build_mechanical.py
+ python3 source/verify_mechanical.py
+Shared geometry: source/design_parameters.json. Read docs/MECHANICAL.md,
+docs/ASSEMBLY.md and docs/VALIDATION.md for details and actual check results.
+CAD checks do not establish print strength, hot insertion, heat tolerance,
+clamping torque, adhesive life, chassis fit or operation on an Amiga.

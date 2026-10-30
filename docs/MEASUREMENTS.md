@@ -11,7 +11,7 @@ Record part numbers and measurements before freezing geometry. Measure male RGB 
 | Jackpost and captive nut maker / part | Not yet selected |
 | Upward screw, washer and nut part numbers | User-listed M3 options; not measured |
 | Pin source and usable length | Not yet measured |
-| Printer / material / nozzle / process / orientation | Not yet recorded |
+| Printer / material / nozzle / layer height / orientation | Not yet recorded |
 
 ## Connector and jackposts
 
@@ -42,8 +42,10 @@ Record part numbers and measurements before freezing geometry. Measure male RGB 
 | Pin grip after removing jig | Unverified | |
 | Jig seat, common stop and release | Unverified | |
 | Heights after jig removal and PCB lowering | Unverified | |
-| J4 solder fillets and right-foot ground-wire groove | Groove1.20 wide x1.00 high; actual wire envelope unverified | |
-| Cap keys/latches, engagement and release | Unverified | |
+| J4 solder fillets and right-side ground-wire groove | Groove1.20 wide x1.00 high; actual wire envelope unverified | |
+| Cover tabs, tower-top seating and glue bond | Revision 0.6 untested | |
+| Jackpost nuts retained with cover absent | Verify fitted threaded jackposts | |
+| Entry funnel / hand clearing / pin retention | 0.40 mm deep, Ø1.72 mouth; Ø0.92 retaining bore | |
 | Cap clearance over screws/nuts and shell wire | Unverified | |
 | Printed temperature, deflection and creep trial | Unverified | |
 
@@ -55,7 +57,7 @@ A finished Ø0.80 mm bore does not clear an assumed 0.64 mm square pin. The coup
 |---|---|---|
 | Motherboard thickness | 1.60 mm | |
 | Motherboard top to adapter underside | 5.75 mm | |
-| Integral foot contact | Z0; no old loose 0.60 mm shims | |
+| Broad flat base contact | Z0; no old loose 0.60 mm shims | |
 | Adapter PCB thickness | 1.00 mm | |
 | Screw thread / under-head length | M3 / 12.00 mm default | |
 | Screw head diameter / thickness | Ø7.00 / about 1.00 mm, user listing | |
@@ -86,9 +88,15 @@ A finished Ø0.80 mm bore does not clear an assumed 0.64 mm square pin. The coup
 | Underside head to pads, traces and chassis | Unverified | |
 | Space for base/cap width and rear extent | Prints52.00 wide; rearY13.00 / Y13.20 | |
 | Maximum underside washer span | 52.27 mm across both Ø8 washers | |
-| Ground wire beyond foot and side window | Measure actual installed wire/insulation envelope | |
+| Ground wire beyond base channel and side window | Measure actual installed wire/insulation envelope | |
 | Neighbouring ports/components and rear panel | Unverified | |
 | Original ground pads, both deliberate bonds and continuity | Verify on target board; do not rely on bolt contact | |
 | Insertion/extraction load, deflection and retention | Unverified | |
 
 Photographs around CN450 help identify the area to inspect; they do not establish a measured clearance. Retain dimensions, photographs, part numbers and print settings with the next revision.
+
+## Reported revision 0.5 print feedback, 30 October 2026
+
+Paul reported that the lid was too delicate and had missing printed features, and identified four thin projections for removal. He reported that the selected nuts fit within the print footprint; the supplied photo shows a nut on the printed base without the adapter PCB underneath. These are observations, not measured clearance for the completed stack.
+
+Revision 0.6 addresses that feedback with a thicker simple cover, no hooks or catches, and 23 shallow guide funnels. Record its new print, hardware and pin-fit results above. No revision 0.6 physical trial has yet been recorded.

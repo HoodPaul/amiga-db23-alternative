@@ -1,11 +1,11 @@
 {
-  "revision": "0.5",
+  "revision": "0.6",
   "status": "FIT PROTOTYPE; all physical fits and strengths untested",
-  "DB23_Holder_v0.5.stl": {
-    "triangles": 7796,
+  "DB23_Holder_v0.6.stl": {
+    "triangles": 13652,
     "nonmanifold_edges": 0,
     "components": 1,
-    "volume_mm3": 1945.97,
+    "volume_mm3": 1940.052,
     "bounds": [
       [
         -26.0,
@@ -21,11 +21,11 @@
       ]
     ]
   },
-  "DB23_Cap_v0.5.stl": {
-    "triangles": 220,
+  "DB23_Cap_v0.6.stl": {
+    "triangles": 132,
     "nonmanifold_edges": 0,
     "components": 1,
-    "volume_mm3": 978.692,
+    "volume_mm3": 1150.64,
     "bounds": [
       [
         -26.0,
@@ -37,11 +37,11 @@
       ],
       [
         0.0,
-        5.1
+        2.7
       ]
     ]
   },
-  "DB23_Pin_Height_Jig_v0.5.stl": {
+  "DB23_Pin_Height_Jig_v0.6.stl": {
     "triangles": 1036,
     "nonmanifold_edges": 0,
     "components": 1,
@@ -61,11 +61,11 @@
       ]
     ]
   },
-  "DB23_Hole_Fit_Coupon_v0.5.stl": {
-    "triangles": 26384,
+  "DB23_Hole_Fit_Coupon_v0.6.stl": {
+    "triangles": 34320,
     "nonmanifold_edges": 0,
     "components": 1,
-    "volume_mm3": 2722.931,
+    "volume_mm3": 2713.69,
     "bounds": [
       [
         -21.0,
@@ -81,59 +81,19 @@
       ]
     ]
   },
-  "DB23_Clip_Fit_Base_v0.5.stl": {
-    "triangles": 28,
-    "nonmanifold_edges": 0,
-    "components": 1,
-    "volume_mm3": 52.159,
-    "bounds": [
-      [
-        -0.0,
-        2.2
-      ],
-      [
-        -0.0,
-        2.3
-      ],
-      [
-        -0.0,
-        10.4
-      ]
-    ]
-  },
-  "DB23_Clip_Fit_Cap_v0.5.stl": {
-    "triangles": 40,
-    "nonmanifold_edges": 0,
-    "components": 1,
-    "volume_mm3": 12.378,
-    "bounds": [
-      [
-        -0.0,
-        2.2
-      ],
-      [
-        0.0,
-        3.4
-      ],
-      [
-        0.0,
-        5.0
-      ]
-    ]
-  },
-  "DB23_Holder_v0.5.step": {
+  "DB23_Holder_v0.6.step": {
     "valid": true,
     "solids": 1,
-    "volume_mm3": 1945.635,
+    "volume_mm3": 1939.706,
     "coordinates": "assembly"
   },
-  "DB23_Cap_v0.5.step": {
+  "DB23_Cap_v0.6.step": {
     "valid": true,
     "solids": 1,
-    "volume_mm3": 978.692,
+    "volume_mm3": 1150.64,
     "coordinates": "assembly"
   },
-  "DB23_Pin_Height_Jig_v0.5.step": {
+  "DB23_Pin_Height_Jig_v0.6.step": {
     "valid": true,
     "solids": 1,
     "volume_mm3": 3008.953,
@@ -163,12 +123,14 @@
     "projecting_mounting_feet": false,
     "jackpost_stem_max_end_y": 6.0,
     "jackpost_relief_end_y": 6.2,
-    "cap_latch_engagement_y": 0.1999999999999993,
-    "latch_minimum_assembly_deflection_estimate": 0.29999999999999927,
-    "latch_elastic_strength_tested": false,
+    "cap_attachment": "optional adhesive spots on tower tops",
+    "cap_hooks_present": false,
+    "base_catch_recesses_present": false,
+    "pin_entry_depth_mm": 0.4,
+    "pin_entry_diameter_mm": 1.72,
     "cap_print_transform": {
       "rotate_x_degrees": 180,
-      "translate_z": 12.2
+      "translate_z": 12.6
     },
     "jig_print_offset_z": 6.2
   }
