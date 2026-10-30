@@ -77,3 +77,10 @@ The revision audit records repository integrity, relative-link checks and BOM pa
 Print the chamfered hole coupon first, record layer height/material/nozzle, and establish pin fit and hand-clearing allowance. Print the new base and roof-down cover. Dry-fit using the PCB beneath the top nuts, measure full thread engagement and check the cover without forcing it. Verify jackpost-nut retention with the cover absent. Complete soldering, continuity, isolation and wire inspections before optional glue attachment. Record results in [MEASUREMENTS.md](MEASUREMENTS.md).
 
 Purchased connector dimensions, flange bearing, neighbour/chassis clearance, insertion strength, print heat behaviour, adhesive durability and controlled Amiga operation remain unverified.
+
+
+## Universal PCB prototype — ordered 30 October 2026
+
+**Use the universal PCB at your own risk.** A separate [universal prototype package](../pcb/DB23_Universal_Prototype/README.md) now includes editable PCB, Gerbers/drills, preview, checks and order records. It retains the existing physical routing, adds VIDEO 1 / FLOPPY 1 markings on both faces, removes other numbers and uses round signal pads. Internal numbering remains the VIDEO reference; actual connector orientation and continuity must be checked.
+
+Paul confirmed ordering 20 boards from JLCPCB on 30 October 2026: two-layer FR-4, 1.00 mm, 1 oz, black mask, white silkscreen, ENIG. Receipt, physical fit and functional operation remain unverified. Native KiCad 10.0.7 DRC reports zero errors/unconnected items and four missing-library warnings; exact checks confirm 23 separate signal connections. This is a standalone board snapshot, not a new coordinated PCB revision or a replacement for the two existing variants.

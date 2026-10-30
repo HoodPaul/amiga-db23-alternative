@@ -77,3 +77,10 @@ The board remains passive. It is not a scan-rate converter, floppy converter or 
 6. Assemble, inspect and record an unpowered prototype before controlled functional and insertion/extraction trials.
 
 Canonical repository: [HoodPaul/amiga-db23-alternative](https://github.com/HoodPaul/amiga-db23-alternative), default branch `main`. No project-wide licence or production release has been selected.
+
+
+## Universal PCB prototype — ordered 30 October 2026
+
+**Use the universal PCB at your own risk.** A separate [universal prototype package](../pcb/DB23_Universal_Prototype/README.md) now includes editable PCB, Gerbers/drills, preview, checks and order records. It retains the existing physical routing, adds VIDEO 1 / FLOPPY 1 markings on both faces, removes other numbers and uses round signal pads. Internal numbering remains the VIDEO reference; actual connector orientation and continuity must be checked.
+
+Paul confirmed ordering 20 boards from JLCPCB on 30 October 2026: two-layer FR-4, 1.00 mm, 1 oz, black mask, white silkscreen, ENIG. Receipt, physical fit and functional operation remain unverified. Native KiCad 10.0.7 DRC reports zero errors/unconnected items and four missing-library warnings; exact checks confirm 23 separate signal connections. This is a standalone board snapshot, not a new coordinated PCB revision or a replacement for the two existing variants.

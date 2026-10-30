@@ -1,0 +1,190 @@
+{
+  "status": "passed",
+  "scope": "23 separate J1-to-J2 signal nets; internal numbering is VIDEO reference, not floppy numbering",
+  "checks": [
+    {
+      "video_reference_pin": 1,
+      "net": "/P01",
+      "endpoints": [
+        "J1",
+        "J2"
+      ]
+    },
+    {
+      "video_reference_pin": 2,
+      "net": "/P02",
+      "endpoints": [
+        "J1",
+        "J2"
+      ]
+    },
+    {
+      "video_reference_pin": 3,
+      "net": "/P03",
+      "endpoints": [
+        "J1",
+        "J2"
+      ]
+    },
+    {
+      "video_reference_pin": 4,
+      "net": "/P04",
+      "endpoints": [
+        "J1",
+        "J2"
+      ]
+    },
+    {
+      "video_reference_pin": 5,
+      "net": "/P05",
+      "endpoints": [
+        "J1",
+        "J2"
+      ]
+    },
+    {
+      "video_reference_pin": 6,
+      "net": "/P06",
+      "endpoints": [
+        "J1",
+        "J2"
+      ]
+    },
+    {
+      "video_reference_pin": 7,
+      "net": "/P07",
+      "endpoints": [
+        "J1",
+        "J2"
+      ]
+    },
+    {
+      "video_reference_pin": 8,
+      "net": "/P08",
+      "endpoints": [
+        "J1",
+        "J2"
+      ]
+    },
+    {
+      "video_reference_pin": 9,
+      "net": "/P09",
+      "endpoints": [
+        "J1",
+        "J2"
+      ]
+    },
+    {
+      "video_reference_pin": 10,
+      "net": "/P10",
+      "endpoints": [
+        "J1",
+        "J2"
+      ]
+    },
+    {
+      "video_reference_pin": 11,
+      "net": "/P11",
+      "endpoints": [
+        "J1",
+        "J2"
+      ]
+    },
+    {
+      "video_reference_pin": 12,
+      "net": "/P12",
+      "endpoints": [
+        "J1",
+        "J2"
+      ]
+    },
+    {
+      "video_reference_pin": 13,
+      "net": "/P13",
+      "endpoints": [
+        "J1",
+        "J2"
+      ]
+    },
+    {
+      "video_reference_pin": 14,
+      "net": "/P14",
+      "endpoints": [
+        "J1",
+        "J2"
+      ]
+    },
+    {
+      "video_reference_pin": 15,
+      "net": "/P15",
+      "endpoints": [
+        "J1",
+        "J2"
+      ]
+    },
+    {
+      "video_reference_pin": 16,
+      "net": "/P16",
+      "endpoints": [
+        "J1",
+        "J2"
+      ]
+    },
+    {
+      "video_reference_pin": 17,
+      "net": "/P17",
+      "endpoints": [
+        "J1",
+        "J2"
+      ]
+    },
+    {
+      "video_reference_pin": 18,
+      "net": "/P18",
+      "endpoints": [
+        "J1",
+        "J2"
+      ]
+    },
+    {
+      "video_reference_pin": 19,
+      "net": "/P19",
+      "endpoints": [
+        "J1",
+        "J2"
+      ]
+    },
+    {
+      "video_reference_pin": 20,
+      "net": "/P20",
+      "endpoints": [
+        "J1",
+        "J2"
+      ]
+    },
+    {
+      "video_reference_pin": 21,
+      "net": "/P21",
+      "endpoints": [
+        "J1",
+        "J2"
+      ]
+    },
+    {
+      "video_reference_pin": 22,
+      "net": "/P22",
+      "endpoints": [
+        "J1",
+        "J2"
+      ]
+    },
+    {
+      "video_reference_pin": 23,
+      "net": "/P23",
+      "endpoints": [
+        "J1",
+        "J2"
+      ]
+    }
+  ]
+}

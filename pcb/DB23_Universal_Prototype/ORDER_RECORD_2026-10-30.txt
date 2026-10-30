@@ -1,0 +1,21 @@
+JLCPCB ORDER — 30 October 2026
+
+Paul confirmed that the generic DB23 prototype PCBs have been ordered.
+
+20 single PCBs, one design, 51.2 × 9 mm, two layers.
+FR-4 TG135, 1.0 mm thickness, 1 oz copper.
+Black solder mask, white silkscreen, ENIG 1 microinch.
+Deburring/edge rounding enabled; regular ±0.2 mm outline tolerance.
+Flying-probe electrical test; manufacturer mark removed.
+No gold fingers, castellations, edge plating, assembly or stencil.
+
+Screenshot quote: £17.16 boards; £1.12 estimated shipping.
+Quoted build: 3 days; estimated shipping: 8–12 business days.
+These are quoted values, not confirmed final charges or delivery dates.
+Order number and final payment total were not supplied.
+Production-file confirmation setting at checkout is unknown.
+
+Design: local DB23 Universal Prototype based on PCB revision 0.5.
+Dual VIDEO 1 / FLOPPY 1 markings, round signal pads.
+Manufacturing archive: DB23_Universal_Prototype_Gerbers.zip.
+Physical fit and assembled operation remain to be tested.

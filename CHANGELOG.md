@@ -64,3 +64,10 @@
 - Separate male video and female floppy projects.
 - Straight pins connecting the adapter to the original motherboard footprint.
 
+
+
+## Universal PCB prototype — ordered 30 October 2026
+
+**Use the universal PCB at your own risk.** A separate [universal prototype package](pcb/DB23_Universal_Prototype/README.md) now includes editable PCB, Gerbers/drills, preview, checks and order records. It retains the existing physical routing, adds VIDEO 1 / FLOPPY 1 markings on both faces, removes other numbers and uses round signal pads. Internal numbering remains the VIDEO reference; actual connector orientation and continuity must be checked.
+
+Paul confirmed ordering 20 boards from JLCPCB on 30 October 2026: two-layer FR-4, 1.00 mm, 1 oz, black mask, white silkscreen, ENIG. Receipt, physical fit and functional operation remain unverified. Native KiCad 10.0.7 DRC reports zero errors/unconnected items and four missing-library warnings; exact checks confirm 23 separate signal connections. This is a standalone board snapshot, not a new coordinated PCB revision or a replacement for the two existing variants.
