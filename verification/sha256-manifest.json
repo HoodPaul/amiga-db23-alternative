@@ -5,7 +5,7 @@
     ".gitignore": "265b396a22cb0e9292b0715a3671c8a32b37267934196d74a1244e81e81c6374",
     "AGENTS.md": "5c2d5cd28c49acfae630d73da0b3babc740b0cea0703031ebf90198d9dd5ee21",
     "BOM.csv": "e7997a7886db48595926d3e9722642651786988509d07f81d8b64d9c3763dbe3",
-    "CHANGELOG.md": "073643eed8ae9e16e042733d6f922d8d147774f9992e0a48533fb657689a8d6c",
+    "CHANGELOG.md": "9eca521c02668146fcb7d78ff1e488569408944f8250bd292468541e4f7b6d6b",
     "NOTICE.md": "39d4ba1ad9f6c87e1972ef07259f89f428d75088057c9e2210cb48b6a9ef0fab",
     "README.md": "94e84ba9b705e48bbfaadc9927a5fd0b17343f2fbd4f7bfee0c806ee51c0f748",
     "docs/AI-HANDOVER.md": "1fa2905e83fe6bd2af4ace314536b8dcfbc85ed8dc97f4d4653686896e29d276",
@@ -17,7 +17,7 @@
     "docs/MECHANICAL.md": "1fff08e3900fee8b7e994f7f7f402ce06a41a97acd154e33ec439107904aabbc",
     "docs/README.md": "6949079cff39aec64bbb280fed226a4fc17e2b3113b5e8a814e1739ab3aac6b3",
     "docs/SOURCES.md": "4c641ebe8607793012beaf7bd2197ef84cc155462e56d4c99d2ebdfe1d0facd0",
-    "docs/VALIDATION.md": "f44c6245b103e3221d9d90ff464ffae00087cba0dd3ec000fa2c358c0467bfbc",
+    "docs/VALIDATION.md": "fdf1a9b8ecffba6e68c1ac3009092eaf33b73723abb17219daa95d42228d495a",
     "fabrication/FIT-PROTOTYPE/DB23F_Floppy/DB23F_Floppy-B_Cu.gbl": "07065124b1fedb75c29b8ce03050b50f0226f6824e6c26498377364dd7a5270c",
     "fabrication/FIT-PROTOTYPE/DB23F_Floppy/DB23F_Floppy-B_Mask.gbs": "5758d8f2986d810b5aefbe4e389b15060b4f7749fb57d4f825d67eaf9221d647",
     "fabrication/FIT-PROTOTYPE/DB23F_Floppy/DB23F_Floppy-B_Silkscreen.gbo": "09b59411831ce7edf1aef1dfef961f8a30f631bf45bf7c607c9abab61669ecd4",
@@ -125,7 +125,7 @@
     "verification/pcb-text-update.json": "ee496eaf1a5fa4e12e5cbd0317fc474b0640a9380b8e8f26703fcb4196095094",
     "verification/pin-map.csv": "5cd67ca9ef1389fc11859e9bd9d6826f5206b36b6e0fd3a819aaf1756cfcb7cb",
     "verification/portable-audit.json": "ce4dad51f16c2a41a281d0d9f2699781e66a0a6db9c9b4d66e387ea6c9e841b2",
-    "verification/revision-0.5-audit.json": "7aafe1344727619d10adcfd7c47e4a68f756d6d2e401522567630a93da249ec1",
+    "verification/revision-0.5-audit.json": "dbd672cb43b6f5c758e0c1c91534d468b62b1a2e89aeccad4086b0af2173c7fc",
     "verification/tool-versions.json": "0b29235b28e4d4db161dbc0d0a32365dc0da26bc91aa8f477f81930b5dcc1f12"
   }
 }

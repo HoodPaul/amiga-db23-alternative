@@ -94,6 +94,8 @@ The portable PCB audit passed all 648 checks. This reads saved boards, netlists 
 
 The SHA-256 manifest now covers the exact repository file bytes. Its previous values matched the files before Git's line-ending normalisation: 92 entries matched CRLF exports and 33 already matched repository bytes. The refreshed manifest includes the documentation edits and excludes itself. It records file integrity, not additional engineering validation.
 
+The three revision 0.5 amendment commits now have descriptive engineering titles. Each retains exactly the same Git tree as its original commit; the subsequent documentation commit also retains its tree. The baseline reference in `verification/revision-0.5-audit.json` points to the renamed commit with the identical baseline files. The current file inventory contains no obsolete revision outputs; source, CAD, trial parts, preview assets and verification evidence remain in use.
+
 ## Physical checks still required
 
 - Purchased male/female solder-cup connector dimensions, cup gap and flange bearing.

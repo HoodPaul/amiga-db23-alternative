@@ -2,7 +2,7 @@
   "revision": "0.5",
   "pcb_revision": "0.5",
   "amendment": "Flat Z0 base underside without projecting circular feet; squared end walls, exact PCB legend and three-way project credits retained",
-  "baseline_commit": "8f03a5c369408a3d82fc9bf17329d02945433c02",
+  "baseline_commit": "c38dfda05a0689fa9445c3a87b1ea0fe2fe1eee2",
   "project_credits": [
     "Paul of UK Computing Limited",
     "Jon of JMC Electronics",

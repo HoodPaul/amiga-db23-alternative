@@ -2,6 +2,7 @@
 
 ## Repository documentation - 30 October 2026
 
+- Give the three revision 0.5 amendment commits descriptive engineering titles and update the audit baseline reference to the corresponding commit. The file contents at each renamed commit are unchanged.
 - Use Amiga DB23 Video and Floppy Adapter as the README title and describe the current assembly directly.
 - Align the BOM and handover with the current flat base, recessed ground-wire channel and loading jig support.
 - Retain revision 0.5, existing file names, project credits and fit-prototype status. CAD geometry and manufacturing files are unchanged.
