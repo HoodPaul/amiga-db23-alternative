@@ -3,7 +3,7 @@
   "supplier": "JLCPCB",
   "status": "Ordered — confirmed by Paul",
   "design": "DB23 Universal Prototype; based on PCB revision 0.5",
-  "quantity": 20,
+  "quantity": 30,
   "dimensions_mm": [
     51.2,
     9
@@ -35,5 +35,49 @@
   "final_paid_total_gbp": null,
   "production_file_confirmation": "Not confirmed; screenshot showed No, recommendation was Yes",
   "source": "Paul confirmed order placed; manufacturing settings and quote transcribed from supplied screenshots.",
-  "limitations": "Order number, final checkout total, delivery date and any settings changed at checkout were not supplied. Physical connector fit and assembled operation remain unverified."
+  "limitations": "Order number, final checkout total, delivery date and any settings changed at checkout were not supplied. Physical connector fit and assembled operation remain unverified.",
+  "quantity_note": "Paul corrected the ordered quantity from 20 to 30 on 30 October 2026; screenshot quote was for the earlier 20-board selection.",
+  "hardware_orders": [
+    {
+      "item": "Ultra-thin flat-head cross-head screws",
+      "supplier": "AliExpress",
+      "url": "https://www.aliexpress.com/item/1005009412452370.html",
+      "selected_variant": "M3, 12 mm length, 7 mm head diameter; nickel-plated steel listing",
+      "packs": 2,
+      "units_per_pack": 50,
+      "total_units": 100
+    },
+    {
+      "item": "Hex nuts",
+      "supplier": "AliExpress",
+      "url": "https://www.aliexpress.com/item/4000152457370.html",
+      "selected_variant": "M3, 304 stainless steel; DIN934 listing",
+      "packs": 2,
+      "units_per_pack": 50,
+      "total_units": 100
+    },
+    {
+      "item": "Single-row breakaway male pin headers",
+      "supplier": "AliExpress",
+      "url": "https://www.aliexpress.com/item/1005008747214913.html",
+      "selected_variant": "1x40, 2.54 mm pitch, L11.5; listing specifies plastic carrier in middle",
+      "packs": 2,
+      "units_per_pack": 20,
+      "total_strips": 40,
+      "pins_per_strip": 40,
+      "total_nominal_pins": 1600
+    }
+  ],
+  "hardware_status": "Ordered, as reported by Paul; receipt and dimensions not physically verified.",
+  "pin_selection": {
+    "length_mm": 11.5,
+    "trimming": "Use untrimmed for prototype; remove plastic carrier",
+    "nominal_square_section_mm": 0.64,
+    "section_status": "Design assumption; selected product section not independently verified",
+    "lower_tip_z_mm": -3.2,
+    "upper_tip_z_mm": 8.3,
+    "protrusion_above_adapter_pcb_mm": 1.55,
+    "lid_roof_clearance_mm": 2.7,
+    "verification": "Arithmetic using existing nominal jig and PCB stack only; CAD source still models 10.70 mm pins. Physical fit and solder clearance unverified."
+  }
 }

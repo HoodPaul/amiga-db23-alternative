@@ -1,21 +1,22 @@
-JLCPCB ORDER — 30 October 2026
+# Prototype PCB and hardware orders — 30 October 2026
 
-Paul confirmed that the generic DB23 prototype PCBs have been ordered.
+Orders reported by Paul; receipt and physical checks are pending.
 
-20 single PCBs, one design, 51.2 × 9 mm, two layers.
-FR-4 TG135, 1.0 mm thickness, 1 oz copper.
-Black solder mask, white silkscreen, ENIG 1 microinch.
-Deburring/edge rounding enabled; regular ±0.2 mm outline tolerance.
-Flying-probe electrical test; manufacturer mark removed.
-No gold fingers, castellations, edge plating, assembly or stencil.
+| Item | Selected option | Quantity |
+|---|---|---|
+| JLCPCB universal PCBs | 51.2 × 9 mm, 2 layers, 1.00 mm FR-4, 1 oz, black mask, white silk, ENIG | **30 boards** |
+| [Screws](https://www.aliexpress.com/item/1005009412452370.html) | M3 × 12 mm, 7 mm ultra-thin flat head; nickel-plated steel listing | 2 × 50 = **100 screws** |
+| [Hex nuts](https://www.aliexpress.com/item/4000152457370.html) | M3, 304 stainless steel; DIN934 listing | 2 × 50 = **100 nuts** |
+| [Pin headers](https://www.aliexpress.com/item/1005008747214913.html) | 1 × 40, 2.54 mm pitch, **L11.5** | 2 × 20 = **40 strips**, nominally **1,600 pins** |
 
-Screenshot quote: £17.16 boards; £1.12 estimated shipping.
-Quoted build: 3 days; estimated shipping: 8–12 business days.
-These are quoted values, not confirmed final charges or delivery dates.
-Order number and final payment total were not supplied.
-Production-file confirmation setting at checkout is unknown.
+The PCB quantity corrects the earlier record of 20. Earlier quoted PCB and shipping prices relate to the 20-board screenshot and are not the final price for 30 boards. Order numbers, final charges and delivery dates were not supplied. Product options are recorded from Paul's supplied descriptions, not independently verified seller specifications.
 
-Design: local DB23 Universal Prototype based on PCB revision 0.5.
-Dual VIDEO 1 / FLOPPY 1 markings, round signal pads.
-Manufacturing archive: DB23_Universal_Prototype_Gerbers.zip.
-Physical fit and assembled operation remain to be tested.
+## Selected 11.5 mm pins
+
+Use 23 equal-length pins per adapter, untrimmed after removing the plastic carrier. The nominal 0.64 mm square section remains a design assumption to confirm on arrival.
+
+With the existing jig lower-tip stop at Z−3.20, 11.50 mm pins end at Z8.30: **1.55 mm above the nominal PCB top at Z6.75**, leaving **2.70 mm to the lid roof underside at Z11.00**. These are nominal arithmetic clearances, not a physical or regenerated CAD pass. Check solder joints, connector cups and actual lid fit. Main CAD source still models 10.70 mm pins.
+
+Two screws, two nuts and 23 pins are required per adapter: these quantities cover 30 boards with spares. Under-head insulating washers remain required; this update records no washer purchase.
+
+**Use the universal PCB at your own risk.** Connector fit, mounting hardware dimensions, completed assembly and operation remain unverified.

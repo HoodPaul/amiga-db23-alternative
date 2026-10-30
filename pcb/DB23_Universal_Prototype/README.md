@@ -17,7 +17,7 @@ Use two-layer FR-4, **1.00 mm thickness**, 1 oz copper. The ordered finish is bl
 
 ## Status — 30 October 2026
 
-Paul confirmed an order for **20 universal prototype PCBs from JLCPCB**. No receipt, delivery, physical fit or functional test is recorded. The screenshot quote was £17.16 for boards plus £1.12 estimated shipping; final payment and order number were not supplied. Quoted build was 3 days and shipping 8–12 business days; these are not confirmed delivery dates.
+Paul confirmed an order for **30 universal prototype PCBs from JLCPCB**. No receipt, delivery, physical fit or functional test is recorded. The screenshot quote was £17.16 for boards plus £1.12 estimated shipping; final payment and order number were not supplied. Quoted build was 3 days and shipping 8–12 business days; these are not confirmed delivery dates.
 
 ## Checks and limitations
 
@@ -28,3 +28,8 @@ KiCad 10.0.7 loaded the board and ran native DRC: zero errors and zero unconnect
 Check actual connector numbering, all 23 end-to-end connections, isolation between signals, separate SHIELD wiring, mechanical clearances and mounting insulation before powering hardware. Retain the deliberate connector-shell and motherboard shell-ground bonds described in the main assembly instructions.
 
 Project development: Paul of UK Computing Limited, Jon of JMC Electronics and AI assistance through Codex.
+
+
+### Hardware order update — 30 October 2026
+
+Paul confirmed **30 PCBs** (correcting the earlier 20), **100 M3 × 12 mm screws with 7 mm heads**, **100 M3 304 stainless nuts**, and **40 strips of 1×40 L11.5 headers** (nominally 1,600 pins). See [the order details](ORDER_RECORD_2026-10-30.md). The selected 11.5 mm pins are intended to be used untrimmed after carrier removal; nominal protrusion above the PCB is 1.55 mm and roof clearance 2.70 mm with the existing jig. Actual dimensions and fit are unverified; main CAD still models 10.70 mm pins. Earlier quoted prices apply to the original 20-board screenshot, not the final 30-board order.

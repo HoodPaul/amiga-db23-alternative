@@ -70,4 +70,9 @@
 
 **Use the universal PCB at your own risk.** A separate [universal prototype package](pcb/DB23_Universal_Prototype/README.md) now includes editable PCB, Gerbers/drills, preview, checks and order records. It retains the existing physical routing, adds VIDEO 1 / FLOPPY 1 markings on both faces, removes other numbers and uses round signal pads. Internal numbering remains the VIDEO reference; actual connector orientation and continuity must be checked.
 
-Paul confirmed ordering 20 boards from JLCPCB on 30 October 2026: two-layer FR-4, 1.00 mm, 1 oz, black mask, white silkscreen, ENIG. Receipt, physical fit and functional operation remain unverified. Native KiCad 10.0.7 DRC reports zero errors/unconnected items and four missing-library warnings; exact checks confirm 23 separate signal connections. This is a standalone board snapshot, not a new coordinated PCB revision or a replacement for the two existing variants.
+Paul confirmed ordering 30 boards from JLCPCB on 30 October 2026: two-layer FR-4, 1.00 mm, 1 oz, black mask, white silkscreen, ENIG. Receipt, physical fit and functional operation remain unverified. Native KiCad 10.0.7 DRC reports zero errors/unconnected items and four missing-library warnings; exact checks confirm 23 separate signal connections. This is a standalone board snapshot, not a new coordinated PCB revision or a replacement for the two existing variants.
+
+
+### Hardware order update — 30 October 2026
+
+Paul confirmed **30 PCBs** (correcting the earlier 20), **100 M3 × 12 mm screws with 7 mm heads**, **100 M3 304 stainless nuts**, and **40 strips of 1×40 L11.5 headers** (nominally 1,600 pins). See [the order details](pcb/DB23_Universal_Prototype/ORDER_RECORD_2026-10-30.md). The selected 11.5 mm pins are intended to be used untrimmed after carrier removal; nominal protrusion above the PCB is 1.55 mm and roof clearance 2.70 mm with the existing jig. Actual dimensions and fit are unverified; main CAD still models 10.70 mm pins. Earlier quoted prices apply to the original 20-board screenshot, not the final 30-board order.
